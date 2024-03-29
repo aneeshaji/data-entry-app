@@ -1,2 +1,2 @@
-# data-entry-app
-Data Entry App - Laravel
+# Job Quality Requirement Management System
+Job Quality Requirement Management System - Laravel
