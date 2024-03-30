@@ -1,0 +1,34 @@
+{
+  "data": [
+    {
+      "id": 1,
+      "location": 468031,
+      "start_city": "Cagnes-sur-Mer",
+      "start_country": "France",
+      "end_city": "Catania",
+      "end_country": "Italy",
+      "warnings": "14-03-2024",
+      "progress": "22-03-2024"
+    },
+    {
+      "id": 2,
+      "location": 302781,
+      "start_city": "Köln",
+      "start_country": "Germany",
+      "end_city": "Laspezia",
+      "end_country": "Italy",
+      "warnings": "15-03-2024",
+      "progress": "11-03-2024"
+    },
+    {
+      "id": 3,
+      "location": 715822,
+      "start_city": "Chambray-lès-Tours",
+      "start_country": "France",
+      "end_city": "Hamm",
+      "end_country": "Germany",
+      "warnings": "16-03-2024",
+      "progress": "10-03-2024"
+    }
+  ]
+}
