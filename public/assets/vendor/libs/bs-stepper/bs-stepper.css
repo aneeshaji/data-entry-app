@@ -345,6 +345,7 @@ html:not([dir=rtl]) .bs-stepper .bs-stepper-header .step:last-child .step-trigge
 }
 .light-style .bs-stepper.vertical .bs-stepper-header {
   border-bottom: none;
+  border-right: 1px solid #dbdade;
 }
 @media (max-width: 991.98px) {
   .light-style .bs-stepper.vertical .bs-stepper-header {

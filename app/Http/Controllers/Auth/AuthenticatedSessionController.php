@@ -27,8 +27,12 @@ class AuthenticatedSessionController extends Controller
         $request->authenticate();
 
         $request->session()->regenerate();
-
-        return redirect()->intended(route('dashboard', absolute: false));
+        $credentials = $request->only('email', 'password');
+        if (Auth::attempt($credentials)) {
+            // Authentication passed
+            return redirect()->intended('/admin/dashboard');
+        }
+        return redirect()->back()->withErrors($validator->errors());
     }
 
     /**
