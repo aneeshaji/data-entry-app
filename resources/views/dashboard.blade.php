@@ -7,7 +7,7 @@
 
             <!-- Card Border Shadow -->
             <div class="row">
-                <div class="col-sm-6 col-lg-3 mb-4">
+                <div class="col-sm-6 col-lg-4 mb-4">
                     <div class="card card-border-shadow-primary">
                         <div class="card-body">
                             <div class="d-flex align-items-center mb-2 pb-1">
@@ -17,7 +17,7 @@
                                 </div>
                                 <h4 class="ms-1 mb-0">42</h4>
                             </div>
-                            <p class="mb-1">Latest JQR's</p>
+                            <p class="mb-1">Total JQR's</p>
                             <p class="mb-0">
                                 <span class="fw-medium me-1">+18.2%</span>
                                 <small class="text-muted">than last week</small>
@@ -25,7 +25,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-sm-6 col-lg-3 mb-4">
+                <div class="col-sm-6 col-lg-4 mb-4">
                     <div class="card card-border-shadow-warning">
                         <div class="card-body">
                             <div class="d-flex align-items-center mb-2 pb-1">
@@ -43,7 +43,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-sm-6 col-lg-3 mb-4">
+                <div class="col-sm-6 col-lg-4 mb-4">
                     <div class="card card-border-shadow-danger">
                         <div class="card-body">
                             <div class="d-flex align-items-center mb-2 pb-1">
@@ -61,7 +61,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-sm-6 col-lg-3 mb-4">
+                <!-- <div class="col-sm-6 col-lg-3 mb-4">
                     <div class="card card-border-shadow-info">
                         <div class="card-body">
                             <div class="d-flex align-items-center mb-2 pb-1">
@@ -78,7 +78,7 @@
                             </p>
                         </div>
                     </div>
-                </div>
+                </div> -->
             </div>
             <!--/ Card Border Shadow -->
             <div class="row">
@@ -645,8 +645,7 @@
                 <!--/ Orders by Countries -->
 
                 <!-- On route vehicles Table -->
-
-                <div class="col-12 order-5">
+                <!-- <div class="col-12 order-5">
                     <div class="card">
                         <div class="card-header d-flex align-items-center justify-content-between">
                             <div class="card-title mb-0">
@@ -680,13 +679,12 @@
                             </table>
                         </div>
                     </div>
-                </div>
-
+                </div> -->
                 <!--/ On route vehicles Table -->
             </div>
         </div>
         <!-- / Content -->
-
+        <hr class="container-m-nx mb-5" />
         <!-- Footer -->
         <footer class="content-footer footer bg-footer-theme">
             <div class="container-xxl">
