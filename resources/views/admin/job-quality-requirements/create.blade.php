@@ -21,8 +21,8 @@
                                         <i class="ti ti-file-description"></i>
                                     </span>
                                     <span class="bs-stepper-label">
-                                        <span class="bs-stepper-title">Basic Details</span>
-                                        <span class="bs-stepper-subtitle">Add Basic Details</span>
+                                        <span class="bs-stepper-title">Basic Project Details</span>
+                                        <span class="bs-stepper-subtitle">Add Basic Project Details</span>
                                     </span>
                                 </button>
                             </div>
@@ -177,8 +177,8 @@
                                 <!-- Basic Details -->
                                 <div id="account-details-vertical" class="content">
                                     <div class="content-header mb-3">
-                                        <h6 class="mb-0">Basic Details</h6>
-                                        <small>Enter Basic Details.</small>
+                                        <h6 class="mb-0">Basic Project Details</h6>
+                                        <small>Enter Basic Project Details.</small>
                                     </div>
                                     <div class="row g-3">
                                         <div class="col-sm-6">
@@ -192,7 +192,7 @@
                                                 aria-label="" />
                                         </div>
                                         <div class="col-sm-6">
-                                            <label class="form-label" for="email1">Job Name</label>
+                                            <label class="form-label" for="email1">Stages</label>
                                             <input type="text" id="email1" class="form-control" placeholder=""
                                                 aria-label="" />
                                         </div>
@@ -258,15 +258,7 @@
                                         </div>
                                         <div class="col-sm-6">
                                             <label class="form-label" for="country1">Location</label>
-                                            <select class="select2" id="country1">
-                                                <option label=" "></option>
-                                                <option>UK</option>
-                                                <option>USA</option>
-                                                <option>Spain</option>
-                                                <option>France</option>
-                                                <option>Italy</option>
-                                                <option>Australia</option>
-                                            </select>
+                                            <input type="text" id="last-name1" class="form-control" placeholder="" />
                                         </div>
                                         <div class="col-sm-6">
                                             <label class="form-label" for="last-name1">End User</label>
@@ -303,13 +295,12 @@
                                                 placeholder="" />
                                         </div>
                                         <div class="col-sm-6">
-                                            <label class="form-label" for="last-name1">Date Approved By Engineer</label>
-                                            <input type="date" id="last-name1" name="sales_man" class="form-control"
-                                                placeholder="" />
+                                            <label class="form-label" for="last-name1">Notes</label>
+                                            <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
                                         </div>
                                         <div class="col-sm-6">
-                                            <label class="form-label" for="last-name1">Notes</label>
-                                            <input type="text" id="last-name1" name="sales_man" class="form-control"
+                                            <label class="form-label" for="last-name1">Date Approved By Engineer</label>
+                                            <input type="date" id="last-name1" name="sales_man" class="form-control"
                                                 placeholder="" />
                                         </div>
                                         <!-- Action Buttons -->
@@ -351,14 +342,13 @@
                                             <label class="form-label" for="facebook1">Application</label>
                                             <input type="text" id="facebook1" class="form-control" placeholder="" />
                                         </div>
-
                                         <div class="col-sm-6">
                                             <label class="form-label" for="facebook1">Other</label>
                                             <input type="text" id="facebook1" class="form-control" placeholder="" />
                                         </div>
                                         <div class="col-sm-6">
                                             <label class="form-label" for="facebook1">Notes</label>
-                                            <input type="text" id="facebook1" class="form-control" placeholder="" />
+                                            <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
                                         </div>
                                         <div class="col-sm-6">
                                             <label class="switch">
@@ -412,7 +402,11 @@
                                         </div>
                                         <div class="col-sm-6">
                                             <label class="form-label" for="google1">Material Notes</label>
-                                            <input type="text" id="google1" class="form-control" placeholder="" />
+                                            <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+                                        </div>
+                                        <div class="col-sm-6">
+                                            <label class="form-label" for="linkedin1">Notes</label>
+                                            <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
                                         </div>
                                         <div class="col-sm-6">
                                             <label class="form-label" for="linkedin1">NDE Requirements</label>
@@ -426,10 +420,7 @@
                                             <label class="form-label" for="linkedin1">Governing Code</label>
                                             <input type="text" id="linkedin1" class="form-control" placeholder="" />
                                         </div>
-                                        <div class="col-sm-6">
-                                            <label class="form-label" for="linkedin1">Notes</label>
-                                            <input type="text" id="linkedin1" class="form-control" placeholder="" />
-                                        </div>
+
                                         <div class="col-sm-6">
                                         </div>
                                         <div class="col-sm-6">
@@ -534,7 +525,11 @@
                                         </div>
                                         <div class="col-sm-6">
                                             <label class="form-label" for="google1">Material Notes</label>
-                                            <input type="text" id="google1" class="form-control" placeholder="" />
+                                            <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+                                        </div>
+                                        <div class="col-sm-6">
+                                            <label class="form-label" for="linkedin1">Notes</label>
+                                            <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
                                         </div>
                                         <div class="col-sm-6">
                                             <label class="form-label" for="linkedin1">NDE Requirements</label>
@@ -548,10 +543,7 @@
                                             <label class="form-label" for="linkedin1">Governing Code</label>
                                             <input type="text" id="linkedin1" class="form-control" placeholder="" />
                                         </div>
-                                        <div class="col-sm-6">
-                                            <label class="form-label" for="linkedin1">Notes</label>
-                                            <input type="text" id="linkedin1" class="form-control" placeholder="" />
-                                        </div>
+
                                         <div class="col-sm-6">
                                             <label class="form-label" for="linkedin1">Hydro Hold Time</label>
                                             <input type="text" id="linkedin1" class="form-control" placeholder="" />
@@ -562,7 +554,7 @@
                                         </div>
                                         <div class="col-sm-6">
                                             <label class="form-label" for="google1">Hydro Notes</label>
-                                            <input type="text" id="google1" class="form-control" placeholder="" />
+                                            <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
                                         </div>
                                         <div class="col-sm-6">
                                             <label class="switch">
@@ -706,7 +698,11 @@
                                         </div>
                                         <div class="col-sm-6">
                                             <label class="form-label" for="google1">Material Notes</label>
-                                            <input type="text" id="google1" class="form-control" placeholder="" />
+                                            <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+                                        </div>
+                                        <div class="col-sm-6">
+                                            <label class="form-label" for="linkedin1">Notes</label>
+                                            <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
                                         </div>
                                         <div class="col-sm-6">
                                             <label class="form-label" for="linkedin1">NDE Requirements</label>
@@ -720,10 +716,7 @@
                                             <label class="form-label" for="linkedin1">Governing Code</label>
                                             <input type="text" id="linkedin1" class="form-control" placeholder="" />
                                         </div>
-                                        <div class="col-sm-6">
-                                            <label class="form-label" for="linkedin1">Notes</label>
-                                            <input type="text" id="linkedin1" class="form-control" placeholder="" />
-                                        </div>
+
                                         <div class="col-sm-6">
                                             <label class="form-label" for="linkedin1">Hydro Hold Time</label>
                                             <input type="text" id="linkedin1" class="form-control" placeholder="" />
@@ -734,7 +727,7 @@
                                         </div>
                                         <div class="col-sm-6">
                                             <label class="form-label" for="google1">Hydro Notes</label>
-                                            <input type="text" id="google1" class="form-control" placeholder="" />
+                                            <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
                                         </div>
                                         <div class="col-sm-6">
                                             <label class="switch">
@@ -878,7 +871,11 @@
                                         </div>
                                         <div class="col-sm-6">
                                             <label class="form-label" for="google1">Material Notes</label>
-                                            <input type="text" id="google1" class="form-control" placeholder="" />
+                                            <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+                                        </div>
+                                        <div class="col-sm-6">
+                                            <label class="form-label" for="linkedin1">Notes</label>
+                                            <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
                                         </div>
                                         <div class="col-sm-6">
                                             <label class="form-label" for="linkedin1">NDE Requirements</label>
@@ -892,10 +889,7 @@
                                             <label class="form-label" for="linkedin1">Governing Code</label>
                                             <input type="text" id="linkedin1" class="form-control" placeholder="" />
                                         </div>
-                                        <div class="col-sm-6">
-                                            <label class="form-label" for="linkedin1">Notes</label>
-                                            <input type="text" id="linkedin1" class="form-control" placeholder="" />
-                                        </div>
+
                                         <div class="col-sm-6">
                                             <label class="form-label" for="linkedin1">Hydro Hold Time</label>
                                             <input type="text" id="linkedin1" class="form-control" placeholder="" />
@@ -906,7 +900,7 @@
                                         </div>
                                         <div class="col-sm-6">
                                             <label class="form-label" for="google1">Hydro Notes</label>
-                                            <input type="text" id="google1" class="form-control" placeholder="" />
+                                            <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
                                         </div>
                                         <div class="col-sm-6">
                                             <label class="switch">
@@ -1041,8 +1035,7 @@
                                     <div class="row g-3">
                                         <div class="col-sm-6">
                                             <label class="form-label" for="email1">Material Notes</label>
-                                            <input type="text" id="email1" class="form-control" placeholder=""
-                                                aria-label="" />
+                                            <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
                                         </div>
                                         <div class="col-sm-6">
                                             <small class="text-light fw-semibold d-block">EFX Standard No COC's/No
@@ -1097,8 +1090,7 @@
                                     <div class="row g-3">
                                         <div class="col-sm-6">
                                             <label class="form-label" for="email1">Material Notes</label>
-                                            <input type="text" id="email1" class="form-control" placeholder=""
-                                                aria-label="" />
+                                            <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
                                         </div>
                                         <div class="col-sm-6">
                                             <small class="text-light fw-semibold d-block">EFX Standard No COC's/No
@@ -1162,7 +1154,11 @@
                                         </div>
                                         <div class="col-sm-6">
                                             <label class="form-label" for="google1">Material Notes</label>
-                                            <input type="text" id="google1" class="form-control" placeholder="" />
+                                            <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+                                        </div>
+                                        <div class="col-sm-6">
+                                            <label class="form-label" for="linkedin1">Notes</label>
+                                            <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
                                         </div>
                                         <div class="col-sm-6">
                                             <label class="form-label" for="linkedin1">NDE Requirements</label>
@@ -1180,10 +1176,7 @@
                                             <label class="form-label" for="linkedin1">Governing Code</label>
                                             <input type="text" id="linkedin1" class="form-control" placeholder="" />
                                         </div>
-                                        <div class="col-sm-6">
-                                            <label class="form-label" for="linkedin1">Notes</label>
-                                            <input type="text" id="linkedin1" class="form-control" placeholder="" />
-                                        </div>
+
                                         <div class="col-sm-6">
                                             <label class="form-label" for="linkedin1">Hydro Hold Time</label>
                                             <input type="text" id="linkedin1" class="form-control" placeholder="" />
@@ -1194,7 +1187,7 @@
                                         </div>
                                         <div class="col-sm-6">
                                             <label class="form-label" for="google1">Hydro Notes</label>
-                                            <input type="text" id="google1" class="form-control" placeholder="" />
+                                            <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
                                         </div>
                                         <div class="col-sm-6">
                                             <label class="switch">
@@ -1388,7 +1381,11 @@
                                         </div>
                                         <div class="col-sm-6">
                                             <label class="form-label" for="google1">Material Notes</label>
-                                            <input type="text" id="google1" class="form-control" placeholder="" />
+                                            <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+                                        </div>
+                                        <div class="col-sm-6">
+                                            <label class="form-label" for="linkedin1">Notes</label>
+                                            <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
                                         </div>
                                         <div class="col-sm-6">
                                             <label class="form-label" for="linkedin1">NDE Requirements</label>
@@ -1400,10 +1397,6 @@
                                         </div>
                                         <div class="col-sm-6">
                                             <label class="form-label" for="linkedin1">Governing Code</label>
-                                            <input type="text" id="linkedin1" class="form-control" placeholder="" />
-                                        </div>
-                                        <div class="col-sm-6">
-                                            <label class="form-label" for="linkedin1">Notes</label>
                                             <input type="text" id="linkedin1" class="form-control" placeholder="" />
                                         </div>
                                         <div class="col-sm-6">
@@ -1570,7 +1563,11 @@
                                         </div>
                                         <div class="col-sm-6">
                                             <label class="form-label" for="google1">Material Notes</label>
-                                            <input type="text" id="google1" class="form-control" placeholder="" />
+                                            <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+                                        </div>
+                                        <div class="col-sm-6">
+                                            <label class="form-label" for="linkedin1">Notes</label>
+                                            <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
                                         </div>
                                         <div class="col-sm-6">
                                             <label class="form-label" for="linkedin1">NDE Requirements</label>
@@ -1584,10 +1581,7 @@
                                             <label class="form-label" for="linkedin1">Governing Code</label>
                                             <input type="text" id="linkedin1" class="form-control" placeholder="" />
                                         </div>
-                                        <div class="col-sm-6">
-                                            <label class="form-label" for="linkedin1">Notes</label>
-                                            <input type="text" id="linkedin1" class="form-control" placeholder="" />
-                                        </div>
+
                                         <div class="col-sm-6">
                                             <label class="form-label" for="linkedin1">Hydro Hold Time</label>
                                             <input type="text" id="linkedin1" class="form-control" placeholder="" />
@@ -1598,7 +1592,7 @@
                                         </div>
                                         <div class="col-sm-6">
                                             <label class="form-label" for="google1">Hydro Notes</label>
-                                            <input type="text" id="google1" class="form-control" placeholder="" />
+                                            <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
                                         </div>
                                         <div class="col-sm-6">
                                             <label class="switch">
@@ -1702,16 +1696,17 @@
                                         </div>
                                         <div class="col-sm-6">
                                             <label class="form-label" for="google1">Material Notes</label>
-                                            <input type="text" id="google1" class="form-control" placeholder="" />
+                                            <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+                                        </div>
+                                        <div class="col-sm-6">
+                                            <label class="form-label" for="linkedin1">Notes</label>
+                                            <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
                                         </div>
                                         <div class="col-sm-6">
                                             <label class="form-label" for="linkedin1">Governing Code</label>
                                             <input type="text" id="linkedin1" class="form-control" placeholder="" />
                                         </div>
-                                        <div class="col-sm-6">
-                                            <label class="form-label" for="linkedin1">Notes</label>
-                                            <input type="text" id="linkedin1" class="form-control" placeholder="" />
-                                        </div>
+
                                         <div class="col-sm-6"></div>
                                         <div class="col-sm-6">
                                             <label class="switch">
@@ -1767,7 +1762,7 @@
 
                                         <div class="col-sm-6">
                                             <label class="form-label" for="linkedin1">Notes</label>
-                                            <input type="text" id="linkedin1" class="form-control" placeholder="" />
+                                            <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
                                         </div>
                                         <div class="col-sm-6"></div>
                                         <div class="col-sm-6">
@@ -1855,7 +1850,7 @@
                                         </div>
                                         <div class="col-sm-6">
                                             <label class="form-label" for="linkedin1">Pneumatic Testing Notes</label>
-                                            <input type="text" id="linkedin1" class="form-control" placeholder="" />
+                                            <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
                                         </div>
                                         <div class="col-sm-6">
                                             <label class="switch">
@@ -1906,7 +1901,7 @@
                                         </div>
                                         <div class="col-sm-6">
                                             <label class="form-label" for="twitter1">Vaccum Notes</label>
-                                            <input type="text" id="twitter1" class="form-control" placeholder="" />
+                                            <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
                                         </div>
                                         <div class="col-sm-6">
                                             <label class="switch">
@@ -1941,7 +1936,7 @@
                                         </div>
                                         <div class="col-sm-6">
                                             <label class="form-label" for="twitter1">Purge/Charge Notes</label>
-                                            <input type="text" id="twitter1" class="form-control" placeholder="" />
+                                            <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
                                         </div>
                                         <div class="col-sm-6"></div>
                                         <div class="col-sm-6">
@@ -1964,7 +1959,7 @@
                                         </div>
                                         <div class="col-sm-6">
                                             <label class="form-label" for="twitter1">Lube Oil Flush Notes</label>
-                                            <input type="text" id="twitter1" class="form-control" placeholder="" />
+                                            <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
                                         </div>
                                         <div class="col-sm-6">
                                             <label class="switch">
@@ -2000,7 +1995,7 @@
                                         </div>
                                         <div class="col-sm-6">
                                             <label class="form-label" for="twitter1">Run Test Notes</label>
-                                            <input type="text" id="twitter1" class="form-control" placeholder="" />
+                                            <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
                                         </div>
                                         <div class="col-sm-6"></div>
                                         <div class="col-sm-6">
@@ -2044,7 +2039,7 @@
                                         </div>
                                         <div class="col-sm-6">
                                             <label class="form-label" for="twitter1">Megger Test Notes</label>
-                                            <input type="text" id="twitter1" class="form-control" placeholder="" />
+                                            <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
                                         </div>
                                         <div class="col-sm-6">
                                             <label class="switch">
@@ -2080,7 +2075,7 @@
                                         </div>
                                         <div class="col-sm-6">
                                             <label class="form-label" for="twitter1">Fat Test Notes</label>
-                                            <input type="text" id="twitter1" class="form-control" placeholder="" />
+                                            <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
                                         </div>
                                         <div class="col-sm-6"></div>
                                         <div class="col-sm-6">
