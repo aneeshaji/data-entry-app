@@ -2354,8 +2354,8 @@
                         document.write(new Date().getFullYear());
                         </script>
                         All Rights Reserved
-                        <a href="https://pixinvent.com" target="_blank"
-                            class="footer-link text-primary fw-medium">codeFirstIT</a>
+                        <!-- <a href="https://pixinvent.com" target="_blank"
+                            class="footer-link text-primary fw-medium">codeFirstIT</a> -->
                     </div>
                     <!-- <div class="d-none d-lg-inline-block">
                         <a href="https://themeforest.net/licenses/standard" class="footer-link me-4"
