@@ -576,25 +576,30 @@
                                         </div>
                                         <div class="col-sm-6">
                                             <label class="form-label" for="linkedin1">NDE Requirements</label>
-                                            <input type="text" id="linkedin1" class="form-control" placeholder="" />
+                                            <textarea class="form-control" id="exampleFormControlTextarea1"
+                                                rows="3"></textarea>
                                         </div>
                                         <div class="col-sm-6">
                                             <label class="form-label" for="linkedin1">Welding Requirements</label>
-                                            <input type="text" id="linkedin1" class="form-control" placeholder="" />
+                                            <textarea class="form-control" id="exampleFormControlTextarea1"
+                                                rows="3"></textarea>
                                         </div>
                                         <div class="col-sm-6">
                                             <label class="form-label" for="linkedin1">Governing Code</label>
                                             <input type="text" id="linkedin1" class="form-control" placeholder="" />
                                         </div>
                                         <div class="col-sm-6">
-                                            <label class="switch">
-                                                <input type="checkbox" class="switch-input">
-                                                <span class="switch-toggle-slider">
-                                                    <span class="switch-on"></span>
-                                                    <span class="switch-off"></span>
-                                                </span>
-                                                <span class="switch-label">PWHT</span>
-                                            </label>
+                                            <small class="text-light fw-semibold d-block">PWHT</small>
+                                            <div class="form-check form-check-inline mt-3">
+                                                <input class="form-check-input" type="radio" name="inlineRadioOptions"
+                                                    id="inlineRadio1" value="option1">
+                                                <label class="form-check-label" for="inlineRadio1">Yes</label>
+                                            </div>
+                                            <div class="form-check form-check-inline">
+                                                <input class="form-check-input" type="radio" name="inlineRadioOptions"
+                                                    id="inlineRadio2" value="option2">
+                                                <label class="form-check-label" for="inlineRadio2">No - EFX Standard</label>
+                                            </div>
                                         </div>
                                         <div class="col-sm-6">
                                             <label class="form-label" for="linkedin1">Notes</label>
@@ -714,11 +719,13 @@
                                         </div>
                                         <div class="col-sm-6">
                                             <label class="form-label" for="linkedin1">NDE Requirements</label>
-                                            <input type="text" id="linkedin1" class="form-control" placeholder="" />
+                                            <textarea class="form-control" id="exampleFormControlTextarea1"
+                                                rows="3"></textarea>
                                         </div>
                                         <div class="col-sm-6">
                                             <label class="form-label" for="linkedin1">Welding Requirements</label>
-                                            <input type="text" id="linkedin1" class="form-control" placeholder="" />
+                                            <textarea class="form-control" id="exampleFormControlTextarea1"
+                                                rows="3"></textarea>
                                         </div>
                                         <div class="col-sm-6">
                                             <label class="form-label" for="linkedin1">Governing Code</label>
@@ -817,7 +824,7 @@
                                 <!-- Non code Vessels -->
                                 <div id="non_code_vessels" class="content">
                                     <div class="content-header mb-3">
-                                        <h6 class="mb-0">Non Code Vessels/Tanks></h6>
+                                        <h6 class="mb-0">Non Code Vessels/Tanks</h6>
                                         <small>Enter Non Code Vessels/Tanks.</small>
                                     </div>
                                     <div class="row g-3">
@@ -920,11 +927,13 @@
                                         </div>
                                         <div class="col-sm-6">
                                             <label class="form-label" for="linkedin1">NDE Requirements</label>
-                                            <input type="text" id="linkedin1" class="form-control" placeholder="" />
+                                            <textarea class="form-control" id="exampleFormControlTextarea1"
+                                                rows="3"></textarea>
                                         </div>
                                         <div class="col-sm-6">
                                             <label class="form-label" for="linkedin1">Welding Requirements</label>
-                                            <input type="text" id="linkedin1" class="form-control" placeholder="" />
+                                            <textarea class="form-control" id="exampleFormControlTextarea1"
+                                                rows="3"></textarea>
                                         </div>
                                         <div class="col-sm-6">
                                             <label class="form-label" for="linkedin1">Governing Code</label>
@@ -1116,11 +1125,13 @@
                                         </div>
                                         <div class="col-sm-6">
                                             <label class="form-label" for="linkedin1">NDE Requirements</label>
-                                            <input type="text" id="linkedin1" class="form-control" placeholder="" />
+                                            <textarea class="form-control" id="exampleFormControlTextarea1"
+                                                rows="3"></textarea>
                                         </div>
                                         <div class="col-sm-6">
                                             <label class="form-label" for="linkedin1">Welding Requirements</label>
-                                            <input type="text" id="linkedin1" class="form-control" placeholder="" />
+                                            <textarea class="form-control" id="exampleFormControlTextarea1"
+                                                rows="3"></textarea>
                                         </div>
                                         <div class="col-sm-6">
                                             <label class="form-label" for="linkedin1">Governing Code</label>
@@ -1261,25 +1272,15 @@
                                         <small>Enter gaskets.</small>
                                     </div>
                                     <div class="row g-3">
-                                        <div class="col-sm-6">
-                                            <small class="text-light fw-semibold d-block">EFX Standard No COC's/No
-                                                MTR's</small>
-                                            <div class="form-check form-check-inline mt-3">
-                                                <input class="form-check-input" type="checkbox" id="inlineCheckbox1"
-                                                    value="option1">
-                                                <label class="form-check-label" for="inlineCheckbox1">Vendor COC</label>
-                                            </div>
-                                            <div class="form-check form-check-inline">
-                                                <input class="form-check-input" type="checkbox" id="inlineCheckbox2"
-                                                    value="option2">
-                                                <label class="form-check-label" for="inlineCheckbox2">Manufacturer
-                                                    COC</label>
-                                            </div>
-                                            <div class="form-check form-check-inline">
-                                                <input class="form-check-input" type="checkbox" id="inlineCheckbox2"
-                                                    value="option2">
-                                                <label class="form-check-label" for="inlineCheckbox2">MTRS</label>
-                                            </div>
+                                    <div class="col-sm-6">
+                                            <label class="switch">
+                                                <input type="checkbox" class="switch-input">
+                                                <span class="switch-toggle-slider">
+                                                    <span class="switch-on"></span>
+                                                    <span class="switch-off"></span>
+                                                </span>
+                                                <span class="switch-label">EFX Standard No COC's / No MTR's</span>
+                                            </label>
                                         </div>
                                         <div class="col-sm-6">
                                             <label class="form-label" for="email1">Material Notes</label>
@@ -1413,11 +1414,13 @@
                                         </div>
                                         <div class="col-sm-6">
                                             <label class="form-label" for="linkedin1">NDE Requirements</label>
-                                            <input type="text" id="linkedin1" class="form-control" placeholder="" />
+                                            <textarea class="form-control" id="exampleFormControlTextarea1"
+                                                rows="3"></textarea>
                                         </div>
                                         <div class="col-sm-6">
                                             <label class="form-label" for="linkedin1">PMI Requirements</label>
-                                            <input type="text" id="linkedin1" class="form-control" placeholder="" />
+                                            <textarea class="form-control" id="exampleFormControlTextarea1"
+                                                rows="3"></textarea>
                                         </div>
                                         <div class="col-sm-6">
                                             <label class="form-label" for="linkedin1">Notes</label>
@@ -1554,7 +1557,8 @@
                                         </div>
                                         <div class="col-sm-6">
                                             <label class="form-label" for="linkedin1">Welding Requirements</label>
-                                            <input type="text" id="linkedin1" class="form-control" placeholder="" />
+                                            <textarea class="form-control" id="exampleFormControlTextarea1"
+                                                rows="3"></textarea>
                                         </div>
                                         <div class="col-sm-6">
                                             <label class="form-label" for="linkedin1">Governing Code</label>
@@ -1855,7 +1859,7 @@
                                                     <span class="switch-on"></span>
                                                     <span class="switch-off"></span>
                                                 </span>
-                                                <span class="switch-label">EFX Standard Short Term(>6 Mo)</span>
+                                                <span class="switch-label">EFX Standard Short Term(6 Mo)</span>
                                             </label>
                                         </div>
                                         <div class="col-sm-6">
@@ -1865,7 +1869,7 @@
                                                     <span class="switch-on"></span>
                                                     <span class="switch-off"></span>
                                                 </span>
-                                                <span class="switch-label">EFX Standard Long Term(>6 Mo)</span>
+                                                <span class="switch-label">EFX Standard Long Term(6 Mo)</span>
                                             </label>
                                         </div>
                                         <div class="col-sm-6">
@@ -1881,7 +1885,8 @@
                                         <div class="col-sm-6">
                                             <label class="form-label" for="linkedin1">Special Customer
                                                 Requirements</label>
-                                            <input type="text" id="linkedin1" class="form-control" placeholder="" />
+                                                <textarea class="form-control" id="exampleFormControlTextarea1"
+                                                rows="3"></textarea>
                                         </div>
                                         <div class="col-sm-6">
                                             <label class="form-label" for="linkedin1">Notes</label>
@@ -1918,6 +1923,10 @@
                                         <h6 class="mb-0">Package Testing</h6>
                                         <small>Enter package testing.</small>
                                     </div>
+                                    <label class="form-check-label" for="deliveryAdd">
+                                        Pneumatic Testing
+                                    </label>
+                                    <hr>
                                     <div class="row g-3">
                                         <!-- Pneumatic Testing -->
                                         <div class="col-sm-6">
@@ -1968,6 +1977,10 @@
                                                 rows="3"></textarea>
                                         </div>
                                         <!-- Pneumatic Testing Ends -->
+                                        <label class="form-check-label" for="deliveryAdd">
+                                            Vaccum
+                                        </label>
+                                        <hr>
                                         <!-- Vaccum -->
                                         <div class="col-sm-6">
                                             <label class="switch">
@@ -2009,6 +2022,10 @@
                                                 rows="3"></textarea>
                                         </div>
                                         <!-- Vaccum Ends -->
+                                        <label class="form-check-label" for="deliveryAdd">
+                                            Purge/Charge
+                                        </label>
+                                        <hr>
                                         <!-- Purge/Charge -->
                                         <div class="col-sm-6">
                                             <label class="switch">
@@ -2034,6 +2051,10 @@
                                                 rows="3"></textarea>
                                         </div>
                                         <!-- Purge/Charge Ends -->
+                                        <label class="form-check-label" for="deliveryAdd">
+                                            Lube Oil Flush
+                                        </label>
+                                        <hr>
                                         <!-- Lube Oil Flush -->
                                         <div class="col-sm-6">
                                             <label class="switch">
@@ -2067,6 +2088,10 @@
                                                 rows="3"></textarea>
                                         </div>
                                         <!-- Lube Oil Flush Ends -->
+                                        <label class="form-check-label" for="deliveryAdd">
+                                            Run Test
+                                        </label>
+                                        <hr>
                                         <!-- Run Test -->
                                         <div class="col-sm-6">
                                             <label class="switch">
@@ -2117,6 +2142,10 @@
                                                 rows="3"></textarea>
                                         </div>
                                         <!-- Run Test Ends -->
+                                        <label class="form-check-label" for="deliveryAdd">
+                                            Megger Test
+                                        </label>
+                                        <hr>
                                         <!-- Megger Test -->
                                         <div class="col-sm-6">
                                             <label class="switch">
@@ -2150,6 +2179,10 @@
                                                 rows="3"></textarea>
                                         </div>
                                         <!-- Megger Test Ends -->
+                                        <label class="form-check-label" for="deliveryAdd">
+                                            Fat Test
+                                        </label>
+                                        <hr>
                                         <!-- Fat Test -->
                                         <div class="col-sm-6">
                                             <label class="switch">
@@ -2188,6 +2221,10 @@
                                         </div>
                                         <div class="col-sm-6"></div>
                                         <!-- Fat Test Ends -->
+                                        <label class="form-check-label" for="deliveryAdd">
+                                            Additional Testing
+                                        </label>
+                                        <hr>
                                         <!-- Additional Testing -->
                                         <div class="col-sm-6">
                                             <label class="switch">
@@ -2221,6 +2258,7 @@
                                             <input type="text" id="twitter1" class="form-control" placeholder="" />
                                         </div>
                                         <!-- Additional Testing Ends -->
+                                        <hr>
                                         <div class="col-sm-6">
                                             <label class="switch">
                                                 <input type="checkbox" class="switch-input">
@@ -2231,7 +2269,6 @@
                                                 <span class="switch-label">Addendum Purchasing Specifications</span>
                                             </label>
                                         </div>
-
                                         <div class="col-sm-6">
                                             <label class="switch">
                                                 <input type="checkbox" class="switch-input">
