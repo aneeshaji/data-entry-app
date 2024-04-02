@@ -598,7 +598,8 @@
                                             <div class="form-check form-check-inline">
                                                 <input class="form-check-input" type="radio" name="inlineRadioOptions"
                                                     id="inlineRadio2" value="option2">
-                                                <label class="form-check-label" for="inlineRadio2">No - EFX Standard</label>
+                                                <label class="form-check-label" for="inlineRadio2">No - EFX
+                                                    Standard</label>
                                             </div>
                                         </div>
                                         <div class="col-sm-6">
@@ -1217,24 +1218,44 @@
                                     </div>
                                     <div class="row g-3">
                                         <div class="col-sm-6">
-                                            <small class="text-light fw-semibold d-block">EFX Standard No COC's/No
-                                                MTR's</small>
-                                            <div class="form-check form-check-inline mt-3">
-                                                <input class="form-check-input" type="checkbox" id="inlineCheckbox1"
-                                                    value="option1">
-                                                <label class="form-check-label" for="inlineCheckbox1">Vendor COC</label>
-                                            </div>
-                                            <div class="form-check form-check-inline">
-                                                <input class="form-check-input" type="checkbox" id="inlineCheckbox2"
-                                                    value="option2">
-                                                <label class="form-check-label" for="inlineCheckbox2">Manufacturer
-                                                    COC</label>
-                                            </div>
-                                            <div class="form-check form-check-inline">
-                                                <input class="form-check-input" type="checkbox" id="inlineCheckbox2"
-                                                    value="option2">
-                                                <label class="form-check-label" for="inlineCheckbox2">MTRS</label>
-                                            </div>
+                                            <label class="switch">
+                                                <input type="checkbox" class="switch-input">
+                                                <span class="switch-toggle-slider">
+                                                    <span class="switch-on"></span>
+                                                    <span class="switch-off"></span>
+                                                </span>
+                                                <span class="switch-label">EFX Standard No COC's / No MTR's</span>
+                                            </label>
+                                        </div>
+                                        <div class="col-sm-6">
+                                            <label class="switch">
+                                                <input type="checkbox" class="switch-input">
+                                                <span class="switch-toggle-slider">
+                                                    <span class="switch-on"></span>
+                                                    <span class="switch-off"></span>
+                                                </span>
+                                                <span class="switch-label">Vendor COC</span>
+                                            </label>
+                                        </div>
+                                        <div class="col-sm-6">
+                                            <label class="switch">
+                                                <input type="checkbox" class="switch-input">
+                                                <span class="switch-toggle-slider">
+                                                    <span class="switch-on"></span>
+                                                    <span class="switch-off"></span>
+                                                </span>
+                                                <span class="switch-label">Manufacturer COC</span>
+                                            </label>
+                                        </div>
+                                        <div class="col-sm-6">
+                                            <label class="switch">
+                                                <input type="checkbox" class="switch-input">
+                                                <span class="switch-toggle-slider">
+                                                    <span class="switch-on"></span>
+                                                    <span class="switch-off"></span>
+                                                </span>
+                                                <span class="switch-label">MTRS</span>
+                                            </label>
                                         </div>
                                         <div class="col-sm-6">
                                             <label class="form-label" for="email1">Material Notes</label>
@@ -1272,7 +1293,7 @@
                                         <small>Enter gaskets.</small>
                                     </div>
                                     <div class="row g-3">
-                                    <div class="col-sm-6">
+                                        <div class="col-sm-6">
                                             <label class="switch">
                                                 <input type="checkbox" class="switch-input">
                                                 <span class="switch-toggle-slider">
@@ -1280,6 +1301,36 @@
                                                     <span class="switch-off"></span>
                                                 </span>
                                                 <span class="switch-label">EFX Standard No COC's / No MTR's</span>
+                                            </label>
+                                        </div>
+                                        <div class="col-sm-6">
+                                            <label class="switch">
+                                                <input type="checkbox" class="switch-input">
+                                                <span class="switch-toggle-slider">
+                                                    <span class="switch-on"></span>
+                                                    <span class="switch-off"></span>
+                                                </span>
+                                                <span class="switch-label">Vendor COC</span>
+                                            </label>
+                                        </div>
+                                        <div class="col-sm-6">
+                                            <label class="switch">
+                                                <input type="checkbox" class="switch-input">
+                                                <span class="switch-toggle-slider">
+                                                    <span class="switch-on"></span>
+                                                    <span class="switch-off"></span>
+                                                </span>
+                                                <span class="switch-label">Manufacturer COC</span>
+                                            </label>
+                                        </div>
+                                        <div class="col-sm-6">
+                                            <label class="switch">
+                                                <input type="checkbox" class="switch-input">
+                                                <span class="switch-toggle-slider">
+                                                    <span class="switch-on"></span>
+                                                    <span class="switch-off"></span>
+                                                </span>
+                                                <span class="switch-label">MTRS</span>
                                             </label>
                                         </div>
                                         <div class="col-sm-6">
@@ -1885,7 +1936,7 @@
                                         <div class="col-sm-6">
                                             <label class="form-label" for="linkedin1">Special Customer
                                                 Requirements</label>
-                                                <textarea class="form-control" id="exampleFormControlTextarea1"
+                                            <textarea class="form-control" id="exampleFormControlTextarea1"
                                                 rows="3"></textarea>
                                         </div>
                                         <div class="col-sm-6">
