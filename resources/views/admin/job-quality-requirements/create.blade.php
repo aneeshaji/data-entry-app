@@ -15,7 +15,7 @@
                     <!-- <small class="text-light fw-semibold">Vertical Icons</small> -->
                     <div class="bs-stepper vertical wizard-vertical-icons-example mt-2">
                         <div class="bs-stepper-header">
-                            <div class="step" data-target="#account-details-vertical">
+                            <div class="step" data-target="#basic_details">
                                 <button type="button" class="step-trigger">
                                     <span class="bs-stepper-circle">
                                         <i class="ti ti-file-description"></i>
@@ -186,18 +186,13 @@
                         </div>
                         <div class="bs-stepper-content">
                             <form onSubmit="return false">
-                                <!-- Basic Details -->
-                                <div id="account-details-vertical" class="content">
+                                <!-- Basic Project Details -->
+                                <div id="basic_details" class="content">
                                     <div class="content-header mb-3">
                                         <h6 class="mb-0">Basic Project Details</h6>
                                         <small>Enter Basic Project Details.</small>
                                     </div>
                                     <div class="row g-3">
-                                        <div class="col-sm-6">
-                                            <label class="form-label" for="email1">Job Number</label>
-                                            <input type="text" id="email1" class="form-control" placeholder=""
-                                                aria-label="" />
-                                        </div>
                                         <div class="col-sm-6">
                                             <label class="form-label" for="email1">Job Name</label>
                                             <input type="text" id="email1" class="form-control" placeholder=""
@@ -252,7 +247,7 @@
                                         </div> -->
                                     </div>
                                 </div>
-                                <!-- Basic Details Ends -->
+                                <!-- Basic Project Details Ends -->
                                 <!-- Special Material Requirements -->
                                 <div id="special_material" class="content">
                                     <div class="content-header mb-3">
