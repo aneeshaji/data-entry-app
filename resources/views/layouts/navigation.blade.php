@@ -24,7 +24,7 @@
             <a href="javascript:void(0);" class="menu-link menu-toggle">
                 <i class="menu-icon tf-icons ti ti-list-check"></i>
                 <div data-i18n="JQR's">JQR's</div>
-                <div class="badge bg-primary rounded-pill ms-auto">5</div>
+                <!-- <div class="badge bg-primary rounded-pill ms-auto">5</div> -->
             </a>
             <ul class="menu-sub">
                 <li class="menu-item">
@@ -41,15 +41,14 @@
         </li>
 
         <!-- Components -->
-        <li class="menu-header small text-uppercase">
+        <!-- <li class="menu-header small text-uppercase">
             <span class="menu-header-text" data-i18n="Settings">Settings</span>
-        </li>
+        </li> -->
         <!-- Cards -->
-        <li class="menu-item">
+        <!-- <li class="menu-item">
             <a href="javascript:void(0);" class="menu-link menu-toggle">
                 <i class="menu-icon tf-icons ti ti-tool"></i>
                 <div data-i18n="System Logs">System Logs</div>
-                <!-- <div class="badge bg-primary rounded-pill ms-auto">5</div> -->
             </a>
             <ul class="menu-sub">
                 <li class="menu-item">
@@ -58,6 +57,6 @@
                     </a>
                 </li>
             </ul>
-        </li>
+        </li> -->
     </ul>
 </aside>
