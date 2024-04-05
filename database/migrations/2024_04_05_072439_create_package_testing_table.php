@@ -39,7 +39,7 @@ return new class extends Migration
             $table->tinyInteger('run_test')->nullable()->comment('1 => Yes, 0 => No');
             $table->tinyInteger('run_test_customer_third_party_witness_required')->nullable()->comment('1 => Yes, 0 => No');
             $table->string('run_test_notification_requirement')->nullable();
-            $table->tinyInteger('run_test_requirement')->nullable()->comment('1 => Loaded, 2 => No Load');
+            $table->string('run_test_requirement')->nullable();
             $table->string('run_test_duration')->nullable();
             $table->text('run_test_notes')->nullable();
             $table->tinyInteger('megger_test')->nullable()->comment('1 => Yes, 0 => No');
