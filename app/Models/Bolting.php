@@ -12,8 +12,6 @@ class Bolting extends Model
         'vendor_coc',
         'manufacturer_coc',
         'mtrs',
-        'notes'
+        'material_notes'
     ];
 }
-
-//bolting

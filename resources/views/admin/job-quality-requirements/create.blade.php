@@ -471,17 +471,17 @@
                                     <div class="row g-3">
                                         <div class="col-sm-6">
                                             <label class="form-label" for="twitter1">Gas Processed</label>
-                                            <input type="text" id="twitter1" class="form-control" placeholder=""
+                                            <input type="text" id="twitter1" name="basic_details_id" class="form-control" placeholder=""
                                             value="{{ isset($jqr->service_info->gas_processed) ? $jqr->service_info->gas_processed : '' }}" />
                                         </div>
                                         <div class="col-sm-6">
                                             <label class="form-label" for="facebook1">Application</label>
-                                            <input type="text" id="facebook1" class="form-control" placeholder=""
+                                            <input type="text" id="facebook1" name="application" class="form-control" placeholder=""
                                             value="{{ isset($jqr->service_info->application) ?$jqr->service_info->application : '' }}"/>
                                         </div>
                                         <div class="col-sm-6">
                                             <label class="switch">
-                                                <input type="checkbox" class="switch-input">
+                                                <input type="checkbox" class="switch-input" name="sour_service_required">
                                                 {{ isset($jqr->service_info->sour_service_required) ? 'checked': '' }}
                                                 <span class="switch-toggle-slider">
                                                     <span class="switch-on"></span>
@@ -492,7 +492,7 @@
                                         </div>
                                         <div class="col-sm-6">
                                             <label class="form-label" for="facebook1">Other</label>
-                                            <input type="text" id="facebook1" class="form-control" placeholder=""
+                                            <input type="text" id="facebook1" class="form-control" name="other" placeholder=""
                                             value="{{ isset($jqr->service_info->other) ? $jqr->service_info : '' }}" />
                                         </div>
                                         <div class="col-sm-6">
@@ -534,141 +534,143 @@
                                     <h6 class="mb-0">Structural Skid</h6>
                                     <small>Enter Structural Skid.</small>
                                 </div>
-                                <div class="row g-3">
-                                    <small class="text-light fw-semibold">
-                                        * Indicates Special Material Origin Requirements Must Be Checked 'Yes'
-                                    </small>
-                                    <div class="col-sm-6">
-                                        <label class="switch">
-                                            <input type="checkbox" class="switch-input">
-                                            <span class="switch-toggle-slider">
-                                                <span class="switch-on"></span>
-                                                <span class="switch-off"></span>
-                                            </span>
-                                            <span class="switch-label">*Customer/Client AVL Applies</span>
-                                        </label>
-                                    </div>
-                                    <div class="col-sm-6">
-                                        <label class="form-label" for="twitter1">Material Origin REQS</label>
-                                        <input type="text" id="twitter1" class="form-control" placeholder="" />
-                                    </div>
-                                    <div class="col-sm-6">
-                                        <label class="switch">
-                                            <input type="checkbox" class="switch-input">
-                                            <span class="switch-toggle-slider">
-                                                <span class="switch-on"></span>
-                                                <span class="switch-off"></span>
-                                            </span>
-                                            <span class="switch-label">*Origin Traceable To Melt(BILLET)</span>
-                                        </label>
-                                    </div>
-                                    <div class="col-sm-6">
-                                        <label class="form-label" for="facebook1">Acceptable Material
-                                            Origins</label>
-                                        <input type="text" id="facebook1" class="form-control" placeholder="" />
-                                    </div>
-                                    <div class="col-sm-6">
-                                        <label class="switch">
-                                            <input type="checkbox" class="switch-input">
-                                            <span class="switch-toggle-slider">
-                                                <span class="switch-on"></span>
-                                                <span class="switch-off"></span>
-                                            </span>
-                                            <span class="switch-label">Standard Per Code(NO MTRS)</span>
-                                        </label>
-                                    </div>
-                                    <div class="col-sm-6">
-                                        <label class="switch">
-                                            <input type="checkbox" class="switch-input">
-                                            <span class="switch-toggle-slider">
-                                                <span class="switch-on"></span>
-                                                <span class="switch-off"></span>
-                                            </span>
-                                            <span class="switch-label">MTRS Required</span>
-                                        </label>
-                                    </div>
-                                    <div class="col-sm-6">
-                                        <label class="switch">
-                                            <input type="checkbox" class="switch-input">
-                                            <span class="switch-toggle-slider">
-                                                <span class="switch-on"></span>
-                                                <span class="switch-off"></span>
-                                            </span>
-                                            <span class="switch-label">Heat Mapping</span>
-                                        </label>
-                                    </div>
-                                    <div class="col-sm-6">
-                                        <label class="switch">
-                                            <input type="checkbox" class="switch-input">
-                                            <span class="switch-toggle-slider">
-                                                <span class="switch-on"></span>
-                                                <span class="switch-off"></span>
-                                            </span>
-                                            <span class="switch-label">Weld Mapping</span>
-                                        </label>
-                                    </div>
-                                    <div class="col-sm-6">
-                                        <label class="form-label" for="google1">Material Notes</label>
-                                        <textarea class="form-control" id="exampleFormControlTextarea1"
-                                            rows="3"></textarea>
-                                    </div>
-                                    <div class="col-sm-6">
-                                        <label class="form-label" for="linkedin1">NDE Requirements</label>
-                                        <textarea class="form-control" id="exampleFormControlTextarea1"
-                                            rows="3"></textarea>
-                                    </div>
-                                    <div class="col-sm-6">
-                                        <label class="form-label" for="linkedin1">Welding Requirements</label>
-                                        <textarea class="form-control" id="exampleFormControlTextarea1"
-                                            rows="3"></textarea>
-                                    </div>
-                                    <div class="col-sm-6">
-                                        <label class="form-label" for="linkedin1">Governing Code</label>
-                                        <input type="text" id="linkedin1" class="form-control" placeholder="" />
-                                    </div>
-                                    <div class="col-sm-6">
-                                        <small class="text-light fw-semibold d-block">PWHT</small>
-                                        <div class="form-check form-check-inline mt-3">
-                                            <input class="form-check-input" type="radio" name="inlineRadioOptions"
-                                                id="inlineRadio1" value="option1">
-                                            <label class="form-check-label" for="inlineRadio1">Yes</label>
+                                <form onSubmit="return false" id="structural_skid_from">
+                                    <div class="row g-3">
+                                        <small class="text-light fw-semibold">
+                                            * Indicates Special Material Origin Requirements Must Be Checked 'Yes'
+                                        </small>
+                                        <div class="col-sm-6">
+                                            <label class="switch">
+                                                <input type="checkbox" class="switch-input" name="customer_avl_applies">
+                                                <span class="switch-toggle-slider">
+                                                    <span class="switch-on"></span>
+                                                    <span class="switch-off"></span>
+                                                </span>
+                                                <span class="switch-label">*Customer/Client AVL Applies</span>
+                                            </label>
                                         </div>
-                                        <div class="form-check form-check-inline">
-                                            <input class="form-check-input" type="radio" name="inlineRadioOptions"
-                                                id="inlineRadio2" value="option2">
-                                            <label class="form-check-label" for="inlineRadio2">No - EFX
-                                                Standard</label>
+                                        <div class="col-sm-6">
+                                            <label class="form-label" for="twitter1">Material Origin REQS</label>
+                                            <input type="text" id="twitter1" name="material_origin_reqs" class="form-control" placeholder="" />
                                         </div>
-                                    </div>
-                                    <div class="col-sm-6">
-                                        <label class="form-label" for="linkedin1">Notes</label>
-                                        <textarea class="form-control" id="exampleFormControlTextarea1"
-                                            rows="3"></textarea>
-                                    </div>
-                                    <div class="col-sm-6">
-                                    </div>
-
-                                    <!-- Action Buttons -->
-                                    <div class="pt-4">
-                                        <div class="row justify-content-end">
-                                            <div class="col-sm-9">
-                                                <button class="btn btn-label-secondary btn-prev me-sm-3 me-1">
-                                                    <i class="ti ti-arrow-left me-sm-1"></i>
-                                                    <span class="align-middle d-sm-inline-block d-none">Previous</span>
-                                                </button>
-                                                <button type="button"
-                                                    class="btn btn-success waves-effect waves-light me-sm-3 me-1"><i
-                                                        class="ti ti-check"></i>Save</button>
-                                                <button class="btn btn-primary btn-next">
-                                                    <span
-                                                        class="align-middle d-sm-inline-block d-none me-sm-1">Next</span>
-                                                    <i class="ti ti-arrow-right"></i>
-                                                </button>
+                                        <div class="col-sm-6">
+                                            <label class="switch">
+                                                <input type="checkbox" class="switch-input" name="origin_traceable_to_melt">
+                                                <span class="switch-toggle-slider">
+                                                    <span class="switch-on"></span>
+                                                    <span class="switch-off"></span>
+                                                </span>
+                                                <span class="switch-label">*Origin Traceable To Melt(BILLET)</span>
+                                            </label>
+                                        </div>
+                                        <div class="col-sm-6">
+                                            <label class="form-label" for="facebook1">Acceptable Material
+                                                Origins</label>
+                                            <input type="text" name="acceptable_material_origins" id="facebook1" class="form-control" placeholder="" />
+                                        </div>
+                                        <div class="col-sm-6">
+                                            <label class="switch">
+                                                <input type="checkbox" name="standard_per_code" class="switch-input">
+                                                <span class="switch-toggle-slider">
+                                                    <span class="switch-on"></span>
+                                                    <span class="switch-off"></span>
+                                                </span>
+                                                <span class="switch-label">Standard Per Code(NO MTRS)</span>
+                                            </label>
+                                        </div>
+                                        <div class="col-sm-6">
+                                            <label class="switch">
+                                                <input type="checkbox" name="mtrs_required" class="switch-input">
+                                                <span class="switch-toggle-slider">
+                                                    <span class="switch-on"></span>
+                                                    <span class="switch-off"></span>
+                                                </span>
+                                                <span class="switch-label">MTRS Required</span>
+                                            </label>
+                                        </div>
+                                        <div class="col-sm-6">
+                                            <label class="switch">
+                                                <input type="checkbox" name="heat_mapping" class="switch-input">
+                                                <span class="switch-toggle-slider">
+                                                    <span class="switch-on"></span>
+                                                    <span class="switch-off"></span>
+                                                </span>
+                                                <span class="switch-label">Heat Mapping</span>
+                                            </label>
+                                        </div>
+                                        <div class="col-sm-6">
+                                            <label class="switch">
+                                                <input type="checkbox" name="weld_mapping" class="switch-input">
+                                                <span class="switch-toggle-slider">
+                                                    <span class="switch-on"></span>
+                                                    <span class="switch-off"></span>
+                                                </span>
+                                                <span class="switch-label">Weld Mapping</span>
+                                            </label>
+                                        </div>
+                                        <div class="col-sm-6">
+                                            <label class="form-label" for="google1">Material Notes</label>
+                                            <textarea class="form-control" name="material_notes" id="exampleFormControlTextarea1"
+                                                rows="3"></textarea>
+                                        </div>
+                                        <div class="col-sm-6">
+                                            <label class="form-label" for="linkedin1">NDE Requirements</label>
+                                            <textarea class="form-control" name="nde_requirements" id="exampleFormControlTextarea1"
+                                                rows="3"></textarea>
+                                        </div>
+                                        <div class="col-sm-6">
+                                            <label class="form-label" for="linkedin1">Welding Requirements</label>
+                                            <textarea class="form-control" name="weld_requirements" id="exampleFormControlTextarea1"
+                                                rows="3"></textarea>
+                                        </div>
+                                        <div class="col-sm-6">
+                                            <label class="form-label" for="linkedin1">Governing Code</label>
+                                            <input type="text" id="linkedin1" name="governing_code" class="form-control" placeholder="" />
+                                        </div>
+                                        <div class="col-sm-6">
+                                            <small class="text-light fw-semibold d-block">PWHT</small>
+                                            <div class="form-check form-check-inline mt-3">
+                                                <input class="form-check-input" type="radio" name="pwht"
+                                                    id="inlineRadio1" value="option1">
+                                                <label class="form-check-label" for="inlineRadio1">Yes</label>
+                                            </div>
+                                            <div class="form-check form-check-inline">
+                                                <input class="form-check-input" type="radio" name="pwht"
+                                                    id="inlineRadio2" value="option2">
+                                                <label class="form-check-label" for="inlineRadio2">No - EFX
+                                                    Standard</label>
                                             </div>
                                         </div>
+                                        <div class="col-sm-6">
+                                            <label class="form-label" for="linkedin1">Notes</label>
+                                            <textarea class="form-control" name="notes" id="exampleFormControlTextarea1"
+                                                rows="3"></textarea>
+                                        </div>
+                                        <div class="col-sm-6">
+                                        </div>
+
+                                        <!-- Action Buttons -->
+                                        <div class="pt-4">
+                                            <div class="row justify-content-end">
+                                                <div class="col-sm-9">
+                                                    <button class="btn btn-label-secondary btn-prev me-sm-3 me-1">
+                                                        <i class="ti ti-arrow-left me-sm-1"></i>
+                                                        <span class="align-middle d-sm-inline-block d-none">Previous</span>
+                                                    </button>
+                                                    <button type="button"
+                                                        class="btn btn-success waves-effect waves-light me-sm-3 me-1"><i
+                                                            class="ti ti-check"></i>Save</button>
+                                                    <button class="btn btn-primary btn-next">
+                                                        <span
+                                                            class="align-middle d-sm-inline-block d-none me-sm-1">Next</span>
+                                                        <i class="ti ti-arrow-right"></i>
+                                                    </button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <!-- Action Buttons Ends -->
                                     </div>
-                                    <!-- Action Buttons Ends -->
-                                </div>
+                                </form>
                             </div>
                             <!-- Structural Skid Ends -->
                             <!-- Pressure Vessels -->
@@ -677,185 +679,187 @@
                                     <h6 class="mb-0">Pressure Vessels</h6>
                                     <small>Enter Pressure Vessels.</small>
                                 </div>
-                                <div class="row g-3">
-                                    <small class="text-light fw-semibold">
-                                        * Indicates Special Material Origin Requirements Must Be Checked 'Yes'
-                                    </small>
-                                    <div class="col-sm-6">
-                                        <label class="switch">
-                                            <input type="checkbox" class="switch-input">
-                                            <span class="switch-toggle-slider">
-                                                <span class="switch-on"></span>
-                                                <span class="switch-off"></span>
-                                            </span>
-                                            <span class="switch-label">*Customer/Client AVL Applies</span>
-                                        </label>
-                                    </div>
-                                    <div class="col-sm-6">
-                                        <label class="form-label" for="twitter1">Material Origin REQS</label>
-                                        <input type="text" id="twitter1" class="form-control" placeholder="" />
-                                    </div>
-                                    <div class="col-sm-6">
-                                        <label class="switch">
-                                            <input type="checkbox" class="switch-input">
-                                            <span class="switch-toggle-slider">
-                                                <span class="switch-on"></span>
-                                                <span class="switch-off"></span>
-                                            </span>
-                                            <span class="switch-label">*Origin Traceable To Melt</span>
-                                        </label>
-                                    </div>
-                                    <div class="col-sm-6">
-                                        <label class="form-label" for="facebook1">Acceptable Material
-                                            Origins</label>
-                                        <input type="text" id="facebook1" class="form-control" placeholder="" />
-                                    </div>
-                                    <div class="col-sm-6">
-                                        <label class="switch">
-                                            <input type="checkbox" class="switch-input">
-                                            <span class="switch-toggle-slider">
-                                                <span class="switch-on"></span>
-                                                <span class="switch-off"></span>
-                                            </span>
-                                            <span class="switch-label">MTRS Required(ALL)</span>
-                                        </label>
-                                    </div>
-                                    <div class="col-sm-6">
-                                        <label class="switch">
-                                            <input type="checkbox" class="switch-input">
-                                            <span class="switch-toggle-slider">
-                                                <span class="switch-on"></span>
-                                                <span class="switch-off"></span>
-                                            </span>
-                                            <span class="switch-label">Heat Mapping</span>
-                                        </label>
-                                    </div>
-                                    <div class="col-sm-6">
-                                        <label class="switch">
-                                            <input type="checkbox" class="switch-input">
-                                            <span class="switch-toggle-slider">
-                                                <span class="switch-on"></span>
-                                                <span class="switch-off"></span>
-                                            </span>
-                                            <span class="switch-label">Weld Mapping</span>
-                                        </label>
-                                    </div>
-                                    <div class="col-sm-6">
-                                        <label class="form-label" for="google1">Material Notes</label>
-                                        <textarea class="form-control" id="exampleFormControlTextarea1"
-                                            rows="3"></textarea>
-                                    </div>
-                                    <div class="col-sm-6">
-                                        <label class="switch">
-                                            <input type="checkbox" class="switch-input">
-                                            <span class="switch-toggle-slider">
-                                                <span class="switch-on"></span>
-                                                <span class="switch-off"></span>
-                                            </span>
-                                            <span class="switch-label">*NACE</span>
-                                        </label>
-                                    </div>
-                                    <div class="col-sm-6">
-                                        <label class="form-label" for="linkedin1">NDE Requirements</label>
-                                        <textarea class="form-control" id="exampleFormControlTextarea1"
-                                            rows="3"></textarea>
-                                    </div>
-                                    <div class="col-sm-6">
-                                        <label class="form-label" for="linkedin1">Welding Requirements</label>
-                                        <textarea class="form-control" id="exampleFormControlTextarea1"
-                                            rows="3"></textarea>
-                                    </div>
-                                    <div class="col-sm-6">
-                                        <label class="form-label" for="linkedin1">Governing Code</label>
-                                        <input type="text" id="linkedin1" class="form-control" placeholder="" />
-                                    </div>
-                                    <div class="col-sm-6">
-                                        <small class="text-light fw-semibold d-block">PWHT</small>
-                                        <div class="form-check form-check-inline mt-3">
-                                            <input class="form-check-input" type="radio" name="inlineRadioOptions"
-                                                id="inlineRadio1" value="option1">
-                                            <label class="form-check-label" for="inlineRadio1">Yes</label>
+                                <form onSubmit="return false" id="spressure_vessels_from">
+                                    <div class="row g-3">
+                                        <small class="text-light fw-semibold">
+                                            * Indicates Special Material Origin Requirements Must Be Checked 'Yes'
+                                        </small>
+                                        <div class="col-sm-6">
+                                            <label class="switch">
+                                                <input type="checkbox" class="switch-input" name="customer_avl_applies">
+                                                <span class="switch-toggle-slider">
+                                                    <span class="switch-on"></span>
+                                                    <span class="switch-off"></span>
+                                                </span>
+                                                <span class="switch-label">*Customer/Client AVL Applies</span>
+                                            </label>
                                         </div>
-                                        <div class="form-check form-check-inline">
-                                            <input class="form-check-input" type="radio" name="inlineRadioOptions"
-                                                id="inlineRadio2" value="option2">
-                                            <label class="form-check-label" for="inlineRadio2">No</label>
+                                        <div class="col-sm-6">
+                                            <label class="form-label" for="twitter1">Material Origin REQS</label>
+                                            <input type="text" id="twitter1" name="material_origin_reqs" class="form-control" placeholder="" />
                                         </div>
-                                        <div class="form-check form-check-inline">
-                                            <input class="form-check-input" type="radio" name="inlineRadioOptions"
-                                                id="inlineRadio3" value="option3">
-                                            <label class="form-check-label" for="inlineRadio3">Per Code REQ</label>
+                                        <div class="col-sm-6">
+                                            <label class="switch">
+                                                <input type="checkbox" class="switch-input" name="origin_traceable_to_melt">
+                                                <span class="switch-toggle-slider">
+                                                    <span class="switch-on"></span>
+                                                    <span class="switch-off"></span>
+                                                </span>
+                                                <span class="switch-label">*Origin Traceable To Melt</span>
+                                            </label>
                                         </div>
-                                    </div>
-                                    <div class="col-sm-6">
-                                        <label class="form-label" for="linkedin1">Hydro Hold Time</label>
-                                        <input type="text" id="linkedin1" class="form-control" placeholder="" />
-                                    </div>
-                                    <div class="col-sm-6">
-                                        <label class="switch">
-                                            <input type="checkbox" class="switch-input">
-                                            <span class="switch-toggle-slider">
-                                                <span class="switch-on"></span>
-                                                <span class="switch-off"></span>
-                                            </span>
-                                            <span class="switch-label">Witnessed</span>
-                                        </label>
-                                    </div>
-                                    <div class="col-sm-6">
-                                        <label class="switch">
-                                            <input type="checkbox" class="switch-input">
-                                            <span class="switch-toggle-slider">
-                                                <span class="switch-on"></span>
-                                                <span class="switch-off"></span>
-                                            </span>
-                                            <span class="switch-label">Hardness Test</span>
-                                        </label>
-                                    </div>
-                                    <div class="col-sm-6">
-                                        <label class="form-label" for="linkedin1">Max Hardness</label>
-                                        <input type="text" id="linkedin1" class="form-control" placeholder="" />
-                                    </div>
-                                    <div class="col-sm-6">
-                                        <label class="switch">
-                                            <input type="checkbox" class="switch-input">
-                                            <span class="switch-toggle-slider">
-                                                <span class="switch-on"></span>
-                                                <span class="switch-off"></span>
-                                            </span>
-                                            <span class="switch-label">Hydro Chart Required</span>
-                                        </label>
-                                    </div>
-                                    <div class="col-sm-6">
-                                        <label class="form-label" for="google1">Hydro Notes</label>
-                                        <textarea class="form-control" id="exampleFormControlTextarea1"
-                                            rows="3"></textarea>
-                                    </div>
-                                    <div class="col-sm-6">
-                                        <label class="form-label" for="linkedin1">Notes</label>
-                                        <textarea class="form-control" id="exampleFormControlTextarea1"
-                                            rows="3"></textarea>
-                                    </div>
-                                    <!-- Action Buttons -->
-                                    <div class="pt-4">
-                                        <div class="row justify-content-end">
-                                            <div class="col-sm-9">
-                                                <button class="btn btn-label-secondary btn-prev me-sm-3 me-1">
-                                                    <i class="ti ti-arrow-left me-sm-1"></i>
-                                                    <span class="align-middle d-sm-inline-block d-none">Previous</span>
-                                                </button>
-                                                <button type="button"
-                                                    class="btn btn-success waves-effect waves-light me-sm-3 me-1"><i
-                                                        class="ti ti-check"></i>Save</button>
-                                                <button class="btn btn-primary btn-next">
-                                                    <span
-                                                        class="align-middle d-sm-inline-block d-none me-sm-1">Next</span>
-                                                    <i class="ti ti-arrow-right"></i>
-                                                </button>
+                                        <div class="col-sm-6">
+                                            <label class="form-label" for="facebook1">Acceptable Material
+                                                Origins</label>
+                                            <input type="text" id="facebook1" name="acceptable_material_origins	" class="form-control" placeholder="" />
+                                        </div>
+                                        <div class="col-sm-6">
+                                            <label class="switch">
+                                                <input type="checkbox" class="switch-input" name="mtrs_required">
+                                                <span class="switch-toggle-slider">
+                                                    <span class="switch-on"></span>
+                                                    <span class="switch-off"></span>
+                                                </span>
+                                                <span class="switch-label">MTRS Required(ALL)</span>
+                                            </label>
+                                        </div>
+                                        <div class="col-sm-6">
+                                            <label class="switch">
+                                                <input type="checkbox" class="switch-input" name="heat_mapping">
+                                                <span class="switch-toggle-slider">
+                                                    <span class="switch-on"></span>
+                                                    <span class="switch-off"></span>
+                                                </span>
+                                                <span class="switch-label">Heat Mapping</span>
+                                            </label>
+                                        </div>
+                                        <div class="col-sm-6">
+                                            <label class="switch">
+                                                <input type="checkbox" class="switch-input" name="weld_mapping">
+                                                <span class="switch-toggle-slider">
+                                                    <span class="switch-on"></span>
+                                                    <span class="switch-off"></span>
+                                                </span>
+                                                <span class="switch-label">Weld Mapping</span>
+                                            </label>
+                                        </div>
+                                        <div class="col-sm-6">
+                                            <label class="form-label" for="google1">Material Notes</label>
+                                            <textarea class="form-control" name="material_notes" id="exampleFormControlTextarea1"
+                                                rows="3"></textarea>
+                                        </div>
+                                        <div class="col-sm-6">
+                                            <label class="switch">
+                                                <input type="checkbox" class="switch-input" name="nace">
+                                                <span class="switch-toggle-slider">
+                                                    <span class="switch-on"></span>
+                                                    <span class="switch-off"></span>
+                                                </span>
+                                                <span class="switch-label">*NACE</span>
+                                            </label>
+                                        </div>
+                                        <div class="col-sm-6">
+                                            <label class="form-label" for="linkedin1">NDE Requirements</label>
+                                            <textarea class="form-control" name="nde_requirements" id="exampleFormControlTextarea1"
+                                                rows="3"></textarea>
+                                        </div>
+                                        <div class="col-sm-6">
+                                            <label class="form-label" for="linkedin1">Welding Requirements</label>
+                                            <textarea class="form-control" name="weld_requirements" id="exampleFormControlTextarea1"
+                                                rows="3"></textarea>
+                                        </div>
+                                        <div class="col-sm-6">
+                                            <label class="form-label" for="linkedin1">Governing Code</label>
+                                            <input type="text" id="linkedin1" name="governing_code" class="form-control" placeholder="" />
+                                        </div>
+                                        <div class="col-sm-6">
+                                            <small class="text-light fw-semibold d-block">PWHT</small>
+                                            <div class="form-check form-check-inline mt-3">
+                                                <input class="form-check-input" type="radio" name="pwht"
+                                                    id="inlineRadio1" value="option1">
+                                                <label class="form-check-label" for="inlineRadio1">Yes</label>
+                                            </div>
+                                            <div class="form-check form-check-inline">
+                                                <input class="form-check-input" type="radio" name="pwht"
+                                                    id="inlineRadio2" value="option2">
+                                                <label class="form-check-label" for="inlineRadio2">No</label>
+                                            </div>
+                                            <div class="form-check form-check-inline">
+                                                <input class="form-check-input" type="radio" name="pwht"
+                                                    id="inlineRadio3" value="option3">
+                                                <label class="form-check-label" for="inlineRadio3">Per Code REQ</label>
                                             </div>
                                         </div>
+                                        <div class="col-sm-6">
+                                            <label class="form-label" for="linkedin1">Hydro Hold Time</label>
+                                            <input type="text" id="linkedin1" name="hydro_hold_time" class="form-control" placeholder="" />
+                                        </div>
+                                        <div class="col-sm-6">
+                                            <label class="switch">
+                                                <input type="checkbox" class="switch-input" name="witnessed">
+                                                <span class="switch-toggle-slider">
+                                                    <span class="switch-on"></span>
+                                                    <span class="switch-off"></span>
+                                                </span>
+                                                <span class="switch-label">Witnessed</span>
+                                            </label>
+                                        </div>
+                                        <div class="col-sm-6">
+                                            <label class="switch">
+                                                <input type="checkbox" class="switch-input" name="hardness_test">
+                                                <span class="switch-toggle-slider">
+                                                    <span class="switch-on"></span>
+                                                    <span class="switch-off"></span>
+                                                </span>
+                                                <span class="switch-label">Hardness Test</span>
+                                            </label>
+                                        </div>
+                                        <div class="col-sm-6">
+                                            <label class="form-label" for="linkedin1">Max Hardness</label>
+                                            <input type="text" id="linkedin1" class="form-control" name="max_hardness"  placeholder="" />
+                                        </div>
+                                        <div class="col-sm-6">
+                                            <label class="switch">
+                                                <input type="checkbox" class="switch-input" name="hydro_chart_required">
+                                                <span class="switch-toggle-slider">
+                                                    <span class="switch-on"></span>
+                                                    <span class="switch-off"></span>
+                                                </span>
+                                                <span class="switch-label">Hydro Chart Required</span>
+                                            </label>
+                                        </div>
+                                        <div class="col-sm-6">
+                                            <label class="form-label" for="google1">Hydro Notes</label>
+                                            <textarea class="form-control" name="hydro_notes" id="exampleFormControlTextarea1"
+                                                rows="3"></textarea>
+                                        </div>
+                                        <div class="col-sm-6">
+                                            <label class="form-label" for="linkedin1">Notes</label>
+                                            <textarea class="form-control" name="notes" id="exampleFormControlTextarea1"
+                                                rows="3"></textarea>
+                                        </div>
+                                        <!-- Action Buttons -->
+                                        <div class="pt-4">
+                                            <div class="row justify-content-end">
+                                                <div class="col-sm-9">
+                                                    <button class="btn btn-label-secondary btn-prev me-sm-3 me-1">
+                                                        <i class="ti ti-arrow-left me-sm-1"></i>
+                                                        <span class="align-middle d-sm-inline-block d-none">Previous</span>
+                                                    </button>
+                                                    <button type="button"
+                                                        class="btn btn-success waves-effect waves-light me-sm-3 me-1"><i
+                                                            class="ti ti-check"></i>Save</button>
+                                                    <button class="btn btn-primary btn-next">
+                                                        <span
+                                                            class="align-middle d-sm-inline-block d-none me-sm-1">Next</span>
+                                                        <i class="ti ti-arrow-right"></i>
+                                                    </button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <!-- Action Buttons Ends -->
                                     </div>
-                                    <!-- Action Buttons Ends -->
-                                </div>
+                                </form>
                             </div>
                             <!-- Pressure Vessels Ends -->
                             <!-- Non code Vessels -->
@@ -864,205 +868,207 @@
                                     <h6 class="mb-0">Non Code Vessels/Tanks</h6>
                                     <small>Enter Non Code Vessels/Tanks.</small>
                                 </div>
-                                <div class="row g-3">
-                                    <small class="text-light fw-semibold">
-                                        * Indicates Special Material Origin Requirements Must Be Checked 'Yes'
-                                    </small>
-                                    <div class="col-sm-6">
-                                        <label class="switch">
-                                            <input type="checkbox" class="switch-input">
-                                            <span class="switch-toggle-slider">
-                                                <span class="switch-on"></span>
-                                                <span class="switch-off"></span>
-                                            </span>
-                                            <span class="switch-label">*Customer/Client AVL Applies</span>
-                                        </label>
-                                    </div>
-                                    <div class="col-sm-6">
-                                        <label class="form-label" for="twitter1">Material Origin REQS</label>
-                                        <input type="text" id="twitter1" class="form-control" placeholder="" />
-                                    </div>
-                                    <div class="col-sm-6">
-                                        <label class="switch">
-                                            <input type="checkbox" class="switch-input">
-                                            <span class="switch-toggle-slider">
-                                                <span class="switch-on"></span>
-                                                <span class="switch-off"></span>
-                                            </span>
-                                            <span class="switch-label">*Origin Traceable To Manufacturer</span>
-                                        </label>
-                                    </div>
-                                    <div class="col-sm-6">
-                                        <label class="switch">
-                                            <input type="checkbox" class="switch-input">
-                                            <span class="switch-toggle-slider">
-                                                <span class="switch-on"></span>
-                                                <span class="switch-off"></span>
-                                            </span>
-                                            <span class="switch-label">*Origin Traceable To Melt(BILLET)</span>
-                                        </label>
-                                    </div>
-                                    <div class="col-sm-6">
-                                        <label class="form-label" for="facebook1">Acceptable Material
-                                            Origins</label>
-                                        <input type="text" id="facebook1" class="form-control" placeholder="" />
-                                    </div>
-                                    <div class="col-sm-6">
-                                        <label class="switch">
-                                            <input type="checkbox" class="switch-input">
-                                            <span class="switch-toggle-slider">
-                                                <span class="switch-on"></span>
-                                                <span class="switch-off"></span>
-                                            </span>
-                                            <span class="switch-label">Standard Per Code(NO MTRS)</span>
-                                        </label>
-                                    </div>
-                                    <div class="col-sm-6">
-                                        <label class="switch">
-                                            <input type="checkbox" class="switch-input">
-                                            <span class="switch-toggle-slider">
-                                                <span class="switch-on"></span>
-                                                <span class="switch-off"></span>
-                                            </span>
-                                            <span class="switch-label">MTRS Required</span>
-                                        </label>
-                                    </div>
-                                    <div class="col-sm-6">
-                                        <label class="switch">
-                                            <input type="checkbox" class="switch-input">
-                                            <span class="switch-toggle-slider">
-                                                <span class="switch-on"></span>
-                                                <span class="switch-off"></span>
-                                            </span>
-                                            <span class="switch-label">Heat Mapping</span>
-                                        </label>
-                                    </div>
-                                    <div class="col-sm-6">
-                                        <label class="switch">
-                                            <input type="checkbox" class="switch-input">
-                                            <span class="switch-toggle-slider">
-                                                <span class="switch-on"></span>
-                                                <span class="switch-off"></span>
-                                            </span>
-                                            <span class="switch-label">Weld Mapping</span>
-                                        </label>
-                                    </div>
-                                    <div class="col-sm-6">
-                                        <label class="form-label" for="google1">Material Notes</label>
-                                        <textarea class="form-control" id="exampleFormControlTextarea1"
-                                            rows="3"></textarea>
-                                    </div>
-                                    <div class="col-sm-6">
-                                        <label class="switch">
-                                            <input type="checkbox" class="switch-input">
-                                            <span class="switch-toggle-slider">
-                                                <span class="switch-on"></span>
-                                                <span class="switch-off"></span>
-                                            </span>
-                                            <span class="switch-label">*NACE</span>
-                                        </label>
-                                    </div>
-                                    <div class="col-sm-6">
-                                        <label class="form-label" for="linkedin1">NDE Requirements</label>
-                                        <textarea class="form-control" id="exampleFormControlTextarea1"
-                                            rows="3"></textarea>
-                                    </div>
-                                    <div class="col-sm-6">
-                                        <label class="form-label" for="linkedin1">Welding Requirements</label>
-                                        <textarea class="form-control" id="exampleFormControlTextarea1"
-                                            rows="3"></textarea>
-                                    </div>
-                                    <div class="col-sm-6">
-                                        <label class="form-label" for="linkedin1">Governing Code</label>
-                                        <input type="text" id="linkedin1" class="form-control" placeholder="" />
-                                    </div>
-                                    <div class="col-sm-6">
-                                        <small class="text-light fw-semibold d-block">PWHT</small>
-                                        <div class="form-check form-check-inline mt-3">
-                                            <input class="form-check-input" type="radio" name="inlineRadioOptions"
-                                                id="inlineRadio1" value="option1">
-                                            <label class="form-check-label" for="inlineRadio1">Yes</label>
+                                <form onSubmit="return false" id="non_code_vessels_from">
+                                    <div class="row g-3">
+                                        <small class="text-light fw-semibold">
+                                            * Indicates Special Material Origin Requirements Must Be Checked 'Yes'
+                                        </small>
+                                        <div class="col-sm-6">
+                                            <label class="switch">
+                                                <input type="checkbox" class="switch-input" name="customer_avl_applies">
+                                                <span class="switch-toggle-slider">
+                                                    <span class="switch-on"></span>
+                                                    <span class="switch-off"></span>
+                                                </span>
+                                                <span class="switch-label">*Customer/Client AVL Applies</span>
+                                            </label>
                                         </div>
-                                        <div class="form-check form-check-inline">
-                                            <input class="form-check-input" type="radio" name="inlineRadioOptions"
-                                                id="inlineRadio2" value="option2">
-                                            <label class="form-check-label" for="inlineRadio2">No</label>
+                                        <div class="col-sm-6">
+                                            <label class="form-label" for="twitter1">Material Origin REQS</label>
+                                            <input type="text" id="twitter1" name="	material_origin_reqs" class="form-control" placeholder="" />
                                         </div>
-                                        <div class="form-check form-check-inline">
-                                            <input class="form-check-input" type="radio" name="inlineRadioOptions"
-                                                id="inlineRadio3" value="option3">
-                                            <label class="form-check-label" for="inlineRadio3">Per Code REQ</label>
+                                        <div class="col-sm-6">
+                                            <label class="switch">
+                                                <input type="checkbox" class="switch-input" name="origin_traceable_to_manufacturer">
+                                                <span class="switch-toggle-slider">
+                                                    <span class="switch-on"></span>
+                                                    <span class="switch-off"></span>
+                                                </span>
+                                                <span class="switch-label">*Origin Traceable To Manufacturer</span>
+                                            </label>
                                         </div>
-                                    </div>
-                                    <div class="col-sm-6">
-                                        <label class="form-label" for="linkedin1">Hydro Hold Time</label>
-                                        <input type="text" id="linkedin1" class="form-control" placeholder="" />
-                                    </div>
-                                    <div class="col-sm-6">
-                                        <label class="switch">
-                                            <input type="checkbox" class="switch-input">
-                                            <span class="switch-toggle-slider">
-                                                <span class="switch-on"></span>
-                                                <span class="switch-off"></span>
-                                            </span>
-                                            <span class="switch-label">Witnessed</span>
-                                        </label>
-                                    </div>
-                                    <div class="col-sm-6">
-                                        <label class="switch">
-                                            <input type="checkbox" class="switch-input">
-                                            <span class="switch-toggle-slider">
-                                                <span class="switch-on"></span>
-                                                <span class="switch-off"></span>
-                                            </span>
-                                            <span class="switch-label">Hardness Test</span>
-                                        </label>
-                                    </div>
-                                    <div class="col-sm-6">
-                                        <label class="form-label" for="linkedin1">Max Hardness</label>
-                                        <input type="text" id="linkedin1" class="form-control" placeholder="" />
-                                    </div>
-                                    <div class="col-sm-6">
-                                        <label class="switch">
-                                            <input type="checkbox" class="switch-input">
-                                            <span class="switch-toggle-slider">
-                                                <span class="switch-on"></span>
-                                                <span class="switch-off"></span>
-                                            </span>
-                                            <span class="switch-label">Hydro Chart Required</span>
-                                        </label>
-                                    </div>
-                                    <div class="col-sm-6">
-                                        <label class="form-label" for="google1">Hydro Notes</label>
-                                        <textarea class="form-control" id="exampleFormControlTextarea1"
-                                            rows="3"></textarea>
-                                    </div>
-                                    <div class="col-sm-6">
-                                        <label class="form-label" for="linkedin1">Notes</label>
-                                        <textarea class="form-control" id="exampleFormControlTextarea1"
-                                            rows="3"></textarea>
-                                    </div>
-                                    <!-- Action Buttons -->
-                                    <div class="pt-4">
-                                        <div class="row justify-content-end">
-                                            <div class="col-sm-9">
-                                                <button class="btn btn-label-secondary btn-prev me-sm-3 me-1">
-                                                    <i class="ti ti-arrow-left me-sm-1"></i>
-                                                    <span class="align-middle d-sm-inline-block d-none">Previous</span>
-                                                </button>
-                                                <button type="button"
-                                                    class="btn btn-success waves-effect waves-light me-sm-3 me-1"><i
-                                                        class="ti ti-check"></i>Save</button>
-                                                <button class="btn btn-primary btn-next">
-                                                    <span
-                                                        class="align-middle d-sm-inline-block d-none me-sm-1">Next</span>
-                                                    <i class="ti ti-arrow-right"></i>
-                                                </button>
+                                        <div class="col-sm-6">
+                                            <label class="switch">
+                                                <input type="checkbox" class="switch-input" name="origin_traceable_to_melt">
+                                                <span class="switch-toggle-slider">
+                                                    <span class="switch-on"></span>
+                                                    <span class="switch-off"></span>
+                                                </span>
+                                                <span class="switch-label">*Origin Traceable To Melt(BILLET)</span>
+                                            </label>
+                                        </div>
+                                        <div class="col-sm-6">
+                                            <label class="form-label" for="facebook1">Acceptable Material
+                                                Origins</label>
+                                            <input type="text" id="facebook1" name="acceptable_material_origins" class="form-control" placeholder="" />
+                                        </div>
+                                        <div class="col-sm-6">
+                                            <label class="switch">
+                                                <input type="checkbox" class="switch-input" name="standard_code">
+                                                <span class="switch-toggle-slider">
+                                                    <span class="switch-on"></span>
+                                                    <span class="switch-off"></span>
+                                                </span>
+                                                <span class="switch-label">Standard Per Code(NO MTRS)</span>
+                                            </label>
+                                        </div>
+                                        <div class="col-sm-6">
+                                            <label class="switch">
+                                                <input type="checkbox" class="switch-input" name="mtrs_required">
+                                                <span class="switch-toggle-slider">
+                                                    <span class="switch-on"></span>
+                                                    <span class="switch-off"></span>
+                                                </span>
+                                                <span class="switch-label">MTRS Required</span>
+                                            </label>
+                                        </div>
+                                        <div class="col-sm-6">
+                                            <label class="switch">
+                                                <input type="checkbox" class="switch-input" name="heat_mapping">
+                                                <span class="switch-toggle-slider">
+                                                    <span class="switch-on"></span>
+                                                    <span class="switch-off"></span>
+                                                </span>
+                                                <span class="switch-label">Heat Mapping</span>
+                                            </label>
+                                        </div>
+                                        <div class="col-sm-6">
+                                            <label class="switch">
+                                                <input type="checkbox" class="switch-input" name="weld_mapping">
+                                                <span class="switch-toggle-slider">
+                                                    <span class="switch-on"></span>
+                                                    <span class="switch-off"></span>
+                                                </span>
+                                                <span class="switch-label">Weld Mapping</span>
+                                            </label>
+                                        </div>
+                                        <div class="col-sm-6">
+                                            <label class="form-label" for="google1">Material Notes</label>
+                                            <textarea class="form-control" name="material_notes" id="exampleFormControlTextarea1"
+                                                rows="3"></textarea>
+                                        </div>
+                                        <div class="col-sm-6">
+                                            <label class="switch">
+                                                <input type="checkbox" class="switch-input" name="nace">
+                                                <span class="switch-toggle-slider">
+                                                    <span class="switch-on"></span>
+                                                    <span class="switch-off"></span>
+                                                </span>
+                                                <span class="switch-label">*NACE</span>
+                                            </label>
+                                        </div>
+                                        <div class="col-sm-6">
+                                            <label class="form-label" for="linkedin1">NDE Requirements</label>
+                                            <textarea class="form-control" name="nde_requirements" id="exampleFormControlTextarea1"
+                                                rows="3"></textarea>
+                                        </div>
+                                        <div class="col-sm-6">
+                                            <label class="form-label" for="linkedin1">Welding Requirements</label>
+                                            <textarea class="form-control" name="weld_requirements" id="exampleFormControlTextarea1"
+                                                rows="3"></textarea>
+                                        </div>
+                                        <div class="col-sm-6">
+                                            <label class="form-label" for="linkedin1">Governing Code</label>
+                                            <input type="text" id="linkedin1" name="governing_code" class="form-control" placeholder="" />
+                                        </div>
+                                        <div class="col-sm-6">
+                                            <small class="text-light fw-semibold d-block">PWHT</small>
+                                            <div class="form-check form-check-inline mt-3">
+                                                <input class="form-check-input" type="radio" name="pwht"
+                                                    id="inlineRadio1" value="option1">
+                                                <label class="form-check-label" for="inlineRadio1">Yes</label>
+                                            </div>
+                                            <div class="form-check form-check-inline">
+                                                <input class="form-check-input" type="radio" name="pwht"
+                                                    id="inlineRadio2" value="option2">
+                                                <label class="form-check-label" for="inlineRadio2">No</label>
+                                            </div>
+                                            <div class="form-check form-check-inline">
+                                                <input class="form-check-input" type="radio" name="pwht"
+                                                    id="inlineRadio3" value="option3">
+                                                <label class="form-check-label" for="inlineRadio3">Per Code REQ</label>
                                             </div>
                                         </div>
+                                        <div class="col-sm-6">
+                                            <label class="form-label" for="linkedin1">Hydro Hold Time</label>
+                                            <input type="text" id="linkedin1" name="hydro_hold_time" class="form-control" placeholder="" />
+                                        </div>
+                                        <div class="col-sm-6">
+                                            <label class="switch">
+                                                <input type="checkbox" class="switch-input" name="witnessed">
+                                                <span class="switch-toggle-slider">
+                                                    <span class="switch-on"></span>
+                                                    <span class="switch-off"></span>
+                                                </span>
+                                                <span class="switch-label">Witnessed</span>
+                                            </label>
+                                        </div>
+                                        <div class="col-sm-6">
+                                            <label class="switch">
+                                                <input type="checkbox" class="switch-input" name="hardness_test">
+                                                <span class="switch-toggle-slider">
+                                                    <span class="switch-on"></span>
+                                                    <span class="switch-off"></span>
+                                                </span>
+                                                <span class="switch-label">Hardness Test</span>
+                                            </label>
+                                        </div>
+                                        <div class="col-sm-6">
+                                            <label class="form-label" for="linkedin1">Max Hardness</label>
+                                            <input type="text" id="linkedin1" name="max_hardness" class="form-control" placeholder="" />
+                                        </div>
+                                        <div class="col-sm-6">
+                                            <label class="switch">
+                                                <input type="checkbox" class="switch-input" name="hydro_chart_required">
+                                                <span class="switch-toggle-slider">
+                                                    <span class="switch-on"></span>
+                                                    <span class="switch-off"></span>
+                                                </span>
+                                                <span class="switch-label">Hydro Chart Required</span>
+                                            </label>
+                                        </div>
+                                        <div class="col-sm-6">
+                                            <label class="form-label" for="google1">Hydro Notes</label>
+                                            <textarea class="form-control" name="hydro_notes" id="exampleFormControlTextarea1"
+                                                rows="3"></textarea>
+                                        </div>
+                                        <div class="col-sm-6">
+                                            <label class="form-label" for="linkedin1">Notes</label>
+                                            <textarea class="form-control" name="notes" id="exampleFormControlTextarea1"
+                                                rows="3"></textarea>
+                                        </div>
+                                        <!-- Action Buttons -->
+                                        <div class="pt-4">
+                                            <div class="row justify-content-end">
+                                                <div class="col-sm-9">
+                                                    <button class="btn btn-label-secondary btn-prev me-sm-3 me-1">
+                                                        <i class="ti ti-arrow-left me-sm-1"></i>
+                                                        <span class="align-middle d-sm-inline-block d-none">Previous</span>
+                                                    </button>
+                                                    <button type="button"
+                                                        class="btn btn-success waves-effect waves-light me-sm-3 me-1"><i
+                                                            class="ti ti-check"></i>Save</button>
+                                                    <button class="btn btn-primary btn-next">
+                                                        <span
+                                                            class="align-middle d-sm-inline-block d-none me-sm-1">Next</span>
+                                                        <i class="ti ti-arrow-right"></i>
+                                                    </button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <!-- Action Buttons Ends -->
                                     </div>
-                                    <!-- Action Buttons Ends -->
-                                </div>
+                                </form>
                             </div>
                             <!-- Non code Vessels Ends -->
                             <!-- Process/Fuel Gas/Start Gas Piping -->
@@ -1071,177 +1077,179 @@
                                     <h6 class="mb-0">Process/Fuel Gas/Start Gas Piping</h6>
                                     <small>Enter Process/Fuel Gas/Start Gas Piping.</small>
                                 </div>
-                                <div class="row g-3">
-                                    <small class="text-light fw-semibold">
-                                        * Indicates Special Material Origin Requirements Must Be Checked 'Yes'
-                                    </small>
-                                    <div class="col-sm-6">
-                                        <label class="switch">
-                                            <input type="checkbox" class="switch-input">
-                                            <span class="switch-toggle-slider">
-                                                <span class="switch-on"></span>
-                                                <span class="switch-off"></span>
-                                            </span>
-                                            <span class="switch-label">*Customer/Client AVL Applies</span>
-                                        </label>
-                                    </div>
-                                    <div class="col-sm-6">
-                                        <label class="form-label" for="twitter1">Material Origin REQS</label>
-                                        <input type="text" id="twitter1" class="form-control" placeholder="" />
-                                    </div>
-                                    <div class="col-sm-6">
-                                        <label class="switch">
-                                            <input type="checkbox" class="switch-input">
-                                            <span class="switch-toggle-slider">
-                                                <span class="switch-on"></span>
-                                                <span class="switch-off"></span>
-                                            </span>
-                                            <span class="switch-label">*Origin Traceable To Melt</span>
-                                        </label>
-                                    </div>
-                                    <div class="col-sm-6">
-                                        <label class="form-label" for="facebook1">Acceptable Material
-                                            Origins</label>
-                                        <input type="text" id="facebook1" class="form-control" placeholder="" />
-                                    </div>
-                                    <div class="col-sm-6">
-                                        <label class="switch">
-                                            <input type="checkbox" class="switch-input">
-                                            <span class="switch-toggle-slider">
-                                                <span class="switch-on"></span>
-                                                <span class="switch-off"></span>
-                                            </span>
-                                            <span class="switch-label">Standard/Per Code(NO MTRS)</span>
-                                        </label>
-                                    </div>
-                                    <div class="col-sm-6">
-                                        <label class="switch">
-                                            <input type="checkbox" class="switch-input">
-                                            <span class="switch-toggle-slider">
-                                                <span class="switch-on"></span>
-                                                <span class="switch-off"></span>
-                                            </span>
-                                            <span class="switch-label">MTRS Required</span>
-                                        </label>
-                                    </div>
-                                    <div class="col-sm-6">
-                                        <label class="switch">
-                                            <input type="checkbox" class="switch-input">
-                                            <span class="switch-toggle-slider">
-                                                <span class="switch-on"></span>
-                                                <span class="switch-off"></span>
-                                            </span>
-                                            <span class="switch-label">Heat Mapping</span>
-                                        </label>
-                                    </div>
-                                    <div class="col-sm-6">
-                                        <label class="switch">
-                                            <input type="checkbox" class="switch-input">
-                                            <span class="switch-toggle-slider">
-                                                <span class="switch-on"></span>
-                                                <span class="switch-off"></span>
-                                            </span>
-                                            <span class="switch-label">Weld Mapping</span>
-                                        </label>
-                                    </div>
-                                    <div class="col-sm-6">
-                                        <label class="form-label" for="google1">Material Notes</label>
-                                        <textarea class="form-control" id="exampleFormControlTextarea1"
-                                            rows="3"></textarea>
-                                    </div>
-                                    <div class="col-sm-6">
-                                        <label class="switch">
-                                            <input type="checkbox" class="switch-input">
-                                            <span class="switch-toggle-slider">
-                                                <span class="switch-on"></span>
-                                                <span class="switch-off"></span>
-                                            </span>
-                                            <span class="switch-label">*NACE</span>
-                                        </label>
-                                    </div>
-                                    <div class="col-sm-6">
-                                        <label class="form-label" for="linkedin1">NDE Requirements</label>
-                                        <textarea class="form-control" id="exampleFormControlTextarea1"
-                                            rows="3"></textarea>
-                                    </div>
-                                    <div class="col-sm-6">
-                                        <label class="form-label" for="linkedin1">Welding Requirements</label>
-                                        <textarea class="form-control" id="exampleFormControlTextarea1"
-                                            rows="3"></textarea>
-                                    </div>
-                                    <div class="col-sm-6">
-                                        <label class="form-label" for="linkedin1">Governing Code</label>
-                                        <input type="text" id="linkedin1" class="form-control" placeholder="" />
-                                    </div>
-                                    <div class="col-sm-6">
-                                        <label class="form-label" for="linkedin1">Hydro Hold Time</label>
-                                        <input type="text" id="linkedin1" class="form-control" placeholder="" />
-                                    </div>
-                                    <div class="col-sm-6">
-                                        <label class="switch">
-                                            <input type="checkbox" class="switch-input">
-                                            <span class="switch-toggle-slider">
-                                                <span class="switch-on"></span>
-                                                <span class="switch-off"></span>
-                                            </span>
-                                            <span class="switch-label">Witnessed</span>
-                                        </label>
-                                    </div>
-                                    <div class="col-sm-6">
-                                        <label class="switch">
-                                            <input type="checkbox" class="switch-input">
-                                            <span class="switch-toggle-slider">
-                                                <span class="switch-on"></span>
-                                                <span class="switch-off"></span>
-                                            </span>
-                                            <span class="switch-label">Hardness Test</span>
-                                        </label>
-                                    </div>
-                                    <div class="col-sm-6">
-                                        <label class="form-label" for="linkedin1">Max Hardness</label>
-                                        <input type="text" id="linkedin1" class="form-control" placeholder="" />
-                                    </div>
-                                    <div class="col-sm-6">
-                                        <label class="switch">
-                                            <input type="checkbox" class="switch-input">
-                                            <span class="switch-toggle-slider">
-                                                <span class="switch-on"></span>
-                                                <span class="switch-off"></span>
-                                            </span>
-                                            <span class="switch-label">Hydro Chart Required</span>
-                                        </label>
-                                    </div>
-                                    <div class="col-sm-6">
-                                        <label class="form-label" for="google1">Hydro Notes</label>
-                                        <textarea class="form-control" id="exampleFormControlTextarea1"
-                                            rows="3"></textarea>
-                                    </div>
-                                    <div class="col-sm-6">
-                                        <label class="form-label" for="linkedin1">Notes</label>
-                                        <textarea class="form-control" id="exampleFormControlTextarea1"
-                                            rows="3"></textarea>
-                                    </div>
-                                    <!-- Action Buttons -->
-                                    <div class="pt-4">
-                                        <div class="row justify-content-end">
-                                            <div class="col-sm-9">
-                                                <button class="btn btn-label-secondary btn-prev me-sm-3 me-1">
-                                                    <i class="ti ti-arrow-left me-sm-1"></i>
-                                                    <span class="align-middle d-sm-inline-block d-none">Previous</span>
-                                                </button>
-                                                <button type="button"
-                                                    class="btn btn-success waves-effect waves-light me-sm-3 me-1"><i
-                                                        class="ti ti-check"></i>Save</button>
-                                                <button class="btn btn-primary btn-next">
-                                                    <span
-                                                        class="align-middle d-sm-inline-block d-none me-sm-1">Next</span>
-                                                    <i class="ti ti-arrow-right"></i>
-                                                </button>
+                                <form onSubmit="return false" id="process_piping_from">
+                                    <div class="row g-3">
+                                        <small class="text-light fw-semibold">
+                                            * Indicates Special Material Origin Requirements Must Be Checked 'Yes'
+                                        </small>
+                                        <div class="col-sm-6">
+                                            <label class="switch">
+                                                <input type="checkbox" class="switch-input" name="customer_avl_applies">
+                                                <span class="switch-toggle-slider">
+                                                    <span class="switch-on"></span>
+                                                    <span class="switch-off"></span>
+                                                </span>
+                                                <span class="switch-label">*Customer/Client AVL Applies</span>
+                                            </label>
+                                        </div>
+                                        <div class="col-sm-6">
+                                            <label class="form-label" for="twitter1">Material Origin REQS</label>
+                                            <input type="text" id="twitter1" class="form-control" name="material_origin_reqs" placeholder="" />
+                                        </div>
+                                        <div class="col-sm-6">
+                                            <label class="switch">
+                                                <input type="checkbox" class="switch-input" name="origin_traceable_to_melt">
+                                                <span class="switch-toggle-slider">
+                                                    <span class="switch-on"></span>
+                                                    <span class="switch-off"></span>
+                                                </span>
+                                                <span class="switch-label">*Origin Traceable To Melt</span>
+                                            </label>
+                                        </div>
+                                        <div class="col-sm-6">
+                                            <label class="form-label" for="facebook1">Acceptable Material
+                                                Origins</label>
+                                            <input type="text" id="facebook1" name="acceptable_material_origins" class="form-control" placeholder="" />
+                                        </div>
+                                        <div class="col-sm-6">
+                                            <label class="switch">
+                                                <input type="checkbox" class="switch-input" name="standard_code">
+                                                <span class="switch-toggle-slider">
+                                                    <span class="switch-on"></span>
+                                                    <span class="switch-off"></span>
+                                                </span>
+                                                <span class="switch-label">Standard/Per Code(NO MTRS)</span>
+                                            </label>
+                                        </div>
+                                        <div class="col-sm-6">
+                                            <label class="switch">
+                                                <input type="checkbox" class="switch-input" name="mtrs_required">
+                                                <span class="switch-toggle-slider">
+                                                    <span class="switch-on"></span>
+                                                    <span class="switch-off"></span>
+                                                </span>
+                                                <span class="switch-label">MTRS Required</span>
+                                            </label>
+                                        </div>
+                                        <div class="col-sm-6">
+                                            <label class="switch">
+                                                <input type="checkbox" class="switch-input" name="heat_mapping">
+                                                <span class="switch-toggle-slider">
+                                                    <span class="switch-on"></span>
+                                                    <span class="switch-off"></span>
+                                                </span>
+                                                <span class="switch-label">Heat Mapping</span>
+                                            </label>
+                                        </div>
+                                        <div class="col-sm-6">
+                                            <label class="switch">
+                                                <input type="checkbox" class="switch-input" name="weld_mapping">
+                                                <span class="switch-toggle-slider">
+                                                    <span class="switch-on"></span>
+                                                    <span class="switch-off"></span>
+                                                </span>
+                                                <span class="switch-label">Weld Mapping</span>
+                                            </label>
+                                        </div>
+                                        <div class="col-sm-6">
+                                            <label class="form-label" for="google1">Material Notes</label>
+                                            <textarea class="form-control" name="material_notes" id="exampleFormControlTextarea1"
+                                                rows="3"></textarea>
+                                        </div>
+                                        <div class="col-sm-6">
+                                            <label class="switch">
+                                                <input type="checkbox" class="switch-input" name="nace">
+                                                <span class="switch-toggle-slider">
+                                                    <span class="switch-on"></span>
+                                                    <span class="switch-off"></span>
+                                                </span>
+                                                <span class="switch-label">*NACE</span>
+                                            </label>
+                                        </div>
+                                        <div class="col-sm-6">
+                                            <label class="form-label" for="linkedin1">NDE Requirements</label>
+                                            <textarea class="form-control" name="nde_requirements" id="exampleFormControlTextarea1"
+                                                rows="3"></textarea>
+                                        </div>
+                                        <div class="col-sm-6">
+                                            <label class="form-label" for="linkedin1">Welding Requirements</label>
+                                            <textarea class="form-control" name="weld_requirements" id="exampleFormControlTextarea1"
+                                                rows="3"></textarea>
+                                        </div>
+                                        <div class="col-sm-6">
+                                            <label class="form-label" for="linkedin1">Governing Code</label>
+                                            <input type="text" id="linkedin1" name="governing_code" class="form-control" placeholder="" />
+                                        </div>
+                                        <div class="col-sm-6">
+                                            <label class="form-label" for="linkedin1">Hydro Hold Time</label>
+                                            <input type="text" id="linkedin1" name="hydro_hold_time" class="form-control" placeholder="" />
+                                        </div>
+                                        <div class="col-sm-6">
+                                            <label class="switch">
+                                                <input type="checkbox" class="switch-input" name="witnessed">
+                                                <span class="switch-toggle-slider">
+                                                    <span class="switch-on"></span>
+                                                    <span class="switch-off"></span>
+                                                </span>
+                                                <span class="switch-label">Witnessed</span>
+                                            </label>
+                                        </div>
+                                        <div class="col-sm-6">
+                                            <label class="switch">
+                                                <input type="checkbox" class="switch-input" name="hardness_test">
+                                                <span class="switch-toggle-slider">
+                                                    <span class="switch-on"></span>
+                                                    <span class="switch-off"></span>
+                                                </span>
+                                                <span class="switch-label">Hardness Test</span>
+                                            </label>
+                                        </div>
+                                        <div class="col-sm-6">
+                                            <label class="form-label" for="linkedin1">Max Hardness</label>
+                                            <input type="text" id="linkedin1" class="form-control" name="max_hardness" placeholder="" />
+                                        </div>
+                                        <div class="col-sm-6">
+                                            <label class="switch">
+                                                <input type="checkbox" class="switch-input" name="hydro_chart_required">
+                                                <span class="switch-toggle-slider">
+                                                    <span class="switch-on"></span>
+                                                    <span class="switch-off"></span>
+                                                </span>
+                                                <span class="switch-label">Hydro Chart Required</span>
+                                            </label>
+                                        </div>
+                                        <div class="col-sm-6">
+                                            <label class="form-label" for="google1">Hydro Notes</label>
+                                            <textarea class="form-control" name="hydro_notes" id="exampleFormControlTextarea1"
+                                                rows="3"></textarea>
+                                        </div>
+                                        <div class="col-sm-6">
+                                            <label class="form-label" for="linkedin1">Notes</label>
+                                            <textarea class="form-control" name="notes" id="exampleFormControlTextarea1"
+                                                rows="3"></textarea>
+                                        </div>
+                                        <!-- Action Buttons -->
+                                        <div class="pt-4">
+                                            <div class="row justify-content-end">
+                                                <div class="col-sm-9">
+                                                    <button class="btn btn-label-secondary btn-prev me-sm-3 me-1">
+                                                        <i class="ti ti-arrow-left me-sm-1"></i>
+                                                        <span class="align-middle d-sm-inline-block d-none">Previous</span>
+                                                    </button>
+                                                    <button type="button"
+                                                        class="btn btn-success waves-effect waves-light me-sm-3 me-1"><i
+                                                            class="ti ti-check"></i>Save</button>
+                                                    <button class="btn btn-primary btn-next">
+                                                        <span
+                                                            class="align-middle d-sm-inline-block d-none me-sm-1">Next</span>
+                                                        <i class="ti ti-arrow-right"></i>
+                                                    </button>
+                                                </div>
                                             </div>
                                         </div>
+                                        <!-- Action Buttons Ends -->
                                     </div>
-                                    <!-- Action Buttons Ends -->
-                                </div>
+                                </form>
                             </div>
                             <!-- Process/Fuel Gas/Start Gas Piping Ends -->
                             <!-- Bolting -->
@@ -1250,73 +1258,75 @@
                                     <h6 class="mb-0">Bolting</h6>
                                     <small>Enter bolting.</small>
                                 </div>
-                                <div class="row g-3">
-                                    <div class="col-sm-6">
-                                        <label class="switch">
-                                            <input type="checkbox" class="switch-input">
-                                            <span class="switch-toggle-slider">
-                                                <span class="switch-on"></span>
-                                                <span class="switch-off"></span>
-                                            </span>
-                                            <span class="switch-label">EFX Standard No COC's / No MTR's</span>
-                                        </label>
-                                    </div>
-                                    <div class="col-sm-6">
-                                        <label class="switch">
-                                            <input type="checkbox" class="switch-input">
-                                            <span class="switch-toggle-slider">
-                                                <span class="switch-on"></span>
-                                                <span class="switch-off"></span>
-                                            </span>
-                                            <span class="switch-label">Vendor COC</span>
-                                        </label>
-                                    </div>
-                                    <div class="col-sm-6">
-                                        <label class="switch">
-                                            <input type="checkbox" class="switch-input">
-                                            <span class="switch-toggle-slider">
-                                                <span class="switch-on"></span>
-                                                <span class="switch-off"></span>
-                                            </span>
-                                            <span class="switch-label">Manufacturer COC</span>
-                                        </label>
-                                    </div>
-                                    <div class="col-sm-6">
-                                        <label class="switch">
-                                            <input type="checkbox" class="switch-input">
-                                            <span class="switch-toggle-slider">
-                                                <span class="switch-on"></span>
-                                                <span class="switch-off"></span>
-                                            </span>
-                                            <span class="switch-label">MTRS</span>
-                                        </label>
-                                    </div>
-                                    <div class="col-sm-6">
-                                        <label class="form-label" for="email1">Material Notes</label>
-                                        <textarea class="form-control" id="exampleFormControlTextarea1"
-                                            rows="3"></textarea>
-                                    </div>
-                                    <!-- Action Buttons -->
-                                    <div class="pt-4">
-                                        <div class="row justify-content-end">
-                                            <div class="col-sm-9">
-                                                <button class="btn btn-label-secondary btn-prev me-sm-3 me-1">
-                                                    <i class="ti ti-arrow-left me-sm-1"></i>
-                                                    <span class="align-middle d-sm-inline-block d-none">Previous</span>
-                                                </button>
-                                                <button type="button"
-                                                    class="btn btn-success waves-effect waves-light me-sm-3 me-1"><i
-                                                        class="ti ti-check"></i>Save</button>
-                                                <button class="btn btn-primary btn-next">
-                                                    <span
-                                                        class="align-middle d-sm-inline-block d-none me-sm-1">Next</span>
-                                                    <i class="ti ti-arrow-right"></i>
-                                                </button>
+                                <form onSubmit="return false" id="bolting_from">
+                                    <div class="row g-3">
+                                        <div class="col-sm-6">
+                                            <label class="switch">
+                                                <input type="checkbox" class="switch-input" name="efx_standard_no_cocs">
+                                                <span class="switch-toggle-slider">
+                                                    <span class="switch-on"></span>
+                                                    <span class="switch-off"></span>
+                                                </span>
+                                                <span class="switch-label">EFX Standard No COC's / No MTR's</span>
+                                            </label>
+                                        </div>
+                                        <div class="col-sm-6">
+                                            <label class="switch">
+                                                <input type="checkbox" class="switch-input" name="vendor_coc">
+                                                <span class="switch-toggle-slider">
+                                                    <span class="switch-on"></span>
+                                                    <span class="switch-off"></span>
+                                                </span>
+                                                <span class="switch-label">Vendor COC</span>
+                                            </label>
+                                        </div>
+                                        <div class="col-sm-6">
+                                            <label class="switch">
+                                                <input type="checkbox" class="switch-input" name="manufacturer_coc">
+                                                <span class="switch-toggle-slider">
+                                                    <span class="switch-on"></span>
+                                                    <span class="switch-off"></span>
+                                                </span>
+                                                <span class="switch-label">Manufacturer COC</span>
+                                            </label>
+                                        </div>
+                                        <div class="col-sm-6">
+                                            <label class="switch">
+                                                <input type="checkbox" class="switch-input" name="mtrs">
+                                                <span class="switch-toggle-slider">
+                                                    <span class="switch-on"></span>
+                                                    <span class="switch-off"></span>
+                                                </span>
+                                                <span class="switch-label">MTRS</span>
+                                            </label>
+                                        </div>
+                                        <div class="col-sm-6">
+                                            <label class="form-label" for="email1">Material Notes</label>
+                                            <textarea class="form-control" name="material_notes" id="exampleFormControlTextarea1"
+                                                rows="3"></textarea>
+                                        </div>
+                                        <!-- Action Buttons -->
+                                        <div class="pt-4">
+                                            <div class="row justify-content-end">
+                                                <div class="col-sm-9">
+                                                    <button class="btn btn-label-secondary btn-prev me-sm-3 me-1">
+                                                        <i class="ti ti-arrow-left me-sm-1"></i>
+                                                        <span class="align-middle d-sm-inline-block d-none">Previous</span>
+                                                    </button>
+                                                    <button type="button"
+                                                        class="btn btn-success waves-effect waves-light me-sm-3 me-1"><i
+                                                            class="ti ti-check"></i>Save</button>
+                                                    <button class="btn btn-primary btn-next">
+                                                        <span
+                                                            class="align-middle d-sm-inline-block d-none me-sm-1">Next</span>
+                                                        <i class="ti ti-arrow-right"></i>
+                                                    </button>
+                                                </div>
                                             </div>
                                         </div>
+                                        <!-- Action Buttons Ends -->
                                     </div>
-                                    <!-- Action Buttons Ends -->
-                                </div>
+                                </form>
                             </div>
                             <!-- Bolting Ends -->
                             <!-- Gaskets -->
@@ -1325,73 +1335,75 @@
                                     <h6 class="mb-0">Gaskets</h6>
                                     <small>Enter gaskets.</small>
                                 </div>
-                                <div class="row g-3">
-                                    <div class="col-sm-6">
-                                        <label class="switch">
-                                            <input type="checkbox" class="switch-input">
-                                            <span class="switch-toggle-slider">
-                                                <span class="switch-on"></span>
-                                                <span class="switch-off"></span>
-                                            </span>
-                                            <span class="switch-label">EFX Standard No COC's / No MTR's</span>
-                                        </label>
-                                    </div>
-                                    <div class="col-sm-6">
-                                        <label class="switch">
-                                            <input type="checkbox" class="switch-input">
-                                            <span class="switch-toggle-slider">
-                                                <span class="switch-on"></span>
-                                                <span class="switch-off"></span>
-                                            </span>
-                                            <span class="switch-label">Vendor COC</span>
-                                        </label>
-                                    </div>
-                                    <div class="col-sm-6">
-                                        <label class="switch">
-                                            <input type="checkbox" class="switch-input">
-                                            <span class="switch-toggle-slider">
-                                                <span class="switch-on"></span>
-                                                <span class="switch-off"></span>
-                                            </span>
-                                            <span class="switch-label">Manufacturer COC</span>
-                                        </label>
-                                    </div>
-                                    <div class="col-sm-6">
-                                        <label class="switch">
-                                            <input type="checkbox" class="switch-input">
-                                            <span class="switch-toggle-slider">
-                                                <span class="switch-on"></span>
-                                                <span class="switch-off"></span>
-                                            </span>
-                                            <span class="switch-label">MTRS</span>
-                                        </label>
-                                    </div>
-                                    <div class="col-sm-6">
-                                        <label class="form-label" for="email1">Material Notes</label>
-                                        <textarea class="form-control" id="exampleFormControlTextarea1"
-                                            rows="3"></textarea>
-                                    </div>
-                                    <!-- Action Buttons -->
-                                    <div class="pt-4">
-                                        <div class="row justify-content-end">
-                                            <div class="col-sm-9">
-                                                <button class="btn btn-label-secondary btn-prev me-sm-3 me-1">
-                                                    <i class="ti ti-arrow-left me-sm-1"></i>
-                                                    <span class="align-middle d-sm-inline-block d-none">Previous</span>
-                                                </button>
-                                                <button type="button"
-                                                    class="btn btn-success waves-effect waves-light me-sm-3 me-1"><i
-                                                        class="ti ti-check"></i>Save</button>
-                                                <button class="btn btn-primary btn-next">
-                                                    <span
-                                                        class="align-middle d-sm-inline-block d-none me-sm-1">Next</span>
-                                                    <i class="ti ti-arrow-right"></i>
-                                                </button>
+                                <form onSubmit="return false" id="gaskets_from">
+                                    <div class="row g-3">
+                                        <div class="col-sm-6">
+                                            <label class="switch">
+                                                <input type="checkbox" class="switch-input" name="efx_standard_no_cocs">
+                                                <span class="switch-toggle-slider">
+                                                    <span class="switch-on"></span>
+                                                    <span class="switch-off"></span>
+                                                </span>
+                                                <span class="switch-label">EFX Standard No COC's / No MTR's</span>
+                                            </label>
+                                        </div>
+                                        <div class="col-sm-6">
+                                            <label class="switch">
+                                                <input type="checkbox" class="switch-input" name="vendor_coc">
+                                                <span class="switch-toggle-slider">
+                                                    <span class="switch-on"></span>
+                                                    <span class="switch-off"></span>
+                                                </span>
+                                                <span class="switch-label">Vendor COC</span>
+                                            </label>
+                                        </div>
+                                        <div class="col-sm-6">
+                                            <label class="switch">
+                                                <input type="checkbox" class="switch-input" name="manufacturer_coc">
+                                                <span class="switch-toggle-slider">
+                                                    <span class="switch-on"></span>
+                                                    <span class="switch-off"></span>
+                                                </span>
+                                                <span class="switch-label">Manufacturer COC</span>
+                                            </label>
+                                        </div>
+                                        <div class="col-sm-6">
+                                            <label class="switch">
+                                                <input type="checkbox" class="switch-input" name="mtrs">
+                                                <span class="switch-toggle-slider">
+                                                    <span class="switch-on"></span>
+                                                    <span class="switch-off"></span>
+                                                </span>
+                                                <span class="switch-label">MTRS</span>
+                                            </label>
+                                        </div>
+                                        <div class="col-sm-6">
+                                            <label class="form-label" for="email1">Material Notes</label>
+                                            <textarea class="form-control" name="material_notes"  id="exampleFormControlTextarea1"
+                                                rows="3"></textarea>
+                                        </div>
+                                        <!-- Action Buttons -->
+                                        <div class="pt-4">
+                                            <div class="row justify-content-end">
+                                                <div class="col-sm-9">
+                                                    <button class="btn btn-label-secondary btn-prev me-sm-3 me-1">
+                                                        <i class="ti ti-arrow-left me-sm-1"></i>
+                                                        <span class="align-middle d-sm-inline-block d-none">Previous</span>
+                                                    </button>
+                                                    <button type="button"
+                                                        class="btn btn-success waves-effect waves-light me-sm-3 me-1"><i
+                                                            class="ti ti-check"></i>Save</button>
+                                                    <button class="btn btn-primary btn-next">
+                                                        <span
+                                                            class="align-middle d-sm-inline-block d-none me-sm-1">Next</span>
+                                                        <i class="ti ti-arrow-right"></i>
+                                                    </button>
+                                                </div>
                                             </div>
                                         </div>
+                                        <!-- Action Buttons Ends -->
                                     </div>
-                                    <!-- Action Buttons Ends -->
-                                </div>
+                                </form>
                             </div>
                             <!-- Gaskets Ends -->
                             <!-- Tubing -->
@@ -1400,137 +1412,139 @@
                                     <h6 class="mb-0">Tubing</h6>
                                     <small>Enter Tubing.</small>
                                 </div>
-                                <div class="row g-3">
-                                    <div class="col-sm-6">
-                                        <label class="switch">
-                                            <input type="checkbox" class="switch-input">
-                                            <span class="switch-toggle-slider">
-                                                <span class="switch-on"></span>
-                                                <span class="switch-off"></span>
-                                            </span>
-                                            <span class="switch-label">Customer/Client AVL Applies</span>
-                                        </label>
-                                    </div>
-                                    <div class="col-sm-6">
-                                        <label class="form-label" for="twitter1">Material Origin REQS</label>
-                                        <input type="text" id="twitter1" class="form-control" placeholder="" />
-                                    </div>
-                                    <div class="col-sm-6">
-                                        <label class="switch">
-                                            <input type="checkbox" class="switch-input">
-                                            <span class="switch-toggle-slider">
-                                                <span class="switch-on"></span>
-                                                <span class="switch-off"></span>
-                                            </span>
-                                            <span class="switch-label">Origin Traceable To Melt(BILLET)</span>
-                                        </label>
-                                    </div>
-                                    <div class="col-sm-6">
-                                        <label class="form-label" for="facebook1">Acceptable Material
-                                            Origins</label>
-                                        <input type="text" id="facebook1" class="form-control" placeholder="" />
-                                    </div>
-                                    <div class="col-sm-6">
-                                        <label class="switch">
-                                            <input type="checkbox" class="switch-input">
-                                            <span class="switch-toggle-slider">
-                                                <span class="switch-on"></span>
-                                                <span class="switch-off"></span>
-                                            </span>
-                                            <span class="switch-label">EFX Standard No COC's / No MTR's</span>
-                                        </label>
-                                    </div>
-                                    <div class="col-sm-6">
-                                        <label class="switch">
-                                            <input type="checkbox" class="switch-input">
-                                            <span class="switch-toggle-slider">
-                                                <span class="switch-on"></span>
-                                                <span class="switch-off"></span>
-                                            </span>
-                                            <span class="switch-label">Tubing MTRS Required</span>
-                                        </label>
-                                    </div>
-                                    <div class="col-sm-6">
-                                        <label class="switch">
-                                            <input type="checkbox" class="switch-input">
-                                            <span class="switch-toggle-slider">
-                                                <span class="switch-on"></span>
-                                                <span class="switch-off"></span>
-                                            </span>
-                                            <span class="switch-label">Tubing COC Required</span>
-                                        </label>
-                                    </div>
-                                    <div class="col-sm-6">
-                                        <label class="switch">
-                                            <input type="checkbox" class="switch-input">
-                                            <span class="switch-toggle-slider">
-                                                <span class="switch-on"></span>
-                                                <span class="switch-off"></span>
-                                            </span>
-                                            <span class="switch-label">Fitting MTRS Required</span>
-                                        </label>
-                                    </div>
-                                    <div class="col-sm-6">
-                                        <label class="switch">
-                                            <input type="checkbox" class="switch-input">
-                                            <span class="switch-toggle-slider">
-                                                <span class="switch-on"></span>
-                                                <span class="switch-off"></span>
-                                            </span>
-                                            <span class="switch-label">Fitting COC Required</span>
-                                        </label>
-                                    </div>
-                                    <div class="col-sm-6">
-                                        <label class="switch">
-                                            <input type="checkbox" class="switch-input">
-                                            <span class="switch-toggle-slider">
-                                                <span class="switch-on"></span>
-                                                <span class="switch-off"></span>
-                                            </span>
-                                            <span class="switch-label">Full Traceability(w/HEAT MAPPING)</span>
-                                        </label>
-                                    </div>
-                                    <div class="col-sm-6">
-                                        <label class="form-label" for="google1">Material Notes</label>
-                                        <textarea class="form-control" id="exampleFormControlTextarea1"
-                                            rows="3"></textarea>
-                                    </div>
-                                    <div class="col-sm-6">
-                                        <label class="form-label" for="linkedin1">NDE Requirements</label>
-                                        <textarea class="form-control" id="exampleFormControlTextarea1"
-                                            rows="3"></textarea>
-                                    </div>
-                                    <div class="col-sm-6">
-                                        <label class="form-label" for="linkedin1">PMI Requirements</label>
-                                        <textarea class="form-control" id="exampleFormControlTextarea1"
-                                            rows="3"></textarea>
-                                    </div>
-                                    <div class="col-sm-6">
-                                        <label class="form-label" for="linkedin1">Notes</label>
-                                        <textarea class="form-control" id="exampleFormControlTextarea1"
-                                            rows="3"></textarea>
-                                    </div>
-                                    <!-- Action Buttons -->
-                                    <div class="pt-4">
-                                        <div class="row justify-content-end">
-                                            <div class="col-sm-9">
-                                                <button class="btn btn-label-secondary btn-prev me-sm-3 me-1">
-                                                    <i class="ti ti-arrow-left me-sm-1"></i>
-                                                    <span class="align-middle d-sm-inline-block d-none">Previous</span>
-                                                </button>
-                                                <button type="button"
-                                                    class="btn btn-success waves-effect waves-light me-sm-3 me-1"><i
-                                                        class="ti ti-check"></i>Save</button>
-                                                <button class="btn btn-primary btn-next">
-                                                    <span
-                                                        class="align-middle d-sm-inline-block d-none me-sm-1">Next</span>
-                                                    <i class="ti ti-arrow-right"></i>
-                                                </button>
+                                <form onSubmit="return false" id="tubing_from">
+                                    <div class="row g-3">
+                                        <div class="col-sm-6">
+                                            <label class="switch">
+                                                <input type="checkbox" class="switch-input" name="customer_avl_applies">
+                                                <span class="switch-toggle-slider">
+                                                    <span class="switch-on"></span>
+                                                    <span class="switch-off"></span>
+                                                </span>
+                                                <span class="switch-label">Customer/Client AVL Applies</span>
+                                            </label>
+                                        </div>
+                                        <div class="col-sm-6">
+                                            <label class="form-label" for="twitter1">Material Origin REQS</label>
+                                            <input type="text" id="twitter1" name="material_origin_reqs" class="form-control" placeholder="" />
+                                        </div>
+                                        <div class="col-sm-6">
+                                            <label class="switch">
+                                                <input type="checkbox" class="switch-input" name="origin_traceable_to_melt">
+                                                <span class="switch-toggle-slider">
+                                                    <span class="switch-on"></span>
+                                                    <span class="switch-off"></span>
+                                                </span>
+                                                <span class="switch-label">Origin Traceable To Melt(BILLET)</span>
+                                            </label>
+                                        </div>
+                                        <div class="col-sm-6">
+                                            <label class="form-label" for="facebook1">Acceptable Material
+                                                Origins</label>
+                                            <input type="text" id="facebook1" name="acceptable_material_origins	" class="form-control" placeholder="" />
+                                        </div>
+                                        <div class="col-sm-6">
+                                            <label class="switch">
+                                                <input type="checkbox" class="switch-input" name="efx_standard_no_cocs">
+                                                <span class="switch-toggle-slider">
+                                                    <span class="switch-on"></span>
+                                                    <span class="switch-off"></span>
+                                                </span>
+                                                <span class="switch-label">EFX Standard No COC's / No MTR's</span>
+                                            </label>
+                                        </div>
+                                        <div class="col-sm-6">
+                                            <label class="switch">
+                                                <input type="checkbox" class="switch-input" name="tubing_mtrs_required">
+                                                <span class="switch-toggle-slider">
+                                                    <span class="switch-on"></span>
+                                                    <span class="switch-off"></span>
+                                                </span>
+                                                <span class="switch-label">Tubing MTRS Required</span>
+                                            </label>
+                                        </div>
+                                        <div class="col-sm-6">
+                                            <label class="switch">
+                                                <input type="checkbox" class="switch-input" name="tubing_coc_required">
+                                                <span class="switch-toggle-slider">
+                                                    <span class="switch-on"></span>
+                                                    <span class="switch-off"></span>
+                                                </span>
+                                                <span class="switch-label">Tubing COC Required</span>
+                                            </label>
+                                        </div>
+                                        <div class="col-sm-6">
+                                            <label class="switch">
+                                                <input type="checkbox" class="switch-input" name="fitting_mtrs_required">
+                                                <span class="switch-toggle-slider">
+                                                    <span class="switch-on"></span>
+                                                    <span class="switch-off"></span>
+                                                </span>
+                                                <span class="switch-label">Fitting MTRS Required</span>
+                                            </label>
+                                        </div>
+                                        <div class="col-sm-6">
+                                            <label class="switch">
+                                                <input type="checkbox" class="switch-input" name="fitting_coc_required">
+                                                <span class="switch-toggle-slider">
+                                                    <span class="switch-on"></span>
+                                                    <span class="switch-off"></span>
+                                                </span>
+                                                <span class="switch-label">Fitting COC Required</span>
+                                            </label>
+                                        </div>
+                                        <div class="col-sm-6">
+                                            <label class="switch">
+                                                <input type="checkbox" class="switch-input" name="full_traceability">
+                                                <span class="switch-toggle-slider">
+                                                    <span class="switch-on"></span>
+                                                    <span class="switch-off"></span>
+                                                </span>
+                                                <span class="switch-label">Full Traceability(w/HEAT MAPPING)</span>
+                                            </label>
+                                        </div>
+                                        <div class="col-sm-6">
+                                            <label class="form-label" for="google1">Material Notes</label>
+                                            <textarea class="form-control" name="material_notes" id="exampleFormControlTextarea1"
+                                                rows="3"></textarea>
+                                        </div>
+                                        <div class="col-sm-6">
+                                            <label class="form-label" for="linkedin1">NDE Requirements</label>
+                                            <textarea class="form-control" name="nde_requirements" id="exampleFormControlTextarea1"
+                                                rows="3"></textarea>
+                                        </div>
+                                        <div class="col-sm-6">
+                                            <label class="form-label" for="linkedin1">PMI Requirements</label>
+                                            <textarea class="form-control" name="pmi_Requirements" id="exampleFormControlTextarea1"
+                                                rows="3"></textarea>
+                                        </div>
+                                        <div class="col-sm-6">
+                                            <label class="form-label" for="linkedin1">Notes</label>
+                                            <textarea class="form-control" name="notes" id="exampleFormControlTextarea1"
+                                                rows="3"></textarea>
+                                        </div>
+                                        <!-- Action Buttons -->
+                                        <div class="pt-4">
+                                            <div class="row justify-content-end">
+                                                <div class="col-sm-9">
+                                                    <button class="btn btn-label-secondary btn-prev me-sm-3 me-1">
+                                                        <i class="ti ti-arrow-left me-sm-1"></i>
+                                                        <span class="align-middle d-sm-inline-block d-none">Previous</span>
+                                                    </button>
+                                                    <button type="button"
+                                                        class="btn btn-success waves-effect waves-light me-sm-3 me-1"><i
+                                                            class="ti ti-check"></i>Save</button>
+                                                    <button class="btn btn-primary btn-next">
+                                                        <span
+                                                            class="align-middle d-sm-inline-block d-none me-sm-1">Next</span>
+                                                        <i class="ti ti-arrow-right"></i>
+                                                    </button>
+                                                </div>
                                             </div>
                                         </div>
+                                        <!-- Action Buttons Ends -->
                                     </div>
-                                    <!-- Action Buttons Ends -->
-                                </div>
+                                </form>
                             </div>
                             <!-- Tubing Ends -->
                             <!-- Butt Welded/Socket Welded Utility Piping -->
@@ -1539,199 +1553,201 @@
                                     <h6 class="mb-0">Butt Welded/Socket Welded Utility Piping</h6>
                                     <small>Enter butt welded/socket welded utility piping.</small>
                                 </div>
-                                <div class="row g-3">
-                                    <small class="text-light fw-semibold">
-                                        * Indicates Special Material Origin Requirements Must Be Checked 'Yes'
-                                    </small>
-                                    <div class="col-sm-6">
-                                        <label class="switch">
-                                            <input type="checkbox" class="switch-input">
-                                            <span class="switch-toggle-slider">
-                                                <span class="switch-on"></span>
-                                                <span class="switch-off"></span>
-                                            </span>
-                                            <span class="switch-label">*Customer/Client AVL Applies</span>
-                                        </label>
-                                    </div>
-                                    <div class="col-sm-6">
-                                        <label class="form-label" for="twitter1">Material Origin REQS</label>
-                                        <input type="text" id="twitter1" class="form-control" placeholder="" />
-                                    </div>
-                                    <div class="col-sm-6">
-                                        <label class="switch">
-                                            <input type="checkbox" class="switch-input">
-                                            <span class="switch-toggle-slider">
-                                                <span class="switch-on"></span>
-                                                <span class="switch-off"></span>
-                                            </span>
-                                            <span class="switch-label">*Origin Traceable To Melt(BILLET)</span>
-                                        </label>
-                                    </div>
-                                    <div class="col-sm-6">
-                                        <label class="form-label" for="facebook1">Acceptable Material
-                                            Origins</label>
-                                        <input type="text" id="facebook1" class="form-control" placeholder="" />
-                                    </div>
-                                    <div class="col-sm-6">
-                                        <label class="switch">
-                                            <input type="checkbox" class="switch-input">
-                                            <span class="switch-toggle-slider">
-                                                <span class="switch-on"></span>
-                                                <span class="switch-off"></span>
-                                            </span>
-                                            <span class="switch-label">Standard Per Code(No MTRS)</span>
-                                        </label>
-                                    </div>
-                                    <div class="col-sm-6">
-                                        <label class="switch">
-                                            <input type="checkbox" class="switch-input">
-                                            <span class="switch-toggle-slider">
-                                                <span class="switch-on"></span>
-                                                <span class="switch-off"></span>
-                                            </span>
-                                            <span class="switch-label">MTRS Provided</span>
-                                        </label>
-                                    </div>
-                                    <div class="col-sm-6">
-                                        <label class="switch">
-                                            <input type="checkbox" class="switch-input">
-                                            <span class="switch-toggle-slider">
-                                                <span class="switch-on"></span>
-                                                <span class="switch-off"></span>
-                                            </span>
-                                            <span class="switch-label">Heat Mapping</span>
-                                        </label>
-                                    </div>
-                                    <div class="col-sm-6">
-                                        <label class="switch">
-                                            <input type="checkbox" class="switch-input">
-                                            <span class="switch-toggle-slider">
-                                                <span class="switch-on"></span>
-                                                <span class="switch-off"></span>
-                                            </span>
-                                            <span class="switch-label">Weld Mapping</span>
-                                        </label>
-                                    </div>
-                                    <div class="col-sm-6">
-                                        <label class="form-label" for="google1">Material Notes</label>
-                                        <textarea class="form-control" id="exampleFormControlTextarea1"
-                                            rows="3"></textarea>
-                                    </div>
-                                    <div class="col-sm-6">
-                                        <label class="switch">
-                                            <input type="checkbox" class="switch-input">
-                                            <span class="switch-toggle-slider">
-                                                <span class="switch-on"></span>
-                                                <span class="switch-off"></span>
-                                            </span>
-                                            <span class="switch-label">*NACE</span>
-                                        </label>
-                                    </div>
-                                    <div class="col-sm-6">
-                                        <label class="switch">
-                                            <input type="checkbox" class="switch-input">
-                                            <span class="switch-toggle-slider">
-                                                <span class="switch-on"></span>
-                                                <span class="switch-off"></span>
-                                            </span>
-                                            <span class="switch-label">NDE Requirements</span>
-                                        </label>
-                                    </div>
-                                    <div class="col-sm-6">
-                                        <label class="form-label" for="linkedin1">Welding Requirements</label>
-                                        <textarea class="form-control" id="exampleFormControlTextarea1"
-                                            rows="3"></textarea>
-                                    </div>
-                                    <div class="col-sm-6">
-                                        <label class="form-label" for="linkedin1">Governing Code</label>
-                                        <input type="text" id="linkedin1" class="form-control" placeholder="" />
-                                    </div>
-                                    <div class="col-sm-6">
-                                        <small class="text-light fw-semibold d-block">PWHT</small>
-                                        <div class="form-check form-check-inline mt-3">
-                                            <input class="form-check-input" type="radio" name="inlineRadioOptions"
-                                                id="inlineRadio1" value="option1">
-                                            <label class="form-check-label" for="inlineRadio1">Yes</label>
+                                <form onSubmit="return false" id="butt_piping_from">
+                                    <div class="row g-3">
+                                        <small class="text-light fw-semibold">
+                                            * Indicates Special Material Origin Requirements Must Be Checked 'Yes'
+                                        </small>
+                                        <div class="col-sm-6">
+                                            <label class="switch">
+                                                <input type="checkbox" class="switch-input" name="customer_avl_applies">
+                                                <span class="switch-toggle-slider">
+                                                    <span class="switch-on"></span>
+                                                    <span class="switch-off"></span>
+                                                </span>
+                                                <span class="switch-label">*Customer/Client AVL Applies</span>
+                                            </label>
                                         </div>
-                                        <div class="form-check form-check-inline">
-                                            <input class="form-check-input" type="radio" name="inlineRadioOptions"
-                                                id="inlineRadio2" value="option2">
-                                            <label class="form-check-label" for="inlineRadio2">No</label>
+                                        <div class="col-sm-6">
+                                            <label class="form-label" for="twitter1">Material Origin REQS</label>
+                                            <input type="text" id="twitter1" name="material_origin_reqs" class="form-control" placeholder="" />
                                         </div>
-                                        <div class="form-check form-check-inline">
-                                            <input class="form-check-input" type="radio" name="inlineRadioOptions"
-                                                id="inlineRadio3" value="option3">
-                                            <label class="form-check-label" for="inlineRadio3">Per Code REQ</label>
+                                        <div class="col-sm-6">
+                                            <label class="switch">
+                                                <input type="checkbox" class="switch-input" name="origin_traceable_to_melt">
+                                                <span class="switch-toggle-slider">
+                                                    <span class="switch-on"></span>
+                                                    <span class="switch-off"></span>
+                                                </span>
+                                                <span class="switch-label">*Origin Traceable To Melt(BILLET)</span>
+                                            </label>
                                         </div>
-                                    </div>
-                                    <div class="col-sm-6">
-                                        <label class="form-label" for="linkedin1">Hydro Hold Time</label>
-                                        <input type="text" id="linkedin1" class="form-control" placeholder="" />
-                                    </div>
-                                    <div class="col-sm-6">
-                                        <label class="switch">
-                                            <input type="checkbox" class="switch-input">
-                                            <span class="switch-toggle-slider">
-                                                <span class="switch-on"></span>
-                                                <span class="switch-off"></span>
-                                            </span>
-                                            <span class="switch-label">Witnessed</span>
-                                        </label>
-                                    </div>
-                                    <div class="col-sm-6">
-                                        <label class="switch">
-                                            <input type="checkbox" class="switch-input">
-                                            <span class="switch-toggle-slider">
-                                                <span class="switch-on"></span>
-                                                <span class="switch-off"></span>
-                                            </span>
-                                            <span class="switch-label">Hardness Test</span>
-                                        </label>
-                                    </div>
-                                    <div class="col-sm-6">
-                                        <label class="form-label" for="linkedin1">Max Hardness</label>
-                                        <input type="text" id="linkedin1" class="form-control" placeholder="" />
-                                    </div>
-                                    <div class="col-sm-6">
-                                        <label class="switch">
-                                            <input type="checkbox" class="switch-input">
-                                            <span class="switch-toggle-slider">
-                                                <span class="switch-on"></span>
-                                                <span class="switch-off"></span>
-                                            </span>
-                                            <span class="switch-label">Hydro Chart Required</span>
-                                        </label>
-                                    </div>
-                                    <div class="col-sm-6">
-                                        <label class="form-label" for="google1">Hydro Notes</label>
-                                        <input type="text" id="google1" class="form-control" placeholder="" />
-                                    </div>
-                                    <div class="col-sm-6">
-                                        <label class="form-label" for="linkedin1">Notes</label>
-                                        <textarea class="form-control" id="exampleFormControlTextarea1"
-                                            rows="3"></textarea>
-                                    </div>
-                                    <!-- Action Buttons -->
-                                    <div class="pt-4">
-                                        <div class="row justify-content-end">
-                                            <div class="col-sm-9">
-                                                <button class="btn btn-label-secondary btn-prev me-sm-3 me-1">
-                                                    <i class="ti ti-arrow-left me-sm-1"></i>
-                                                    <span class="align-middle d-sm-inline-block d-none">Previous</span>
-                                                </button>
-                                                <button type="button"
-                                                    class="btn btn-success waves-effect waves-light me-sm-3 me-1"><i
-                                                        class="ti ti-check"></i>Save</button>
-                                                <button class="btn btn-primary btn-next">
-                                                    <span
-                                                        class="align-middle d-sm-inline-block d-none me-sm-1">Next</span>
-                                                    <i class="ti ti-arrow-right"></i>
-                                                </button>
+                                        <div class="col-sm-6">
+                                            <label class="form-label" for="facebook1">Acceptable Material
+                                                Origins</label>
+                                            <input type="text" id="facebook1" name="acceptable_material_origins" class="form-control" placeholder="" />
+                                        </div>
+                                        <div class="col-sm-6">
+                                            <label class="switch">
+                                                <input type="checkbox" class="switch-input" name="standard_per_code">
+                                                <span class="switch-toggle-slider">
+                                                    <span class="switch-on"></span>
+                                                    <span class="switch-off"></span>
+                                                </span>
+                                                <span class="switch-label">Standard Per Code(No MTRS)</span>
+                                            </label>
+                                        </div>
+                                        <div class="col-sm-6">
+                                            <label class="switch">
+                                                <input type="checkbox" class="switch-input" name="mtrs_provided">
+                                                <span class="switch-toggle-slider">
+                                                    <span class="switch-on"></span>
+                                                    <span class="switch-off"></span>
+                                                </span>
+                                                <span class="switch-label">MTRS Provided</span>
+                                            </label>
+                                        </div>
+                                        <div class="col-sm-6">
+                                            <label class="switch">
+                                                <input type="checkbox" class="switch-input" name="heat_mapping">
+                                                <span class="switch-toggle-slider">
+                                                    <span class="switch-on"></span>
+                                                    <span class="switch-off"></span>
+                                                </span>
+                                                <span class="switch-label">Heat Mapping</span>
+                                            </label>
+                                        </div>
+                                        <div class="col-sm-6">
+                                            <label class="switch">
+                                                <input type="checkbox" class="switch-input" name="weld_mapping">
+                                                <span class="switch-toggle-slider">
+                                                    <span class="switch-on"></span>
+                                                    <span class="switch-off"></span>
+                                                </span>
+                                                <span class="switch-label">Weld Mapping</span>
+                                            </label>
+                                        </div>
+                                        <div class="col-sm-6">
+                                            <label class="form-label" for="google1">Material Notes</label>
+                                            <textarea class="form-control" name="material_notes" id="exampleFormControlTextarea1"
+                                                rows="3"></textarea>
+                                        </div>
+                                        <div class="col-sm-6">
+                                            <label class="switch">
+                                                <input type="checkbox" class="switch-input" name="nace">
+                                                <span class="switch-toggle-slider">
+                                                    <span class="switch-on"></span>
+                                                    <span class="switch-off"></span>
+                                                </span>
+                                                <span class="switch-label">*NACE</span>
+                                            </label>
+                                        </div>
+                                        <div class="col-sm-6">
+                                            <label class="switch">
+                                                <input type="checkbox" class="switch-input" name="nde_requirements">
+                                                <span class="switch-toggle-slider">
+                                                    <span class="switch-on"></span>
+                                                    <span class="switch-off"></span>
+                                                </span>
+                                                <span class="switch-label">NDE Requirements</span>
+                                            </label>
+                                        </div>
+                                        <div class="col-sm-6">
+                                            <label class="form-label" for="linkedin1">Welding Requirements</label>
+                                            <textarea class="form-control" name="weld_requirements" id="exampleFormControlTextarea1"
+                                                rows="3"></textarea>
+                                        </div>
+                                        <div class="col-sm-6">
+                                            <label class="form-label" for="linkedin1">Governing Code</label>
+                                            <input type="text" id="linkedin1" name="governing_code" class="form-control" placeholder="" />
+                                        </div>
+                                        <div class="col-sm-6">
+                                            <small class="text-light fw-semibold d-block">PWHT</small>
+                                            <div class="form-check form-check-inline mt-3">
+                                                <input class="form-check-input" type="radio" name="pwht"
+                                                    id="inlineRadio1" name="" value="option1">
+                                                <label class="form-check-label" for="inlineRadio1">Yes</label>
+                                            </div>
+                                            <div class="form-check form-check-inline">
+                                                <input class="form-check-input" type="radio" name="pwht"
+                                                    id="inlineRadio2" name="" value="option2">
+                                                <label class="form-check-label" for="inlineRadio2">No</label>
+                                            </div>
+                                            <div class="form-check form-check-inline">
+                                                <input class="form-check-input" type="radio" name="pwht"
+                                                    id="inlineRadio3" name="" value="option3">
+                                                <label class="form-check-label" for="inlineRadio3">Per Code REQ</label>
                                             </div>
                                         </div>
+                                        <div class="col-sm-6">
+                                            <label class="form-label" for="linkedin1">Hydro Hold Time</label>
+                                            <input type="text" id="linkedin1" name="hydro_hold_time" class="form-control" placeholder="" />
+                                        </div>
+                                        <div class="col-sm-6">
+                                            <label class="switch">
+                                                <input type="checkbox" class="switch-input" name="witnessed">
+                                                <span class="switch-toggle-slider">
+                                                    <span class="switch-on"></span>
+                                                    <span class="switch-off"></span>
+                                                </span>
+                                                <span class="switch-label">Witnessed</span>
+                                            </label>
+                                        </div>
+                                        <div class="col-sm-6">
+                                            <label class="switch">
+                                                <input type="checkbox" class="switch-input" name="hardness_test">
+                                                <span class="switch-toggle-slider">
+                                                    <span class="switch-on"></span>
+                                                    <span class="switch-off"></span>
+                                                </span>
+                                                <span class="switch-label">Hardness Test</span>
+                                            </label>
+                                        </div>
+                                        <div class="col-sm-6">
+                                            <label class="form-label" for="linkedin1">Max Hardness</label>
+                                            <input type="text" id="linkedin1" class="form-control" name="max_hardness" placeholder="" />
+                                        </div>
+                                        <div class="col-sm-6">
+                                            <label class="switch">
+                                                <input type="checkbox" class="switch-input" name="hydro_chart_required">
+                                                <span class="switch-toggle-slider">
+                                                    <span class="switch-on"></span>
+                                                    <span class="switch-off"></span>
+                                                </span>
+                                                <span class="switch-label">Hydro Chart Required</span>
+                                            </label>
+                                        </div>
+                                        <div class="col-sm-6">
+                                            <label class="form-label" for="google1">Hydro Notes</label>
+                                            <input type="text" id="google1" name="hydro_notes" class="form-control" placeholder="" />
+                                        </div>
+                                        <div class="col-sm-6">
+                                            <label class="form-label" for="linkedin1">Notes</label>
+                                            <textarea class="form-control" name="notes" id="exampleFormControlTextarea1"
+                                                rows="3"></textarea>
+                                        </div>
+                                        <!-- Action Buttons -->
+                                        <div class="pt-4">
+                                            <div class="row justify-content-end">
+                                                <div class="col-sm-9">
+                                                    <button class="btn btn-label-secondary btn-prev me-sm-3 me-1">
+                                                        <i class="ti ti-arrow-left me-sm-1"></i>
+                                                        <span class="align-middle d-sm-inline-block d-none">Previous</span>
+                                                    </button>
+                                                    <button type="button"
+                                                        class="btn btn-success waves-effect waves-light me-sm-3 me-1"><i
+                                                            class="ti ti-check"></i>Save</button>
+                                                    <button class="btn btn-primary btn-next">
+                                                        <span
+                                                            class="align-middle d-sm-inline-block d-none me-sm-1">Next</span>
+                                                        <i class="ti ti-arrow-right"></i>
+                                                    </button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <!-- Action Buttons Ends -->
                                     </div>
-                                    <!-- Action Buttons Ends -->
-                                </div>
+                                </form>>
                             </div>
                             <!-- Butt Welded/Socket Welded Utility Piping Ends -->
                             <!-- Threaded Piping -->
@@ -1740,111 +1756,113 @@
                                     <h6 class="mb-0">Threaded Piping</h6>
                                     <small>Enter threaded piping.</small>
                                 </div>
-                                <div class="row g-3">
-                                    <small class="text-light fw-semibold">
-                                        * Indicates Special Material Origin Requirements Must Be Checked 'Yes'
-                                    </small>
-                                    <div class="col-sm-6">
-                                        <label class="switch">
-                                            <input type="checkbox" class="switch-input">
-                                            <span class="switch-toggle-slider">
-                                                <span class="switch-on"></span>
-                                                <span class="switch-off"></span>
-                                            </span>
-                                            <span class="switch-label">Customer/Client AVL Applies</span>
-                                        </label>
-                                    </div>
-                                    <div class="col-sm-6">
-                                        <label class="form-label" for="twitter1">Material Origin REQS</label>
-                                        <input type="text" id="twitter1" class="form-control" placeholder="" />
-                                    </div>
-                                    <div class="col-sm-6">
-                                        <label class="switch">
-                                            <input type="checkbox" class="switch-input">
-                                            <span class="switch-toggle-slider">
-                                                <span class="switch-on"></span>
-                                                <span class="switch-off"></span>
-                                            </span>
-                                            <span class="switch-label">Origin Traceable To Melt(BILLET)</span>
-                                        </label>
-                                    </div>
-                                    <div class="col-sm-6">
-                                        <label class="form-label" for="facebook1">Acceptable Material
-                                            Origins</label>
-                                        <input type="text" id="facebook1" class="form-control" placeholder="" />
-                                    </div>
-                                    <div class="col-sm-6">
-                                        <label class="switch">
-                                            <input type="checkbox" class="switch-input">
-                                            <span class="switch-toggle-slider">
-                                                <span class="switch-on"></span>
-                                                <span class="switch-off"></span>
-                                            </span>
-                                            <span class="switch-label">Standard/Per Code(NO MTRS)</span>
-                                        </label>
-                                    </div>
-                                    <div class="col-sm-6">
-                                        <label class="switch">
-                                            <input type="checkbox" class="switch-input">
-                                            <span class="switch-toggle-slider">
-                                                <span class="switch-on"></span>
-                                                <span class="switch-off"></span>
-                                            </span>
-                                            <span class="switch-label">*MTRS Required</span>
-                                        </label>
-                                    </div>
-                                    <div class="col-sm-6">
-                                        <label class="switch">
-                                            <input type="checkbox" class="switch-input">
-                                            <span class="switch-toggle-slider">
-                                                <span class="switch-on"></span>
-                                                <span class="switch-off"></span>
-                                            </span>
-                                            <span class="switch-label">*Heat Mapping(FULL TRACEABILITY)</span>
-                                        </label>
-                                    </div>
-                                    <div class="col-sm-6">
-                                        <label class="form-label" for="google1">Material Notes</label>
-                                        <textarea class="form-control" id="exampleFormControlTextarea1"
-                                            rows="3"></textarea>
-                                    </div>
-                                    <div class="col-sm-6">
-                                        <label class="switch">
-                                            <input type="checkbox" class="switch-input">
-                                            <span class="switch-toggle-slider">
-                                                <span class="switch-on"></span>
-                                                <span class="switch-off"></span>
-                                            </span>
-                                            <span class="switch-label">NACE</span>
-                                        </label>
-                                    </div>
+                                <form onSubmit="return false" id="threaded_piping_from">
+                                    <div class="row g-3">
+                                        <small class="text-light fw-semibold">
+                                            * Indicates Special Material Origin Requirements Must Be Checked 'Yes'
+                                        </small>
+                                        <div class="col-sm-6">
+                                            <label class="switch">
+                                                <input type="checkbox" class="switch-input" name="customer_avl_applies">
+                                                <span class="switch-toggle-slider">
+                                                    <span class="switch-on"></span>
+                                                    <span class="switch-off"></span>
+                                                </span>
+                                                <span class="switch-label">Customer/Client AVL Applies</span>
+                                            </label>
+                                        </div>
+                                        <div class="col-sm-6">
+                                            <label class="form-label" for="twitter1">Material Origin REQS</label>
+                                            <input type="text" id="twitter1" name="material_origin_reqs" class="form-control" placeholder="" />
+                                        </div>
+                                        <div class="col-sm-6">
+                                            <label class="switch">
+                                                <input type="checkbox" class="switch-input" name="origin_traceable_to_melt">
+                                                <span class="switch-toggle-slider">
+                                                    <span class="switch-on"></span>
+                                                    <span class="switch-off"></span>
+                                                </span>
+                                                <span class="switch-label">Origin Traceable To Melt(BILLET)</span>
+                                            </label>
+                                        </div>
+                                        <div class="col-sm-6">
+                                            <label class="form-label" for="facebook1">Acceptable Material
+                                                Origins</label>
+                                            <input type="text" id="facebook1" name="acceptable_material_origins	" class="form-control" placeholder="" />
+                                        </div>
+                                        <div class="col-sm-6">
+                                            <label class="switch">
+                                                <input type="checkbox" class="switch-input" name="standard_per_code">
+                                                <span class="switch-toggle-slider">
+                                                    <span class="switch-on"></span>
+                                                    <span class="switch-off"></span>
+                                                </span>
+                                                <span class="switch-label">Standard/Per Code(NO MTRS)</span>
+                                            </label>
+                                        </div>
+                                        <div class="col-sm-6">
+                                            <label class="switch">
+                                                <input type="checkbox" class="switch-input" name="mtrs_required">
+                                                <span class="switch-toggle-slider">
+                                                    <span class="switch-on"></span>
+                                                    <span class="switch-off"></span>
+                                                </span>
+                                                <span class="switch-label">*MTRS Required</span>
+                                            </label>
+                                        </div>
+                                        <div class="col-sm-6">
+                                            <label class="switch">
+                                                <input type="checkbox" class="switch-input" name="heat_mapping">
+                                                <span class="switch-toggle-slider">
+                                                    <span class="switch-on"></span>
+                                                    <span class="switch-off"></span>
+                                                </span>
+                                                <span class="switch-label">*Heat Mapping(FULL TRACEABILITY)</span>
+                                            </label>
+                                        </div>
+                                        <div class="col-sm-6">
+                                            <label class="form-label" for="google1">Material Notes</label>
+                                            <textarea class="form-control" name="material_notes" id="exampleFormControlTextarea1"
+                                                rows="3"></textarea>
+                                        </div>
+                                        <div class="col-sm-6">
+                                            <label class="switch">
+                                                <input type="checkbox" class="switch-input" name="nace">
+                                                <span class="switch-toggle-slider">
+                                                    <span class="switch-on"></span>
+                                                    <span class="switch-off"></span>
+                                                </span>
+                                                <span class="switch-label">NACE</span>
+                                            </label>
+                                        </div>
 
-                                    <div class="col-sm-6">
-                                        <label class="form-label" for="linkedin1">Notes</label>
-                                        <textarea class="form-control" id="exampleFormControlTextarea1"
-                                            rows="3"></textarea>
-                                    </div>
-                                    <!-- Action Buttons -->
-                                    <div class="pt-4">
-                                        <div class="row justify-content-end">
-                                            <div class="col-sm-9">
-                                                <button class="btn btn-label-secondary btn-prev me-sm-3 me-1">
-                                                    <i class="ti ti-arrow-left me-sm-1"></i>
-                                                    <span class="align-middle d-sm-inline-block d-none">Previous</span>
-                                                </button>
-                                                <button type="button"
-                                                    class="btn btn-success waves-effect waves-light me-sm-3 me-1"><i
-                                                        class="ti ti-check"></i>Save</button>
-                                                <button class="btn btn-primary btn-next">
-                                                    <span
-                                                        class="align-middle d-sm-inline-block d-none me-sm-1">Next</span>
-                                                    <i class="ti ti-arrow-right"></i>
-                                                </button>
+                                        <div class="col-sm-6">
+                                            <label class="form-label" for="linkedin1">Notes</label>
+                                            <textarea class="form-control" name="notes" id="exampleFormControlTextarea1"
+                                                rows="3"></textarea>
+                                        </div>
+                                        <!-- Action Buttons -->
+                                        <div class="pt-4">
+                                            <div class="row justify-content-end">
+                                                <div class="col-sm-9">
+                                                    <button class="btn btn-label-secondary btn-prev me-sm-3 me-1">
+                                                        <i class="ti ti-arrow-left me-sm-1"></i>
+                                                        <span class="align-middle d-sm-inline-block d-none">Previous</span>
+                                                    </button>
+                                                    <button type="button"
+                                                        class="btn btn-success waves-effect waves-light me-sm-3 me-1"><i
+                                                            class="ti ti-check"></i>Save</button>
+                                                    <button class="btn btn-primary btn-next">
+                                                        <span
+                                                            class="align-middle d-sm-inline-block d-none me-sm-1">Next</span>
+                                                        <i class="ti ti-arrow-right"></i>
+                                                    </button>
+                                                </div>
                                             </div>
                                         </div>
+                                        <!-- Action Buttons Ends -->
                                     </div>
-                                    <!-- Action Buttons Ends -->
-                                </div>
+                                </form>
                             </div>
                             <!-- Threaded Piping Ends -->
                             <!-- Electrical/Instrumentation -->
@@ -1853,75 +1871,77 @@
                                     <h6 class="mb-0">Electrical/Instrumentation</h6>
                                     <small>Enter electrical/instrumentation.</small>
                                 </div>
-                                <div class="row g-3">
-                                    <div class="col-sm-6">
-                                        <label class="switch">
-                                            <input type="checkbox" class="switch-input">
-                                            <span class="switch-toggle-slider">
-                                                <span class="switch-on"></span>
-                                                <span class="switch-off"></span>
-                                            </span>
-                                            <span class="switch-label">Customer/Client AVL Applies</span>
-                                        </label>
-                                    </div>
-                                    <div class="col-sm-6">
-                                        <label class="form-label" for="facebook1">Acceptable Material
-                                            Origins</label>
-                                        <input type="text" id="facebook1" class="form-control" placeholder="" />
-                                    </div>
-                                    <div class="col-sm-6">
-                                        <label class="switch">
-                                            <input type="checkbox" class="switch-input">
-                                            <span class="switch-toggle-slider">
-                                                <span class="switch-on"></span>
-                                                <span class="switch-off"></span>
-                                            </span>
-                                            <span class="switch-label">Vendor Restrictions</span>
-                                        </label>
-                                    </div>
-                                    <div class="col-sm-6">
-                                        <label class="form-label" for="linkedin1">Specify</label>
-                                        <input type="text" id="linkedin1" class="form-control" placeholder="" />
-                                    </div>
-                                    <div class="col-sm-6">
-                                        <label class="form-label" for="twitter1">Approved Vendor(S)</label>
-                                        <input type="text" id="twitter1" class="form-control" placeholder="" />
-                                    </div>
-                                    <div class="col-sm-6">
-                                        <label class="form-label" for="google1">Material Notes</label>
-                                        <textarea class="form-control" id="exampleFormControlTextarea1"
-                                            rows="3"></textarea>
-                                    </div>
-                                    <div class="col-sm-6">
-                                        <label class="form-label" for="linkedin1">Governing Code</label>
-                                        <input type="text" id="linkedin1" class="form-control" placeholder="" />
-                                    </div>
-                                    <div class="col-sm-6">
-                                        <label class="form-label" for="linkedin1">Notes</label>
-                                        <textarea class="form-control" id="exampleFormControlTextarea1"
-                                            rows="3"></textarea>
-                                    </div>
-                                    <!-- Action Buttons -->
-                                    <div class="pt-4">
-                                        <div class="row justify-content-end">
-                                            <div class="col-sm-9">
-                                                <button class="btn btn-label-secondary btn-prev me-sm-3 me-1">
-                                                    <i class="ti ti-arrow-left me-sm-1"></i>
-                                                    <span class="align-middle d-sm-inline-block d-none">Previous</span>
-                                                </button>
-                                                <button type="button"
-                                                    class="btn btn-success waves-effect waves-light me-sm-3 me-1"><i
-                                                        class="ti ti-check"></i>Save</button>
-                                                <button class="btn btn-primary btn-next">
-                                                    <span
-                                                        class="align-middle d-sm-inline-block d-none me-sm-1">Next</span>
-                                                    <i class="ti ti-arrow-right"></i>
-                                                </button>
+                                <form onSubmit="return false" id="electrical_from">
+                                    <div class="row g-3">
+                                        <div class="col-sm-6">
+                                            <label class="switch">
+                                                <input type="checkbox" class="switch-input" name="customer_avl_applies">
+                                                <span class="switch-toggle-slider">
+                                                    <span class="switch-on"></span>
+                                                    <span class="switch-off"></span>
+                                                </span>
+                                                <span class="switch-label">Customer/Client AVL Applies</span>
+                                            </label>
+                                        </div>
+                                        <div class="col-sm-6">
+                                            <label class="form-label" for="facebook1">Acceptable Material
+                                                Origins</label>
+                                            <input type="text" id="facebook1" class="form-control" name="acceptable_material_origins" placeholder="" />
+                                        </div>
+                                        <div class="col-sm-6">
+                                            <label class="switch">
+                                                <input type="checkbox" class="switch-input" name="vendor_restrictions">
+                                                <span class="switch-toggle-slider">
+                                                    <span class="switch-on"></span>
+                                                    <span class="switch-off"></span>
+                                                </span>
+                                                <span class="switch-label">Vendor Restrictions</span>
+                                            </label>
+                                        </div>
+                                        <div class="col-sm-6">
+                                            <label class="form-label" for="linkedin1">Specify</label>
+                                            <input type="text" id="linkedin1" class="form-control" name="specify" placeholder="" />
+                                        </div>
+                                        <div class="col-sm-6">
+                                            <label class="form-label" for="twitter1">Approved Vendor(S)</label>
+                                            <input type="text" id="twitter1" class="form-control" name="approved_vendors" placeholder="" />
+                                        </div>
+                                        <div class="col-sm-6">
+                                            <label class="form-label" for="google1">Material Notes</label>
+                                            <textarea class="form-control" name="material_notes" id="exampleFormControlTextarea1"
+                                                rows="3"></textarea>
+                                        </div>
+                                        <div class="col-sm-6">
+                                            <label class="form-label" for="linkedin1">Governing Code</label>
+                                            <input type="text" id="linkedin1" class="form-control" name="governing_code" placeholder="" />
+                                        </div>
+                                        <div class="col-sm-6">
+                                            <label class="form-label" for="linkedin1">Notes</label>
+                                            <textarea class="form-control" name="notes" id="exampleFormControlTextarea1"
+                                                rows="3"></textarea>
+                                        </div>
+                                        <!-- Action Buttons -->
+                                        <div class="pt-4">
+                                            <div class="row justify-content-end">
+                                                <div class="col-sm-9">
+                                                    <button class="btn btn-label-secondary btn-prev me-sm-3 me-1">
+                                                        <i class="ti ti-arrow-left me-sm-1"></i>
+                                                        <span class="align-middle d-sm-inline-block d-none">Previous</span>
+                                                    </button>
+                                                    <button type="button"
+                                                        class="btn btn-success waves-effect waves-light me-sm-3 me-1"><i
+                                                            class="ti ti-check"></i>Save</button>
+                                                    <button class="btn btn-primary btn-next">
+                                                        <span
+                                                            class="align-middle d-sm-inline-block d-none me-sm-1">Next</span>
+                                                        <i class="ti ti-arrow-right"></i>
+                                                    </button>
+                                                </div>
                                             </div>
                                         </div>
+                                        <!-- Action Buttons Ends -->
                                     </div>
-                                    <!-- Action Buttons Ends -->
-                                </div>
+                                </form>
                             </div>
                             <!-- Electrical/Instrumentation Ends -->
                             <!-- Preservation -->
@@ -1930,69 +1950,71 @@
                                     <h6 class="mb-0">Preservation</h6>
                                     <small>Enter preservation.</small>
                                 </div>
-                                <div class="row g-3">
-                                    <div class="col-sm-6">
-                                        <label class="switch">
-                                            <input type="checkbox" class="switch-input">
-                                            <span class="switch-toggle-slider">
-                                                <span class="switch-on"></span>
-                                                <span class="switch-off"></span>
-                                            </span>
-                                            <span class="switch-label">EFX Standard Short Term(6 Mo)</span>
-                                        </label>
-                                    </div>
-                                    <div class="col-sm-6">
-                                        <label class="switch">
-                                            <input type="checkbox" class="switch-input">
-                                            <span class="switch-toggle-slider">
-                                                <span class="switch-on"></span>
-                                                <span class="switch-off"></span>
-                                            </span>
-                                            <span class="switch-label">EFX Standard Long Term(6 Mo)</span>
-                                        </label>
-                                    </div>
-                                    <div class="col-sm-6">
-                                        <label class="switch">
-                                            <input type="checkbox" class="switch-input">
-                                            <span class="switch-toggle-slider">
-                                                <span class="switch-on"></span>
-                                                <span class="switch-off"></span>
-                                            </span>
-                                            <span class="switch-label">Customer Specified/Other</span>
-                                        </label>
-                                    </div>
-                                    <div class="col-sm-6">
-                                        <label class="form-label" for="linkedin1">Special Customer
-                                            Requirements</label>
-                                        <textarea class="form-control" id="exampleFormControlTextarea1"
-                                            rows="3"></textarea>
-                                    </div>
-                                    <div class="col-sm-6">
-                                        <label class="form-label" for="linkedin1">Notes</label>
-                                        <textarea class="form-control" id="exampleFormControlTextarea1"
-                                            rows="3"></textarea>
-                                    </div>
-                                    <!-- Action Buttons -->
-                                    <div class="pt-4">
-                                        <div class="row justify-content-end">
-                                            <div class="col-sm-9">
-                                                <button class="btn btn-label-secondary btn-prev me-sm-3 me-1">
-                                                    <i class="ti ti-arrow-left me-sm-1"></i>
-                                                    <span class="align-middle d-sm-inline-block d-none">Previous</span>
-                                                </button>
-                                                <button type="button"
-                                                    class="btn btn-success waves-effect waves-light me-sm-3 me-1"><i
-                                                        class="ti ti-check"></i>Save</button>
-                                                <button class="btn btn-primary btn-next">
-                                                    <span
-                                                        class="align-middle d-sm-inline-block d-none me-sm-1">Next</span>
-                                                    <i class="ti ti-arrow-right"></i>
-                                                </button>
+                                <form onSubmit="return false" id="preservation_from">
+                                    <div class="row g-3">
+                                        <div class="col-sm-6">
+                                            <label class="switch">
+                                                <input type="checkbox" class="switch-input" name="efx_standard_short_term">
+                                                <span class="switch-toggle-slider">
+                                                    <span class="switch-on"></span>
+                                                    <span class="switch-off"></span>
+                                                </span>
+                                                <span class="switch-label">EFX Standard Short Term(6 Mo)</span>
+                                            </label>
+                                        </div>
+                                        <div class="col-sm-6">
+                                            <label class="switch">
+                                                <input type="checkbox" class="switch-input" name="efx_standard_long_term">
+                                                <span class="switch-toggle-slider">
+                                                    <span class="switch-on"></span>
+                                                    <span class="switch-off"></span>
+                                                </span>
+                                                <span class="switch-label">EFX Standard Long Term(6 Mo)</span>
+                                            </label>
+                                        </div>
+                                        <div class="col-sm-6">
+                                            <label class="switch">
+                                                <input type="checkbox" class="switch-input" name="customer_specified_other">
+                                                <span class="switch-toggle-slider">
+                                                    <span class="switch-on"></span>
+                                                    <span class="switch-off"></span>
+                                                </span>
+                                                <span class="switch-label">Customer Specified/Other</span>
+                                            </label>
+                                        </div>
+                                        <div class="col-sm-6">
+                                            <label class="form-label" for="linkedin1">Special Customer
+                                                Requirements</label>
+                                            <textarea class="form-control" name="special_customer_requirements" id="exampleFormControlTextarea1"
+                                                rows="3"></textarea>
+                                        </div>
+                                        <div class="col-sm-6">
+                                            <label class="form-label" for="linkedin1">Notes</label>
+                                            <textarea class="form-control" name="notes" id="exampleFormControlTextarea1"
+                                                rows="3"></textarea>
+                                        </div>
+                                        <!-- Action Buttons -->
+                                        <div class="pt-4">
+                                            <div class="row justify-content-end">
+                                                <div class="col-sm-9">
+                                                    <button class="btn btn-label-secondary btn-prev me-sm-3 me-1">
+                                                        <i class="ti ti-arrow-left me-sm-1"></i>
+                                                        <span class="align-middle d-sm-inline-block d-none">Previous</span>
+                                                    </button>
+                                                    <button type="button"
+                                                        class="btn btn-success waves-effect waves-light me-sm-3 me-1"><i
+                                                            class="ti ti-check"></i>Save</button>
+                                                    <button class="btn btn-primary btn-next">
+                                                        <span
+                                                            class="align-middle d-sm-inline-block d-none me-sm-1">Next</span>
+                                                        <i class="ti ti-arrow-right"></i>
+                                                    </button>
+                                                </div>
                                             </div>
                                         </div>
+                                        <!-- Action Buttons Ends -->
                                     </div>
-                                    <!-- Action Buttons Ends -->
-                                </div>
+                                </form>
                             </div>
                             <!-- Preservation Ends -->
                             <!-- Package Testing -->
@@ -2005,410 +2027,412 @@
                                     Pneumatic Testing
                                 </label>
                                 <hr>
-                                <div class="row g-3">
-                                    <!-- Pneumatic Testing -->
-                                    <div class="col-sm-6">
-                                        <label class="switch">
-                                            <input type="checkbox" class="switch-input">
-                                            <span class="switch-toggle-slider">
-                                                <span class="switch-on"></span>
-                                                <span class="switch-off"></span>
-                                            </span>
-                                            <span class="switch-label">Pneumatic Testing</span>
-                                        </label>
-                                    </div>
-                                    <div class="col-sm-6">
-                                        <label class="switch">
-                                            <input type="checkbox" class="switch-input">
-                                            <span class="switch-toggle-slider">
-                                                <span class="switch-on"></span>
-                                                <span class="switch-off"></span>
-                                            </span>
-                                            <span class="switch-label">Pneumatic Testing Customer/Third Party
-                                                Witness Required</span>
-                                        </label>
-                                    </div>
-                                    <div class="col-sm-6">
-                                        <label class="form-label" for="twitter1">Pneumatic Testing Notification
-                                            Requirement</label>
-                                        <input type="text" id="twitter1" class="form-control" placeholder="" />
-                                    </div>
-                                    <div class="col-sm-6">
-                                        <label class="form-label" for="facebook1">System</label>
-                                        <input type="text" id="facebook1" class="form-control" placeholder="" />
-                                    </div>
-                                    <div class="col-sm-6">
-                                        <label class="form-label" for="google1">Test Medium</label>
-                                        <input type="text" id="google1" class="form-control" placeholder="" />
-                                    </div>
-                                    <div class="col-sm-6">
-                                        <label class="form-label" for="linkedin1">Test Requirement Pressure</label>
-                                        <input type="text" id="linkedin1" class="form-control" placeholder="" />
-                                    </div>
-                                    <div class="col-sm-6">
-                                        <label class="form-label" for="linkedin1">Test Requirement Time</label>
-                                        <input type="text" id="linkedin1" class="form-control" placeholder="" />
-                                    </div>
-                                    <div class="col-sm-6">
-                                        <label class="form-label" for="linkedin1">Pneumatic Testing Notes</label>
-                                        <textarea class="form-control" id="exampleFormControlTextarea1"
-                                            rows="3"></textarea>
-                                    </div>
-                                    <!-- Pneumatic Testing Ends -->
-                                    <label class="form-check-label" for="deliveryAdd">
-                                        Vaccum
-                                    </label>
-                                    <hr>
-                                    <!-- Vaccum -->
-                                    <div class="col-sm-6">
-                                        <label class="switch">
-                                            <input type="checkbox" class="switch-input">
-                                            <span class="switch-toggle-slider">
-                                                <span class="switch-on"></span>
-                                                <span class="switch-off"></span>
-                                            </span>
-                                            <span class="switch-label">Vaccum</span>
-                                        </label>
-                                    </div>
-                                    <div class="col-sm-6">
-                                        <label class="switch">
-                                            <input type="checkbox" class="switch-input">
-                                            <span class="switch-toggle-slider">
-                                                <span class="switch-on"></span>
-                                                <span class="switch-off"></span>
-                                            </span>
-                                            <span class="switch-label">Vaccum Customer/Third Party Witness
-                                                Required</span>
-                                        </label>
-                                    </div>
-                                    <div class="col-sm-6">
-                                        <label class="form-label" for="twitter1">Vaccum Notification
-                                            Requirement</label>
-                                        <input type="text" id="twitter1" class="form-control" placeholder="" />
-                                    </div>
-                                    <div class="col-sm-6">
-                                        <label class="form-label" for="twitter1">Level</label>
-                                        <input type="text" id="twitter1" class="form-control" placeholder="" />
-                                    </div>
-                                    <div class="col-sm-6">
-                                        <label class="form-label" for="twitter1">Duration At Level</label>
-                                        <input type="text" id="twitter1" class="form-control" placeholder="" />
-                                    </div>
-                                    <div class="col-sm-6">
-                                        <label class="form-label" for="twitter1">Vaccum Notes</label>
-                                        <textarea class="form-control" id="exampleFormControlTextarea1"
-                                            rows="3"></textarea>
-                                    </div>
-                                    <!-- Vaccum Ends -->
-                                    <label class="form-check-label" for="deliveryAdd">
-                                        Purge/Charge
-                                    </label>
-                                    <hr>
-                                    <!-- Purge/Charge -->
-                                    <div class="col-sm-6">
-                                        <label class="switch">
-                                            <input type="checkbox" class="switch-input">
-                                            <span class="switch-toggle-slider">
-                                                <span class="switch-on"></span>
-                                                <span class="switch-off"></span>
-                                            </span>
-                                            <span class="switch-label">Purge/Charge</span>
-                                        </label>
-                                    </div>
-                                    <div class="col-sm-6">
-                                        <label class="form-label" for="twitter1">Purge/Charge Pressure</label>
-                                        <input type="text" id="twitter1" class="form-control" placeholder="" />
-                                    </div>
-                                    <div class="col-sm-6">
-                                        <label class="form-label" for="twitter1">Purge/Charge Medium</label>
-                                        <input type="text" id="twitter1" class="form-control" placeholder="" />
-                                    </div>
-                                    <div class="col-sm-6">
-                                        <label class="form-label" for="twitter1">Purge/Charge Notes</label>
-                                        <textarea class="form-control" id="exampleFormControlTextarea1"
-                                            rows="3"></textarea>
-                                    </div>
-                                    <!-- Purge/Charge Ends -->
-                                    <label class="form-check-label" for="deliveryAdd">
-                                        Lube Oil Flush
-                                    </label>
-                                    <hr>
-                                    <!-- Lube Oil Flush -->
-                                    <div class="col-sm-6">
-                                        <label class="switch">
-                                            <input type="checkbox" class="switch-input">
-                                            <span class="switch-toggle-slider">
-                                                <span class="switch-on"></span>
-                                                <span class="switch-off"></span>
-                                            </span>
-                                            <span class="switch-label">Lube Oil Flush</span>
-                                        </label>
-                                    </div>
-                                    <div class="col-sm-6">
-                                        <label class="switch">
-                                            <input type="checkbox" class="switch-input">
-                                            <span class="switch-toggle-slider">
-                                                <span class="switch-on"></span>
-                                                <span class="switch-off"></span>
-                                            </span>
-                                            <span class="switch-label">Lube Oil Flush Customer/Third Party Witness
-                                                Required</span>
-                                        </label>
-                                    </div>
-                                    <div class="col-sm-6">
-                                        <label class="form-label" for="twitter1">Lube Oil Flush Notification
-                                            Requirement</label>
-                                        <input type="text" id="twitter1" class="form-control" placeholder="" />
-                                    </div>
-                                    <div class="col-sm-6">
-                                        <label class="form-label" for="twitter1">Lube Oil Flush Notes</label>
-                                        <textarea class="form-control" id="exampleFormControlTextarea1"
-                                            rows="3"></textarea>
-                                    </div>
-                                    <!-- Lube Oil Flush Ends -->
-                                    <label class="form-check-label" for="deliveryAdd">
-                                        Run Test
-                                    </label>
-                                    <hr>
-                                    <!-- Run Test -->
-                                    <div class="col-sm-6">
-                                        <label class="switch">
-                                            <input type="checkbox" class="switch-input">
-                                            <span class="switch-toggle-slider">
-                                                <span class="switch-on"></span>
-                                                <span class="switch-off"></span>
-                                            </span>
-                                            <span class="switch-label">Run Test</span>
-                                        </label>
-                                    </div>
-                                    <div class="col-sm-6">
-                                        <label class="switch">
-                                            <input type="checkbox" class="switch-input">
-                                            <span class="switch-toggle-slider">
-                                                <span class="switch-on"></span>
-                                                <span class="switch-off"></span>
-                                            </span>
-                                            <span class="switch-label">Run Test Customer/Third Party Witness
-                                                Required</span>
-                                        </label>
-                                    </div>
-                                    <div class="col-sm-6">
-                                        <label class="form-label" for="twitter1">Run Test Notification
-                                            Requirement</label>
-                                        <input type="text" id="twitter1" class="form-control" placeholder="" />
-                                    </div>
-                                    <div class="col-sm-6">
-                                        <small class="text-light fw-semibold d-block">Run Test Requirement</small>
-                                        <div class="form-check form-check-inline mt-3">
-                                            <input class="form-check-input" type="checkbox" id="inlineCheckbox1"
-                                                value="option1">
-                                            <label class="form-check-label" for="inlineCheckbox1">Loaded</label>
+                                <form onSubmit="return false" id="package_testing_from">
+                                    <div class="row g-3">
+                                        <!-- Pneumatic Testing -->
+                                        <div class="col-sm-6">
+                                            <label class="switch">
+                                                <input type="checkbox" class="switch-input" name="pneumatic_testing">
+                                                <span class="switch-toggle-slider">
+                                                    <span class="switch-on"></span>
+                                                    <span class="switch-off"></span>
+                                                </span>
+                                                <span class="switch-label">Pneumatic Testing</span>
+                                            </label>
                                         </div>
-                                        <div class="form-check form-check-inline">
-                                            <input class="form-check-input" type="checkbox" id="inlineCheckbox2"
-                                                value="option2">
-                                            <label class="form-check-label" for="inlineCheckbox2">No Load</label>
+                                        <div class="col-sm-6">
+                                            <label class="switch">
+                                                <input type="checkbox" class="switch-input" name="pneumatic_testing_customer_third_party_witness_required">
+                                                <span class="switch-toggle-slider">
+                                                    <span class="switch-on"></span>
+                                                    <span class="switch-off"></span>
+                                                </span>
+                                                <span class="switch-label">Pneumatic Testing Customer/Third Party
+                                                    Witness Required</span>
+                                            </label>
                                         </div>
-                                    </div>
-                                    <div class="col-sm-6">
-                                        <label class="form-label" for="twitter1">Run Test Duration</label>
-                                        <input type="text" id="twitter1" class="form-control" placeholder="" />
-                                    </div>
-                                    <div class="col-sm-6">
-                                        <label class="form-label" for="twitter1">Run Test Notes</label>
-                                        <textarea class="form-control" id="exampleFormControlTextarea1"
-                                            rows="3"></textarea>
-                                    </div>
-                                    <!-- Run Test Ends -->
-                                    <label class="form-check-label" for="deliveryAdd">
-                                        Megger Test
-                                    </label>
-                                    <hr>
-                                    <!-- Megger Test -->
-                                    <div class="col-sm-6">
-                                        <label class="switch">
-                                            <input type="checkbox" class="switch-input">
-                                            <span class="switch-toggle-slider">
-                                                <span class="switch-on"></span>
-                                                <span class="switch-off"></span>
-                                            </span>
-                                            <span class="switch-label">Megger Test</span>
+                                        <div class="col-sm-6">
+                                            <label class="form-label" for="twitter1">Pneumatic Testing Notification
+                                                Requirement</label>
+                                            <input type="text" id="twitter1" name="pneumatic_testing_notification_requirement" class="form-control" placeholder="" />
+                                        </div>
+                                        <div class="col-sm-6">
+                                            <label class="form-label" for="facebook1">System</label>
+                                            <input type="text" id="facebook1" name="system" class="form-control" placeholder="" />
+                                        </div>
+                                        <div class="col-sm-6">
+                                            <label class="form-label" for="google1">Test Medium</label>
+                                            <input type="text" id="google1" name="test_medium" class="form-control" placeholder="" />
+                                        </div>
+                                        <div class="col-sm-6">
+                                            <label class="form-label" for="linkedin1">Test Requirement Pressure</label>
+                                            <input type="text" id="linkedin1" name="test_requirement_pressure" class="form-control" placeholder="" />
+                                        </div>
+                                        <div class="col-sm-6">
+                                            <label class="form-label" for="linkedin1">Test Requirement Time</label>
+                                            <input type="text" id="linkedin1" name="test_requirement_time" class="form-control" placeholder="" />
+                                        </div>
+                                        <div class="col-sm-6">
+                                            <label class="form-label" for="linkedin1">Pneumatic Testing Notes</label>
+                                            <textarea class="form-control" name="pneumatic_testing_notes" id="exampleFormControlTextarea1"
+                                                rows="3"></textarea>
+                                        </div>
+                                        <!-- Pneumatic Testing Ends -->
+                                        <label class="form-check-label" for="deliveryAdd">
+                                            Vaccum
                                         </label>
-                                    </div>
-                                    <div class="col-sm-6">
-                                        <label class="switch">
-                                            <input type="checkbox" class="switch-input">
-                                            <span class="switch-toggle-slider">
-                                                <span class="switch-on"></span>
-                                                <span class="switch-off"></span>
-                                            </span>
-                                            <span class="switch-label">Megger Test Customer/Third Party Witness
-                                                Required</span>
+                                        <hr>
+                                        <!-- Vaccum -->
+                                        <div class="col-sm-6">
+                                            <label class="switch">
+                                                <input type="checkbox" class="switch-input" name="vaccum">
+                                                <span class="switch-toggle-slider">
+                                                    <span class="switch-on"></span>
+                                                    <span class="switch-off"></span>
+                                                </span>
+                                                <span class="switch-label">Vaccum</span>
+                                            </label>
+                                        </div>
+                                        <div class="col-sm-6">
+                                            <label class="switch">
+                                                <input type="checkbox" class="switch-input" name="vaccum_customer_third_party_witness_required">
+                                                <span class="switch-toggle-slider">
+                                                    <span class="switch-on"></span>
+                                                    <span class="switch-off"></span>
+                                                </span>
+                                                <span class="switch-label">Vaccum Customer/Third Party Witness
+                                                    Required</span>
+                                            </label>
+                                        </div>
+                                        <div class="col-sm-6">
+                                            <label class="form-label" for="twitter1">Vaccum Notification
+                                                Requirement</label>
+                                            <input type="text" id="twitter1" name="vaccum_notification_requirement" class="form-control" placeholder="" />
+                                        </div>
+                                        <div class="col-sm-6">
+                                            <label class="form-label" for="twitter1">Level</label>
+                                            <input type="text" id="twitter1" name="level" class="form-control" placeholder="" />
+                                        </div>
+                                        <div class="col-sm-6">
+                                            <label class="form-label" for="twitter1">Duration At Level</label>
+                                            <input type="text" id="twitter1" name="duration_at_level" class="form-control" placeholder="" />
+                                        </div>
+                                        <div class="col-sm-6">
+                                            <label class="form-label" for="twitter1">Vaccum Notes</label>
+                                            <textarea class="form-control" name="vaccum_notes" id="exampleFormControlTextarea1"
+                                                rows="3"></textarea>
+                                        </div>
+                                        <!-- Vaccum Ends -->
+                                        <label class="form-check-label" for="deliveryAdd">
+                                            Purge/Charge
                                         </label>
-                                    </div>
-                                    <div class="col-sm-6">
-                                        <label class="form-label" for="twitter1">Megger Test Notification
-                                            Requirement</label>
-                                        <input type="text" id="twitter1" class="form-control" placeholder="" />
-                                    </div>
-                                    <div class="col-sm-6">
-                                        <label class="form-label" for="twitter1">Megger Test Notes</label>
-                                        <textarea class="form-control" id="exampleFormControlTextarea1"
-                                            rows="3"></textarea>
-                                    </div>
-                                    <!-- Megger Test Ends -->
-                                    <label class="form-check-label" for="deliveryAdd">
-                                        Fat Test
-                                    </label>
-                                    <hr>
-                                    <!-- Fat Test -->
-                                    <div class="col-sm-6">
-                                        <label class="switch">
-                                            <input type="checkbox" class="switch-input">
-                                            <span class="switch-toggle-slider">
-                                                <span class="switch-on"></span>
-                                                <span class="switch-off"></span>
-                                            </span>
-                                            <span class="switch-label">Fat Test</span>
+                                        <hr>
+                                        <!-- Purge/Charge -->
+                                        <div class="col-sm-6">
+                                            <label class="switch">
+                                                <input type="checkbox" class="switch-input" name="purge_charge">
+                                                <span class="switch-toggle-slider">
+                                                    <span class="switch-on"></span>
+                                                    <span class="switch-off"></span>
+                                                </span>
+                                                <span class="switch-label">Purge/Charge</span>
+                                            </label>
+                                        </div>
+                                        <div class="col-sm-6">
+                                            <label class="form-label" for="twitter1">Purge/Charge Pressure</label>
+                                            <input type="text" id="twitter1" name="purge_charge_pressure" class="form-control" placeholder="" />
+                                        </div>
+                                        <div class="col-sm-6">
+                                            <label class="form-label" for="twitter1">Purge/Charge Medium</label>
+                                            <input type="text" id="twitter1" name="purge_charge_medium" class="form-control" placeholder="" />
+                                        </div>
+                                        <div class="col-sm-6">
+                                            <label class="form-label" for="twitter1">Purge/Charge Notes</label>
+                                            <textarea class="form-control" name="purge_charge_notes" id="exampleFormControlTextarea1"
+                                                rows="3"></textarea>
+                                        </div>
+                                        <!-- Purge/Charge Ends -->
+                                        <label class="form-check-label" for="deliveryAdd">
+                                            Lube Oil Flush
                                         </label>
-                                    </div>
-                                    <div class="col-sm-6">
-                                        <label class="switch">
-                                            <input type="checkbox" class="switch-input">
-                                            <span class="switch-toggle-slider">
-                                                <span class="switch-on"></span>
-                                                <span class="switch-off"></span>
-                                            </span>
-                                            <span class="switch-label">Fat Test Customer/Third Party Witness
-                                                Required</span>
+                                        <hr>
+                                        <!-- Lube Oil Flush -->
+                                        <div class="col-sm-6">
+                                            <label class="switch">
+                                                <input type="checkbox" class="switch-input" name="lube_oil_flush">
+                                                <span class="switch-toggle-slider">
+                                                    <span class="switch-on"></span>
+                                                    <span class="switch-off"></span>
+                                                </span>
+                                                <span class="switch-label">Lube Oil Flush</span>
+                                            </label>
+                                        </div>
+                                        <div class="col-sm-6">
+                                            <label class="switch">
+                                                <input type="checkbox" class="switch-input" name="lube_oil_flush_customer_third_party_witness_required">
+                                                <span class="switch-toggle-slider">
+                                                    <span class="switch-on"></span>
+                                                    <span class="switch-off"></span>
+                                                </span>
+                                                <span class="switch-label">Lube Oil Flush Customer/Third Party Witness
+                                                    Required</span>
+                                            </label>
+                                        </div>
+                                        <div class="col-sm-6">
+                                            <label class="form-label" for="twitter1">Lube Oil Flush Notification
+                                                Requirement</label>
+                                            <input type="text" id="twitter1" name="lube_oil_flush_notification_requirement" class="form-control" placeholder="" />
+                                        </div>
+                                        <div class="col-sm-6">
+                                            <label class="form-label" for="twitter1">Lube Oil Flush Notes</label>
+                                            <textarea class="form-control" name="lube_oil_flush_notes" id="exampleFormControlTextarea1"
+                                                rows="3"></textarea>
+                                        </div>
+                                        <!-- Lube Oil Flush Ends -->
+                                        <label class="form-check-label" for="deliveryAdd">
+                                            Run Test
                                         </label>
-                                    </div>
-                                    <div class="col-sm-6">
-                                        <label class="form-label" for="twitter1">Fat Test Notification
-                                            Requirement</label>
-                                        <input type="text" id="twitter1" class="form-control" placeholder="" />
-                                    </div>
-                                    <div class="col-sm-6">
-                                        <label class="form-label" for="twitter1">Fat Test Requirement</label>
-                                        <input type="text" id="twitter1" class="form-control" placeholder="" />
-                                    </div>
-                                    <div class="col-sm-6">
-                                        <label class="form-label" for="twitter1">Fat Test Notes</label>
-                                        <textarea class="form-control" id="exampleFormControlTextarea1"
-                                            rows="3"></textarea>
-                                    </div>
-                                    <div class="col-sm-6"></div>
-                                    <!-- Fat Test Ends -->
-                                    <label class="form-check-label" for="deliveryAdd">
-                                        Additional Testing
-                                    </label>
-                                    <hr>
-                                    <!-- Additional Testing -->
-                                    <div class="col-sm-6">
-                                        <label class="switch">
-                                            <input type="checkbox" class="switch-input">
-                                            <span class="switch-toggle-slider">
-                                                <span class="switch-on"></span>
-                                                <span class="switch-off"></span>
-                                            </span>
-                                            <span class="switch-label">Additional Testing</span>
-                                        </label>
-                                    </div>
-                                    <div class="col-sm-6">
-                                        <label class="switch">
-                                            <input type="checkbox" class="switch-input">
-                                            <span class="switch-toggle-slider">
-                                                <span class="switch-on"></span>
-                                                <span class="switch-off"></span>
-                                            </span>
-                                            <span class="switch-label">Additional Testing Customer/Third Party
-                                                Witness Required</span>
-                                        </label>
-                                    </div>
-                                    <div class="col-sm-6">
-                                        <label class="form-label" for="twitter1">Additional Testing Notification
-                                            Requirement</label>
-                                        <input type="text" id="twitter1" class="form-control" placeholder="" />
-                                    </div>
-                                    <div class="col-sm-6">
-                                        <label class="form-label" for="twitter1">Additional Testing
-                                            Test/Requirements</label>
-                                        <input type="text" id="twitter1" class="form-control" placeholder="" />
-                                    </div>
-                                    <!-- Additional Testing Ends -->
-                                    <hr>
-                                    <div class="col-sm-6">
-                                        <label class="switch">
-                                            <input type="checkbox" class="switch-input">
-                                            <span class="switch-toggle-slider">
-                                                <span class="switch-on"></span>
-                                                <span class="switch-off"></span>
-                                            </span>
-                                            <span class="switch-label">Addendum Purchasing Specifications</span>
-                                        </label>
-                                    </div>
-                                    <div class="col-sm-6">
-                                        <label class="switch">
-                                            <input type="checkbox" class="switch-input">
-                                            <span class="switch-toggle-slider">
-                                                <span class="switch-on"></span>
-                                                <span class="switch-off"></span>
-                                            </span>
-                                            <span class="switch-label">Addendum Purchasing Specifications
-                                                Complete</span>
-                                        </label>
-                                    </div>
-                                    <div class="col-sm-6">
-                                        <label class="form-label" for="twitter1">Addendum Purchasing Specifications
-                                            Notes</label>
-                                        <textarea class="form-control" id="exampleFormControlTextarea1"
-                                            rows="3"></textarea>
-                                    </div>
-                                    <div class="col-sm-6"></div>
-                                    <div class="col-sm-6">
-                                        <label class="switch">
-                                            <input type="checkbox" class="switch-input">
-                                            <span class="switch-toggle-slider">
-                                                <span class="switch-on"></span>
-                                                <span class="switch-off"></span>
-                                            </span>
-                                            <span class="switch-label">Addendum Manufacturing Specifications</span>
-                                        </label>
-                                    </div>
-
-                                    <div class="col-sm-6">
-                                        <label class="switch">
-                                            <input type="checkbox" class="switch-input">
-                                            <span class="switch-toggle-slider">
-                                                <span class="switch-on"></span>
-                                                <span class="switch-off"></span>
-                                            </span>
-                                            <span class="switch-label">Addendum Manufacturing Specifications
-                                                Complete</span>
-                                        </label>
-                                    </div>
-                                    <div class="col-sm-6">
-                                        <label class="form-label" for="twitter1">Addendum Manufacturing
-                                            Specifications Notes</label>
-                                        <textarea class="form-control" id="exampleFormControlTextarea1"
-                                            rows="3"></textarea>
-                                    </div>
-                                    <!-- Action Buttons -->
-                                    <div class="pt-4">
-                                        <div class="row justify-content-end">
-                                            <div class="col-sm-9">
-                                                <button class="btn btn-label-secondary btn-prev me-sm-3 me-1">
-                                                    <i class="ti ti-arrow-left me-sm-1"></i>
-                                                    <span class="align-middle d-sm-inline-block d-none">Previous</span>
-                                                </button>
-                                                <button type="button"
-                                                    class="btn btn-success waves-effect waves-light me-sm-3 me-1"><i
-                                                        class="ti ti-check"></i>Finish</button>
+                                        <hr>
+                                        <!-- Run Test -->
+                                        <div class="col-sm-6">
+                                            <label class="switch">
+                                                <input type="checkbox" class="switch-input" name="run_test">
+                                                <span class="switch-toggle-slider">
+                                                    <span class="switch-on"></span>
+                                                    <span class="switch-off"></span>
+                                                </span>
+                                                <span class="switch-label">Run Test</span>
+                                            </label>
+                                        </div>
+                                        <div class="col-sm-6">
+                                            <label class="switch">
+                                                <input type="checkbox" class="switch-input" name="run_test_customer_third_party_witness_required">
+                                                <span class="switch-toggle-slider">
+                                                    <span class="switch-on"></span>
+                                                    <span class="switch-off"></span>
+                                                </span>
+                                                <span class="switch-label">Run Test Customer/Third Party Witness
+                                                    Required</span>
+                                            </label>
+                                        </div>
+                                        <div class="col-sm-6">
+                                            <label class="form-label" for="twitter1">Run Test Notification
+                                                Requirement</label>
+                                            <input type="text" id="twitter1" name="run_test_notification_requirement" class="form-control" placeholder="" />
+                                        </div>
+                                        <div class="col-sm-6">
+                                            <small class="text-light fw-semibold d-block">Run Test Requirement</small>
+                                            <div class="form-check form-check-inline mt-3">
+                                                <input class="form-check-input" name="run_test_requirement" type="checkbox" id="inlineCheckbox1"
+                                                    value="option1">
+                                                <label class="form-check-label" for="inlineCheckbox1">Loaded</label>
+                                            </div>
+                                            <div class="form-check form-check-inline">
+                                                <input class="form-check-input" name="run_test_requirement" type="checkbox" id="inlineCheckbox2"
+                                                    value="option2">
+                                                <label class="form-check-label" for="inlineCheckbox2">No Load</label>
                                             </div>
                                         </div>
+                                        <div class="col-sm-6">
+                                            <label class="form-label" for="twitter1">Run Test Duration</label>
+                                            <input type="text" id="twitter1" name="run_test_duration" class="form-control" placeholder="" />
+                                        </div>
+                                        <div class="col-sm-6">
+                                            <label class="form-label" for="twitter1">Run Test Notes</label>
+                                            <textarea class="form-control" name="run_test_notes" id="exampleFormControlTextarea1"
+                                                rows="3"></textarea>
+                                        </div>
+                                        <!-- Run Test Ends -->
+                                        <label class="form-check-label" for="deliveryAdd">
+                                            Megger Test
+                                        </label>
+                                        <hr>
+                                        <!-- Megger Test -->
+                                        <div class="col-sm-6">
+                                            <label class="switch">
+                                                <input type="checkbox" class="switch-input" name="megger_test">
+                                                <span class="switch-toggle-slider">
+                                                    <span class="switch-on"></span>
+                                                    <span class="switch-off"></span>
+                                                </span>
+                                                <span class="switch-label">Megger Test</span>
+                                            </label>
+                                        </div>
+                                        <div class="col-sm-6">
+                                            <label class="switch">
+                                                <input type="checkbox" class="switch-input" name="megger_test_customer_third_party_witness_required">
+                                                <span class="switch-toggle-slider">
+                                                    <span class="switch-on"></span>
+                                                    <span class="switch-off"></span>
+                                                </span>
+                                                <span class="switch-label">Megger Test Customer/Third Party Witness
+                                                    Required</span>
+                                            </label>
+                                        </div>
+                                        <div class="col-sm-6">
+                                            <label class="form-label" for="twitter1">Megger Test Notification
+                                                Requirement</label>
+                                            <input type="text" id="twitter1" name="megger_test_notification_requirement" class="form-control" placeholder="" />
+                                        </div>
+                                        <div class="col-sm-6">
+                                            <label class="form-label" for="twitter1">Megger Test Notes</label>
+                                            <textarea class="form-control" name="megger_test_notes" id="exampleFormControlTextarea1"
+                                                rows="3"></textarea>
+                                        </div>
+                                        <!-- Megger Test Ends -->
+                                        <label class="form-check-label" for="deliveryAdd">
+                                            Fat Test
+                                        </label>
+                                        <hr>
+                                        <!-- Fat Test -->
+                                        <div class="col-sm-6">
+                                            <label class="switch">
+                                                <input type="checkbox" class="switch-input" name="fat_test">
+                                                <span class="switch-toggle-slider">
+                                                    <span class="switch-on"></span>
+                                                    <span class="switch-off"></span>
+                                                </span>
+                                                <span class="switch-label">Fat Test</span>
+                                            </label>
+                                        </div>
+                                        <div class="col-sm-6">
+                                            <label class="switch">
+                                                <input type="checkbox" class="switch-input" name="fat_test_customer_third_party_witness_required">
+                                                <span class="switch-toggle-slider">
+                                                    <span class="switch-on"></span>
+                                                    <span class="switch-off"></span>
+                                                </span>
+                                                <span class="switch-label">Fat Test Customer/Third Party Witness
+                                                    Required</span>
+                                            </label>
+                                        </div>
+                                        <div class="col-sm-6">
+                                            <label class="form-label" for="twitter1">Fat Test Notification
+                                                Requirement</label>
+                                            <input type="text" id="twitter1" name="fat_test_notification_requirement" class="form-control" placeholder="" />
+                                        </div>
+                                        <div class="col-sm-6">
+                                            <label class="form-label" for="twitter1">Fat Test Requirement</label>
+                                            <input type="text" id="twitter1" name="fat_test_requirement" class="form-control" placeholder="" />
+                                        </div>
+                                        <div class="col-sm-6">
+                                            <label class="form-label" for="twitter1">Fat Test Notes</label>
+                                            <textarea class="form-control" name="fat_test_notes" id="exampleFormControlTextarea1"
+                                                rows="3"></textarea>
+                                        </div>
+                                        <div class="col-sm-6"></div>
+                                        <!-- Fat Test Ends -->
+                                        <label class="form-check-label" for="deliveryAdd">
+                                            Additional Testing
+                                        </label>
+                                        <hr>
+                                        <!-- Additional Testing -->
+                                        <div class="col-sm-6">
+                                            <label class="switch">
+                                                <input type="checkbox" class="switch-input" name="additional_testing">
+                                                <span class="switch-toggle-slider">
+                                                    <span class="switch-on"></span>
+                                                    <span class="switch-off"></span>
+                                                </span>
+                                                <span class="switch-label">Additional Testing</span>
+                                            </label>
+                                        </div>
+                                        <div class="col-sm-6">
+                                            <label class="switch">
+                                                <input type="checkbox" class="switch-input" name="additional_testing_customer_third_party_witness_required">
+                                                <span class="switch-toggle-slider">
+                                                    <span class="switch-on"></span>
+                                                    <span class="switch-off"></span>
+                                                </span>
+                                                <span class="switch-label">Additional Testing Customer/Third Party
+                                                    Witness Required</span>
+                                            </label>
+                                        </div>
+                                        <div class="col-sm-6">
+                                            <label class="form-label" for="twitter1">Additional Testing Notification
+                                                Requirement</label>
+                                            <input type="text" id="twitter1" name="additional_testing_notification_requirement" class="form-control" placeholder="" />
+                                        </div>
+                                        <div class="col-sm-6">
+                                            <label class="form-label" for="twitter1">Additional Testing
+                                                Test/Requirements</label>
+                                            <input type="text" id="twitter1" name="additional_testing_test_requirement" class="form-control" placeholder="" />
+                                        </div>
+                                        <!-- Additional Testing Ends -->
+                                        <hr>
+                                        <div class="col-sm-6">
+                                            <label class="switch">
+                                                <input type="checkbox" class="switch-input" name="addendum_purchasing_specifications">
+                                                <span class="switch-toggle-slider">
+                                                    <span class="switch-on"></span>
+                                                    <span class="switch-off"></span>
+                                                </span>
+                                                <span class="switch-label">Addendum Purchasing Specifications</span>
+                                            </label>
+                                        </div>
+                                        <div class="col-sm-6">
+                                            <label class="switch">
+                                                <input type="checkbox" class="switch-input" name="addendum_purchasing_specifications_complete">
+                                                <span class="switch-toggle-slider">
+                                                    <span class="switch-on"></span>
+                                                    <span class="switch-off"></span>
+                                                </span>
+                                                <span class="switch-label">Addendum Purchasing Specifications
+                                                    Complete</span>
+                                            </label>
+                                        </div>
+                                        <div class="col-sm-6">
+                                            <label class="form-label" for="twitter1">Addendum Purchasing Specifications
+                                                Notes</label>
+                                            <textarea class="form-control" name="addendum_purchasing_specifications_notes" id="exampleFormControlTextarea1"
+                                                rows="3"></textarea>
+                                        </div>
+                                        <div class="col-sm-6"></div>
+                                        <div class="col-sm-6">
+                                            <label class="switch">
+                                                <input type="checkbox" class="switch-input" name="addendum_manufacturing_specifications">
+                                                <span class="switch-toggle-slider">
+                                                    <span class="switch-on"></span>
+                                                    <span class="switch-off"></span>
+                                                </span>
+                                                <span class="switch-label">Addendum Manufacturing Specifications</span>
+                                            </label>
+                                        </div>
+
+                                        <div class="col-sm-6">
+                                            <label class="switch">
+                                                <input type="checkbox" class="switch-input" name="addendum_manufacturing_specifications_complete">
+                                                <span class="switch-toggle-slider">
+                                                    <span class="switch-on"></span>
+                                                    <span class="switch-off"></span>
+                                                </span>
+                                                <span class="switch-label">Addendum Manufacturing Specifications
+                                                    Complete</span>
+                                            </label>
+                                        </div>
+                                        <div class="col-sm-6">
+                                            <label class="form-label" for="twitter1">Addendum Manufacturing
+                                                Specifications Notes</label>
+                                            <textarea class="form-control" name="addendum_manufacturing_specifications_notes" id="exampleFormControlTextarea1"
+                                                rows="3"></textarea>
+                                        </div>
+                                        <!-- Action Buttons -->
+                                        <div class="pt-4">
+                                            <div class="row justify-content-end">
+                                                <div class="col-sm-9">
+                                                    <button class="btn btn-label-secondary btn-prev me-sm-3 me-1">
+                                                        <i class="ti ti-arrow-left me-sm-1"></i>
+                                                        <span class="align-middle d-sm-inline-block d-none">Previous</span>
+                                                    </button>
+                                                    <button type="button"
+                                                        class="btn btn-success waves-effect waves-light me-sm-3 me-1"><i
+                                                            class="ti ti-check"></i>Finish</button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <!-- Action Buttons Ends -->
                                     </div>
-                                    <!-- Action Buttons Ends -->
-                                </div>
+                                </form>
                             </div>
                             <!-- Package Testing Ends -->
                             <!-- </form> -->
@@ -2827,7 +2851,7 @@ function submitTubingData(reloadFlag) {
     });
 }
 
-//ButtPiping
+//Butt welded
 function submitButtPipingData(reloadFlag) {
     $.ajaxSetup({
         headers: {
@@ -2887,7 +2911,7 @@ function submitThreadedPipingData(reloadFlag) {
     });
 }
 
-//Electrical
+// Electrical
 function submitElectricalData(reloadFlag) {
     $.ajaxSetup({
         headers: {
@@ -2917,7 +2941,7 @@ function submitElectricalData(reloadFlag) {
     });
 }
 
-//Preservation
+// Preservation
 function submitPreservationData(reloadFlag) {
     $.ajaxSetup({
         headers: {

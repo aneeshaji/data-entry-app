@@ -12,6 +12,7 @@ class StructuralSkid extends Model
         'material_origin_reqs',
         'origin_traceable_to_melt',
         'acceptable_material_origins',
+        'standard_per_code',
         'mtrs_required',
         'heat_mapping',
         'weld_mapping',
@@ -30,4 +31,3 @@ class StructuralSkid extends Model
         'notes'
     ];
 }
-// StructuralSkid

@@ -17,6 +17,7 @@ class ButtWeldedSocketWeldedUtilityPiping extends Model
         'heat_mapping',
         'weld_mapping',
         'material_notes',
+        'nace',
         'nde_requirements',
         'weld_requirements',
         'governing_code',
@@ -30,4 +31,3 @@ class ButtWeldedSocketWeldedUtilityPiping extends Model
         'notes'
     ];
 }
-//butt_welded_socket_welded_utility_piping

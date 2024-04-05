@@ -23,6 +23,7 @@ return new class extends Migration
             $table->tinyInteger('heat_mapping')->nullable()->comment('1 => Yes, 0 => No');
             $table->tinyInteger('weld_mapping')->nullable()->comment('1 => Yes, 0 => No');
             $table->text('material_notes')->nullable();
+            $table->tinyInteger('nace')->nullable()->comment('1 => Yes, 0 => No');
             $table->text('nde_requirements')->nullable();
             $table->text('weld_requirements')->nullable();
             $table->string('governing_code')->nullable();
