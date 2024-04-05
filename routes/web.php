@@ -26,6 +26,10 @@ Route::middleware('auth')->group(function () {
         ]
     ]);
     Route::post('/admin/job-quality-requirements/saveData', [JobQualityRequirementController::class, 'saveData']);
+    Route::post('/admin/job-quality-requirements/saveSpecialData', [JobQualityRequirementController::class, 'saveSpecialData']);
+    Route::post('/admin/job-quality-requirements/saveGeneralData', [JobQualityRequirementController::class, 'saveGeneralData']);
+    
+    
 });
 
 require __DIR__.'/auth.php';

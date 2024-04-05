@@ -11,6 +11,8 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\View\View;
 use App\Models\BasicDetails;
+use App\Models\SpecialMaterialRequirements;
+use App\Models\GeneralInformation;
 
 class JobQualityRequirementController extends Controller
 {
@@ -67,6 +69,78 @@ class JobQualityRequirementController extends Controller
             return response(['status' => false, 'message' => 'Error']);
         }
     }
+
+    public function saveSpecialData(Request $request)
+    {
+        // Store Data
+        if ($request->id) {
+            // For Edit
+                    $special_material_requirements = SpecialMaterialRequirements::where('id', $request->id)->first();
+        } else {
+            $special_material_requirements  = new SpecialMaterialRequirements();
+        }
+
+        $special_material_requirements->basic_details_id = $request->basic_details_id;
+        $special_material_requirements->pipes_and_fittings = $request->pipes_and_fittings == 'on' ? '1':'0';
+
+        $special_material_requirements->bolting =  $request->bolting == 'on' ? '1':'0';
+        $special_material_requirements->pressure_vessels = $request->pressure_vessels == 'on' ? '1':'0';
+        $special_material_requirements->gaskets =  $request->gaskets == 'on' ? '1':'0';
+        $special_material_requirements->structural_steel =  $request->structural_steel == 'on' ? '1':'0';
+        $special_material_requirements->tubing =  $request->tubing == 'on' ? '1':'0';
+        $special_material_requirements->save();
+
+        if ($basic_details->id) {
+            return response(['status' => true, 'message' => 'Success', 'id' => $special_material_requirements->id,
+            'redirect' => route('admin.job-quality-requirements')]);
+        } else {
+            return response(['status' => false, 'message' => 'Error']);
+        }
+    }
+
+    
+    public function saveGeneralData(Request $request)
+    {
+        // Store Data
+        if ($request->id) {
+            // For Edit
+                    $general_info = GeneralInformation::where('id', $request->id)->first();
+        } else {
+            $general_info  = new GeneralInformation();
+        }
+
+        $general_info->basic_details_id = $request->basic_details_id;
+        $general_info->job_number = $request->job_number;
+        $general_info->customer = $request->customer;
+        $general_info->location = $request->location;
+        $general_info->end_user = $request->end_user;
+        $general_info->engineer = $request->engineer;
+        $general_info->designer = $request->designer;
+        $general_info->sales_man = $request->sales_man;
+        $general_info->job_type = $request->job_type;
+        $general_info->job_revision_number = $request->job_revision_number;
+        $general_info->date_revised = $request->date_revised;
+        $general_info->date_approved = $request->date_approved;
+        $general_info->notes = $request->notes;
+        // $general_info->pipes_and_fittings = $request->pipes_and_fittings == 'on' ? '1':'0';
+
+        // $general_info->bolting =  $request->bolting == 'on' ? '1':'0';
+        // $general_info->pressure_vessels = $request->pressure_vessels == 'on' ? '1':'0';
+        // $general_info->gaskets =  $request->gaskets == 'on' ? '1':'0';
+        // $general_info->structural_steel =  $request->structural_steel == 'on' ? '1':'0';
+        // $general_info->tubing =  $request->tubing == 'on' ? '1':'0';
+        $general_info->save();
+
+        if ($general_info->id) {
+            return response(['status' => true, 'message' => 'Success', 'id' => $special_material_requirements->id,
+            'redirect' => route('admin.job-quality-requirements')]);
+        } else {
+            return response(['status' => false, 'message' => 'Error']);
+        }
+    }
+
+
+    
 
      /**
      * Save JQR.
@@ -127,8 +201,12 @@ class JobQualityRequirementController extends Controller
     {
         $id = decrypt($id);
         $jqr = BasicDetails::where('id', $id)->first();
+        $jqr_special = SpecialMaterialRequirements::where('basic_details_id', $jqr->id)->first();
+        $jqr_general_info = GeneralInformation::where('basic_details_id', $jqr->id)->first();
         return view('admin.job-quality-requirements.create', [
-            'jqr' => $jqr
+            'jqr' => $jqr,
+            'jqr_special' => $jqr_special,
+            'jqr_general_info' =>$jqr_general_info
         ]);
     }
 
