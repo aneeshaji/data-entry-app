@@ -14,6 +14,18 @@ use App\Models\BasicDetails;
 use App\Models\SpecialMaterialRequirements;
 use App\Models\GeneralInformation;
 use App\Models\ServiceInformation;
+use App\Models\Bolting;
+use App\Models\ButtWeldedSocketWeldedUtilityPiping;
+use App\Models\ElectricalInstrumentation;
+use App\Models\NonCodeVesselsTanks;
+use App\Models\PackageTesting;
+use App\Models\Preservation;
+use App\Models\PressureVessels;
+use App\Models\ProcessFuelGasStartGasPiping;
+use App\Models\StructuralSkid;
+use App\Models\ThreadedPiping;
+use App\Models\Tubing;
+
 
 class JobQualityRequirementController extends Controller
 {
@@ -169,20 +181,37 @@ class JobQualityRequirementController extends Controller
         // Store Data
         if ($request->id) {
             // For Edit
-            $service_info = ServiceInformation::where('id', $request->id)->first();
+            $structural_skid = StructuralSkid::where('id', $request->id)->first();
         } else {
-            $service_info  = new ServiceInformation();
+            $structural_skid  = new StructuralSkid();
         }
 
-        $service_info->basic_details_id = $request->basic_details_id;
-        $service_info->gas_processed = $request->gas_processed;
-        $service_info->application = $request->application;
-        $service_info->sour_service_required = $request->sour_service_required == 'on' ? '1':'0';
-        $service_info->other = $request->other;
-        $service_info->save();
+        $structural_skid->basic_details_id = $request->basic_details_id;
+        $structural_skid->customer_avl_applies = $request->customer_avl_applies;
+        $structural_skid->material_origin_reqs = $request->material_origin_reqs;
+        $structural_skid->origin_traceable_to_melt = $request->origin_traceable_to_melt;
+        $structural_skid->acceptable_material_origins = $request->acceptable_material_origins;
+        $structural_skid->mtrs_required = $request->mtrs_required;
+        $structural_skid->heat_mapping = $request->heat_mapping;
+        $structural_skid->weld_mapping = $request->weld_mapping;
+        $structural_skid->material_notes = $request->material_notes;
+        $structural_skid->nace = $request->nace;
+        $structural_skid->nde_requirements = $request->nde_requirements;
+        $structural_skid->weld_requirements = $request->weld_requirements;
+        $structural_skid->governing_code = $request->governing_code;
+        $structural_skid->pwht = $request->pwht;
+        $structural_skid->hydro_hold_time = $request->hydro_hold_time;
+        $structural_skid->witnessed = $request->witnessed;
+        $structural_skid->hardness_test = $request->hardness_test;
+        $structural_skid->max_hardness = $request->max_hardness;
+        $structural_skid->hydro_chart_required = $request->hydro_chart_required;
+        $structural_skid->hydro_notes = $request->hydro_notes;
+        $structural_skid->notes = $request->notes;
 
-        if ($service_info->id) {
-            return response(['status' => true, 'message' => 'Success', 'id' => $service_info->id,
+        $structural_skid->save();
+
+        if ($structural_skid->id) {
+            return response(['status' => true, 'message' => 'Success', 'id' => $structural_skid->id,
             'redirect' => route('admin.job-quality-requirements')]);
         } else {
             return response(['status' => false, 'message' => 'Error']);
@@ -195,20 +224,37 @@ class JobQualityRequirementController extends Controller
         // Store Data
         if ($request->id) {
             // For Edit
-            $service_info = ServiceInformation::where('id', $request->id)->first();
+            $pressure_vessels = PressureVessels::where('id', $request->id)->first();
         } else {
-            $service_info  = new ServiceInformation();
+            $pressure_vessels  = new PressureVessels();
         }
 
-        $service_info->basic_details_id = $request->basic_details_id;
-        $service_info->gas_processed = $request->gas_processed;
-        $service_info->application = $request->application;
-        $service_info->sour_service_required = $request->sour_service_required == 'on' ? '1':'0';
-        $service_info->other = $request->other;
-        $service_info->save();
+        $pressure_vessels->basic_details_id = $request->basic_details_id;
+        $pressure_vessels->customer_avl_applies = $request->customer_avl_applies;
+        $pressure_vessels->material_origin_reqs = $request->material_origin_reqs;
+        $pressure_vessels->origin_traceable_to_melt = $request->origin_traceable_to_melt;
+        $pressure_vessels->acceptable_material_origins = $request->acceptable_material_origins;
+        $pressure_vessels->mtrs_required = $request->mtrs_required;
+        $pressure_vessels->heat_mapping = $request->heat_mapping;
+        $pressure_vessels->weld_mapping = $request->weld_mapping;
+        $pressure_vessels->material_notes = $request->weld_mapping;
+        $pressure_vessels->nace = $request->nace;
+        $pressure_vessels->nde_requirements = $request->nde_requirements;
+        $pressure_vessels->weld_requirements = $request->weld_requirements;
+        $pressure_vessels->governing_code = $request->governing_code;
+        $pressure_vessels->pwht = $request->pwht;
+        $pressure_vessels->hydro_hold_time = $request->hydro_hold_time;
+        $pressure_vessels->witnessed = $request->witnessed;
+        $pressure_vessels->hardness_test = $request->hardness_test;
+        $pressure_vessels->max_hardness = $request->max_hardness;
+        $pressure_vessels->hydro_chart_required = $request->hydro_chart_required;
+        $pressure_vessels->hydro_notes = $request->hydro_notes;
+        $pressure_vessels->notes = $request->notes;
+        
+        $pressure_vessels->save();
 
-        if ($service_info->id) {
-            return response(['status' => true, 'message' => 'Success', 'id' => $service_info->id,
+        if ($pressure_vessels->id) {
+            return response(['status' => true, 'message' => 'Success', 'id' => $pressure_vessels->id,
             'redirect' => route('admin.job-quality-requirements')]);
         } else {
             return response(['status' => false, 'message' => 'Error']);
@@ -221,20 +267,38 @@ class JobQualityRequirementController extends Controller
         // Store Data
         if ($request->id) {
             // For Edit
-            $service_info = ServiceInformation::where('id', $request->id)->first();
+            $non_code_vess = NonCodeVesselsTanks::where('id', $request->id)->first();
         } else {
-            $service_info  = new ServiceInformation();
+            $non_code_vess  = new NonCodeVesselsTanks();
         }
 
-        $service_info->basic_details_id = $request->basic_details_id;
-        $service_info->gas_processed = $request->gas_processed;
-        $service_info->application = $request->application;
-        $service_info->sour_service_required = $request->sour_service_required == 'on' ? '1':'0';
-        $service_info->other = $request->other;
-        $service_info->save();
+        $non_code_vess->basic_details_id = $request->basic_details_id;
+        $non_code_vess->customer_avl_applies = $request->customer_avl_applies;
+        $non_code_vess->material_origin_reqs = $request->material_origin_reqs;
+        $non_code_vess->origin_traceable_to_melt = $request->origin_traceable_to_melt;
+        $non_code_vess->origin_traceable_to_manufacturer = $request->origin_traceable_to_manufacturer;
+        $non_code_vess->acceptable_material_origins = $request->acceptable_material_origins;
+        $non_code_vess->standard_code = $request->standard_code;
+        $non_code_vess->mtrs_required = $request->mtrs_required;
+        $non_code_vess->heat_mapping = $request->heat_mapping;
+        $non_code_vess->weld_mapping = $request->weld_mapping;
+        $non_code_vess->material_notes = $request->material_notes;
+        $non_code_vess->nace = $request->nace;
+        $non_code_vess->nde_requirements = $request->nde_requirements;
+        $non_code_vess->weld_requirements = $request->weld_requirements;
+        $non_code_vess->governing_code = $request->governing_code;
+        $non_code_vess->pwht = $request->pwht;
+        $non_code_vess->hydro_hold_time = $request->hydro_hold_time;
+        $non_code_vess->witnessed = $request->witnessed;
+        $non_code_vess->hardness_test = $request->hardness_test;
+        $non_code_vess->max_hardness = $request->max_hardness;
+        $non_code_vess->hydro_chart_required = $request->hydro_chart_required;
+        $non_code_vess->hydro_notes = $request->hydro_notes;
+        $non_code_vess->notes = $request->notes;
+        $non_code_vess->save();
 
-        if ($service_info->id) {
-            return response(['status' => true, 'message' => 'Success', 'id' => $service_info->id,
+        if ($non_code_vess->id) {
+            return response(['status' => true, 'message' => 'Success', 'id' => $non_code_vess->id,
             'redirect' => route('admin.job-quality-requirements')]);
         } else {
             return response(['status' => false, 'message' => 'Error']);
@@ -247,20 +311,36 @@ class JobQualityRequirementController extends Controller
         // Store Data
         if ($request->id) {
             // For Edit
-            $service_info = ServiceInformation::where('id', $request->id)->first();
+            $process_fual_gas = ProcessFuelGasStartGasPiping::where('id', $request->id)->first();
         } else {
-            $service_info  = new ServiceInformation();
+            $process_fual_gas  = new ProcessFuelGasStartGasPiping();
         }
 
-        $service_info->basic_details_id = $request->basic_details_id;
-        $service_info->gas_processed = $request->gas_processed;
-        $service_info->application = $request->application;
-        $service_info->sour_service_required = $request->sour_service_required == 'on' ? '1':'0';
-        $service_info->other = $request->other;
-        $service_info->save();
+        $process_fual_gas->basic_details_id = $request->basic_details_id;
+        $process_fual_gas->customer_avl_applies = $request->customer_avl_applies;
+        $process_fual_gas->material_origin_reqs = $request->material_origin_reqs;
+        $process_fual_gas->origin_traceable_to_melt = $request->origin_traceable_to_melt;
+        $process_fual_gas->standard_code = $request->standard_code;
+        $process_fual_gas->mtrs_required = $request->mtrs_required;
+        $process_fual_gas->heat_mapping = $request->heat_mapping;
+        $process_fual_gas->weld_mapping = $request->weld_mapping;
+        $process_fual_gas->material_notes = $request->material_notes;
+        $process_fual_gas->nace = $request->nace;
+        $process_fual_gas->nde_requirements = $request->nde_requirements;
+        $process_fual_gas->weld_requirements = $request->weld_requirements;
+        $process_fual_gas->governing_code = $request->governing_code;
+        $process_fual_gas->hydro_hold_time = $request->hydro_hold_time;
+        $process_fual_gas->witnessed = $request->witnessed;
+        $process_fual_gas->hardness_test = $request->hardness_test;
+        $process_fual_gas->max_hardness = $request->max_hardness;
+        $process_fual_gas->hydro_chart_required = $request->hydro_chart_required;
+        $process_fual_gas->hydro_notes = $request->hydro_notes;
+        $process_fual_gas->notes = $request->notes;
 
-        if ($service_info->id) {
-            return response(['status' => true, 'message' => 'Success', 'id' => $service_info->id,
+        $process_fual_gas->save();
+
+        if ($process_fual_gas->id) {
+            return response(['status' => true, 'message' => 'Success', 'id' => $process_fual_gas->id,
             'redirect' => route('admin.job-quality-requirements')]);
         } else {
             return response(['status' => false, 'message' => 'Error']);
@@ -273,20 +353,22 @@ class JobQualityRequirementController extends Controller
         // Store Data
         if ($request->id) {
             // For Edit
-            $service_info = ServiceInformation::where('id', $request->id)->first();
+            $bolting = Bolting::where('id', $request->id)->first();
         } else {
-            $service_info  = new ServiceInformation();
+            $bolting  = new Bolting();
         }
 
-        $service_info->basic_details_id = $request->basic_details_id;
-        $service_info->gas_processed = $request->gas_processed;
-        $service_info->application = $request->application;
-        $service_info->sour_service_required = $request->sour_service_required == 'on' ? '1':'0';
-        $service_info->other = $request->other;
-        $service_info->save();
+        $bolting->basic_details_id = $request->basic_details_id;
+        $bolting->efx_standard_no_cocs = $request->efx_standard_no_cocs;
+        $bolting->vendor_coc = $request->vendor_coc;
+        $bolting->manufacturer_coc = $request->manufacturer_coc;
+        $bolting->mtrs = $request->mtrs;
+        $bolting->notes = $request->notes;
 
-        if ($service_info->id) {
-            return response(['status' => true, 'message' => 'Success', 'id' => $service_info->id,
+        $bolting->save();
+
+        if ($bolting->id) {
+            return response(['status' => true, 'message' => 'Success', 'id' => $bolting->id,
             'redirect' => route('admin.job-quality-requirements')]);
         } else {
             return response(['status' => false, 'message' => 'Error']);
@@ -325,20 +407,31 @@ class JobQualityRequirementController extends Controller
         // Store Data
         if ($request->id) {
             // For Edit
-            $service_info = ServiceInformation::where('id', $request->id)->first();
+            $tubing = Tubing::where('id', $request->id)->first();
         } else {
-            $service_info  = new ServiceInformation();
+            $tubing  = new Tubing();
         }
 
-        $service_info->basic_details_id = $request->basic_details_id;
-        $service_info->gas_processed = $request->gas_processed;
-        $service_info->application = $request->application;
-        $service_info->sour_service_required = $request->sour_service_required == 'on' ? '1':'0';
-        $service_info->other = $request->other;
-        $service_info->save();
+        $tubing->basic_details_id = $request->basic_details_id;
+        $tubing->customer_avl_applies = $request->customer_avl_applies;
+        $tubing->material_origin_reqs = $request->material_origin_reqs;
+        $tubing->origin_traceable_to_melt = $request->origin_traceable_to_melt;
+        $tubing->acceptable_material_origins = $request->acceptable_material_origins;
+        $tubing->efx_standard_no_cocs = $request->efx_standard_no_cocs;
+        $tubing->tubing_mtrs_required = $request->tubing_mtrs_required;
+        $tubing->tubing_coc_required = $request->tubing_coc_required;
+        $tubing->fitting_mtrs_required = $request->fitting_mtrs_required;
+        $tubing->fitting_coc_required = $request->fitting_coc_required;
+        $tubing->full_traceability = $request->full_traceability;
+        $tubing->material_notes = $request->material_notes;
+        $tubing->nde_requirements = $request->nde_requirements;
+        $tubing->pmi_Requirements = $request->pmi_Requirements;
+        $tubing->notes = $request->notes;
 
-        if ($service_info->id) {
-            return response(['status' => true, 'message' => 'Success', 'id' => $service_info->id,
+        $tubing->save();
+
+        if ($tubing->id) {
+            return response(['status' => true, 'message' => 'Success', 'id' => $tubing->id,
             'redirect' => route('admin.job-quality-requirements')]);
         } else {
             return response(['status' => false, 'message' => 'Error']);
@@ -351,20 +444,37 @@ class JobQualityRequirementController extends Controller
         // Store Data
         if ($request->id) {
             // For Edit
-            $service_info = ServiceInformation::where('id', $request->id)->first();
+            $buttPiping = ButtWeldedSocketWeldedUtilityPiping::where('id', $request->id)->first();
         } else {
-            $service_info  = new ServiceInformation();
+            $buttPiping  = new ButtWeldedSocketWeldedUtilityPiping();
         }
 
-        $service_info->basic_details_id = $request->basic_details_id;
-        $service_info->gas_processed = $request->gas_processed;
-        $service_info->application = $request->application;
-        $service_info->sour_service_required = $request->sour_service_required == 'on' ? '1':'0';
-        $service_info->other = $request->other;
-        $service_info->save();
+        $buttPiping->basic_details_id = $request->basic_details_id;
+        $buttPiping->customer_avl_applies = $request->customer_avl_applies;
+        $buttPiping->material_origin_reqs = $request->material_origin_reqs;
+        $buttPiping->origin_traceable_to_melt = $request->origin_traceable_to_melt;
+        $buttPiping->acceptable_material_origins = $request->acceptable_material_origins;
+        $buttPiping->standard_per_code = $request->standard_per_code;
+        $buttPiping->mtrs_provided = $request->mtrs_provided;
+        $buttPiping->heat_mapping = $request->heat_mapping;
+        $buttPiping->weld_mapping = $request->weld_mapping;
+        $buttPiping->material_notes = $request->material_notes;
+        $buttPiping->nde_requirements = $request->nde_requirements;
+        $buttPiping->weld_requirements = $request->weld_requirements;
+        $buttPiping->governing_code = $request->governing_code;
+        $buttPiping->pwht = $request->pwht;
+        $buttPiping->hydro_hold_time = $request->hydro_hold_time;
+        $buttPiping->witnessed = $request->witnessed;
+        $buttPiping->hardness_test = $request->hardness_test;
+        $buttPiping->max_hardness = $request->max_hardness;
+        $buttPiping->hydro_chart_required = $request->hydro_chart_required;
+        $buttPiping->hydro_notes = $request->hydro_notes;
+        $buttPiping->notes = $request->notes;
 
-        if ($service_info->id) {
-            return response(['status' => true, 'message' => 'Success', 'id' => $service_info->id,
+        $buttPiping->save();
+
+        if ($buttPiping->id) {
+            return response(['status' => true, 'message' => 'Success', 'id' => $buttPiping->id,
             'redirect' => route('admin.job-quality-requirements')]);
         } else {
             return response(['status' => false, 'message' => 'Error']);
@@ -377,20 +487,27 @@ class JobQualityRequirementController extends Controller
         // Store Data
         if ($request->id) {
             // For Edit
-            $service_info = ServiceInformation::where('id', $request->id)->first();
+            $threaded = ThreadedPiping::where('id', $request->id)->first();
         } else {
-            $service_info  = new ServiceInformation();
+            $threaded  = new ThreadedPiping();
         }
 
-        $service_info->basic_details_id = $request->basic_details_id;
-        $service_info->gas_processed = $request->gas_processed;
-        $service_info->application = $request->application;
-        $service_info->sour_service_required = $request->sour_service_required == 'on' ? '1':'0';
-        $service_info->other = $request->other;
-        $service_info->save();
+        $threaded->basic_details_id = $request->basic_details_id;
+        $threaded->customer_avl_applies = $request->customer_avl_applies;
+        $threaded->material_origin_reqs = $request->material_origin_reqs;
+        $threaded->origin_traceable_to_melt = $request->origin_traceable_to_melt;
+        $threaded->acceptable_material_origins = $request->acceptable_material_origins;
+        $threaded->standard_per_code = $request->standard_per_code;
+        $threaded->mtrs_required = $request->mtrs_required;
+        $threaded->heat_mapping = $request->heat_mapping;
+        $threaded->material_notes = $request->material_notes;
+        $threaded->nace = $request->nace;
+        $threaded->notes = $request->notes;
 
-        if ($service_info->id) {
-            return response(['status' => true, 'message' => 'Success', 'id' => $service_info->id,
+        $threaded->save();
+
+        if ($threaded->id) {
+            return response(['status' => true, 'message' => 'Success', 'id' => $threaded->id,
             'redirect' => route('admin.job-quality-requirements')]);
         } else {
             return response(['status' => false, 'message' => 'Error']);
@@ -403,20 +520,25 @@ class JobQualityRequirementController extends Controller
         // Store Data
         if ($request->id) {
             // For Edit
-            $service_info = ServiceInformation::where('id', $request->id)->first();
+            $electrical = ElectricalInstrumentation::where('id', $request->id)->first();
         } else {
-            $service_info  = new ServiceInformation();
+            $electrical  = new ElectricalInstrumentation();
         }
 
-        $service_info->basic_details_id = $request->basic_details_id;
-        $service_info->gas_processed = $request->gas_processed;
-        $service_info->application = $request->application;
-        $service_info->sour_service_required = $request->sour_service_required == 'on' ? '1':'0';
-        $service_info->other = $request->other;
-        $service_info->save();
+        $electrical->basic_details_id = $request->basic_details_id;
+        $electrical->customer_avl_applies = $request->customer_avl_applies;
+        $electrical->acceptable_material_origins = $request->acceptable_material_origins;
+        $electrical->vendor_restrictions = $request->vendor_restrictions ;
+        $electrical->specify = $request->specify;
+        $electrical->approved_vendors = $request->approved_vendors;
+        $electrical->material_notes = $request->material_notes;
+        $electrical->governing_code = $request->governing_code;
+        $electrical->notes = $request->notes;
+        
+        $electrical->save();
 
-        if ($service_info->id) {
-            return response(['status' => true, 'message' => 'Success', 'id' => $service_info->id,
+        if ($electrical->id) {
+            return response(['status' => true, 'message' => 'Success', 'id' => $electrical->id,
             'redirect' => route('admin.job-quality-requirements')]);
         } else {
             return response(['status' => false, 'message' => 'Error']);
@@ -429,20 +551,21 @@ class JobQualityRequirementController extends Controller
         // Store Data
         if ($request->id) {
             // For Edit
-            $service_info = ServiceInformation::where('id', $request->id)->first();
+            $preservation = Preservation::where('id', $request->id)->first();
         } else {
-            $service_info  = new ServiceInformation();
+            $preservation  = new Preservation();
         }
 
-        $service_info->basic_details_id = $request->basic_details_id;
-        $service_info->gas_processed = $request->gas_processed;
-        $service_info->application = $request->application;
-        $service_info->sour_service_required = $request->sour_service_required == 'on' ? '1':'0';
-        $service_info->other = $request->other;
-        $service_info->save();
+        $preservation->basic_details_id = $request->basic_details_id;
+        $preservation->efx_standard_short_term = $request->efx_standard_short_term;
+        $preservation->efx_standard_long_term = $request->efx_standard_long_term;
+        $preservation->customer_specified_other = $request->customer_specified_other;
+        $preservation->special_customer_requirements = $request->special_customer_requirements;
+        $preservation->other = $request->other;
+        $preservation->save();
 
-        if ($service_info->id) {
-            return response(['status' => true, 'message' => 'Success', 'id' => $service_info->id,
+        if ($preservation->id) {
+            return response(['status' => true, 'message' => 'Success', 'id' => $preservation->id,
             'redirect' => route('admin.job-quality-requirements')]);
         } else {
             return response(['status' => false, 'message' => 'Error']);
@@ -455,20 +578,62 @@ class JobQualityRequirementController extends Controller
         // Store Data
         if ($request->id) {
             // For Edit
-            $service_info = ServiceInformation::where('id', $request->id)->first();
+            $package_testing = PackageTesting::where('id', $request->id)->first();
         } else {
-            $service_info  = new ServiceInformation();
+            $package_testing  = new PackageTesting();
         }
 
-        $service_info->basic_details_id = $request->basic_details_id;
-        $service_info->gas_processed = $request->gas_processed;
-        $service_info->application = $request->application;
-        $service_info->sour_service_required = $request->sour_service_required == 'on' ? '1':'0';
-        $service_info->other = $request->other;
-        $service_info->save();
+        $package_testing->basic_details_id = $request->basic_details_id;
+        $package_testing->pneumatic_testing = $request->pneumatic_testing;
+        $package_testing->pneumatic_testing_customer_third_party_witness_required = $request->pneumatic_testing_customer_third_party_witness_required;
+        $package_testing->pneumatic_testing_notification_requirement = $request->pneumatic_testing_notification_requirement ;
+        $package_testing->system = $request->system;
+        $package_testing->test_medium = $request->test_medium;
+        $package_testing->test_requirement_pressure = $request->test_requirement_pressure;
+        $package_testing->test_requirement_time = $request->test_requirement_time;
+        $package_testing->pneumatic_testing_notes = $request->pneumatic_testing_notes;
+        $package_testing->vaccum = $request->vaccum;
+        $package_testing->vaccum_customer_third_party_witness_required = $request->vaccum_customer_third_party_witness_required;
+        $package_testing->vaccum_notification_requirement = $request->vaccum_notification_requirement;
+        $package_testing->level = $request->level;
+        $package_testing->duration_at_level = $request->duration_at_level;
+        $package_testing->vaccum_notes = $request->vaccum_notes;
+        $package_testing->purge_charge = $request->purge_charge;
+        $package_testing->purge_charge_medium = $request->purge_charge_medium;
+        $package_testing->purge_charge_pressure = $request->purge_charge_pressure;
+        $package_testing->purge_charge_notes = $request->purge_charge_notes;
+        $package_testing->lube_oil_flush = $request->lube_oil_flush;
+        $package_testing->lube_oil_flush_customer_third_party_witness_required = $request->lube_oil_flush_customer_third_party_witness_required;
+        $package_testing->lube_oil_flush_notification_requirement = $request->lube_oil_flush_notification_requirement;
+        $package_testing->lube_oil_flush_notes = $request->lube_oil_flush_notes;
+        $package_testing->run_test = $request->run_test;
+        $package_testing->run_test_customer_third_party_witness_required = $request->run_test_customer_third_party_witness_required;
+        $package_testing->run_test_notification_requirement = $request->run_test_notification_requirement;
+        $package_testing->run_test_requirement = $request->run_test_requirement;
+        $package_testing->run_test_notes = $request->run_test_notes;
+        $package_testing->megger_test = $request->megger_test;
+        $package_testing->megger_test_customer_third_party_witness_required = $request->megger_test_customer_third_party_witness_required;
+        $package_testing->megger_test_notification_requirement = $request->megger_test_notification_requirement;
+        $package_testing->megger_test_notes = $request->megger_test_notes;
+        $package_testing->fat_test = $request->fat_test;
+        $package_testing->fat_test_customer_third_party_witness_required = $request->fat_test_customer_third_party_witness_required;
+        $package_testing->fat_test_notification_requirement = $request->fat_test_notification_requirement;
+        $package_testing->fat_test_requirement = $request->fat_test_requirement;
+        $package_testing->fat_test_notes = $request->fat_test_notes;
+        $package_testing->additional_testing = $request->additional_testing;
+        $package_testing->additional_testing_customer_third_party_witness_required = $request->additional_testing_customer_third_party_witness_required;
+        $package_testing->additional_testing_notification_requirement = $request->additional_testing_notification_requirement;
+        $package_testing->additional_testing_test_requirement = $request->additional_testing_test_requirement;
+        $package_testing->addendum_purchasing_specifications = $request->addendum_purchasing_specifications;
+        $package_testing->addendum_purchasing_specifications_complete = $request->addendum_purchasing_specifications_complete;
+        $package_testing->addendum_purchasing_specifications_notes = $request->addendum_purchasing_specifications_notes;
+        $package_testing->addendum_manufacturing_specifications = $request->addendum_manufacturing_specifications;
+        $package_testing->addendum_manufacturing_specifications_complete = $request->addendum_manufacturing_specifications_complete;
+        $package_testing->addendum_manufacturing_specifications_notes = $request->addendum_manufacturing_specifications_notes;
+        $package_testing->save();
 
-        if ($service_info->id) {
-            return response(['status' => true, 'message' => 'Success', 'id' => $service_info->id,
+        if ($package_testing->id) {
+            return response(['status' => true, 'message' => 'Success', 'id' => $package_testing->id,
             'redirect' => route('admin.job-quality-requirements')]);
         } else {
             return response(['status' => false, 'message' => 'Error']);
@@ -539,12 +704,33 @@ class JobQualityRequirementController extends Controller
         $jqr_special = SpecialMaterialRequirements::where('basic_details_id', $jqr->id)->first();
         $jqr_general_info = GeneralInformation::where('basic_details_id', $jqr->id)->first();
         $jqr_service_info = ServiceInformation::where('basic_details_id', $jqr->id)->first();
-
+        $jqr_bolting = Bolting::where('basic_details_id', $jqr->id)->first();
+        $jqr_butt = ButtWeldedSocketWeldedUtilityPiping::where('basic_details_id', $jqr->id)->first();
+        $jqr_electrical = ElectricalInstrumentation::where('basic_details_id', $jqr->id)->first();
+        $jqr_non_code = NonCodeVesselsTanks::where('basic_details_id', $jqr->id)->first();
+        $jqr_package_testing = PackageTesting::where('basic_details_id', $jqr->id)->first();
+        $jqr_preservation = Preservation::where('basic_details_id', $jqr->id)->first();
+        $jqr_pressure_vessels = PressureVessels::where('basic_details_id', $jqr->id)->first();
+        $jqr_process_fuel_gas = ProcessFuelGasStartGasPiping::where('basic_details_id', $jqr->id)->first();
+        $jqr_structural_skid = StructuralSkid::where('basic_details_id', $jqr->id)->first();
+        $jqr_threaded_piping = ThreadedPiping::where('basic_details_id', $jqr->id)->first();
+        $jqr_tubing = Tubing::where('basic_details_id', $jqr->id)->first();
         return view('admin.job-quality-requirements.create', [
             'jqr' => $jqr,
             'jqr_special' => $jqr_special,
             'jqr_general_info' => $jqr_general_info,
-            'jqr_service_info' => $jqr->service_info
+            'jqr_service_info' => $jqr->service_info,
+            'jqr_bolting' => $jqr->jqr_bolting,
+            'jqr_butt' => $jqr->jqr_butt,
+            'jqr_electrical' => $jqr->jqr_electrical,
+            'jqr_non_code' => $jqr->jqr_non_code,
+            'jqr_package_testing' => $jqr->jqr_package_testing,
+            'jqr_preservation' => $jqr->jqr_preservation,
+            'jqr_pressure_vessels' => $jqr->jqr_pressure_vessels,
+            'jqr_process_fuel_gas' => $jqr->jqr_process_fuel_gas,
+            'jqr_structural_skid' => $jqr->jqr_structural_skid,
+            'jqr_threaded_piping' => $jqr->jqr_threaded_piping,
+            'jqr_tubing' => $jqr->jqr_tubing
         ]);
     }
 
