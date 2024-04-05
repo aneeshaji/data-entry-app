@@ -195,6 +195,11 @@
                                 <form onSubmit="return false" id="basic_details_from">
                                     <div class="row g-3">
                                         <div class="col-sm-6">
+                                            <label class="form-label" for="first-name1">Job/Project Number</label>
+                                            <input type="text" id="first-name1" class="form-control" placeholder=""
+                                                name="job_number" value="{{ isset($jqr->job_number) ? $jqr->job_number : '' }}" />
+                                        </div>
+                                        <div class="col-sm-6">
                                             <label class="form-label" for="email1">Job Name</label>
                                             <input type="text" name="job_name" id="job_name" class="form-control"
                                                 placeholder="" aria-label=""
@@ -253,8 +258,8 @@
                                     <h6 class="mb-0">Special Material Requirements</h6>
                                     <small>Enter special material requirements</small>
                                 </div>
+                                <form onSubmit="return false" id="special_material_from">
                                     <div class="row g-3">
-                                    <form onSubmit="return false" id="special_material_from">
                                         <div class="col-sm-6">
                                             <label class="switch">
                                                 <input type="checkbox" class="switch-input" name="pipes_and_fittings"
@@ -347,9 +352,8 @@
                                     value="{{ isset($jqr_special->id) ? $jqr_special->id : '' }}">
                                 <input type="hidden" class="form_id_bd" name="basic_details_id"
                                     value="{{ isset($jqr->id) ? $jqr->id : '' }}">
-                                </form>
                                 </div>
-
+                            </form>
                             </div>
                             <!-- Special Material Requirements Ends -->
                             <!-- General Information -->
@@ -360,13 +364,6 @@
                                 </div>
                                 <form onSubmit="return false" id="general_info_from">
                                     <div class="row g-3">
-
-                                        <div class="col-sm-6">
-                                            <label class="form-label" for="first-name1">Job/Project Number</label>
-                                            <input type="text" id="first-name1" class="form-control" placeholder=""
-                                                name="job_number"
-                                                value="{{ isset($jqr_general_info->job_number) ? $jqr_general_info->job_number : '' }}" />
-                                        </div>
                                         <div class="col-sm-6">
                                             <label class="form-label" for="last-name1">Cutomer</label>
                                             <input type="text" id="last-name1" class="form-control" placeholder=""
@@ -468,7 +465,7 @@
                                     <small>Enter Service Information.</small>
                                 </div>
                                 <form onSubmit="return false" id="service_info_from">
-                                
+
                                     <div class="row g-3">
                                         <div class="col-sm-6">
                                             <label class="form-label" for="twitter1">Gas Processed</label>
@@ -483,7 +480,7 @@
                                         <div class="col-sm-6">
                                             <label class="switch">
                                                 <input type="checkbox" class="switch-input" name="sour_service_required" {{ isset($jqr_service_info->sour_service_required) ? 'checked': '' }} >
-                                                
+
                                                 <span class="switch-toggle-slider">
                                                     <span class="switch-on"></span>
                                                     <span class="switch-off"></span>
@@ -537,7 +534,7 @@
                                     <small>Enter Structural Skid.</small>
                                 </div>
                                 <form onSubmit="return false" id="structural_skid_from">
-                                 
+
                                     <div class="row g-3">
                                         <small class="text-light fw-semibold">
                                             * Indicates Special Material Origin Requirements Must Be Checked 'Yes'
@@ -687,7 +684,7 @@
                                     <small>Enter Pressure Vessels.</small>
                                 </div>
 
-                           
+
                                 <form onSubmit="return false" id="pressure_vessels_from">
                                     <div class="row g-3">
                                         <small class="text-light fw-semibold">

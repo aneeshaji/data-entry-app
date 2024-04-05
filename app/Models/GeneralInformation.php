@@ -8,7 +8,6 @@ class GeneralInformation extends Model
 {
     protected $fillable = [
         'basic_details_id',
-        'job_number',
         'customer',
         'location',
         'end_user',

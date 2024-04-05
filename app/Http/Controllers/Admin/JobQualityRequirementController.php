@@ -69,7 +69,7 @@ class JobQualityRequirementController extends Controller
         } else {
             $basic_details = new BasicDetails();
         }
-
+        $basic_details->job_number = $request->job_number;
         $basic_details->job_name = $request->job_name;
         $basic_details->stages = $request->stages;
         $basic_details->release_date = $request->release_date;
@@ -128,7 +128,6 @@ class JobQualityRequirementController extends Controller
         }
 
         $general_info->basic_details_id = $request->basic_details_id;
-        $general_info->job_number = $request->job_number;
         $general_info->customer = $request->customer;
         $general_info->location = $request->location;
         $general_info->end_user = $request->end_user;
@@ -253,7 +252,7 @@ class JobQualityRequirementController extends Controller
         $pressure_vessels->hydro_chart_required = $request->hydro_chart_required;
         $pressure_vessels->hydro_notes = $request->hydro_notes;
         $pressure_vessels->notes = $request->notes;
-        
+
         $pressure_vessels->save();
 
         if ($pressure_vessels->id) {
@@ -539,7 +538,7 @@ class JobQualityRequirementController extends Controller
         $electrical->material_notes = $request->material_notes;
         $electrical->governing_code = $request->governing_code;
         $electrical->notes = $request->notes;
-        
+
         $electrical->save();
 
         if ($electrical->id) {
@@ -709,7 +708,6 @@ class JobQualityRequirementController extends Controller
         $jqr_special = SpecialMaterialRequirements::where('basic_details_id', $jqr->id)->first();
         $jqr_general_info = GeneralInformation::where('basic_details_id', $jqr->id)->first();
         $jqr_service_info = ServiceInformation::where('basic_details_id', $jqr->id)->first();
-       // dd( $jqr_service_info); die;
         $jqr_bolting = Bolting::where('basic_details_id', $jqr->id)->first();
         $jqr_butt = ButtWeldedSocketWeldedUtilityPiping::where('basic_details_id', $jqr->id)->first();
         $jqr_electrical = ElectricalInstrumentation::where('basic_details_id', $jqr->id)->first();

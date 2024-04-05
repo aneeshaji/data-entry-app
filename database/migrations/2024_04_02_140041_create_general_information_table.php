@@ -14,7 +14,6 @@ return new class extends Migration
         Schema::create('general_information', function (Blueprint $table) {
             $table->id();
             $table->integer('basic_details_id')->comment('Refers basic_details -> id');
-            $table->string('job_number')->nullable();
             $table->string('customer')->nullable();
             $table->string('location')->nullable();
             $table->string('end_user')->nullable();
