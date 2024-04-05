@@ -195,24 +195,25 @@
                                     <div class="row g-3">
                                         <div class="col-sm-6">
                                             <label class="form-label" for="email1">Job Name</label>
-                                            <input type="text" id="email1" class="form-control" placeholder=""
-                                                aria-label="" />
+                                            <input type="text" name="job_name" id="job_name" class="form-control" placeholder=""
+                                                aria-label="" value="{{ isset($jqr->job_name) ? $jqr->job_name : '' }}"/>
                                         </div>
                                         <div class="col-sm-6">
                                             <label class="form-label" for="email1">Stages</label>
-                                            <input type="text" id="email1" class="form-control" placeholder=""
-                                                aria-label="" />
+                                            <input type="text" id="email1" class="form-control" name="stages" placeholder=""
+                                                aria-label="" value="{{ isset($jqr->stages) ? $jqr->stages : '' }}" />
                                         </div>
                                         <div class="col-sm-6">
                                             <label class="form-label" for="email1">Release Date</label>
-                                            <input type="date" id="email1" class="form-control" placeholder=""
-                                                aria-label="" />
+                                            <input type="date" id="email1" class="form-control" name="release_date" placeholder=""
+                                                aria-label="" value="{{ isset($jqr->release_date) ? $jqr->release_date : '' }}" />
                                         </div>
                                         <div class="col-sm-6">
-                                            <label class="form-label" for="email1">Issue Date</label>
-                                            <input type="date" id="email1" class="form-control" placeholder=""
-                                                aria-label="" />
+                                            <label class="form-label" for="email1">Due Date</label>
+                                            <input type="date" id="email1" name="due_date" class="form-control" placeholder=""
+                                                aria-label="" value="{{ isset($jqr->due_date) ? $jqr->due_date : '' }}"/>
                                         </div>
+                                        <input type="hidden" name="id" value="{{ isset($jqr->id) ? $jqr->id : '' }}">
                                         <!-- Action Buttons -->
                                         <div class="pt-4">
                                             <div class="row justify-content-end">
@@ -223,7 +224,7 @@
                                                         <span
                                                             class="align-middle d-sm-inline-block d-none">Previous</span>
                                                     </button>
-                                                    <button type="button"
+                                                    <button type="button" onclick="submitData(true)"
                                                         class="btn btn-success waves-effect waves-light me-sm-3 me-1"><i
                                                             class="ti ti-check"></i>Save</button>
                                                     <button class="btn btn-primary btn-next">
@@ -2424,3 +2425,72 @@
         <div class="content-backdrop fade"></div>
     </div>
 </x-app-layout>
+<script>
+    // Vertical Icons Wizard
+    // --------------------------------------------------------------------
+    const wizardIconsVertical = document.querySelector('.wizard-vertical-icons-example');
+
+    if (typeof wizardIconsVertical !== undefined && wizardIconsVertical !== null) {
+        const wizardIconsVerticalBtnNextList = [].slice.call(wizardIconsVertical.querySelectorAll('.btn-next')),
+            wizardIconsVerticalBtnPrevList = [].slice.call(wizardIconsVertical.querySelectorAll('.btn-prev')),
+            wizardIconsVerticalBtnSubmit = wizardIconsVertical.querySelector('.btn-submit');
+
+        const verticalIconsStepper = new Stepper(wizardIconsVertical, {
+            linear: false
+        });
+
+        if (wizardIconsVerticalBtnNextList) {
+            wizardIconsVerticalBtnNextList.forEach(wizardIconsVerticalBtnNext => {
+            wizardIconsVerticalBtnNext.addEventListener('click', event => {
+                if($('#job_name').val() == ''){
+                    alert('Input can not be left blank');
+                } else {
+                    verticalIconsStepper.next();
+                    submitData(false);
+                }
+            });
+            });
+        }
+        if (wizardIconsVerticalBtnPrevList) {
+            wizardIconsVerticalBtnPrevList.forEach(wizardIconsVerticalBtnPrev => {
+            wizardIconsVerticalBtnPrev.addEventListener('click', event => {
+                verticalIconsStepper.previous();
+            });
+            });
+        }
+        if (wizardIconsVerticalBtnSubmit) {
+            wizardIconsVerticalBtnSubmit.addEventListener('click', event => {
+            alert('Submitted..!!');
+            });
+        }
+    }
+
+    // Submit Data
+    function submitData(reloadFlag) {
+        $.ajaxSetup({
+        headers: {
+            'X-CSRF-TOKEN': jQuery('meta[name="csrf-token"]').attr('content')
+        }
+        });
+
+        var formData = $('form').serialize();
+        console.log("Form Data", formData)
+        $.ajax({
+            method: 'POST',
+            url: '/admin/job-quality-requirements/saveData',
+            data: formData,
+            dataType: 'json',
+            success: function(response) {
+                if (response.status == true) {
+                    if (reloadFlag == true) {
+                        window.location.href = response.redirect;
+                    }
+                }
+            },
+            error: function(xhr, status, error) {
+                // Handle errors if needed
+                console.error(xhr.responseText);
+            }
+        });
+    }
+</script>

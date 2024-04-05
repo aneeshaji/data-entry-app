@@ -11,6 +11,8 @@
     <title>Dashboard | JQRMS</title>
 
     <meta name="description" content="" />
+    <!-- CSRF Token -->
+    <meta name="csrf-token" content="{{ csrf_token() }}">
 
     <!-- Favicon -->
     <link rel="icon" type="image/x-icon" href="{{ asset('assets/img/favicon/favicon.ico') }}" />
@@ -614,5 +616,4 @@
     <script src="{{ asset('assets/js/form-wizard-icons.js') }}"></script>
     <script src="{{ asset('assets/js/form-wizard-validation.js') }}"></script>
 </body>
-
 </html>

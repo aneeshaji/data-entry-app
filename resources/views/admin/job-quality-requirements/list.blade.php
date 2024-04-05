@@ -10,65 +10,52 @@
                     <table class="table table-hover">
                         <thead>
                             <tr>
-                                <th>Job Number</th>
+                                <th>Sl.No</th>
                                 <th>Job Name</th>
                                 <th>Stages</th>
                                 <th>Release Date</th>
+                                <th>Due Date</th>
                                 <th>Actions</th>
                             </tr>
                         </thead>
                         <tbody class="table-border-bottom-0">
-                            <tr>
-                                <td>
-                                    <span class="fw-medium">VOL-302781</span>
+                            @if ($jqrs->count() > 0)
+                                @foreach ($jqrs as $key => $value)
+                                    <tr>
+                                        <td>
+                                            <span class="fw-medium">{{ $key + 1 }}</span>
+                                        </td>
+                                        <td>{{ $value->job_name }}</td>
+                                        <td>
+                                        {{ $value->stages }}
+                                        </td>
+                                        <td><span class="">{{ $value->release_date }}</span></td>
+                                        <td><span class="">{{ $value->due_date }}</span></td>
+                                        <td>
+                                            <div class="dropdown">
+                                                <button type="button" class="btn p-0 dropdown-toggle hide-arrow"
+                                                    data-bs-toggle="dropdown">
+                                                    <i class="ti ti-dots-vertical"></i>
+                                                </button>
+                                                <div class="dropdown-menu">
+                                                    <a class="dropdown-item" href="{{ url('admin/job-quality-requirements/' . encrypt($value->id) . '/edit') }}"><i
+                                                            class="ti ti-pencil me-1"></i> Edit</a>
+                                                    <a class="dropdown-item" href="javascript:void(0);"><i
+                                                            class="ti ti-download"></i> Download</a>
+                                                </div>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                @endforeach
+                            @else
+                                <td colspan="6" class="text-bold text-danger text-center">
+                                    No Data Found
                                 </td>
-                                <td>Test1</td>
-                                <td>
-                                   Stage1
-                                </td>
-                                <td><span class="">15-03-2024</span></td>
-                                <td>
-                                    <div class="dropdown">
-                                        <button type="button" class="btn p-0 dropdown-toggle hide-arrow"
-                                            data-bs-toggle="dropdown">
-                                            <i class="ti ti-dots-vertical"></i>
-                                        </button>
-                                        <div class="dropdown-menu">
-                                            <a class="dropdown-item" href="javascript:void(0);"><i
-                                                    class="ti ti-pencil me-1"></i> Edit</a>
-                                            <a class="dropdown-item" href="javascript:void(0);"><i
-                                                    class="ti ti-download"></i> Download</a>
-                                        </div>
-                                    </div>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>
-                                    <span class="fw-medium">VOL-468031</span>
-                                </td>
-                                <td>Test2</td>
-                                <td>
-                                   Stage2
-                                </td>
-                                <td><span class="">13-03-2024</span></td>
-                                <td>
-                                    <div class="dropdown">
-                                        <button type="button" class="btn p-0 dropdown-toggle hide-arrow"
-                                            data-bs-toggle="dropdown">
-                                            <i class="ti ti-dots-vertical"></i>
-                                        </button>
-                                        <div class="dropdown-menu">
-                                            <a class="dropdown-item" href="javascript:void(0);"><i
-                                                    class="ti ti-pencil me-1"></i> Edit</a>
-                                            <a class="dropdown-item" href="javascript:void(0);"><i
-                                                    class="ti ti-download"></i> Download</a>
-                                        </div>
-                                    </div>
-                                </td>
-                            </tr>
+                            @endif
                         </tbody>
                     </table>
                 </div>
+                {{ $jqrs->render() }}
             </div>
         </div>
         <!-- / Content -->
