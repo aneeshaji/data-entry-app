@@ -683,8 +683,6 @@
                                     <h6 class="mb-0">Pressure Vessels</h6>
                                     <small>Enter Pressure Vessels.</small>
                                 </div>
-
-
                                 <form onSubmit="return false" id="pressure_vessels_from">
                                     <div class="row g-3">
                                         <small class="text-light fw-semibold">
@@ -702,7 +700,8 @@
                                         </div>
                                         <div class="col-sm-6">
                                             <label class="form-label" for="twitter1">Material Origin REQS</label>
-                                            <input type="text" id="twitter1" name="material_origin_reqs" class="form-control" placeholder="" />
+                                            <input type="text" id="twitter1" name="material_origin_reqs" class="form-control" placeholder=""
+                                            value="{{ isset($jqr_pressure_vessels->material_origin_reqs) ? $jqr_pressure_vessels->material_origin_reqs : '' }}"/>
                                         </div>
                                         <div class="col-sm-6">
                                             <label class="switch">
@@ -717,7 +716,7 @@
                                         <div class="col-sm-6">
                                             <label class="form-label" for="facebook1">Acceptable Material
                                                 Origins</label>
-                                            <input type="text" id="facebook1" name="acceptable_material_origins	" class="form-control" placeholder="" value="{{ isset($jqr_pressure_vessels->acceptable_material_origins) ? $jqr_pressure_vessels->acceptable_material_origins : '' }}"/>
+                                            <input type="text" id="facebook1" name="acceptable_material_origins" class="form-control" placeholder="" value="{{ isset($jqr_pressure_vessels->acceptable_material_origins) ? $jqr_pressure_vessels->acceptable_material_origins : '' }}"/>
                                         </div>
                                         <div class="col-sm-6">
                                             <label class="switch">
@@ -878,7 +877,7 @@
                                     <h6 class="mb-0">Non Code Vessels/Tanks</h6>
                                     <small>Enter Non Code Vessels/Tanks.</small>
                                 </div>
-                               
+
                                 <form onSubmit="return false" id="non_code_vessels_from">
                                     <div class="row g-3">
                                         <small class="text-light fw-semibold">
@@ -1092,7 +1091,7 @@
                                     <h6 class="mb-0">Process/Fuel Gas/Start Gas Piping</h6>
                                     <small>Enter Process/Fuel Gas/Start Gas Piping.</small>
                                 </div>
-                               
+
                                 <form onSubmit="return false" id="process_piping_from">
                                     <div class="row g-3">
                                         <small class="text-light fw-semibold">
