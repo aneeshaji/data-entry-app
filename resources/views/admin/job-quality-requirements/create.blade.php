@@ -358,8 +358,9 @@
                                     <h6 class="mb-0">General Information</h6>
                                     <small>Enter general information</small>
                                 </div>
-                                <div class="row g-3">
-                                    <form onSubmit="return false" id="general_info_from">
+                                <form onSubmit="return false" id="general_info_from">
+                                    <div class="row g-3">
+
                                         <div class="col-sm-6">
                                             <label class="form-label" for="first-name1">Job/Project Number</label>
                                             <input type="text" id="first-name1" class="form-control" placeholder=""
@@ -453,13 +454,11 @@
                                             </div>
                                         </div>
                                         <!-- Action Buttons Ends -->
-                                        <input type="hidden" class="form_general_bd" name="id"
-                                    value="{{ isset($jqr_general_info->id) ? $jqr_general_info->id : '' }}">
-                                <input type="hidden" class="form_id_bd" name="basic_details_id"
-                                    value="{{ isset($jqr->id) ? $jqr->id : '' }}">
-                                </form>
+                                        <input type="hidden" class="form_general_bd" name="id" value="{{ isset($jqr_general_info->id) ? $jqr_general_info->id : '' }}">
+                                        <input type="hidden" class="form_id_bd" name="basic_details_id" value="{{ isset($jqr->id) ? $jqr->id : '' }}">
+
                                 </div>
-                                
+                                </form>
                             </div>
                             <!-- General Information Ends -->
                             <!-- Service Information -->
@@ -468,9 +467,8 @@
                                     <h6 class="mb-0">Service Information</h6>
                                     <small>Enter Service Information.</small>
                                 </div>
-                             
+                                <form onSubmit="return false" id="service_info_from">
                                     <div class="row g-3">
-                                    <form onSubmit="return false" id="service_info_from">
                                         <div class="col-sm-6">
                                             <label class="form-label" for="twitter1">Gas Processed</label>
                                             <input type="text" id="twitter1" name="gas_processed" class="form-control" placeholder=""
@@ -526,9 +524,9 @@
                                     value="{{ isset($jqr_general_info->id) ? $jqr_general_info->id : '' }}">
                                     <input type="hidden" class="form_id_bd" name="basic_details_id"
                                     value="{{ isset($jqr->id) ? $jqr->id : '' }}">
-                                </form>
+
                                     </div>
-                                  
+                                    </form>
                             </div>
                             <!-- Service Information Ends -->
                             <!-- Structural Skid -->
@@ -1558,7 +1556,7 @@
                                                         <i class="ti ti-arrow-left me-sm-1"></i>
                                                         <span class="align-middle d-sm-inline-block d-none">Previous</span>
                                                     </button>
-                                                    <button type="button" onclick="submitTubingData(true)" 
+                                                    <button type="button" onclick="submitTubingData(true)"
                                                         class="btn btn-success waves-effect waves-light me-sm-3 me-1"><i
                                                             class="ti ti-check"></i>Save</button>
                                                     <button class="btn btn-primary btn-next">
@@ -1765,7 +1763,7 @@
                                                         <i class="ti ti-arrow-left me-sm-1"></i>
                                                         <span class="align-middle d-sm-inline-block d-none">Previous</span>
                                                     </button>
-                                                    <button type="button" onclick="submitButtPipingData(true)" 
+                                                    <button type="button" onclick="submitButtPipingData(true)"
                                                         class="btn btn-success waves-effect waves-light me-sm-3 me-1"><i
                                                             class="ti ti-check"></i>Save</button>
                                                     <button class="btn btn-primary btn-next" onclick="submitButtPipingData(false)" >
@@ -1884,7 +1882,7 @@
                                                         <i class="ti ti-arrow-left me-sm-1"></i>
                                                         <span class="align-middle d-sm-inline-block d-none">Previous</span>
                                                     </button>
-                                                    <button type="button"  onclick="submitThreadedPipingData(true)" 
+                                                    <button type="button"  onclick="submitThreadedPipingData(true)"
                                                         class="btn btn-success waves-effect waves-light me-sm-3 me-1"><i
                                                             class="ti ti-check"></i>Save</button>
                                                     <button class="btn btn-primary btn-next">
@@ -1967,7 +1965,7 @@
                                                         <i class="ti ti-arrow-left me-sm-1"></i>
                                                         <span class="align-middle d-sm-inline-block d-none">Previous</span>
                                                     </button>
-                                                    <button type="button" onclick="submitElectricalData(true)" 
+                                                    <button type="button" onclick="submitElectricalData(true)"
                                                         class="btn btn-success waves-effect waves-light me-sm-3 me-1"><i
                                                             class="ti ti-check"></i>Save</button>
                                                     <button class="btn btn-primary btn-next" onclick="submitElectricalData(false)" >
@@ -2062,7 +2060,7 @@
                                     <input type="hidden" class="form_id_bd" name="basic_details_id"
                                     value="{{ isset($jqr->id) ? $jqr->id : '' }}">
                                 </form>
-                              
+
                             </div>
                             <!-- Preservation Ends -->
                             <!-- Package Testing -->
