@@ -319,22 +319,23 @@ class JobQualityRequirementController extends Controller
         }
 
         $process_fual_gas->basic_details_id = $request->basic_details_id;
-        $process_fual_gas->customer_avl_applies = $request->customer_avl_applies== 'on' ? '1' : '0';
+        $process_fual_gas->customer_avl_applies = $request->customer_avl_applies == 'on' ? '1' : '0';
         $process_fual_gas->material_origin_reqs = $request->material_origin_reqs;
         $process_fual_gas->origin_traceable_to_melt = $request->origin_traceable_to_melt;
-        $process_fual_gas->standard_code = $request->standard_code== 'on' ? '1' : '0';
-        $process_fual_gas->mtrs_required = $request->mtrs_required== 'on' ? '1' : '0';
-        $process_fual_gas->heat_mapping = $request->heat_mapping== 'on' ? '1' : '0';
-        $process_fual_gas->weld_mapping = $request->weld_mapping== 'on' ? '1' : '0';
+        $process_fual_gas->acceptable_material_origins = $request->acceptable_material_origins;
+        $process_fual_gas->standard_code = $request->standard_code == 'on' ? '1' : '0';
+        $process_fual_gas->mtrs_required = $request->mtrs_required == 'on' ? '1' : '0';
+        $process_fual_gas->heat_mapping = $request->heat_mapping == 'on' ? '1' : '0';
+        $process_fual_gas->weld_mapping = $request->weld_mapping == 'on' ? '1' : '0';
         $process_fual_gas->material_notes = $request->material_notes;
-        $process_fual_gas->nace = $request->nace== 'on' ? '1' : '0';
+        $process_fual_gas->nace = $request->nace == 'on' ? '1' : '0';
         $process_fual_gas->nde_requirements = $request->nde_requirements;
         $process_fual_gas->weld_requirements = $request->weld_requirements;
         $process_fual_gas->governing_code = $request->governing_code;
         $process_fual_gas->hydro_hold_time = $request->hydro_hold_time;
-        $process_fual_gas->witnessed = $request->witnessed== 'on' ? '1' : '0';
-        $process_fual_gas->hardness_test = $request->hardness_test== 'on' ? '1' : '0';
-        $process_fual_gas->max_hardness = $request->max_hardness== 'on' ? '1' : '0';
+        $process_fual_gas->witnessed = $request->witnessed == 'on' ? '1' : '0';
+        $process_fual_gas->hardness_test = $request->hardness_test == 'on' ? '1' : '0';
+        $process_fual_gas->max_hardness = $request->max_hardness;
         $process_fual_gas->hydro_chart_required = $request->hydro_chart_required;
         $process_fual_gas->hydro_notes = $request->hydro_notes;
         $process_fual_gas->notes = $request->notes;
