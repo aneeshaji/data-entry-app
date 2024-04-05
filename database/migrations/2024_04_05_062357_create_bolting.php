@@ -18,7 +18,7 @@ return new class extends Migration
             $table->tinyInteger('vendor_coc')->nullable()->comment('1 => Yes, 0 => No');
             $table->tinyInteger('manufacturer_coc')->nullable()->comment('1 => Yes, 0 => No');
             $table->tinyInteger('mtrs')->nullable()->comment('1 => Yes, 0 => No');
-            $table->text('notes')->nullable();
+            $table->text('material_notes')->nullable();
             $table->timestamps();
         });
     }
