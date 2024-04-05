@@ -25,6 +25,7 @@ use App\Models\ProcessFuelGasStartGasPiping;
 use App\Models\StructuralSkid;
 use App\Models\ThreadedPiping;
 use App\Models\Tubing;
+use App\Models\Gaskets;
 
 
 class JobQualityRequirementController extends Controller
@@ -382,17 +383,17 @@ class JobQualityRequirementController extends Controller
         // Store Data
         if ($request->id) {
             // For Edit
-            $service_info = ServiceInformation::where('id', $request->id)->first();
+            $service_info = Gaskets::where('id', $request->id)->first();
         } else {
-            $service_info  = new ServiceInformation();
+            $service_info  = new Gaskets();
         }
 
         $service_info->basic_details_id = $request->basic_details_id;
         $service_info->efx_standard_no_cocs = $request->efx_standard_no_cocs== 'on' ? '1' : '0';
         $service_info->vendor_coc = $request->vendor_coc== 'on' ? '1' : '0';
         $service_info->manufacturer_coc = $request->manufacturer_coc== 'on' ? '1' : '0';
-        $bolting->mtrs = $request->mtrs== 'on' ? '1' : '0';
-        $bolting->material_notes = $request->material_notes;
+        $service_info->mtrs = $request->mtrs== 'on' ? '1' : '0';
+        $service_info->material_notes = $request->material_notes;
         $service_info->save();
 
         if ($service_info->id) {
