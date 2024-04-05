@@ -17,7 +17,7 @@ return new class extends Migration
             $table->tinyInteger('customer_avl_applies')->nullable()->comment('1 => Yes, 0 => No');
             $table->string('acceptable_material_origins')->nullable();
             $table->string('vendor_restrictions')->nullable();
-            $table->tinyInteger('specify')->nullable()->comment('1 => Yes, 0 => No');
+            $table->string('specify')->nullable();
             $table->string('approved_vendors')->nullable();
             $table->text('material_notes')->nullable();
             $table->text('governing_code')->nullable();

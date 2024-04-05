@@ -17,7 +17,7 @@ return new class extends Migration
             $table->tinyInteger('pneumatic_testing')->nullable()->comment('1 => Yes, 0 => No');
             $table->tinyInteger('pneumatic_testing_customer_third_party_witness_required')->nullable()->comment('1 => Yes, 0 => No');
             $table->string('pneumatic_testing_notification_requirement')->nullable();
-            $table->tinyInteger('system')->nullable();
+            $table->string('system')->nullable();
             $table->string('test_medium')->nullable();
             $table->string('test_requirement_pressure')->nullable();
             $table->string('test_requirement_time')->nullable();
@@ -34,7 +34,7 @@ return new class extends Migration
             $table->text('purge_charge_notes')->nullable();
             $table->text('lube_oil_flush')->nullable();
             $table->tinyInteger('lube_oil_flush_customer_third_party_witness_required')->nullable()->comment('1 => Yes, 0 => No');
-            $table->tinyInteger('lube_oil_flush_notification_requirement')->nullable()->comment('1 => Yes, 0 => No');
+            $table->text('lube_oil_flush_notification_requirement')->nullable();
             $table->text('lube_oil_flush_notes')->nullable();
             $table->tinyInteger('run_test')->nullable()->comment('1 => Yes, 0 => No');
             $table->tinyInteger('run_test_customer_third_party_witness_required')->nullable()->comment('1 => Yes, 0 => No');
