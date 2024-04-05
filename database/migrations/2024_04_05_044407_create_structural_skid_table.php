@@ -32,7 +32,7 @@ return new class extends Migration
             $table->tinyInteger('hardness_test')->nullable()->comment('1 => Yes, 0 => No');
             $table->tinyInteger('max_hardness')->nullable()->comment('1 => Yes, 0 => No');
             $table->string('hydro_chart_required')->nullable();
-            $table->text('hydro_noted')->nullable();
+            $table->text('hydro_notes')->nullable();
             $table->text('notes')->nullable();
 
             $table->timestamps();
