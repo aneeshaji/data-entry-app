@@ -468,21 +468,22 @@
                                     <small>Enter Service Information.</small>
                                 </div>
                                 <form onSubmit="return false" id="service_info_from">
+                                
                                     <div class="row g-3">
                                         <div class="col-sm-6">
                                             <label class="form-label" for="twitter1">Gas Processed</label>
                                             <input type="text" id="twitter1" name="gas_processed" class="form-control" placeholder=""
-                                            value="{{ isset($jqr->service_info->gas_processed) ? $jqr->service_info->gas_processed : '' }}" />
+                                            value="{{ isset($jqr_service_info->gas_processed) ? $jqr_service_info->gas_processed : '' }}" />
                                         </div>
                                         <div class="col-sm-6">
                                             <label class="form-label" for="facebook1">Application</label>
                                             <input type="text" id="facebook1" name="application" class="form-control" placeholder=""
-                                            value="{{ isset($jqr->service_info->application) ?$jqr->service_info->application : '' }}"/>
+                                            value="{{ isset($jqr_service_info->application) ?$jqr_service_info->application : '' }}"/>
                                         </div>
                                         <div class="col-sm-6">
                                             <label class="switch">
-                                                <input type="checkbox" class="switch-input" name="sour_service_required">
-                                                {{ isset($jqr->service_info->sour_service_required) ? 'checked': '' }}
+                                                <input type="checkbox" class="switch-input" name="sour_service_required" {{ isset($jqr_service_info->sour_service_required) ? 'checked': '' }} >
+                                                
                                                 <span class="switch-toggle-slider">
                                                     <span class="switch-on"></span>
                                                     <span class="switch-off"></span>
@@ -493,12 +494,12 @@
                                         <div class="col-sm-6">
                                             <label class="form-label" for="facebook1">Other</label>
                                             <input type="text" id="facebook1" class="form-control" name="other" placeholder=""
-                                            value="{{ isset($jqr->service_info->other) ? $jqr->service_info : '' }}" />
+                                            value="{{ isset($jqr_service_info->other) ? $jqr_service_info->other : '' }}" />
                                         </div>
                                         <div class="col-sm-6">
                                             <label class="form-label" for="facebook1">Notes</label>
                                             <textarea class="form-control" id="exampleFormControlTextarea1"
-                                                rows="3" name="note">{{ isset($jqr->service_info->notes) ? $jqr->service_info->notes : '' }}</textarea>
+                                                rows="3" name="notes">{{ isset($jqr_service_info->notes) ? $jqr_service_info->notes : '' }}</textarea>
                                         </div>
                                         <!-- Action Buttons -->
                                         <div class="pt-4">
@@ -536,13 +537,14 @@
                                     <small>Enter Structural Skid.</small>
                                 </div>
                                 <form onSubmit="return false" id="structural_skid_from">
+                                 
                                     <div class="row g-3">
                                         <small class="text-light fw-semibold">
                                             * Indicates Special Material Origin Requirements Must Be Checked 'Yes'
                                         </small>
                                         <div class="col-sm-6">
                                             <label class="switch">
-                                                <input type="checkbox" class="switch-input" name="customer_avl_applies">
+                                                <input type="checkbox" class="switch-input" name="customer_avl_applies" {{ isset($jqr_structural_skid->customer_avl_applies) ? 'checked': '' }}>
                                                 <span class="switch-toggle-slider">
                                                     <span class="switch-on"></span>
                                                     <span class="switch-off"></span>
@@ -552,11 +554,11 @@
                                         </div>
                                         <div class="col-sm-6">
                                             <label class="form-label" for="twitter1">Material Origin REQS</label>
-                                            <input type="text" id="twitter1" name="material_origin_reqs" class="form-control" placeholder="" />
+                                            <input type="text" id="twitter1" name="material_origin_reqs" class="form-control" placeholder="" value="{{ isset($jqr_structural_skid->material_origin_reqs) ? $jqr_structural_skid->material_origin_reqs : '' }}" />
                                         </div>
                                         <div class="col-sm-6">
                                             <label class="switch">
-                                                <input type="checkbox" class="switch-input" name="origin_traceable_to_melt">
+                                                <input type="checkbox" class="switch-input" name="origin_traceable_to_melt"  {{ isset($jqr_structural_skid->origin_traceable_to_melt) ? 'checked': '' }} >
                                                 <span class="switch-toggle-slider">
                                                     <span class="switch-on"></span>
                                                     <span class="switch-off"></span>
@@ -567,11 +569,11 @@
                                         <div class="col-sm-6">
                                             <label class="form-label" for="facebook1">Acceptable Material
                                                 Origins</label>
-                                            <input type="text" name="acceptable_material_origins" id="facebook1" class="form-control" placeholder="" />
+                                            <input type="text" name="acceptable_material_origins" id="facebook1" class="form-control" placeholder="" value="{{ isset($jqr_structural_skid->acceptable_material_origins) ? $jqr_structural_skid->acceptable_material_origins : '' }}" />
                                         </div>
                                         <div class="col-sm-6">
                                             <label class="switch">
-                                                <input type="checkbox" name="standard_per_code" class="switch-input">
+                                                <input type="checkbox" name="standard_per_code" class="switch-input" {{ isset($jqr_structural_skid->standard_per_code) ? 'checked': '' }}>
                                                 <span class="switch-toggle-slider">
                                                     <span class="switch-on"></span>
                                                     <span class="switch-off"></span>
@@ -581,7 +583,7 @@
                                         </div>
                                         <div class="col-sm-6">
                                             <label class="switch">
-                                                <input type="checkbox" name="mtrs_required" class="switch-input">
+                                                <input type="checkbox" name="mtrs_required" class="switch-input" {{ isset($jqr_structural_skid->mtrs_required) ? 'checked': '' }}>
                                                 <span class="switch-toggle-slider">
                                                     <span class="switch-on"></span>
                                                     <span class="switch-off"></span>
@@ -591,7 +593,7 @@
                                         </div>
                                         <div class="col-sm-6">
                                             <label class="switch">
-                                                <input type="checkbox" name="heat_mapping" class="switch-input">
+                                                <input type="checkbox" name="heat_mapping" class="switch-input" {{ isset($jqr_structural_skid->heat_mapping) ? 'checked': '' }}  >
                                                 <span class="switch-toggle-slider">
                                                     <span class="switch-on"></span>
                                                     <span class="switch-off"></span>
@@ -601,7 +603,7 @@
                                         </div>
                                         <div class="col-sm-6">
                                             <label class="switch">
-                                                <input type="checkbox" name="weld_mapping" class="switch-input">
+                                                <input type="checkbox" name="weld_mapping" class="switch-input" {{ isset($jqr_structural_skid->weld_mapping) ? 'checked': '' }} >
                                                 <span class="switch-toggle-slider">
                                                     <span class="switch-on"></span>
                                                     <span class="switch-off"></span>
@@ -612,32 +614,32 @@
                                         <div class="col-sm-6">
                                             <label class="form-label" for="google1">Material Notes</label>
                                             <textarea class="form-control" name="material_notes" id="exampleFormControlTextarea1"
-                                                rows="3"></textarea>
+                                                rows="3">{{ isset($jqr_structural_skid->material_notes) ? $jqr_structural_skid->material_notes : '' }}</textarea>
                                         </div>
                                         <div class="col-sm-6">
                                             <label class="form-label" for="linkedin1">NDE Requirements</label>
                                             <textarea class="form-control" name="nde_requirements" id="exampleFormControlTextarea1"
-                                                rows="3"></textarea>
+                                                rows="3">{{ isset($jqr_structural_skid->nde_requirements) ? $jqr_structural_skid->nde_requirements : '' }}</textarea>
                                         </div>
                                         <div class="col-sm-6">
                                             <label class="form-label" for="linkedin1">Welding Requirements</label>
                                             <textarea class="form-control" name="weld_requirements" id="exampleFormControlTextarea1"
-                                                rows="3"></textarea>
+                                                rows="3">{{ isset($jqr_structural_skid->weld_requirements) ? $jqr_structural_skid->weld_requirements : '' }}</textarea>
                                         </div>
                                         <div class="col-sm-6">
                                             <label class="form-label" for="linkedin1">Governing Code</label>
-                                            <input type="text" id="linkedin1" name="governing_code" class="form-control" placeholder="" />
+                                            <input type="text" id="linkedin1" name="governing_code" class="form-control" placeholder="" value="{{ isset($jqr_structural_skid->governing_code) ? $jqr_structural_skid->governing_code : '' }}" />
                                         </div>
                                         <div class="col-sm-6">
                                             <small class="text-light fw-semibold d-block">PWHT</small>
                                             <div class="form-check form-check-inline mt-3">
                                                 <input class="form-check-input" type="radio" name="pwht"
-                                                    id="inlineRadio1" value="option1">
+                                                    id="inlineRadio1" value="0" {{ isset($jqr_structural_skid->pwht) && $jqr_structural_skid->pwht == '0'  ? 'checked': '' }}>
                                                 <label class="form-check-label" for="inlineRadio1">Yes</label>
                                             </div>
                                             <div class="form-check form-check-inline">
                                                 <input class="form-check-input" type="radio" name="pwht"
-                                                    id="inlineRadio2" value="option2">
+                                                    id="inlineRadio2" value="1"  {{ isset($jqr_structural_skid->pwht) && $jqr_structural_skid->pwht == '1'  ? 'checked': '' }} >
                                                 <label class="form-check-label" for="inlineRadio2">No - EFX
                                                     Standard</label>
                                             </div>
@@ -645,7 +647,7 @@
                                         <div class="col-sm-6">
                                             <label class="form-label" for="linkedin1">Notes</label>
                                             <textarea class="form-control" name="notes" id="exampleFormControlTextarea1"
-                                                rows="3"></textarea>
+                                                rows="3">{{ isset($jqr_structural_skid->notes) ? $jqr_structural_skid->notes : '' }}</textarea>
                                         </div>
                                         <div class="col-sm-6">
                                         </div>
@@ -684,6 +686,8 @@
                                     <h6 class="mb-0">Pressure Vessels</h6>
                                     <small>Enter Pressure Vessels.</small>
                                 </div>
+
+                           
                                 <form onSubmit="return false" id="pressure_vessels_from">
                                     <div class="row g-3">
                                         <small class="text-light fw-semibold">
@@ -691,7 +695,7 @@
                                         </small>
                                         <div class="col-sm-6">
                                             <label class="switch">
-                                                <input type="checkbox" class="switch-input" name="customer_avl_applies">
+                                                <input type="checkbox" class="switch-input" name="customer_avl_applies" {{ isset($jqr_pressure_vessels->customer_avl_applies) ? 'checked': '' }}>
                                                 <span class="switch-toggle-slider">
                                                     <span class="switch-on"></span>
                                                     <span class="switch-off"></span>
