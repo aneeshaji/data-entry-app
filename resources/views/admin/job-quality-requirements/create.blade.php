@@ -1798,7 +1798,7 @@
                                         </small>
                                         <div class="col-sm-6">
                                             <label class="switch">
-                                                <input type="checkbox" class="switch-input" name="customer_avl_applies">
+                                                <input type="checkbox" class="switch-input" name="customer_avl_applies" {{ isset($jqr_threaded_piping->customer_avl_applies) ? 'checked' : '' }} >
                                                 <span class="switch-toggle-slider">
                                                     <span class="switch-on"></span>
                                                     <span class="switch-off"></span>
@@ -1808,11 +1808,11 @@
                                         </div>
                                         <div class="col-sm-6">
                                             <label class="form-label" for="twitter1">Material Origin REQS</label>
-                                            <input type="text" id="twitter1" name="material_origin_reqs" class="form-control" placeholder="" />
+                                            <input type="text" id="twitter1" name="material_origin_reqs"  value="{{ isset($jqr_threaded_piping->material_origin_reqs) ? $jqr_threaded_piping->material_origin_reqs : '' }}" class="form-control" placeholder="" />
                                         </div>
                                         <div class="col-sm-6">
                                             <label class="switch">
-                                                <input type="checkbox" class="switch-input" name="origin_traceable_to_melt">
+                                                <input type="checkbox" class="switch-input" name="origin_traceable_to_melt"  {{ isset($jqr_threaded_piping->origin_traceable_to_melt) ? 'checked' : '' }}>
                                                 <span class="switch-toggle-slider">
                                                     <span class="switch-on"></span>
                                                     <span class="switch-off"></span>
@@ -1823,11 +1823,11 @@
                                         <div class="col-sm-6">
                                             <label class="form-label" for="facebook1">Acceptable Material
                                                 Origins</label>
-                                            <input type="text" id="facebook1" name="acceptable_material_origins	" class="form-control" placeholder="" />
+                                            <input type="text" id="facebook1" name="acceptable_material_origins" value="{{ isset($jqr_threaded_piping->acceptable_material_origins) ? $jqr_threaded_piping->acceptable_material_origins : '' }}" class="form-control" placeholder="" />
                                         </div>
                                         <div class="col-sm-6">
                                             <label class="switch">
-                                                <input type="checkbox" class="switch-input" name="standard_per_code">
+                                                <input type="checkbox" class="switch-input" name="standard_per_code"  {{ isset($jqr_threaded_piping->standard_per_code) ? 'checked' : '' }} >
                                                 <span class="switch-toggle-slider">
                                                     <span class="switch-on"></span>
                                                     <span class="switch-off"></span>
@@ -1837,7 +1837,7 @@
                                         </div>
                                         <div class="col-sm-6">
                                             <label class="switch">
-                                                <input type="checkbox" class="switch-input" name="mtrs_required">
+                                                <input type="checkbox" class="switch-input" name="mtrs_required"   {{ isset($jqr_threaded_piping->mtrs_required) ? 'checked' : '' }} >
                                                 <span class="switch-toggle-slider">
                                                     <span class="switch-on"></span>
                                                     <span class="switch-off"></span>
@@ -1847,7 +1847,7 @@
                                         </div>
                                         <div class="col-sm-6">
                                             <label class="switch">
-                                                <input type="checkbox" class="switch-input" name="heat_mapping">
+                                                <input type="checkbox" class="switch-input" name="heat_mapping"  {{ isset($jqr_threaded_piping->heat_mapping) ? 'checked' : '' }} >
                                                 <span class="switch-toggle-slider">
                                                     <span class="switch-on"></span>
                                                     <span class="switch-off"></span>
@@ -1858,11 +1858,11 @@
                                         <div class="col-sm-6">
                                             <label class="form-label" for="google1">Material Notes</label>
                                             <textarea class="form-control" name="material_notes" id="exampleFormControlTextarea1"
-                                                rows="3"></textarea>
+                                                rows="3">{{ isset($jqr_threaded_piping->material_notes) ? $jqr_threaded_piping->material_notes : '' }}</textarea>
                                         </div>
                                         <div class="col-sm-6">
                                             <label class="switch">
-                                                <input type="checkbox" class="switch-input" name="nace">
+                                                <input type="checkbox" class="switch-input" name="nace" {{ isset($jqr_threaded_piping->nace) ? 'checked' : '' }}>
                                                 <span class="switch-toggle-slider">
                                                     <span class="switch-on"></span>
                                                     <span class="switch-off"></span>
@@ -1874,7 +1874,7 @@
                                         <div class="col-sm-6">
                                             <label class="form-label" for="linkedin1">Notes</label>
                                             <textarea class="form-control" name="notes" id="exampleFormControlTextarea1"
-                                                rows="3"></textarea>
+                                                rows="3">{{ isset($jqr_threaded_piping->notes) ? $jqr_threaded_piping->notes : '' }}</textarea>
                                         </div>
                                         <!-- Action Buttons -->
                                         <div class="pt-4">
@@ -1898,7 +1898,7 @@
                                         <!-- Action Buttons Ends -->
                                     </div>
                                     <input type="hidden" class="form_Threaded" name="id"
-                                    value="">
+                                    value="{{ isset($jqr_threaded_piping->id) ? $jqr_threaded_piping->id : '' }}">
                                     <input type="hidden" class="form_id_bd" name="basic_details_id"
                                     value="{{ isset($jqr->id) ? $jqr->id : '' }}">
                                 </form>
@@ -1914,7 +1914,7 @@
                                     <div class="row g-3">
                                         <div class="col-sm-6">
                                             <label class="switch">
-                                                <input type="checkbox" class="switch-input" name="customer_avl_applies">
+                                                <input type="checkbox" class="switch-input" name="customer_avl_applies" {{ isset($jqr_electrical->customer_avl_applies) ? 'checked' : '' }} >
                                                 <span class="switch-toggle-slider">
                                                     <span class="switch-on"></span>
                                                     <span class="switch-off"></span>
@@ -1925,11 +1925,11 @@
                                         <div class="col-sm-6">
                                             <label class="form-label" for="facebook1">Acceptable Material
                                                 Origins</label>
-                                            <input type="text" id="facebook1" class="form-control" name="acceptable_material_origins" placeholder="" />
+                                            <input type="text" id="facebook1" class="form-control" name="acceptable_material_origins" value="{{ isset($jqr_electrical->acceptable_material_origins) ? $jqr_electrical->acceptable_material_origins : '' }}" placeholder="" />
                                         </div>
                                         <div class="col-sm-6">
                                             <label class="switch">
-                                                <input type="checkbox" class="switch-input" name="vendor_restrictions">
+                                                <input type="checkbox" class="switch-input" name="vendor_restrictions" {{ isset($jqr_electrical->vendor_restrictions) ? 'checked' : '' }}>
                                                 <span class="switch-toggle-slider">
                                                     <span class="switch-on"></span>
                                                     <span class="switch-off"></span>
@@ -1939,25 +1939,25 @@
                                         </div>
                                         <div class="col-sm-6">
                                             <label class="form-label" for="linkedin1">Specify</label>
-                                            <input type="text" id="linkedin1" class="form-control" name="specify" placeholder="" />
+                                            <input type="text" id="linkedin1" class="form-control" name="specify" value="{{ isset($jqr_electrical->specify) ? $jqr_electrical->specify : '' }}" placeholder="" />
                                         </div>
                                         <div class="col-sm-6">
                                             <label class="form-label" for="twitter1">Approved Vendor(S)</label>
-                                            <input type="text" id="twitter1" class="form-control" name="approved_vendors" placeholder="" />
+                                            <input type="text" id="twitter1" class="form-control" name="approved_vendors" value="{{ isset($jqr_electrical->approved_vendors) ? $jqr_electrical->approved_vendors : '' }}" placeholder="" />
                                         </div>
                                         <div class="col-sm-6">
                                             <label class="form-label" for="google1">Material Notes</label>
                                             <textarea class="form-control" name="material_notes" id="exampleFormControlTextarea1"
-                                                rows="3"></textarea>
+                                                rows="3">{{ isset($jqr_electrical->material_notes) ? $jqr_electrical->material_notes : '' }}</textarea>
                                         </div>
                                         <div class="col-sm-6">
                                             <label class="form-label" for="linkedin1">Governing Code</label>
-                                            <input type="text" id="linkedin1" class="form-control" name="governing_code" placeholder="" />
+                                            <input type="text" id="linkedin1" class="form-control" name="governing_code" value="{{ isset($jqr_electrical->governing_code) ? $jqr_electrical->governing_code : '' }}" placeholder="" />
                                         </div>
                                         <div class="col-sm-6">
                                             <label class="form-label" for="linkedin1">Notes</label>
                                             <textarea class="form-control" name="notes" id="exampleFormControlTextarea1"
-                                                rows="3"></textarea>
+                                                rows="3">{{ isset($jqr_electrical->notes) ? $jqr_electrical->notes : '' }}</textarea>
                                         </div>
                                         <!-- Action Buttons -->
                                         <div class="pt-4">
@@ -1981,12 +1981,13 @@
                                         <!-- Action Buttons Ends -->
                                     </div>
                                     <input type="hidden" class="form_Electrical" name="id"
-                                    value="">
+                                    value="{{ isset($jqr_electrical->id) ? $jqr_electrical->id : '' }}">
                                     <input type="hidden" class="form_id_bd" name="basic_details_id"
                                     value="{{ isset($jqr->id) ? $jqr->id : '' }}">
                                 </form>
                             </div>
                             <!-- Electrical/Instrumentation Ends -->
+                            
                             <!-- Preservation -->
                             <div id="preservation" class="content">
                                 <div class="content-header mb-3">
@@ -1997,7 +1998,7 @@
                                     <div class="row g-3">
                                         <div class="col-sm-6">
                                             <label class="switch">
-                                                <input type="checkbox" class="switch-input" name="efx_standard_short_term">
+                                                <input type="checkbox" class="switch-input" name="efx_standard_short_term" {{ isset($jqr_preservation->efx_standard_short_term) ? 'checked': '' }} >
                                                 <span class="switch-toggle-slider">
                                                     <span class="switch-on"></span>
                                                     <span class="switch-off"></span>
@@ -2007,7 +2008,7 @@
                                         </div>
                                         <div class="col-sm-6">
                                             <label class="switch">
-                                                <input type="checkbox" class="switch-input" name="efx_standard_long_term">
+                                                <input type="checkbox" class="switch-input" name="efx_standard_long_term" {{ isset($jqr_preservation->efx_standard_long_term) ? 'checked': '' }} >
                                                 <span class="switch-toggle-slider">
                                                     <span class="switch-on"></span>
                                                     <span class="switch-off"></span>
@@ -2017,7 +2018,7 @@
                                         </div>
                                         <div class="col-sm-6">
                                             <label class="switch">
-                                                <input type="checkbox" class="switch-input" name="customer_specified_other">
+                                                <input type="checkbox" class="switch-input" name="customer_specified_other" {{ isset($jqr_preservation->customer_specified_other) ? 'checked': '' }}>
                                                 <span class="switch-toggle-slider">
                                                     <span class="switch-on"></span>
                                                     <span class="switch-off"></span>
@@ -2029,12 +2030,12 @@
                                             <label class="form-label" for="linkedin1">Special Customer
                                                 Requirements</label>
                                             <textarea class="form-control" name="special_customer_requirements" id="exampleFormControlTextarea1"
-                                                rows="3"></textarea>
+                                                rows="3">{{ isset($jqr_preservation->special_customer_requirements) ? $jqr_preservation->special_customer_requirements: '' }}</textarea>
                                         </div>
                                         <div class="col-sm-6">
                                             <label class="form-label" for="linkedin1">Notes</label>
                                             <textarea class="form-control" name="notes" id="exampleFormControlTextarea1"
-                                                rows="3"></textarea>
+                                                rows="3">{{ isset($jqr_preservation->notes) ? $jqr_preservation->notes : '' }}</textarea>
                                         </div>
                                         <!-- Action Buttons -->
                                         <div class="pt-4">
@@ -2058,7 +2059,8 @@
                                         <!-- Action Buttons Ends -->
                                     </div>
                                     <input type="hidden" class="form_Preservation" name="id"
-                                    value="">
+                                    value="{{ isset($jqr_preservation->id) ? $jqr_preservation->id : '' }}">
+                                    
                                     <input type="hidden" class="form_id_bd" name="basic_details_id"
                                     value="{{ isset($jqr->id) ? $jqr->id : '' }}">
                                 </form>
