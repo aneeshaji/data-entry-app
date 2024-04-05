@@ -431,7 +431,6 @@ class JobQualityRequirementController extends Controller
         $tubing->nde_requirements = $request->nde_requirements;
         $tubing->pmi_Requirements = $request->pmi_Requirements;
         $tubing->notes = $request->notes;
-
         $tubing->save();
 
         if ($tubing->id) {
