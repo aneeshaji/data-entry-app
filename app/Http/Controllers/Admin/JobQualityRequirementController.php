@@ -232,23 +232,23 @@ class JobQualityRequirementController extends Controller
         }
 
         $pressure_vessels->basic_details_id = $request->basic_details_id;
-        $pressure_vessels->customer_avl_applies = $request->customer_avl_applies== 'on' ? '1' : '0';
+        $pressure_vessels->customer_avl_applies = $request->customer_avl_applies == 'on' ? '1' : '0';
         $pressure_vessels->material_origin_reqs = $request->material_origin_reqs;
         $pressure_vessels->origin_traceable_to_melt = $request->origin_traceable_to_melt;
         $pressure_vessels->acceptable_material_origins = $request->acceptable_material_origins;
-        $pressure_vessels->mtrs_required = $request->mtrs_required== 'on' ? '1' : '0';
+        $pressure_vessels->mtrs_required = $request->mtrs_required == 'on' ? '1' : '0';
         $pressure_vessels->heat_mapping = $request->heat_mapping== 'on' ? '1' : '0';
         $pressure_vessels->weld_mapping = $request->weld_mapping== 'on' ? '1' : '0';
-        $pressure_vessels->material_notes = $request->weld_mapping;
-        $pressure_vessels->nace = $request->nace== 'on' ? '1' : '0';
+        $pressure_vessels->material_notes = $request->material_notes;
+        $pressure_vessels->nace = $request->nace == 'on' ? '1' : '0';
         $pressure_vessels->nde_requirements = $request->nde_requirements;
         $pressure_vessels->weld_requirements = $request->weld_requirements;
         $pressure_vessels->governing_code = $request->governing_code;
         $pressure_vessels->pwht = $request->pwht;
         $pressure_vessels->hydro_hold_time = $request->hydro_hold_time;
-        $pressure_vessels->witnessed = $request->witnessed== 'on' ? '1' : '0';
-        $pressure_vessels->hardness_test = $request->hardness_test== 'on' ? '1' : '0';
-        $pressure_vessels->max_hardness = $request->max_hardness== 'on' ? '1' : '0';
+        $pressure_vessels->witnessed = $request->witnessed == 'on' ? '1' : '0';
+        $pressure_vessels->hardness_test = $request->hardness_test == 'on' ? '1' : '0';
+        $pressure_vessels->max_hardness = $request->max_hardness;
         $pressure_vessels->hydro_chart_required = $request->hydro_chart_required;
         $pressure_vessels->hydro_notes = $request->hydro_notes;
         $pressure_vessels->notes = $request->notes;
@@ -293,7 +293,7 @@ class JobQualityRequirementController extends Controller
         $non_code_vess->hydro_hold_time = $request->hydro_hold_time;
         $non_code_vess->witnessed = $request->witnessed== 'on' ? '1' : '0';
         $non_code_vess->hardness_test = $request->hardness_test== 'on' ? '1' : '0';
-        $non_code_vess->max_hardness = $request->max_hardness== 'on' ? '1' : '0';
+        $non_code_vess->max_hardness = $request->max_hardness;
         $non_code_vess->hydro_chart_required = $request->hydro_chart_required;
         $non_code_vess->hydro_notes = $request->hydro_notes;
         $non_code_vess->notes = $request->notes;
