@@ -11,7 +11,7 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('bolting', function (Blueprint $table) {
+        Schema::create('gaskets', function (Blueprint $table) {
             $table->id();
             $table->integer('basic_details_id')->comment('Refers basic_details -> id');
             $table->integer('efx_standard_no_cocs')->comment('Refers basic_details -> id');
@@ -28,6 +28,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('bolting');
+        Schema::dropIfExists('gaskets');
     }
 };
