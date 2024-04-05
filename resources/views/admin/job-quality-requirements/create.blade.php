@@ -231,7 +231,8 @@
                                                     <button type="button" onclick="submitData(true)"
                                                         class="btn btn-success waves-effect waves-light me-sm-3 me-1"><i
                                                             class="ti ti-check"></i>Save</button>
-                                                    <button class="btn btn-primary btn-next" onclick="submitData(false)">
+                                                    <button class="btn btn-primary btn-next"
+                                                        onclick="submitData(false)">
                                                         <span
                                                             class="align-middle d-sm-inline-block d-none me-sm-1">Next</span>
                                                         <i class="ti ti-arrow-right"></i>
@@ -241,7 +242,8 @@
                                         </div>
                                         <!-- Action Buttons Ends -->
                                     </div>
-                                    <input type="hidden" class="form_id_bd" name="id" value="{{ isset($jqr->id) ? $jqr->id : '' }}">
+                                    <input type="hidden" class="form_id_bd" name="id"
+                                        value="{{ isset($jqr->id) ? $jqr->id : '' }}">
                                 </form>
                             </div>
                             <!-- Basic Project Details Ends -->
@@ -251,92 +253,103 @@
                                     <h6 class="mb-0">Special Material Requirements</h6>
                                     <small>Enter special material requirements</small>
                                 </div>
-                                <div class="row g-3">
                                 <form onSubmit="return false" id="special_material_from">
-                                    <div class="col-sm-6">
-                                        <label class="switch">
-                                            <input type="checkbox" class="switch-input" name="pipes_and_fittings" {{ isset($jqr_special->pipes_and_fittings) ? 'checked': '' }} >
-                                            <span class="switch-toggle-slider">
-                                                <span class="switch-on"></span>
-                                                <span class="switch-off"></span>
-                                            </span>
-                                            <span class="switch-label">Pipes & Fittings(400.01)</span>
-                                        </label>
-                                    </div>
-                                    <div class="col-sm-6">
-                                        <label class="switch">
-                                            <input type="checkbox" class="switch-input"  name="bolting" {{ isset($jqr_special->bolting) ? 'checked': '' }} >
-                                            <span class="switch-toggle-slider">
-                                                <span class="switch-on"></span>
-                                                <span class="switch-off"></span>
-                                            </span>
-                                            <span class="switch-label">Bolting(400.01)</span>
-                                        </label>
-                                    </div>
-                                    <div class="col-sm-6">
-                                        <label class="switch">
-                                            <input type="checkbox" class="switch-input"  name="pressure_vessels" {{ isset($jqr_special->pressure_vessels) ? 'checked': '' }} >
-                                            <span class="switch-toggle-slider">
-                                                <span class="switch-on"></span>
-                                                <span class="switch-off"></span>
-                                            </span>
-                                            <span class="switch-label">Pressure Vessels(400.11)</span>
-                                        </label>
-                                    </div>
-                                    <div class="col-sm-6">
-                                        <label class="switch">
-                                            <input type="checkbox" class="switch-input" name="gaskets" {{ isset($jqr_special->gaskets) ? 'checked': '' }} >
-                                            <span class="switch-toggle-slider">
-                                                <span class="switch-on"></span>
-                                                <span class="switch-off"></span>
-                                            </span>
-                                            <span class="switch-label">Gaskets(400.01)</span>
-                                        </label>
-                                    </div>
-                                    <div class="col-sm-6">
-                                        <label class="switch">
-                                            <input type="checkbox" class="switch-input" name="structural_steel" {{ isset($jqr_special->structural_steel) ? 'checked': '' }} >
-                                            <span class="switch-toggle-slider">
-                                                <span class="switch-on"></span>
-                                                <span class="switch-off"></span>
-                                            </span>
-                                            <span class="switch-label">Structural Steel(410.01)</span>
-                                        </label>
-                                    </div>
-                                    <div class="col-sm-6">
-                                        <label class="switch">
-                                            <input type="checkbox" class="switch-input"  name="tubing" {{ isset($jqr_special->tubing) ? 'checked': '' }} >
-                                            <span class="switch-toggle-slider">
-                                                <span class="switch-on"></span>
-                                                <span class="switch-off"></span>
-                                            </span>
-                                            <span class="switch-label">Tubing(420.01)</span>
-                                        </label>
-                                    </div>
-                                    <!-- Action Buttons -->
-                                    <div class="pt-4">
-                                        <div class="row justify-content-end">
-                                            <div class="col-sm-9">
-                                                <button class="btn btn-label-secondary btn-prev me-sm-3 me-1">
-                                                    <i class="ti ti-arrow-left me-sm-1"></i>
-                                                    <span class="align-middle d-sm-inline-block d-none">Previous</span>
-                                                </button>
-                                                <button type="button" onclick="submitSpecialData(true)"
-                                                    class="btn btn-success waves-effect waves-light me-sm-3 me-1"><i
-                                                        class="ti ti-check"></i>Save</button>
-                                                <button class="btn btn-primary btn-next" onclick="submitSpecialData(false)">
-                                                    <span
-                                                        class="align-middle d-sm-inline-block d-none me-sm-1">Next</span>
-                                                    <i class="ti ti-arrow-right"></i>
-                                                </button>
+                                    <div class="row g-3">
+                                        <div class="col-sm-6">
+                                            <label class="switch">
+                                                <input type="checkbox" class="switch-input" name="pipes_and_fittings"
+                                                    {{ isset($jqr_special->pipes_and_fittings) ? 'checked': '' }}>
+                                                <span class="switch-toggle-slider">
+                                                    <span class="switch-on"></span>
+                                                    <span class="switch-off"></span>
+                                                </span>
+                                                <span class="switch-label">Pipes & Fittings(400.01)</span>
+                                            </label>
+                                        </div>
+                                        <div class="col-sm-6">
+                                            <label class="switch">
+                                                <input type="checkbox" class="switch-input" name="bolting"
+                                                    {{ isset($jqr_special->bolting) ? 'checked': '' }}>
+                                                <span class="switch-toggle-slider">
+                                                    <span class="switch-on"></span>
+                                                    <span class="switch-off"></span>
+                                                </span>
+                                                <span class="switch-label">Bolting(400.01)</span>
+                                            </label>
+                                        </div>
+                                        <div class="col-sm-6">
+                                            <label class="switch">
+                                                <input type="checkbox" class="switch-input" name="pressure_vessels"
+                                                    {{ isset($jqr_special->pressure_vessels) ? 'checked': '' }}>
+                                                <span class="switch-toggle-slider">
+                                                    <span class="switch-on"></span>
+                                                    <span class="switch-off"></span>
+                                                </span>
+                                                <span class="switch-label">Pressure Vessels(400.11)</span>
+                                            </label>
+                                        </div>
+                                        <div class="col-sm-6">
+                                            <label class="switch">
+                                                <input type="checkbox" class="switch-input" name="gaskets"
+                                                    {{ isset($jqr_special->gaskets) ? 'checked': '' }}>
+                                                <span class="switch-toggle-slider">
+                                                    <span class="switch-on"></span>
+                                                    <span class="switch-off"></span>
+                                                </span>
+                                                <span class="switch-label">Gaskets(400.01)</span>
+                                            </label>
+                                        </div>
+                                        <div class="col-sm-6">
+                                            <label class="switch">
+                                                <input type="checkbox" class="switch-input" name="structural_steel"
+                                                    {{ isset($jqr_special->structural_steel) ? 'checked': '' }}>
+                                                <span class="switch-toggle-slider">
+                                                    <span class="switch-on"></span>
+                                                    <span class="switch-off"></span>
+                                                </span>
+                                                <span class="switch-label">Structural Steel(410.01)</span>
+                                            </label>
+                                        </div>
+                                        <div class="col-sm-6">
+                                            <label class="switch">
+                                                <input type="checkbox" class="switch-input" name="tubing"
+                                                    {{ isset($jqr_special->tubing) ? 'checked': '' }}>
+                                                <span class="switch-toggle-slider">
+                                                    <span class="switch-on"></span>
+                                                    <span class="switch-off"></span>
+                                                </span>
+                                                <span class="switch-label">Tubing(420.01)</span>
+                                            </label>
+                                        </div>
+                                        <!-- Action Buttons -->
+                                        <div class="pt-4">
+                                            <div class="row justify-content-end">
+                                                <div class="col-sm-9">
+                                                    <button class="btn btn-label-secondary btn-prev me-sm-3 me-1">
+                                                        <i class="ti ti-arrow-left me-sm-1"></i>
+                                                        <span
+                                                            class="align-middle d-sm-inline-block d-none">Previous</span>
+                                                    </button>
+                                                    <button type="button" onclick="submitSpecialData(true)"
+                                                        class="btn btn-success waves-effect waves-light me-sm-3 me-1"><i
+                                                            class="ti ti-check"></i>Save</button>
+                                                    <button class="btn btn-primary btn-next"
+                                                        onclick="submitSpecialData(false)">
+                                                        <span
+                                                            class="align-middle d-sm-inline-block d-none me-sm-1">Next</span>
+                                                        <i class="ti ti-arrow-right"></i>
+                                                    </button>
+                                                </div>
                                             </div>
                                         </div>
-                                    </div>
-                                    <!-- Action Buttons Ends -->
-                                </div>
-                                <input type="hidden" class="form_id_bd" name="id" value="{{ isset($jqr_special->id) ? $jqr_special->id : '' }}">
-                                <input type="hidden" class="" name="basic_details_id" value="{{ isset($jqr->id) ? $jqr->id : '' }}">
+                                        <!-- Action Buttons Ends -->
+                                        <input type="hidden" class="form_id_bd" name="id"
+                                    value="{{ isset($jqr_special->id) ? $jqr_special->id : '' }}">
+                                <input type="hidden" class="basic_details_id" name="basic_details_id"
+                                    value="{{ isset($jqr->id) ? $jqr->id : '' }}">
                                 </form>
+                                </div>
+
                             </div>
                             <!-- Special Material Requirements Ends -->
                             <!-- General Information -->
@@ -346,87 +359,106 @@
                                     <small>Enter general information</small>
                                 </div>
                                 <div class="row g-3">
-                                <form onSubmit="return false" id="general_info_from">
-                                    <div class="col-sm-6">
-                                        <label class="form-label" for="first-name1">Job/Project Number</label>
-                                        <input type="text" id="first-name1" class="form-control" placeholder=""  name="job_number"   value="{{ isset($jqr_general_info->job_number) ? $jqr_general_info->job_number : '' }}" />
-                                    </div>
-                                    <div class="col-sm-6">
-                                        <label class="form-label" for="last-name1">Cutomer</label>
-                                        <input type="text" id="last-name1" class="form-control" placeholder=""  name="customer"  value="{{ isset($jqr_general_info->customer) ? $jqr_general_info->customer : '' }}" />
-                                    </div>
-                                    <div class="col-sm-6">
-                                        <label class="form-label" for="country1">Location</label>
-                                        <input type="text" id="last-name1" class="form-control" placeholder="" name="location"  value="{{ isset($jqr_general_info->location) ? $jqr_general_info->location : '' }}" />
-                                    </div>
-                                    <div class="col-sm-6">
-                                        <label class="form-label" for="last-name1">End User</label>
-                                        <input type="text" id="last-name1" class="form-control" placeholder=""  name="end_user"  value="{{ isset($jqr_general_info->end_user) ? $jqr_general_info->end_user : '' }}" />
-                                    </div>
-                                    <div class="col-sm-6">
-                                        <label class="form-label" for="last-name1">Engineer</label>
-                                        <input type="text" id="last-name1"class="form-control"
-                                            placeholder=""  name="engineer"  value="{{ isset($jqr_general_info->engineer) ? $jqr_general_info->engineer : '' }}" />
-                                    </div>
-                                    <div class="col-sm-6">
-                                        <label class="form-label" for="last-name1">Designer</label>
-                                        <input type="text" id="last-name1" class="form-control"
-                                            placeholder=""  name="designer"  value="{{ isset($jqr_general_info->designer) ? $jqr_general_info->designer : '' }}" />
-                                    </div>
-                                    <div class="col-sm-6">
-                                        <label class="form-label" for="last-name1">SalesMan</label>
-                                        <input type="text" id="last-name1" class="form-control"
-                                            placeholder=""  name="sales_man"  value="{{ isset($jqr_general_info->sales_man) ? $jqr_general_info->sales_man : '' }}" />
-                                    </div>
-                                    <div class="col-sm-6">
-                                        <label class="form-label" for="last-name1">Job Type/Description</label>
-                                        <input type="text" id="last-name1"  class="form-control"
-                                            placeholder=""  name="job_type"  value="{{ isset($jqr_general_info->job_type) ? $jqr_general_info->job_type : '' }}" />
-                                    </div>
-                                    <div class="col-sm-6">
-                                        <label class="form-label" for="last-name1">JQR Revision Number</label>
-                                        <input type="text" id="last-name1" class="form-control"
-                                            placeholder=""  name="job_revision_number"  value="{{ isset($jqr_general_info->job_revision_number) ? $jqr_general_info->job_revision_number : '' }}" />
-                                    </div>
-                                    <div class="col-sm-6">
-                                        <label class="form-label" for="last-name1">Date Revised</label>
-                                        <input type="date" id="last-name1" class="form-control"
-                                            placeholder=""  name="date_revised"  value="{{ isset($jqr_general_info->date_revised) ? $jqr_general_info->date_revised : '' }}" />
-                                    </div>
-                                    <div class="col-sm-6">
-                                        <label class="form-label" for="last-name1">Date Approved By Engineer</label>
-                                        <input type="date" id="last-name1" name="date_approved" class="form-control"
-                                            placeholder=""   value="{{ isset($jqr_general_info->date_approved) ? $jqr_general_info->date_approved : '' }}"  />
-                                    </div>
-                                    <div class="col-sm-6">
-                                        <label class="form-label" for="last-name1">Notes</label>
-                                        <textarea class="form-control" id="exampleFormControlTextarea1"
-                                            rows="3"  name="notes">{{ isset($jqr_general_info->notes) ? $jqr_general_info->notes : '' }}</textarea>
-                                    </div>
-                                    <!-- Action Buttons -->
-                                    <div class="pt-4">
-                                        <div class="row justify-content-end">
-                                            <div class="col-sm-9">
-                                                <button class="btn btn-label-secondary btn-prev me-sm-3 me-1">
-                                                    <i class="ti ti-arrow-left me-sm-1"></i>
-                                                    <span class="align-middle d-sm-inline-block d-none">Previous</span>
-                                                </button>
-                                                <button type="button" onclick="submitGeneralInfoData(true)"
-                                                    class="btn btn-success waves-effect waves-light me-sm-3 me-1"><i
-                                                        class="ti ti-check"></i>Save</button>
-                                                <button class="btn btn-primary btn-next"  onclick="submitGeneralInfoData(false)">
-                                                    <span
-                                                        class="align-middle d-sm-inline-block d-none me-sm-1">Next</span>
-                                                    <i class="ti ti-arrow-right"></i>
-                                                </button>
+                                    <form onSubmit="return false" id="general_info_from">
+                                        <div class="col-sm-6">
+                                            <label class="form-label" for="first-name1">Job/Project Number</label>
+                                            <input type="text" id="first-name1" class="form-control" placeholder=""
+                                                name="job_number"
+                                                value="{{ isset($jqr_general_info->job_number) ? $jqr_general_info->job_number : '' }}" />
+                                        </div>
+                                        <div class="col-sm-6">
+                                            <label class="form-label" for="last-name1">Cutomer</label>
+                                            <input type="text" id="last-name1" class="form-control" placeholder=""
+                                                name="customer"
+                                                value="{{ isset($jqr_general_info->customer) ? $jqr_general_info->customer : '' }}" />
+                                        </div>
+                                        <div class="col-sm-6">
+                                            <label class="form-label" for="country1">Location</label>
+                                            <input type="text" id="last-name1" class="form-control" placeholder=""
+                                                name="location"
+                                                value="{{ isset($jqr_general_info->location) ? $jqr_general_info->location : '' }}" />
+                                        </div>
+                                        <div class="col-sm-6">
+                                            <label class="form-label" for="last-name1">End User</label>
+                                            <input type="text" id="last-name1" class="form-control" placeholder=""
+                                                name="end_user"
+                                                value="{{ isset($jqr_general_info->end_user) ? $jqr_general_info->end_user : '' }}" />
+                                        </div>
+                                        <div class="col-sm-6">
+                                            <label class="form-label" for="last-name1">Engineer</label>
+                                            <input type="text" id="last-name1" class="form-control" placeholder=""
+                                                name="engineer"
+                                                value="{{ isset($jqr_general_info->engineer) ? $jqr_general_info->engineer : '' }}" />
+                                        </div>
+                                        <div class="col-sm-6">
+                                            <label class="form-label" for="last-name1">Designer</label>
+                                            <input type="text" id="last-name1" class="form-control" placeholder=""
+                                                name="designer"
+                                                value="{{ isset($jqr_general_info->designer) ? $jqr_general_info->designer : '' }}" />
+                                        </div>
+                                        <div class="col-sm-6">
+                                            <label class="form-label" for="last-name1">SalesMan</label>
+                                            <input type="text" id="last-name1" class="form-control" placeholder=""
+                                                name="sales_man"
+                                                value="{{ isset($jqr_general_info->sales_man) ? $jqr_general_info->sales_man : '' }}" />
+                                        </div>
+                                        <div class="col-sm-6">
+                                            <label class="form-label" for="last-name1">Job Type/Description</label>
+                                            <input type="text" id="last-name1" class="form-control" placeholder=""
+                                                name="job_type"
+                                                value="{{ isset($jqr_general_info->job_type) ? $jqr_general_info->job_type : '' }}" />
+                                        </div>
+                                        <div class="col-sm-6">
+                                            <label class="form-label" for="last-name1">JQR Revision Number</label>
+                                            <input type="text" id="last-name1" class="form-control" placeholder=""
+                                                name="job_revision_number"
+                                                value="{{ isset($jqr_general_info->job_revision_number) ? $jqr_general_info->job_revision_number : '' }}" />
+                                        </div>
+                                        <div class="col-sm-6">
+                                            <label class="form-label" for="last-name1">Date Revised</label>
+                                            <input type="date" id="last-name1" class="form-control" placeholder=""
+                                                name="date_revised"
+                                                value="{{ isset($jqr_general_info->date_revised) ? $jqr_general_info->date_revised : '' }}" />
+                                        </div>
+                                        <div class="col-sm-6">
+                                            <label class="form-label" for="last-name1">Date Approved By Engineer</label>
+                                            <input type="date" id="last-name1" name="date_approved" class="form-control"
+                                                placeholder=""
+                                                value="{{ isset($jqr_general_info->date_approved) ? $jqr_general_info->date_approved : '' }}" />
+                                        </div>
+                                        <div class="col-sm-6">
+                                            <label class="form-label" for="last-name1">Notes</label>
+                                            <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"
+                                                name="notes">{{ isset($jqr_general_info->notes) ? $jqr_general_info->notes : '' }}</textarea>
+                                        </div>
+                                        <!-- Action Buttons -->
+                                        <div class="pt-4">
+                                            <div class="row justify-content-end">
+                                                <div class="col-sm-9">
+                                                    <button class="btn btn-label-secondary btn-prev me-sm-3 me-1">
+                                                        <i class="ti ti-arrow-left me-sm-1"></i>
+                                                        <span
+                                                            class="align-middle d-sm-inline-block d-none">Previous</span>
+                                                    </button>
+                                                    <button type="button" onclick="submitGeneralInfoData(true)"
+                                                        class="btn btn-success waves-effect waves-light me-sm-3 me-1"><i
+                                                            class="ti ti-check"></i>Save</button>
+                                                    <button class="btn btn-primary btn-next"
+                                                        onclick="submitGeneralInfoData(false)">
+                                                        <span
+                                                            class="align-middle d-sm-inline-block d-none me-sm-1">Next</span>
+                                                        <i class="ti ti-arrow-right"></i>
+                                                    </button>
+                                                </div>
                                             </div>
                                         </div>
-                                    </div>
-                                    <!-- Action Buttons Ends -->
+                                        <!-- Action Buttons Ends -->
                                 </div>
-                                <input type="hidden" class="form_id_bd" name="id" value="{{ isset($jqr_general_info->id) ? $jqr_general_info->id : '' }}">
-                                <input type="hidden" class="" name="basic_details_id" value="{{ isset($jqr->id) ? $jqr->id : '' }}">
-                            </from>
+                                <input type="hidden" class="form_id_bd" name="id"
+                                    value="{{ isset($jqr_general_info->id) ? $jqr_general_info->id : '' }}">
+                                <input type="hidden" class="" name="basic_details_id"
+                                    value="{{ isset($jqr->id) ? $jqr->id : '' }}">
+                                </from>
                             </div>
                             <!-- General Information Ends -->
                             <!-- Service Information -->
@@ -435,56 +467,65 @@
                                     <h6 class="mb-0">Service Information</h6>
                                     <small>Enter Service Information.</small>
                                 </div>
-                                <div class="row g-3">
-                                    <div class="col-sm-6">
-                                        <label class="form-label" for="twitter1">Gas Processed</label>
-                                        <input type="text" id="twitter1" class="form-control" placeholder="" />
-                                    </div>
-                                    <div class="col-sm-6">
-                                        <label class="form-label" for="facebook1">Application</label>
-                                        <input type="text" id="facebook1" class="form-control" placeholder="" />
-                                    </div>
-                                    <div class="col-sm-6">
-                                        <label class="switch">
-                                            <input type="checkbox" class="switch-input">
-                                            <span class="switch-toggle-slider">
-                                                <span class="switch-on"></span>
-                                                <span class="switch-off"></span>
-                                            </span>
-                                            <span class="switch-label">SOUR Service - NACE MR0175 Required</span>
-                                        </label>
-                                    </div>
-                                    <div class="col-sm-6">
-                                        <label class="form-label" for="facebook1">Other</label>
-                                        <input type="text" id="facebook1" class="form-control" placeholder="" />
-                                    </div>
-                                    <div class="col-sm-6">
-                                        <label class="form-label" for="facebook1">Notes</label>
-                                        <textarea class="form-control" id="exampleFormControlTextarea1"
-                                            rows="3"></textarea>
-                                    </div>
-
-                                    <!-- Action Buttons -->
-                                    <div class="pt-4">
-                                        <div class="row justify-content-end">
-                                            <div class="col-sm-9">
-                                                <button class="btn btn-label-secondary btn-prev me-sm-3 me-1">
-                                                    <i class="ti ti-arrow-left me-sm-1"></i>
-                                                    <span class="align-middle d-sm-inline-block d-none">Previous</span>
-                                                </button>
-                                                <button type="button"
-                                                    class="btn btn-success waves-effect waves-light me-sm-3 me-1"><i
-                                                        class="ti ti-check"></i>Save</button>
-                                                <button class="btn btn-primary btn-next">
-                                                    <span
-                                                        class="align-middle d-sm-inline-block d-none me-sm-1">Next</span>
-                                                    <i class="ti ti-arrow-right"></i>
-                                                </button>
+                                <form onSubmit="return false" id="service_info_from">
+                                    <div class="row g-3">
+                                        <div class="col-sm-6">
+                                            <label class="form-label" for="twitter1">Gas Processed</label>
+                                            <input type="text" id="twitter1" class="form-control" placeholder=""
+                                            value="{{ isset($jqr->service_info->gas_processed) ? $jqr->service_info->gas_processed : '' }}" />
+                                        </div>
+                                        <div class="col-sm-6">
+                                            <label class="form-label" for="facebook1">Application</label>
+                                            <input type="text" id="facebook1" class="form-control" placeholder=""
+                                            value="{{ isset($jqr->service_info->application) ?$jqr->service_info->application : '' }}"/>
+                                        </div>
+                                        <div class="col-sm-6">
+                                            <label class="switch">
+                                                <input type="checkbox" class="switch-input">
+                                                {{ isset($jqr->service_info->sour_service_required) ? 'checked': '' }}
+                                                <span class="switch-toggle-slider">
+                                                    <span class="switch-on"></span>
+                                                    <span class="switch-off"></span>
+                                                </span>
+                                                <span class="switch-label">SOUR Service - NACE MR0175 Required</span>
+                                            </label>
+                                        </div>
+                                        <div class="col-sm-6">
+                                            <label class="form-label" for="facebook1">Other</label>
+                                            <input type="text" id="facebook1" class="form-control" placeholder=""
+                                            value="{{ isset($jqr->service_info->other) ? $jqr->service_info : '' }}" />
+                                        </div>
+                                        <div class="col-sm-6">
+                                            <label class="form-label" for="facebook1">Notes</label>
+                                            <textarea class="form-control" id="exampleFormControlTextarea1"
+                                                rows="3">{{ isset($jqr->service_info->notes) ? $jqr->service_info->notes : '' }}</textarea>
+                                        </div>
+                                        <!-- Action Buttons -->
+                                        <div class="pt-4">
+                                            <div class="row justify-content-end">
+                                                <div class="col-sm-9">
+                                                    <button class="btn btn-label-secondary btn-prev me-sm-3 me-1">
+                                                        <i class="ti ti-arrow-left me-sm-1"></i>
+                                                        <span class="align-middle d-sm-inline-block d-none">Previous</span>
+                                                    </button>
+                                                    <button type="button" onclick="submitServiceInfoData(true)"
+                                                        class="btn btn-success waves-effect waves-light me-sm-3 me-1"><i
+                                                            class="ti ti-check"></i>Save</button>
+                                                    <button class="btn btn-primary btn-next" onclick="submitServiceInfoData(true)">
+                                                        <span
+                                                            class="align-middle d-sm-inline-block d-none me-sm-1">Next</span>
+                                                        <i class="ti ti-arrow-right"></i>
+                                                    </button>
+                                                </div>
                                             </div>
                                         </div>
+                                        <!-- Action Buttons Ends -->
                                     </div>
-                                    <!-- Action Buttons Ends -->
-                                </div>
+                                    <input type="hidden" class="form_id_bd" name="id"
+                                    value="{{ isset($jqr_general_info->id) ? $jqr_general_info->id : '' }}">
+                                    <input type="hidden" class="" name="basic_details_id"
+                                    value="{{ isset($jqr->id) ? $jqr->id : '' }}">
+                                </form>
                             </div>
                             <!-- Service Information Ends -->
                             <!-- Structural Skid -->
@@ -2432,7 +2473,7 @@ if (typeof wizardIconsVertical !== undefined && wizardIconsVertical !== null) {
         wizardIconsVerticalBtnNextList.forEach(wizardIconsVerticalBtnNext => {
             wizardIconsVerticalBtnNext.addEventListener('click', event => {
                 if ($('#job_name').val() == '') {
-                    alert('Input can not be left blank');
+                    alert('Job Name is required');
                 } else {
                     verticalIconsStepper.next();
                     // submitData(false);
@@ -2449,12 +2490,12 @@ if (typeof wizardIconsVertical !== undefined && wizardIconsVertical !== null) {
     }
     if (wizardIconsVerticalBtnSubmit) {
         wizardIconsVerticalBtnSubmit.addEventListener('click', event => {
-            alert('Submitted..!!');
+            // alert('Submitted..!!');
         });
     }
 }
 
-// Submit Data
+// Submit Basic Data
 function submitData(reloadFlag) {
     $.ajaxSetup({
         headers: {
@@ -2484,7 +2525,8 @@ function submitData(reloadFlag) {
         }
     });
 }
-// submit Special Data
+
+// Submit Special Data
 function submitSpecialData(reloadFlag) {
     $.ajaxSetup({
         headers: {
@@ -2515,7 +2557,7 @@ function submitSpecialData(reloadFlag) {
 }
 
 
-// submit Special Data
+// Submit Special Data
 function submitGeneralInfoData(reloadFlag) {
     $.ajaxSetup({
         headers: {
@@ -2528,6 +2570,396 @@ function submitGeneralInfoData(reloadFlag) {
     $.ajax({
         method: 'POST',
         url: '/admin/job-quality-requirements/saveGeneralData',
+        data: formData,
+        dataType: 'json',
+        success: function(response) {
+            if (response.status == true) {
+                $('.form_id_bd').val(response.id);
+                if (reloadFlag == true) {
+                    window.location.href = response.redirect;
+                }
+            }
+        },
+        error: function(xhr, status, error) {
+            // Handle errors if needed
+            console.error(xhr.responseText);
+        }
+    });
+}
+
+// Service Data
+function submitServiceInfoData(reloadFlag) {
+    $.ajaxSetup({
+        headers: {
+            'X-CSRF-TOKEN': jQuery('meta[name="csrf-token"]').attr('content')
+        }
+    });
+
+    var formData = $('#service_info_from').serialize();
+    console.log("Form Data", formData)
+    $.ajax({
+        method: 'POST',
+        url: '/admin/job-quality-requirements/saveServiceData',
+        data: formData,
+        dataType: 'json',
+        success: function(response) {
+            if (response.status == true) {
+                $('.form_id_bd').val(response.id);
+                if (reloadFlag == true) {
+                    window.location.href = response.redirect;
+                }
+            }
+        },
+        error: function(xhr, status, error) {
+            // Handle errors if needed
+            console.error(xhr.responseText);
+        }
+    });
+}
+
+// Structural Skid
+function submitStructuralSkidData(reloadFlag) {
+    $.ajaxSetup({
+        headers: {
+            'X-CSRF-TOKEN': jQuery('meta[name="csrf-token"]').attr('content')
+        }
+    });
+
+    var formData = $('#structural_skid_from').serialize();
+    console.log("Form Data", formData)
+    $.ajax({
+        method: 'POST',
+        url: '/admin/job-quality-requirements/saveStructuralSkidData',
+        data: formData,
+        dataType: 'json',
+        success: function(response) {
+            if (response.status == true) {
+                $('.form_id_bd').val(response.id);
+                if (reloadFlag == true) {
+                    window.location.href = response.redirect;
+                }
+            }
+        },
+        error: function(xhr, status, error) {
+            // Handle errors if needed
+            console.error(xhr.responseText);
+        }
+    });
+}
+
+// Pressure Vessels
+function submitPressureVesselsData(reloadFlag) {
+    $.ajaxSetup({
+        headers: {
+            'X-CSRF-TOKEN': jQuery('meta[name="csrf-token"]').attr('content')
+        }
+    });
+
+    var formData = $('#pressure_vessels_from').serialize();
+    console.log("Form Data", formData)
+    $.ajax({
+        method: 'POST',
+        url: '/admin/job-quality-requirements/savePressureVesselsData',
+        data: formData,
+        dataType: 'json',
+        success: function(response) {
+            if (response.status == true) {
+                $('.form_id_bd').val(response.id);
+                if (reloadFlag == true) {
+                    window.location.href = response.redirect;
+                }
+            }
+        },
+        error: function(xhr, status, error) {
+            // Handle errors if needed
+            console.error(xhr.responseText);
+        }
+    });
+}
+
+//Non Code Vessels/Tanks
+function submitNoCodeVesselsData(reloadFlag) {
+    $.ajaxSetup({
+        headers: {
+            'X-CSRF-TOKEN': jQuery('meta[name="csrf-token"]').attr('content')
+        }
+    });
+
+    var formData = $('#nocode_vessels_from').serialize();
+    console.log("Form Data", formData)
+    $.ajax({
+        method: 'POST',
+        url: '/admin/job-quality-requirements/saveNoCodeVesselsData',
+        data: formData,
+        dataType: 'json',
+        success: function(response) {
+            if (response.status == true) {
+                $('.form_id_bd').val(response.id);
+                if (reloadFlag == true) {
+                    window.location.href = response.redirect;
+                }
+            }
+        },
+        error: function(xhr, status, error) {
+            // Handle errors if needed
+            console.error(xhr.responseText);
+        }
+    });
+}
+
+//Process/Fuel Gas/Start Gas Piping
+function submitProcessPipingData(reloadFlag) {
+    $.ajaxSetup({
+        headers: {
+            'X-CSRF-TOKEN': jQuery('meta[name="csrf-token"]').attr('content')
+        }
+    });
+
+    var formData = $('#process_piping_from').serialize();
+    console.log("Form Data", formData)
+    $.ajax({
+        method: 'POST',
+        url: '/admin/job-quality-requirements/saveProcessPipingData',
+        data: formData,
+        dataType: 'json',
+        success: function(response) {
+            if (response.status == true) {
+                $('.form_id_bd').val(response.id);
+                if (reloadFlag == true) {
+                    window.location.href = response.redirect;
+                }
+            }
+        },
+        error: function(xhr, status, error) {
+            // Handle errors if needed
+            console.error(xhr.responseText);
+        }
+    });
+}
+
+//Bolting
+function submitBoltingData(reloadFlag) {
+    $.ajaxSetup({
+        headers: {
+            'X-CSRF-TOKEN': jQuery('meta[name="csrf-token"]').attr('content')
+        }
+    });
+
+    var formData = $('#bolting_from').serialize();
+    console.log("Form Data", formData)
+    $.ajax({
+        method: 'POST',
+        url: '/admin/job-quality-requirements/saveBoltingData',
+        data: formData,
+        dataType: 'json',
+        success: function(response) {
+            if (response.status == true) {
+                $('.form_id_bd').val(response.id);
+                if (reloadFlag == true) {
+                    window.location.href = response.redirect;
+                }
+            }
+        },
+        error: function(xhr, status, error) {
+            // Handle errors if needed
+            console.error(xhr.responseText);
+        }
+    });
+}
+
+//Gaskets
+function submitGasketsData(reloadFlag) {
+    $.ajaxSetup({
+        headers: {
+            'X-CSRF-TOKEN': jQuery('meta[name="csrf-token"]').attr('content')
+        }
+    });
+
+    var formData = $('#gaskets_from').serialize();
+    console.log("Form Data", formData)
+    $.ajax({
+        method: 'POST',
+        url: '/admin/job-quality-requirements/saveGasketsData',
+        data: formData,
+        dataType: 'json',
+        success: function(response) {
+            if (response.status == true) {
+                $('.form_id_bd').val(response.id);
+                if (reloadFlag == true) {
+                    window.location.href = response.redirect;
+                }
+            }
+        },
+        error: function(xhr, status, error) {
+            // Handle errors if needed
+            console.error(xhr.responseText);
+        }
+    });
+}
+
+//Tubing
+function submitTubingData(reloadFlag) {
+    $.ajaxSetup({
+        headers: {
+            'X-CSRF-TOKEN': jQuery('meta[name="csrf-token"]').attr('content')
+        }
+    });
+
+    var formData = $('#tubing_from').serialize();
+    console.log("Form Data", formData)
+    $.ajax({
+        method: 'POST',
+        url: '/admin/job-quality-requirements/saveTubingData',
+        data: formData,
+        dataType: 'json',
+        success: function(response) {
+            if (response.status == true) {
+                $('.form_id_bd').val(response.id);
+                if (reloadFlag == true) {
+                    window.location.href = response.redirect;
+                }
+            }
+        },
+        error: function(xhr, status, error) {
+            // Handle errors if needed
+            console.error(xhr.responseText);
+        }
+    });
+}
+
+//ButtPiping
+function submitButtPipingData(reloadFlag) {
+    $.ajaxSetup({
+        headers: {
+            'X-CSRF-TOKEN': jQuery('meta[name="csrf-token"]').attr('content')
+        }
+    });
+
+    var formData = $('#butt_piping_from').serialize();
+    console.log("Form Data", formData)
+    $.ajax({
+        method: 'POST',
+        url: '/admin/job-quality-requirements/saveButtPipingData',
+        data: formData,
+        dataType: 'json',
+        success: function(response) {
+            if (response.status == true) {
+                $('.form_id_bd').val(response.id);
+                if (reloadFlag == true) {
+                    window.location.href = response.redirect;
+                }
+            }
+        },
+        error: function(xhr, status, error) {
+            // Handle errors if needed
+            console.error(xhr.responseText);
+        }
+    });
+}
+
+// Threaded Piping
+function submitThreadedPipingData(reloadFlag) {
+    $.ajaxSetup({
+        headers: {
+            'X-CSRF-TOKEN': jQuery('meta[name="csrf-token"]').attr('content')
+        }
+    });
+
+    var formData = $('#threaded_piping_from').serialize();
+    console.log("Form Data", formData)
+    $.ajax({
+        method: 'POST',
+        url: '/admin/job-quality-requirements/saveThreadedPipingData',
+        data: formData,
+        dataType: 'json',
+        success: function(response) {
+            if (response.status == true) {
+                $('.form_id_bd').val(response.id);
+                if (reloadFlag == true) {
+                    window.location.href = response.redirect;
+                }
+            }
+        },
+        error: function(xhr, status, error) {
+            // Handle errors if needed
+            console.error(xhr.responseText);
+        }
+    });
+}
+
+//Electrical
+function submitElectricalData(reloadFlag) {
+    $.ajaxSetup({
+        headers: {
+            'X-CSRF-TOKEN': jQuery('meta[name="csrf-token"]').attr('content')
+        }
+    });
+
+    var formData = $('#electrical_from').serialize();
+    console.log("Form Data", formData)
+    $.ajax({
+        method: 'POST',
+        url: '/admin/job-quality-requirements/saveElectricalData',
+        data: formData,
+        dataType: 'json',
+        success: function(response) {
+            if (response.status == true) {
+                $('.form_id_bd').val(response.id);
+                if (reloadFlag == true) {
+                    window.location.href = response.redirect;
+                }
+            }
+        },
+        error: function(xhr, status, error) {
+            // Handle errors if needed
+            console.error(xhr.responseText);
+        }
+    });
+}
+
+//Preservation
+function submitPreservationData(reloadFlag) {
+    $.ajaxSetup({
+        headers: {
+            'X-CSRF-TOKEN': jQuery('meta[name="csrf-token"]').attr('content')
+        }
+    });
+
+    var formData = $('#preservation_from').serialize();
+    console.log("Form Data", formData)
+    $.ajax({
+        method: 'POST',
+        url: '/admin/job-quality-requirements/savePreservationData',
+        data: formData,
+        dataType: 'json',
+        success: function(response) {
+            if (response.status == true) {
+                $('.form_id_bd').val(response.id);
+                if (reloadFlag == true) {
+                    window.location.href = response.redirect;
+                }
+            }
+        },
+        error: function(xhr, status, error) {
+            // Handle errors if needed
+            console.error(xhr.responseText);
+        }
+    });
+}
+
+// PackageTesting
+function submitPackageTestingData(reloadFlag) {
+    $.ajaxSetup({
+        headers: {
+            'X-CSRF-TOKEN': jQuery('meta[name="csrf-token"]').attr('content')
+        }
+    });
+
+    var formData = $('#package_testing_from').serialize();
+    console.log("Form Data", formData)
+    $.ajax({
+        method: 'POST',
+        url: '/admin/job-quality-requirements/savePackageTestingData',
         data: formData,
         dataType: 'json',
         success: function(response) {

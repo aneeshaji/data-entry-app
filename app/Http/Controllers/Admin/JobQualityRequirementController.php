@@ -13,6 +13,7 @@ use Illuminate\View\View;
 use App\Models\BasicDetails;
 use App\Models\SpecialMaterialRequirements;
 use App\Models\GeneralInformation;
+use App\Models\ServiceInformation;
 
 class JobQualityRequirementController extends Controller
 {
@@ -75,7 +76,7 @@ class JobQualityRequirementController extends Controller
         // Store Data
         if ($request->id) {
             // For Edit
-                    $special_material_requirements = SpecialMaterialRequirements::where('id', $request->id)->first();
+            $special_material_requirements = SpecialMaterialRequirements::where('id', $request->id)->first();
         } else {
             $special_material_requirements  = new SpecialMaterialRequirements();
         }
@@ -90,21 +91,25 @@ class JobQualityRequirementController extends Controller
         $special_material_requirements->tubing =  $request->tubing == 'on' ? '1':'0';
         $special_material_requirements->save();
 
-        if ($basic_details->id) {
-            return response(['status' => true, 'message' => 'Success', 'id' => $special_material_requirements->id,
-            'redirect' => route('admin.job-quality-requirements')]);
+        if ($special_material_requirements->id) {
+            return response([
+                'status' => true,
+                'message' => 'Success',
+                'id' => $special_material_requirements->id,
+                'basic_details_id' => $special_material_requirements->basic_details_id,
+                'redirect' => route('admin.job-quality-requirements')]);
         } else {
             return response(['status' => false, 'message' => 'Error']);
         }
     }
 
-    
+
     public function saveGeneralData(Request $request)
     {
         // Store Data
         if ($request->id) {
             // For Edit
-                    $general_info = GeneralInformation::where('id', $request->id)->first();
+            $general_info = GeneralInformation::where('id', $request->id)->first();
         } else {
             $general_info  = new GeneralInformation();
         }
@@ -122,13 +127,6 @@ class JobQualityRequirementController extends Controller
         $general_info->date_revised = $request->date_revised;
         $general_info->date_approved = $request->date_approved;
         $general_info->notes = $request->notes;
-        // $general_info->pipes_and_fittings = $request->pipes_and_fittings == 'on' ? '1':'0';
-
-        // $general_info->bolting =  $request->bolting == 'on' ? '1':'0';
-        // $general_info->pressure_vessels = $request->pressure_vessels == 'on' ? '1':'0';
-        // $general_info->gaskets =  $request->gaskets == 'on' ? '1':'0';
-        // $general_info->structural_steel =  $request->structural_steel == 'on' ? '1':'0';
-        // $general_info->tubing =  $request->tubing == 'on' ? '1':'0';
         $general_info->save();
 
         if ($general_info->id) {
@@ -140,7 +138,344 @@ class JobQualityRequirementController extends Controller
     }
 
 
-    
+    public function saveServiceData(Request $request)
+    {
+        // Store Data
+        if ($request->id) {
+            // For Edit
+            $service_info = ServiceInformation::where('id', $request->id)->first();
+        } else {
+            $service_info  = new ServiceInformation();
+        }
+
+        $service_info->basic_details_id = $request->basic_details_id;
+        $service_info->gas_processed = $request->gas_processed;
+        $service_info->application = $request->application;
+        $service_info->sour_service_required = $request->sour_service_required == 'on' ? '1':'0';
+        $service_info->other = $request->other;
+        $service_info->save();
+
+        if ($service_info->id) {
+            return response(['status' => true, 'message' => 'Success', 'id' => $service_info->id,
+            'redirect' => route('admin.job-quality-requirements')]);
+        } else {
+            return response(['status' => false, 'message' => 'Error']);
+        }
+    }
+
+    // Structural Skid
+    public function saveStructuralSkidData(Request $request)
+    {
+        // Store Data
+        if ($request->id) {
+            // For Edit
+            $service_info = ServiceInformation::where('id', $request->id)->first();
+        } else {
+            $service_info  = new ServiceInformation();
+        }
+
+        $service_info->basic_details_id = $request->basic_details_id;
+        $service_info->gas_processed = $request->gas_processed;
+        $service_info->application = $request->application;
+        $service_info->sour_service_required = $request->sour_service_required == 'on' ? '1':'0';
+        $service_info->other = $request->other;
+        $service_info->save();
+
+        if ($service_info->id) {
+            return response(['status' => true, 'message' => 'Success', 'id' => $service_info->id,
+            'redirect' => route('admin.job-quality-requirements')]);
+        } else {
+            return response(['status' => false, 'message' => 'Error']);
+        }
+    }
+
+    // Pressure Vessels
+    public function savePressureVesselsData(Request $request)
+    {
+        // Store Data
+        if ($request->id) {
+            // For Edit
+            $service_info = ServiceInformation::where('id', $request->id)->first();
+        } else {
+            $service_info  = new ServiceInformation();
+        }
+
+        $service_info->basic_details_id = $request->basic_details_id;
+        $service_info->gas_processed = $request->gas_processed;
+        $service_info->application = $request->application;
+        $service_info->sour_service_required = $request->sour_service_required == 'on' ? '1':'0';
+        $service_info->other = $request->other;
+        $service_info->save();
+
+        if ($service_info->id) {
+            return response(['status' => true, 'message' => 'Success', 'id' => $service_info->id,
+            'redirect' => route('admin.job-quality-requirements')]);
+        } else {
+            return response(['status' => false, 'message' => 'Error']);
+        }
+    }
+
+    // Non Code Vessels/Tanks
+    public function submitNoCodeVesselsData(Request $request)
+    {
+        // Store Data
+        if ($request->id) {
+            // For Edit
+            $service_info = ServiceInformation::where('id', $request->id)->first();
+        } else {
+            $service_info  = new ServiceInformation();
+        }
+
+        $service_info->basic_details_id = $request->basic_details_id;
+        $service_info->gas_processed = $request->gas_processed;
+        $service_info->application = $request->application;
+        $service_info->sour_service_required = $request->sour_service_required == 'on' ? '1':'0';
+        $service_info->other = $request->other;
+        $service_info->save();
+
+        if ($service_info->id) {
+            return response(['status' => true, 'message' => 'Success', 'id' => $service_info->id,
+            'redirect' => route('admin.job-quality-requirements')]);
+        } else {
+            return response(['status' => false, 'message' => 'Error']);
+        }
+    }
+
+    // Process/Fuel Gas/Start Gas Piping
+    public function submitProcessPipingData(Request $request)
+    {
+        // Store Data
+        if ($request->id) {
+            // For Edit
+            $service_info = ServiceInformation::where('id', $request->id)->first();
+        } else {
+            $service_info  = new ServiceInformation();
+        }
+
+        $service_info->basic_details_id = $request->basic_details_id;
+        $service_info->gas_processed = $request->gas_processed;
+        $service_info->application = $request->application;
+        $service_info->sour_service_required = $request->sour_service_required == 'on' ? '1':'0';
+        $service_info->other = $request->other;
+        $service_info->save();
+
+        if ($service_info->id) {
+            return response(['status' => true, 'message' => 'Success', 'id' => $service_info->id,
+            'redirect' => route('admin.job-quality-requirements')]);
+        } else {
+            return response(['status' => false, 'message' => 'Error']);
+        }
+    }
+
+    // Bolting
+    public function submitBoltingData(Request $request)
+    {
+        // Store Data
+        if ($request->id) {
+            // For Edit
+            $service_info = ServiceInformation::where('id', $request->id)->first();
+        } else {
+            $service_info  = new ServiceInformation();
+        }
+
+        $service_info->basic_details_id = $request->basic_details_id;
+        $service_info->gas_processed = $request->gas_processed;
+        $service_info->application = $request->application;
+        $service_info->sour_service_required = $request->sour_service_required == 'on' ? '1':'0';
+        $service_info->other = $request->other;
+        $service_info->save();
+
+        if ($service_info->id) {
+            return response(['status' => true, 'message' => 'Success', 'id' => $service_info->id,
+            'redirect' => route('admin.job-quality-requirements')]);
+        } else {
+            return response(['status' => false, 'message' => 'Error']);
+        }
+    }
+
+    // Gaskets
+    public function submitGasketsData(Request $request)
+    {
+        // Store Data
+        if ($request->id) {
+            // For Edit
+            $service_info = ServiceInformation::where('id', $request->id)->first();
+        } else {
+            $service_info  = new ServiceInformation();
+        }
+
+        $service_info->basic_details_id = $request->basic_details_id;
+        $service_info->gas_processed = $request->gas_processed;
+        $service_info->application = $request->application;
+        $service_info->sour_service_required = $request->sour_service_required == 'on' ? '1':'0';
+        $service_info->other = $request->other;
+        $service_info->save();
+
+        if ($service_info->id) {
+            return response(['status' => true, 'message' => 'Success', 'id' => $service_info->id,
+            'redirect' => route('admin.job-quality-requirements')]);
+        } else {
+            return response(['status' => false, 'message' => 'Error']);
+        }
+    }
+
+    // Tubing
+    public function submitTubingData(Request $request)
+    {
+        // Store Data
+        if ($request->id) {
+            // For Edit
+            $service_info = ServiceInformation::where('id', $request->id)->first();
+        } else {
+            $service_info  = new ServiceInformation();
+        }
+
+        $service_info->basic_details_id = $request->basic_details_id;
+        $service_info->gas_processed = $request->gas_processed;
+        $service_info->application = $request->application;
+        $service_info->sour_service_required = $request->sour_service_required == 'on' ? '1':'0';
+        $service_info->other = $request->other;
+        $service_info->save();
+
+        if ($service_info->id) {
+            return response(['status' => true, 'message' => 'Success', 'id' => $service_info->id,
+            'redirect' => route('admin.job-quality-requirements')]);
+        } else {
+            return response(['status' => false, 'message' => 'Error']);
+        }
+    }
+
+    // ButtPiping
+    public function saveButtPipingData(Request $request)
+    {
+        // Store Data
+        if ($request->id) {
+            // For Edit
+            $service_info = ServiceInformation::where('id', $request->id)->first();
+        } else {
+            $service_info  = new ServiceInformation();
+        }
+
+        $service_info->basic_details_id = $request->basic_details_id;
+        $service_info->gas_processed = $request->gas_processed;
+        $service_info->application = $request->application;
+        $service_info->sour_service_required = $request->sour_service_required == 'on' ? '1':'0';
+        $service_info->other = $request->other;
+        $service_info->save();
+
+        if ($service_info->id) {
+            return response(['status' => true, 'message' => 'Success', 'id' => $service_info->id,
+            'redirect' => route('admin.job-quality-requirements')]);
+        } else {
+            return response(['status' => false, 'message' => 'Error']);
+        }
+    }
+
+    // Threaded Piping
+    public function saveThreadedPipingData(Request $request)
+    {
+        // Store Data
+        if ($request->id) {
+            // For Edit
+            $service_info = ServiceInformation::where('id', $request->id)->first();
+        } else {
+            $service_info  = new ServiceInformation();
+        }
+
+        $service_info->basic_details_id = $request->basic_details_id;
+        $service_info->gas_processed = $request->gas_processed;
+        $service_info->application = $request->application;
+        $service_info->sour_service_required = $request->sour_service_required == 'on' ? '1':'0';
+        $service_info->other = $request->other;
+        $service_info->save();
+
+        if ($service_info->id) {
+            return response(['status' => true, 'message' => 'Success', 'id' => $service_info->id,
+            'redirect' => route('admin.job-quality-requirements')]);
+        } else {
+            return response(['status' => false, 'message' => 'Error']);
+        }
+    }
+
+    // Electrical
+    public function saveElectricalData(Request $request)
+    {
+        // Store Data
+        if ($request->id) {
+            // For Edit
+            $service_info = ServiceInformation::where('id', $request->id)->first();
+        } else {
+            $service_info  = new ServiceInformation();
+        }
+
+        $service_info->basic_details_id = $request->basic_details_id;
+        $service_info->gas_processed = $request->gas_processed;
+        $service_info->application = $request->application;
+        $service_info->sour_service_required = $request->sour_service_required == 'on' ? '1':'0';
+        $service_info->other = $request->other;
+        $service_info->save();
+
+        if ($service_info->id) {
+            return response(['status' => true, 'message' => 'Success', 'id' => $service_info->id,
+            'redirect' => route('admin.job-quality-requirements')]);
+        } else {
+            return response(['status' => false, 'message' => 'Error']);
+        }
+    }
+
+    // Preservation
+    public function submitPreservationData(Request $request)
+    {
+        // Store Data
+        if ($request->id) {
+            // For Edit
+            $service_info = ServiceInformation::where('id', $request->id)->first();
+        } else {
+            $service_info  = new ServiceInformation();
+        }
+
+        $service_info->basic_details_id = $request->basic_details_id;
+        $service_info->gas_processed = $request->gas_processed;
+        $service_info->application = $request->application;
+        $service_info->sour_service_required = $request->sour_service_required == 'on' ? '1':'0';
+        $service_info->other = $request->other;
+        $service_info->save();
+
+        if ($service_info->id) {
+            return response(['status' => true, 'message' => 'Success', 'id' => $service_info->id,
+            'redirect' => route('admin.job-quality-requirements')]);
+        } else {
+            return response(['status' => false, 'message' => 'Error']);
+        }
+    }
+
+    // PackageTesting
+    public function savePackageTestingData(Request $request)
+    {
+        // Store Data
+        if ($request->id) {
+            // For Edit
+            $service_info = ServiceInformation::where('id', $request->id)->first();
+        } else {
+            $service_info  = new ServiceInformation();
+        }
+
+        $service_info->basic_details_id = $request->basic_details_id;
+        $service_info->gas_processed = $request->gas_processed;
+        $service_info->application = $request->application;
+        $service_info->sour_service_required = $request->sour_service_required == 'on' ? '1':'0';
+        $service_info->other = $request->other;
+        $service_info->save();
+
+        if ($service_info->id) {
+            return response(['status' => true, 'message' => 'Success', 'id' => $service_info->id,
+            'redirect' => route('admin.job-quality-requirements')]);
+        } else {
+            return response(['status' => false, 'message' => 'Error']);
+        }
+    }
+
+
 
      /**
      * Save JQR.
@@ -203,10 +538,13 @@ class JobQualityRequirementController extends Controller
         $jqr = BasicDetails::where('id', $id)->first();
         $jqr_special = SpecialMaterialRequirements::where('basic_details_id', $jqr->id)->first();
         $jqr_general_info = GeneralInformation::where('basic_details_id', $jqr->id)->first();
+        $jqr_service_info = ServiceInformation::where('basic_details_id', $jqr->id)->first();
+
         return view('admin.job-quality-requirements.create', [
             'jqr' => $jqr,
             'jqr_special' => $jqr_special,
-            'jqr_general_info' =>$jqr_general_info
+            'jqr_general_info' => $jqr_general_info,
+            'jqr_service_info' => $jqr->service_info
         ]);
     }
 
