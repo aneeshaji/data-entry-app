@@ -2,9 +2,21 @@
     <div class="content-wrapper">
         <!-- Content -->
         <div class="container-xxl flex-grow-1 container-p-y">
-            <h4 class="py-3 mb-4"><span class="text-muted fw-light">Job Quality Requirements /</span> List</h4>
+            <!-- <h4 class="py-3 mb-4"><span class="text-muted fw-light">Job Quality Requirements /</span> List</h4> -->
             <!-- Hoverable Table rows -->
             <div class="card">
+                <div id="sticky-wrapper" class="sticky-wrapper" style="height: 85.675px;">
+                    <div class="card-header sticky-element bg-label-secondary d-flex justify-content-sm-between align-items-sm-center flex-column flex-sm-row"
+                        style="">
+                        <h4 class="py-3 mb-4"><span class="text-muted fw-light">Job Quality Requirements /</span> List</h4>
+                        <div class="action-btns">
+                            <!-- <button class="btn btn-label-primary me-3 waves-effect">
+                                <span class="align-middle"> Back</span>
+                            </button> -->
+                            <a href="{{ url('/admin/job-quality-requirements/create') }}" class="btn btn-primary waves-effect waves-light">Add JQR</a>
+                        </div>
+                    </div>
+                </div>
                 <!-- <h5 class="card-header">Hoverable rows</h5> -->
                 <div class="table-responsive text-nowrap">
                     <table class="table table-hover">
@@ -20,37 +32,38 @@
                         </thead>
                         <tbody class="table-border-bottom-0">
                             @if ($jqrs->count() > 0)
-                                @foreach ($jqrs as $key => $value)
-                                    <tr>
-                                        <td>
-                                            <span class="fw-medium">{{ $key + 1 }}</span>
-                                        </td>
-                                        <td>{{ $value->job_name }}</td>
-                                        <td>
-                                        {{ $value->stages }}
-                                        </td>
-                                        <td><span class="">{{ $value->release_date }}</span></td>
-                                        <td><span class="">{{ $value->due_date }}</span></td>
-                                        <td>
-                                            <div class="dropdown">
-                                                <button type="button" class="btn p-0 dropdown-toggle hide-arrow"
-                                                    data-bs-toggle="dropdown">
-                                                    <i class="ti ti-dots-vertical"></i>
-                                                </button>
-                                                <div class="dropdown-menu">
-                                                    <a class="dropdown-item" href="{{ url('admin/job-quality-requirements/' . encrypt($value->id) . '/edit') }}"><i
-                                                            class="ti ti-pencil me-1"></i> Edit</a>
-                                                    <a class="dropdown-item" href="javascript:void(0);"><i
-                                                            class="ti ti-download"></i> Download</a>
-                                                </div>
-                                            </div>
-                                        </td>
-                                    </tr>
-                                @endforeach
-                            @else
-                                <td colspan="6" class="text-bold text-danger text-center">
-                                    No Data Found
+                            @foreach ($jqrs as $key => $value)
+                            <tr>
+                                <td>
+                                    <span class="fw-medium">{{ $key + 1 }}</span>
                                 </td>
+                                <td>{{ $value->job_name }}</td>
+                                <td>
+                                    {{ $value->stages }}
+                                </td>
+                                <td><span class="">{{ $value->release_date }}</span></td>
+                                <td><span class="">{{ $value->due_date }}</span></td>
+                                <td>
+                                    <div class="dropdown">
+                                        <button type="button" class="btn p-0 dropdown-toggle hide-arrow"
+                                            data-bs-toggle="dropdown">
+                                            <i class="ti ti-dots-vertical"></i>
+                                        </button>
+                                        <div class="dropdown-menu">
+                                            <a class="dropdown-item"
+                                                href="{{ url('admin/job-quality-requirements/' . encrypt($value->id) . '/edit') }}"><i
+                                                    class="ti ti-pencil me-1"></i> Edit</a>
+                                            <a class="dropdown-item" href="javascript:void(0);"><i
+                                                    class="ti ti-download"></i> Download</a>
+                                        </div>
+                                    </div>
+                                </td>
+                            </tr>
+                            @endforeach
+                            @else
+                            <td colspan="6" class="text-bold text-danger text-center">
+                                No Data Found
+                            </td>
                             @endif
                         </tbody>
                     </table>
