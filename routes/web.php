@@ -25,11 +25,24 @@ Route::middleware('auth')->group(function () {
             'index' => 'admin.job-quality-requirements'
         ]
     ]);
+    // AJAX Routes
     Route::post('/admin/job-quality-requirements/saveData', [JobQualityRequirementController::class, 'saveData']);
     Route::post('/admin/job-quality-requirements/saveSpecialData', [JobQualityRequirementController::class, 'saveSpecialData']);
     Route::post('/admin/job-quality-requirements/saveGeneralData', [JobQualityRequirementController::class, 'saveGeneralData']);
-    
-    
+    Route::post('/admin/job-quality-requirements/saveServiceData', [JobQualityRequirementController::class, 'saveServiceData']);
+    Route::post('/admin/job-quality-requirements/saveStructuralSkidData', [JobQualityRequirementController::class, 'saveStructuralSkidData']);
+    Route::post('/admin/job-quality-requirements/savePressureVesselsData', [JobQualityRequirementController::class, 'savePressureVesselsData']);
+    Route::post('/admin/job-quality-requirements/saveNoCodeVesselsData', [JobQualityRequirementController::class, 'saveNoCodeVesselsData']);
+    Route::post('/admin/job-quality-requirements/saveProcessPipingData', [JobQualityRequirementController::class, 'saveProcessPipingData']);
+    Route::post('/admin/job-quality-requirements/saveBoltingData', [JobQualityRequirementController::class, 'saveBoltingData']);
+    Route::post('/admin/job-quality-requirements/saveGasketsData', [JobQualityRequirementController::class, 'saveGasketsData']);
+    Route::post('/admin/job-quality-requirements/saveTubingData', [JobQualityRequirementController::class, 'saveTubingData']);
+    Route::post('/admin/job-quality-requirements/saveButtPipingData', [JobQualityRequirementController::class, 'saveButtPipingData']);
+    Route::post('/admin/job-quality-requirements/saveThreadedPipingData', [JobQualityRequirementController::class, 'saveThreadedPipingData']);
+    Route::post('/admin/job-quality-requirements/saveElectricalData', [JobQualityRequirementController::class, 'saveElectricalData']);
+    Route::post('/admin/job-quality-requirements/savePreservationData', [JobQualityRequirementController::class, 'savePreservationData']);
+    Route::post('/admin/job-quality-requirements/savePackageTestingData', [JobQualityRequirementController::class, 'savePackageTestingData']);
+
 });
 
 require __DIR__.'/auth.php';

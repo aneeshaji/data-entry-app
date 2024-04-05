@@ -22,4 +22,3 @@ class GeneralInformation extends Model
         'notes'
     ];
 }
-// general_information
