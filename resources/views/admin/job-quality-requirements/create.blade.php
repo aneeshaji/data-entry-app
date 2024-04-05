@@ -2076,12 +2076,13 @@
                                     Pneumatic Testing
                                 </label>
                                 <hr>
+
                                 <form onSubmit="return false" id="package_testing_from">
                                     <div class="row g-3">
                                         <!-- Pneumatic Testing -->
                                         <div class="col-sm-6">
                                             <label class="switch">
-                                                <input type="checkbox" class="switch-input" name="pneumatic_testing">
+                                                <input type="checkbox" class="switch-input" name="pneumatic_testing" {{ isset($jqr_package_testing->pneumatic_testing) ? 'checked': '' }} >
                                                 <span class="switch-toggle-slider">
                                                     <span class="switch-on"></span>
                                                     <span class="switch-off"></span>
@@ -2091,7 +2092,7 @@
                                         </div>
                                         <div class="col-sm-6">
                                             <label class="switch">
-                                                <input type="checkbox" class="switch-input" name="pneumatic_testing_customer_third_party_witness_required">
+                                                <input type="checkbox" class="switch-input" name="pneumatic_testing_customer_third_party_witness_required" {{ isset($jqr_package_testing->pneumatic_testing_customer_third_party_witness_required) ? 'checked': '' }} >
                                                 <span class="switch-toggle-slider">
                                                     <span class="switch-on"></span>
                                                     <span class="switch-off"></span>
@@ -2103,28 +2104,28 @@
                                         <div class="col-sm-6">
                                             <label class="form-label" for="twitter1">Pneumatic Testing Notification
                                                 Requirement</label>
-                                            <input type="text" id="twitter1" name="pneumatic_testing_notification_requirement" class="form-control" placeholder="" />
+                                            <input type="text" id="twitter1" name="pneumatic_testing_notification_requirement"  value="{{ isset($jqr_package_testing->pneumatic_testing_notification_requirement) ? $jqr_package_testing->pneumatic_testing_notification_requirement : '' }}"  class="form-control" placeholder="" />
                                         </div>
                                         <div class="col-sm-6">
                                             <label class="form-label" for="facebook1">System</label>
-                                            <input type="text" id="facebook1" name="system" class="form-control" placeholder="" />
+                                            <input type="text" id="facebook1" name="system" class="form-control"  value="{{ isset($jqr_package_testing->system) ? $jqr_package_testing->system : '' }}" placeholder="" />
                                         </div>
                                         <div class="col-sm-6">
                                             <label class="form-label" for="google1">Test Medium</label>
-                                            <input type="text" id="google1" name="test_medium" class="form-control" placeholder="" />
+                                            <input type="text" id="google1" name="test_medium" class="form-control"  value="{{ isset($jqr_package_testing->test_medium) ? $jqr_package_testing->test_medium : '' }}" placeholder="" />
                                         </div>
                                         <div class="col-sm-6">
                                             <label class="form-label" for="linkedin1">Test Requirement Pressure</label>
-                                            <input type="text" id="linkedin1" name="test_requirement_pressure" class="form-control" placeholder="" />
+                                            <input type="text" id="linkedin1" name="test_requirement_pressure" value="{{ isset($jqr_package_testing->test_requirement_pressure) ? $jqr_package_testing->test_requirement_pressure : '' }}" class="form-control" placeholder="" />
                                         </div>
                                         <div class="col-sm-6">
                                             <label class="form-label" for="linkedin1">Test Requirement Time</label>
-                                            <input type="text" id="linkedin1" name="test_requirement_time" class="form-control" placeholder="" />
+                                            <input type="text" id="linkedin1" name="test_requirement_time" class="form-control" placeholder="" value="{{ isset($jqr_package_testing->test_requirement_time) ? $jqr_package_testing->test_requirement_time : '' }}" />
                                         </div>
                                         <div class="col-sm-6">
                                             <label class="form-label" for="linkedin1">Pneumatic Testing Notes</label>
                                             <textarea class="form-control" name="pneumatic_testing_notes" id="exampleFormControlTextarea1"
-                                                rows="3"></textarea>
+                                                rows="3">{{ isset($jqr_package_testing->pneumatic_testing_notes) ? $jqr_package_testing->pneumatic_testing_notes : '' }}</textarea>
                                         </div>
                                         <!-- Pneumatic Testing Ends -->
                                         <label class="form-check-label" for="deliveryAdd">
@@ -2134,7 +2135,7 @@
                                         <!-- Vaccum -->
                                         <div class="col-sm-6">
                                             <label class="switch">
-                                                <input type="checkbox" class="switch-input" name="vaccum">
+                                                <input type="checkbox" class="switch-input" name="vaccum"  {{ isset($jqr_package_testing->vaccum) ? 'checked': '' }}>
                                                 <span class="switch-toggle-slider">
                                                     <span class="switch-on"></span>
                                                     <span class="switch-off"></span>
@@ -2144,7 +2145,7 @@
                                         </div>
                                         <div class="col-sm-6">
                                             <label class="switch">
-                                                <input type="checkbox" class="switch-input" name="vaccum_customer_third_party_witness_required">
+                                                <input type="checkbox" class="switch-input" name="vaccum_customer_third_party_witness_required" {{ isset($jqr_package_testing->vaccum_customer_third_party_witness_required) ? 'checked': '' }} >
                                                 <span class="switch-toggle-slider">
                                                     <span class="switch-on"></span>
                                                     <span class="switch-off"></span>
@@ -2156,20 +2157,20 @@
                                         <div class="col-sm-6">
                                             <label class="form-label" for="twitter1">Vaccum Notification
                                                 Requirement</label>
-                                            <input type="text" id="twitter1" name="vaccum_notification_requirement" class="form-control" placeholder="" />
+                                            <input type="text" id="twitter1" name="vaccum_notification_requirement"  value="{{ isset($jqr_package_testing->vaccum_notification_requirement) ? $jqr_package_testing->vaccum_notification_requirement : '' }}"  class="form-control" placeholder="" />
                                         </div>
                                         <div class="col-sm-6">
                                             <label class="form-label" for="twitter1">Level</label>
-                                            <input type="text" id="twitter1" name="level" class="form-control" placeholder="" />
+                                            <input type="text" id="twitter1" name="level" class="form-control" value="{{ isset($jqr_package_testing->level) ? $jqr_package_testing->level : '' }}" placeholder="" />
                                         </div>
                                         <div class="col-sm-6">
                                             <label class="form-label" for="twitter1">Duration At Level</label>
-                                            <input type="text" id="twitter1" name="duration_at_level" class="form-control" placeholder="" />
+                                            <input type="text" id="twitter1" name="duration_at_level" class="form-control" value="{{ isset($jqr_package_testing->duration_at_level) ? $jqr_package_testing->duration_at_level : '' }}" placeholder="" />
                                         </div>
                                         <div class="col-sm-6">
                                             <label class="form-label" for="twitter1">Vaccum Notes</label>
                                             <textarea class="form-control" name="vaccum_notes" id="exampleFormControlTextarea1"
-                                                rows="3"></textarea>
+                                                rows="3">{{ isset($jqr_package_testing->vaccum_notes) ? $jqr_package_testing->vaccum_notes : '' }}</textarea>
                                         </div>
                                         <!-- Vaccum Ends -->
                                         <label class="form-check-label" for="deliveryAdd">
@@ -2179,7 +2180,7 @@
                                         <!-- Purge/Charge -->
                                         <div class="col-sm-6">
                                             <label class="switch">
-                                                <input type="checkbox" class="switch-input" name="purge_charge">
+                                                <input type="checkbox" class="switch-input" name="purge_charge" {{ isset($jqr_package_testing->purge_charge) ? 'checked': '' }} >
                                                 <span class="switch-toggle-slider">
                                                     <span class="switch-on"></span>
                                                     <span class="switch-off"></span>
@@ -2189,16 +2190,16 @@
                                         </div>
                                         <div class="col-sm-6">
                                             <label class="form-label" for="twitter1">Purge/Charge Pressure</label>
-                                            <input type="text" id="twitter1" name="purge_charge_pressure" class="form-control" placeholder="" />
+                                            <input type="text" id="twitter1" name="purge_charge_pressure" class="form-control" value="{{ isset($jqr_package_testing->purge_charge_pressure) ? $jqr_package_testing->purge_charge_pressure : '' }}" placeholder="" />
                                         </div>
                                         <div class="col-sm-6">
                                             <label class="form-label" for="twitter1">Purge/Charge Medium</label>
-                                            <input type="text" id="twitter1" name="purge_charge_medium" class="form-control" placeholder="" />
+                                            <input type="text" id="twitter1" name="purge_charge_medium" class="form-control" value="{{ isset($jqr_package_testing->purge_charge_medium) ? $jqr_package_testing->purge_charge_medium : '' }}" placeholder="" />
                                         </div>
                                         <div class="col-sm-6">
                                             <label class="form-label" for="twitter1">Purge/Charge Notes</label>
                                             <textarea class="form-control" name="purge_charge_notes" id="exampleFormControlTextarea1"
-                                                rows="3"></textarea>
+                                                rows="3">{{ isset($jqr_package_testing->purge_charge_notes) ? $jqr_package_testing->purge_charge_notes : '' }}</textarea>
                                         </div>
                                         <!-- Purge/Charge Ends -->
                                         <label class="form-check-label" for="deliveryAdd">
@@ -2208,7 +2209,7 @@
                                         <!-- Lube Oil Flush -->
                                         <div class="col-sm-6">
                                             <label class="switch">
-                                                <input type="checkbox" class="switch-input" name="lube_oil_flush">
+                                                <input type="checkbox" class="switch-input" name="lube_oil_flush"  {{ isset($jqr_package_testing->lube_oil_flush) ? 'checked': '' }} >
                                                 <span class="switch-toggle-slider">
                                                     <span class="switch-on"></span>
                                                     <span class="switch-off"></span>
@@ -2218,7 +2219,7 @@
                                         </div>
                                         <div class="col-sm-6">
                                             <label class="switch">
-                                                <input type="checkbox" class="switch-input" name="lube_oil_flush_customer_third_party_witness_required">
+                                                <input type="checkbox" class="switch-input" name="lube_oil_flush_customer_third_party_witness_required"  {{ isset($jqr_package_testing->lube_oil_flush_customer_third_party_witness_required) ? 'checked': '' }} >
                                                 <span class="switch-toggle-slider">
                                                     <span class="switch-on"></span>
                                                     <span class="switch-off"></span>
@@ -2230,11 +2231,11 @@
                                         <div class="col-sm-6">
                                             <label class="form-label" for="twitter1">Lube Oil Flush Notification
                                                 Requirement</label>
-                                            <input type="text" id="twitter1" name="lube_oil_flush_notification_requirement" class="form-control" placeholder="" />
+                                            <input type="text" id="twitter1" name="lube_oil_flush_notification_requirement"  {{ isset($jqr_package_testing->lube_oil_flush_notification_requirement) ? $jqr_package_testing->lube_oil_flush_notification_requirement : '' }} class="form-control" placeholder="" />
                                         </div>
                                         <div class="col-sm-6">
                                             <label class="form-label" for="twitter1">Lube Oil Flush Notes</label>
-                                            <textarea class="form-control" name="lube_oil_flush_notes" id="exampleFormControlTextarea1"
+                                            <textarea class="form-control" name="lube_oil_flush_notes" {{ isset($jqr_package_testing->lube_oil_flush_notes) ? $jqr_package_testing->lube_oil_flush_notes : '' }} id="exampleFormControlTextarea1"
                                                 rows="3"></textarea>
                                         </div>
                                         <!-- Lube Oil Flush Ends -->
@@ -2245,7 +2246,7 @@
                                         <!-- Run Test -->
                                         <div class="col-sm-6">
                                             <label class="switch">
-                                                <input type="checkbox" class="switch-input" name="run_test">
+                                                <input type="checkbox" class="switch-input" name="run_test" {{ isset($jqr_package_testing->run_test) ? 'checked': '' }} >
                                                 <span class="switch-toggle-slider">
                                                     <span class="switch-on"></span>
                                                     <span class="switch-off"></span>
@@ -2255,7 +2256,7 @@
                                         </div>
                                         <div class="col-sm-6">
                                             <label class="switch">
-                                                <input type="checkbox" class="switch-input" name="run_test_customer_third_party_witness_required">
+                                                <input type="checkbox" class="switch-input" name="run_test_customer_third_party_witness_required" {{ isset($jqr_package_testing->run_test_customer_third_party_witness_required) ? 'checked': '' }}>
                                                 <span class="switch-toggle-slider">
                                                     <span class="switch-on"></span>
                                                     <span class="switch-off"></span>
@@ -2267,29 +2268,29 @@
                                         <div class="col-sm-6">
                                             <label class="form-label" for="twitter1">Run Test Notification
                                                 Requirement</label>
-                                            <input type="text" id="twitter1" name="run_test_notification_requirement" class="form-control" placeholder="" />
+                                            <input type="text" id="twitter1" name="run_test_notification_requirement" value="{{ isset($jqr_package_testing->run_test_notification_requirement) ? $jqr_package_testing->run_test_notification_requirement : '' }}" class="form-control" placeholder="" />
                                         </div>
                                         <div class="col-sm-6">
                                             <small class="text-light fw-semibold d-block">Run Test Requirement</small>
                                             <div class="form-check form-check-inline mt-3">
                                                 <input class="form-check-input" name="run_test_requirement" type="checkbox" id="inlineCheckbox1"
-                                                    value="option1">
+                                                    value="1">
                                                 <label class="form-check-label" for="inlineCheckbox1">Loaded</label>
                                             </div>
                                             <div class="form-check form-check-inline">
                                                 <input class="form-check-input" name="run_test_requirement" type="checkbox" id="inlineCheckbox2"
-                                                    value="option2">
+                                                    value="2">
                                                 <label class="form-check-label" for="inlineCheckbox2">No Load</label>
                                             </div>
                                         </div>
                                         <div class="col-sm-6">
                                             <label class="form-label" for="twitter1">Run Test Duration</label>
-                                            <input type="text" id="twitter1" name="run_test_duration" class="form-control" placeholder="" />
+                                            <input type="text" id="twitter1" name="run_test_duration" value="{{ isset($jqr_package_testing->run_test_duration) ? $jqr_package_testing->run_test_duration : '' }}" class="form-control" placeholder="" />
                                         </div>
                                         <div class="col-sm-6">
                                             <label class="form-label" for="twitter1">Run Test Notes</label>
                                             <textarea class="form-control" name="run_test_notes" id="exampleFormControlTextarea1"
-                                                rows="3"></textarea>
+                                                rows="3">{{ isset($jqr_package_testing->run_test_notes) ? $jqr_package_testing->run_test_notes : '' }}</textarea>
                                         </div>
                                         <!-- Run Test Ends -->
                                         <label class="form-check-label" for="deliveryAdd">
@@ -2299,7 +2300,7 @@
                                         <!-- Megger Test -->
                                         <div class="col-sm-6">
                                             <label class="switch">
-                                                <input type="checkbox" class="switch-input" name="megger_test">
+                                                <input type="checkbox" class="switch-input" name="megger_test" {{ isset($jqr_package_testing->megger_test) ? 'checked': '' }} >
                                                 <span class="switch-toggle-slider">
                                                     <span class="switch-on"></span>
                                                     <span class="switch-off"></span>
@@ -2309,7 +2310,7 @@
                                         </div>
                                         <div class="col-sm-6">
                                             <label class="switch">
-                                                <input type="checkbox" class="switch-input" name="megger_test_customer_third_party_witness_required">
+                                                <input type="checkbox" class="switch-input" name="megger_test_customer_third_party_witness_required" {{ isset($jqr_package_testing->megger_test_customer_third_party_witness_required) ? 'checked': '' }}>
                                                 <span class="switch-toggle-slider">
                                                     <span class="switch-on"></span>
                                                     <span class="switch-off"></span>
@@ -2321,12 +2322,12 @@
                                         <div class="col-sm-6">
                                             <label class="form-label" for="twitter1">Megger Test Notification
                                                 Requirement</label>
-                                            <input type="text" id="twitter1" name="megger_test_notification_requirement" class="form-control" placeholder="" />
+                                            <input type="text" id="twitter1" name="megger_test_notification_requirement" value="{{ isset($jqr_package_testing->megger_test_notification_requirement) ? $jqr_package_testing->megger_test_notification_requirement : '' }}" class="form-control" placeholder="" />
                                         </div>
                                         <div class="col-sm-6">
                                             <label class="form-label" for="twitter1">Megger Test Notes</label>
                                             <textarea class="form-control" name="megger_test_notes" id="exampleFormControlTextarea1"
-                                                rows="3"></textarea>
+                                                rows="3">{{ isset($jqr_package_testing->megger_test_notes) ? $jqr_package_testing->megger_test_notes : '' }}</textarea>
                                         </div>
                                         <!-- Megger Test Ends -->
                                         <label class="form-check-label" for="deliveryAdd">
@@ -2336,7 +2337,7 @@
                                         <!-- Fat Test -->
                                         <div class="col-sm-6">
                                             <label class="switch">
-                                                <input type="checkbox" class="switch-input" name="fat_test">
+                                                <input type="checkbox" class="switch-input" name="fat_test" {{ isset($jqr_package_testing->fat_test) ? 'checked': '' }} >
                                                 <span class="switch-toggle-slider">
                                                     <span class="switch-on"></span>
                                                     <span class="switch-off"></span>
@@ -2346,7 +2347,7 @@
                                         </div>
                                         <div class="col-sm-6">
                                             <label class="switch">
-                                                <input type="checkbox" class="switch-input" name="fat_test_customer_third_party_witness_required">
+                                                <input type="checkbox" class="switch-input" name="fat_test_customer_third_party_witness_required" {{ isset($jqr_package_testing->fat_test_customer_third_party_witness_required) ? 'checked': '' }} >
                                                 <span class="switch-toggle-slider">
                                                     <span class="switch-on"></span>
                                                     <span class="switch-off"></span>
@@ -2358,16 +2359,16 @@
                                         <div class="col-sm-6">
                                             <label class="form-label" for="twitter1">Fat Test Notification
                                                 Requirement</label>
-                                            <input type="text" id="twitter1" name="fat_test_notification_requirement" class="form-control" placeholder="" />
+                                            <input type="text" id="twitter1" name="fat_test_notification_requirement" class="form-control" value="{{ isset($jqr_package_testing->fat_test_notification_requirement) ? $jqr_package_testing->fat_test_notification_requirement : '' }}"  placeholder="" />
                                         </div>
                                         <div class="col-sm-6">
                                             <label class="form-label" for="twitter1">Fat Test Requirement</label>
-                                            <input type="text" id="twitter1" name="fat_test_requirement" class="form-control" placeholder="" />
+                                            <input type="text" id="twitter1" name="fat_test_requirement" class="form-control" value="{{ isset($jqr_package_testing->fat_test_requirement) ? $jqr_package_testing->fat_test_requirement : '' }}" placeholder="" />
                                         </div>
                                         <div class="col-sm-6">
                                             <label class="form-label" for="twitter1">Fat Test Notes</label>
                                             <textarea class="form-control" name="fat_test_notes" id="exampleFormControlTextarea1"
-                                                rows="3"></textarea>
+                                                rows="3">{{ isset($jqr_package_testing->fat_test_notes) ? $jqr_package_testing->fat_test_notes : '' }}</textarea>
                                         </div>
                                         <div class="col-sm-6"></div>
                                         <!-- Fat Test Ends -->
@@ -2378,7 +2379,7 @@
                                         <!-- Additional Testing -->
                                         <div class="col-sm-6">
                                             <label class="switch">
-                                                <input type="checkbox" class="switch-input" name="additional_testing">
+                                                <input type="checkbox" class="switch-input" name="additional_testing" {{ isset($jqr_package_testing->additional_testing) ? 'checked': '' }} >
                                                 <span class="switch-toggle-slider">
                                                     <span class="switch-on"></span>
                                                     <span class="switch-off"></span>
@@ -2388,7 +2389,7 @@
                                         </div>
                                         <div class="col-sm-6">
                                             <label class="switch">
-                                                <input type="checkbox" class="switch-input" name="additional_testing_customer_third_party_witness_required">
+                                                <input type="checkbox" class="switch-input" name="additional_testing_customer_third_party_witness_required"  {{ isset($jqr_package_testing->additional_testing_customer_third_party_witness_required) ? 'checked': '' }} >
                                                 <span class="switch-toggle-slider">
                                                     <span class="switch-on"></span>
                                                     <span class="switch-off"></span>
@@ -2400,18 +2401,18 @@
                                         <div class="col-sm-6">
                                             <label class="form-label" for="twitter1">Additional Testing Notification
                                                 Requirement</label>
-                                            <input type="text" id="twitter1" name="additional_testing_notification_requirement" class="form-control" placeholder="" />
+                                            <input type="text" id="twitter1" name="additional_testing_notification_requirement" value="{{ isset($jqr_package_testing->additional_testing_notification_requirement) ? $jqr_package_testing->additional_testing_notification_requirement : '' }}" class="form-control" placeholder="" />
                                         </div>
                                         <div class="col-sm-6">
                                             <label class="form-label" for="twitter1">Additional Testing
                                                 Test/Requirements</label>
-                                            <input type="text" id="twitter1" name="additional_testing_test_requirement" class="form-control" placeholder="" />
+                                            <input type="text" id="twitter1" name="additional_testing_test_requirement" class="form-control" value="{{ isset($jqr_package_testing->additional_testing_test_requirement) ? $jqr_package_testing->additional_testing_test_requirement : '' }}" placeholder="" />
                                         </div>
                                         <!-- Additional Testing Ends -->
                                         <hr>
                                         <div class="col-sm-6">
                                             <label class="switch">
-                                                <input type="checkbox" class="switch-input" name="addendum_purchasing_specifications">
+                                                <input type="checkbox" class="switch-input" name="addendum_purchasing_specifications" {{ isset($jqr_package_testing->addendum_purchasing_specifications) ? 'checked': '' }}>
                                                 <span class="switch-toggle-slider">
                                                     <span class="switch-on"></span>
                                                     <span class="switch-off"></span>
@@ -2421,7 +2422,7 @@
                                         </div>
                                         <div class="col-sm-6">
                                             <label class="switch">
-                                                <input type="checkbox" class="switch-input" name="addendum_purchasing_specifications_complete">
+                                                <input type="checkbox" class="switch-input" name="addendum_purchasing_specifications_complete" {{ isset($jqr_package_testing->addendum_purchasing_specifications_complete) ? 'checked': '' }} >
                                                 <span class="switch-toggle-slider">
                                                     <span class="switch-on"></span>
                                                     <span class="switch-off"></span>
@@ -2434,12 +2435,12 @@
                                             <label class="form-label" for="twitter1">Addendum Purchasing Specifications
                                                 Notes</label>
                                             <textarea class="form-control" name="addendum_purchasing_specifications_notes" id="exampleFormControlTextarea1"
-                                                rows="3"></textarea>
+                                                rows="3">{{ isset($jqr_package_testing->addendum_purchasing_specifications_notes) ? $jqr_package_testing->addendum_purchasing_specifications_notes : '' }}</textarea>
                                         </div>
                                         <div class="col-sm-6"></div>
                                         <div class="col-sm-6">
                                             <label class="switch">
-                                                <input type="checkbox" class="switch-input" name="addendum_manufacturing_specifications">
+                                                <input type="checkbox" class="switch-input" name="addendum_manufacturing_specifications"  {{ isset($jqr_package_testing->addendum_manufacturing_specifications) ? 'checked': '' }} >
                                                 <span class="switch-toggle-slider">
                                                     <span class="switch-on"></span>
                                                     <span class="switch-off"></span>
@@ -2450,7 +2451,7 @@
 
                                         <div class="col-sm-6">
                                             <label class="switch">
-                                                <input type="checkbox" class="switch-input" name="addendum_manufacturing_specifications_complete">
+                                                <input type="checkbox" class="switch-input" name="addendum_manufacturing_specifications_complete"  {{ isset($jqr_package_testing->addendum_manufacturing_specifications_complete) ? 'checked': '' }}>
                                                 <span class="switch-toggle-slider">
                                                     <span class="switch-on"></span>
                                                     <span class="switch-off"></span>
@@ -2463,7 +2464,7 @@
                                             <label class="form-label" for="twitter1">Addendum Manufacturing
                                                 Specifications Notes</label>
                                             <textarea class="form-control" name="addendum_manufacturing_specifications_notes" id="exampleFormControlTextarea1"
-                                                rows="3"></textarea>
+                                                rows="3">{{ isset($jqr_package_testing->addendum_manufacturing_specifications_notes) ? $jqr_package_testing->addendum_manufacturing_specifications_notes : '' }}</textarea>
                                         </div>
                                         <!-- Action Buttons -->
                                         <div class="pt-4">
@@ -2480,9 +2481,9 @@
                                             </div>
                                         </div>
                                         <!-- Action Buttons Ends -->
-                                    </div>
+                                    </div>  
                                     <input type="hidden" class="form_Package" name="id"
-                                    value="">
+                                    value="{{ isset($jqr_package_testing->id) ? $jqr_package_testing->id : '' }}">
                                     <input type="hidden" class="form_id_bd" name="basic_details_id"
                                     value="{{ isset($jqr->id) ? $jqr->id : '' }}">
                                 </form>
