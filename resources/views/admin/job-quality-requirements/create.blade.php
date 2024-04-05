@@ -343,9 +343,9 @@
                                             </div>
                                         </div>
                                         <!-- Action Buttons Ends -->
-                                        <input type="hidden" class="form_id_bd" name="id"
+                                        <input type="hidden" class="special_id" name="id"
                                     value="{{ isset($jqr_special->id) ? $jqr_special->id : '' }}">
-                                <input type="hidden" class="basic_details_id" name="basic_details_id"
+                                <input type="hidden" class="form_id_bd" name="basic_details_id"
                                     value="{{ isset($jqr->id) ? $jqr->id : '' }}">
                                 </form>
                                 </div>
@@ -454,9 +454,9 @@
                                         </div>
                                         <!-- Action Buttons Ends -->
                                 </div>
-                                <input type="hidden" class="form_id_bd" name="id"
+                                <input type="hidden" class="form_general_bd" name="id"
                                     value="{{ isset($jqr_general_info->id) ? $jqr_general_info->id : '' }}">
-                                <input type="hidden" class="" name="basic_details_id"
+                                <input type="hidden" class="" name="form_id_bd"
                                     value="{{ isset($jqr->id) ? $jqr->id : '' }}">
                                 </from>
                             </div>
@@ -521,9 +521,9 @@
                                         </div>
                                         <!-- Action Buttons Ends -->
                                     </div>
-                                    <input type="hidden" class="form_id_bd" name="id"
+                                    <input type="hidden" class="form_general_info" name="id"
                                     value="{{ isset($jqr_general_info->id) ? $jqr_general_info->id : '' }}">
-                                    <input type="hidden" class="" name="basic_details_id"
+                                    <input type="hidden" class="form_id_bd" name="basic_details_id"
                                     value="{{ isset($jqr->id) ? $jqr->id : '' }}">
                                 </form>
                             </div>
@@ -670,6 +670,10 @@
                                         </div>
                                         <!-- Action Buttons Ends -->
                                     </div>
+                                    <input type="hidden" class="form_Structural_info" name="id"
+                                    value="">
+                                    <input type="hidden" class="form_id_bd" name="basic_details_id"
+                                    value="{{ isset($jqr->id) ? $jqr->id : '' }}">
                                 </form>
                             </div>
                             <!-- Structural Skid Ends -->
@@ -859,6 +863,10 @@
                                         </div>
                                         <!-- Action Buttons Ends -->
                                     </div>
+                                    <input type="hidden" class="form_Pressure_Vessels" name="id"
+                                    value="">
+                                    <input type="hidden" class="form_id_bd" name="basic_details_id"
+                                    value="{{ isset($jqr->id) ? $jqr->id : '' }}">
                                 </form>
                             </div>
                             <!-- Pressure Vessels Ends -->
@@ -1068,6 +1076,10 @@
                                         </div>
                                         <!-- Action Buttons Ends -->
                                     </div>
+                                    <input type="hidden" class="form_Non_code" name="id"
+                                    value="">
+                                    <input type="hidden" class="form_id_bd" name="basic_details_id"
+                                    value="{{ isset($jqr->id) ? $jqr->id : '' }}">
                                 </form>
                             </div>
                             <!-- Non code Vessels Ends -->
@@ -1249,6 +1261,10 @@
                                         </div>
                                         <!-- Action Buttons Ends -->
                                     </div>
+                                    <input type="hidden" class="form_Process_Fuel" name="id"
+                                    value="">
+                                    <input type="hidden" class="form_id_bd" name="basic_details_id"
+                                    value="{{ isset($jqr->id) ? $jqr->id : '' }}">
                                 </form>
                             </div>
                             <!-- Process/Fuel Gas/Start Gas Piping Ends -->
@@ -1326,6 +1342,10 @@
                                         </div>
                                         <!-- Action Buttons Ends -->
                                     </div>
+                                    <input type="hidden" class="form_Bolting" name="id"
+                                    value="">
+                                    <input type="hidden" class="form_id_bd" name="basic_details_id"
+                                    value="{{ isset($jqr->id) ? $jqr->id : '' }}">
                                 </form>
                             </div>
                             <!-- Bolting Ends -->
@@ -1403,6 +1423,10 @@
                                         </div>
                                         <!-- Action Buttons Ends -->
                                     </div>
+                                    <input type="hidden" class="form_Gaskets" name="id"
+                                    value="">
+                                    <input type="hidden" class="form_id_bd" name="basic_details_id"
+                                    value="{{ isset($jqr->id) ? $jqr->id : '' }}">
                                 </form>
                             </div>
                             <!-- Gaskets Ends -->
@@ -1544,6 +1568,10 @@
                                         </div>
                                         <!-- Action Buttons Ends -->
                                     </div>
+                                    <input type="hidden" class="form_Tubing" name="id"
+                                    value="">
+                                    <input type="hidden" class="form_id_bd" name="basic_details_id"
+                                    value="{{ isset($jqr->id) ? $jqr->id : '' }}">
                                 </form>
                             </div>
                             <!-- Tubing Ends -->
@@ -1747,7 +1775,11 @@
                                         </div>
                                         <!-- Action Buttons Ends -->
                                     </div>
-                                </form>>
+                                    <input type="hidden" class="form_Butt" name="id"
+                                    value="">
+                                    <input type="hidden" class="form_id_bd" name="basic_details_id"
+                                    value="{{ isset($jqr->id) ? $jqr->id : '' }}">
+                                </form>
                             </div>
                             <!-- Butt Welded/Socket Welded Utility Piping Ends -->
                             <!-- Threaded Piping -->
@@ -1862,6 +1894,10 @@
                                         </div>
                                         <!-- Action Buttons Ends -->
                                     </div>
+                                    <input type="hidden" class="form_Threaded" name="id"
+                                    value="">
+                                    <input type="hidden" class="form_id_bd" name="basic_details_id"
+                                    value="{{ isset($jqr->id) ? $jqr->id : '' }}">
                                 </form>
                             </div>
                             <!-- Threaded Piping Ends -->
@@ -1941,6 +1977,10 @@
                                         </div>
                                         <!-- Action Buttons Ends -->
                                     </div>
+                                    <input type="hidden" class="form_Electrical" name="id"
+                                    value="">
+                                    <input type="hidden" class="form_id_bd" name="basic_details_id"
+                                    value="{{ isset($jqr->id) ? $jqr->id : '' }}">
                                 </form>
                             </div>
                             <!-- Electrical/Instrumentation Ends -->
@@ -2015,6 +2055,10 @@
                                         <!-- Action Buttons Ends -->
                                     </div>
                                 </form>
+                                <input type="hidden" class="form_Preservation" name="id"
+                                    value="">
+                                    <input type="hidden" class="form_id_bd" name="basic_details_id"
+                                    value="{{ isset($jqr->id) ? $jqr->id : '' }}">
                             </div>
                             <!-- Preservation Ends -->
                             <!-- Package Testing -->
@@ -2432,6 +2476,10 @@
                                         </div>
                                         <!-- Action Buttons Ends -->
                                     </div>
+                                    <input type="hidden" class="form_Package" name="id"
+                                    value="">
+                                    <input type="hidden" class="form_id_bd" name="basic_details_id"
+                                    value="{{ isset($jqr->id) ? $jqr->id : '' }}">
                                 </form>
                             </div>
                             <!-- Package Testing Ends -->
@@ -2567,7 +2615,7 @@ function submitSpecialData(reloadFlag) {
         dataType: 'json',
         success: function(response) {
             if (response.status == true) {
-                $('.form_id_bd').val(response.id);
+                $('.special_id').val(response.id);
                 if (reloadFlag == true) {
                     window.location.href = response.redirect;
                 }
@@ -2598,7 +2646,7 @@ function submitGeneralInfoData(reloadFlag) {
         dataType: 'json',
         success: function(response) {
             if (response.status == true) {
-                $('.form_id_bd').val(response.id);
+                $('.form_general_bd').val(response.id);
                 if (reloadFlag == true) {
                     window.location.href = response.redirect;
                 }
@@ -2628,7 +2676,7 @@ function submitServiceInfoData(reloadFlag) {
         dataType: 'json',
         success: function(response) {
             if (response.status == true) {
-                $('.form_id_bd').val(response.id);
+                $('.form_general_info').val(response.id);
                 if (reloadFlag == true) {
                     window.location.href = response.redirect;
                 }
@@ -2658,7 +2706,7 @@ function submitStructuralSkidData(reloadFlag) {
         dataType: 'json',
         success: function(response) {
             if (response.status == true) {
-                $('.form_id_bd').val(response.id);
+                $('.form_Structural_info').val(response.id);
                 if (reloadFlag == true) {
                     window.location.href = response.redirect;
                 }
@@ -2688,7 +2736,7 @@ function submitPressureVesselsData(reloadFlag) {
         dataType: 'json',
         success: function(response) {
             if (response.status == true) {
-                $('.form_id_bd').val(response.id);
+                $('.form_Pressure_Vessels').val(response.id);
                 if (reloadFlag == true) {
                     window.location.href = response.redirect;
                 }
@@ -2718,7 +2766,7 @@ function submitNoCodeVesselsData(reloadFlag) {
         dataType: 'json',
         success: function(response) {
             if (response.status == true) {
-                $('.form_id_bd').val(response.id);
+                $('.form_Non_code').val(response.id);
                 if (reloadFlag == true) {
                     window.location.href = response.redirect;
                 }
@@ -2748,7 +2796,7 @@ function submitProcessPipingData(reloadFlag) {
         dataType: 'json',
         success: function(response) {
             if (response.status == true) {
-                $('.form_id_bd').val(response.id);
+                $('.form_Process_Fuel').val(response.id);
                 if (reloadFlag == true) {
                     window.location.href = response.redirect;
                 }
@@ -2778,7 +2826,7 @@ function submitBoltingData(reloadFlag) {
         dataType: 'json',
         success: function(response) {
             if (response.status == true) {
-                $('.form_id_bd').val(response.id);
+                $('.form_Bolting').val(response.id);
                 if (reloadFlag == true) {
                     window.location.href = response.redirect;
                 }
@@ -2808,7 +2856,7 @@ function submitGasketsData(reloadFlag) {
         dataType: 'json',
         success: function(response) {
             if (response.status == true) {
-                $('.form_id_bd').val(response.id);
+                $('.form_Gaskets').val(response.id);
                 if (reloadFlag == true) {
                     window.location.href = response.redirect;
                 }
@@ -2838,7 +2886,7 @@ function submitTubingData(reloadFlag) {
         dataType: 'json',
         success: function(response) {
             if (response.status == true) {
-                $('.form_id_bd').val(response.id);
+                $('.form_Tubing').val(response.id);
                 if (reloadFlag == true) {
                     window.location.href = response.redirect;
                 }
@@ -2868,7 +2916,7 @@ function submitButtPipingData(reloadFlag) {
         dataType: 'json',
         success: function(response) {
             if (response.status == true) {
-                $('.form_id_bd').val(response.id);
+                $('.form_Butt').val(response.id);
                 if (reloadFlag == true) {
                     window.location.href = response.redirect;
                 }
@@ -2898,7 +2946,7 @@ function submitThreadedPipingData(reloadFlag) {
         dataType: 'json',
         success: function(response) {
             if (response.status == true) {
-                $('.form_id_bd').val(response.id);
+                $('.form_Threaded').val(response.id);
                 if (reloadFlag == true) {
                     window.location.href = response.redirect;
                 }
@@ -2928,7 +2976,7 @@ function submitElectricalData(reloadFlag) {
         dataType: 'json',
         success: function(response) {
             if (response.status == true) {
-                $('.form_id_bd').val(response.id);
+                $('.form_Electrical').val(response.id);
                 if (reloadFlag == true) {
                     window.location.href = response.redirect;
                 }
@@ -2958,7 +3006,7 @@ function submitPreservationData(reloadFlag) {
         dataType: 'json',
         success: function(response) {
             if (response.status == true) {
-                $('.form_id_bd').val(response.id);
+                $('.form_Preservation').val(response.id);
                 if (reloadFlag == true) {
                     window.location.href = response.redirect;
                 }
@@ -2988,7 +3036,7 @@ function submitPackageTestingData(reloadFlag) {
         dataType: 'json',
         success: function(response) {
             if (response.status == true) {
-                $('.form_id_bd').val(response.id);
+                $('.form_Package').val(response.id);
                 if (reloadFlag == true) {
                     window.location.href = response.redirect;
                 }
