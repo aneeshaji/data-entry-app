@@ -196,7 +196,7 @@
                                     <div class="row g-3">
                                         <div class="col-sm-6">
                                             <label class="form-label" for="first-name1">Job/Project Number</label>
-                                            <input type="text" id="first-name1" class="form-control" placeholder=""
+                                            <input type="text" id="job_number" class="form-control" placeholder=""
                                                 name="job_number" value="{{ isset($jqr->job_number) ? $jqr->job_number : '' }}" />
                                         </div>
                                         <div class="col-sm-6">
@@ -247,8 +247,7 @@
                                         </div>
                                         <!-- Action Buttons Ends -->
                                     </div>
-                                    <input type="hidden" class="form_id_bd" name="id"
-                                        value="{{ isset($jqr->id) ? $jqr->id : '' }}">
+                                    <input type="hidden" class="form_id_bd" name="id" value="{{ isset($jqr->id) ? $jqr->id : '' }}">
                                 </form>
                             </div>
                             <!-- Basic Project Details Ends -->
@@ -348,10 +347,8 @@
                                             </div>
                                         </div>
                                         <!-- Action Buttons Ends -->
-                                        <input type="hidden" class="special_id" name="id"
-                                    value="{{ isset($jqr_special->id) ? $jqr_special->id : '' }}">
-                                <input type="hidden" class="form_id_bd" name="basic_details_id"
-                                    value="{{ isset($jqr->id) ? $jqr->id : '' }}">
+                                        <input type="hidden" class="special_id" name="id" value="{{ isset($jqr_special->id) ? $jqr_special->id : '' }}">
+                                        <input type="hidden" class="form_id_bd" name="basic_details_id" value="{{ isset($jqr->id) ? $jqr->id : '' }}">
                                 </div>
                             </form>
                             </div>
@@ -453,8 +450,7 @@
                                         <!-- Action Buttons Ends -->
                                         <input type="hidden" class="form_general_bd" name="id" value="{{ isset($jqr_general_info->id) ? $jqr_general_info->id : '' }}">
                                         <input type="hidden" class="form_id_bd" name="basic_details_id" value="{{ isset($jqr->id) ? $jqr->id : '' }}">
-
-                                </div>
+                                    </div>
                                 </form>
                             </div>
                             <!-- General Information Ends -->
@@ -518,13 +514,10 @@
                                             </div>
                                         </div>
                                         <!-- Action Buttons Ends -->
-                                        <input type="hidden" class="form_general_info" name="id"
-                                    value="{{ isset($jqr_general_info->id) ? $jqr_general_info->id : '' }}">
-                                    <input type="hidden" class="form_id_bd" name="basic_details_id"
-                                    value="{{ isset($jqr->id) ? $jqr->id : '' }}">
-
+                                        <input type="hidden" class="form_general_info" name="id" value="{{ isset($jqr_service_info->id) ? $jqr_service_info->id : '' }}">
+                                        <input type="hidden" class="form_id_bd" name="basic_details_id" value="{{ isset($jqr->id) ? $jqr->id : '' }}">
                                     </div>
-                                    </form>
+                                </form>
                             </div>
                             <!-- Service Information Ends -->
                             <!-- Structural Skid -->
@@ -670,10 +663,8 @@
                                         </div>
                                         <!-- Action Buttons Ends -->
                                     </div>
-                                    <input type="hidden" class="form_Structural_info" name="id"
-                                    value="">
-                                    <input type="hidden" class="form_id_bd" name="basic_details_id"
-                                    value="{{ isset($jqr->id) ? $jqr->id : '' }}">
+                                    <input type="hidden" class="form_Structural_info" name="id" value="{{ isset($jqr_structural_skid->id) ? $jqr_structural_skid->id : '' }}">
+                                    <input type="hidden" class="form_id_bd" name="basic_details_id" value="{{ isset($jqr->id) ? $jqr->id : '' }}">
                                 </form>
                             </div>
                             <!-- Structural Skid Ends -->
@@ -851,10 +842,10 @@
                                                         <i class="ti ti-arrow-left me-sm-1"></i>
                                                         <span class="align-middle d-sm-inline-block d-none">Previous</span>
                                                     </button>
-                                                    <button type="button"  onclick="submitPressureVesselsData(true)"
+                                                    <button type="button" onclick="submitPressureVesselsData(true)"
                                                         class="btn btn-success waves-effect waves-light me-sm-3 me-1"><i
                                                             class="ti ti-check"></i>Save</button>
-                                                    <button class="btn btn-primary btn-next"  onclick="submitPressureVesselsData(false)">
+                                                    <button class="btn btn-primary btn-next" onclick="submitPressureVesselsData(false)">
                                                         <span
                                                             class="align-middle d-sm-inline-block d-none me-sm-1">Next</span>
                                                         <i class="ti ti-arrow-right"></i>
@@ -864,10 +855,8 @@
                                         </div>
                                         <!-- Action Buttons Ends -->
                                     </div>
-                                    <input type="hidden" class="form_Pressure_Vessels" name="id"
-                                    value="">
-                                    <input type="hidden" class="form_id_bd" name="basic_details_id"
-                                    value="{{ isset($jqr->id) ? $jqr->id : '' }}">
+                                    <input type="hidden" class="form_Pressure_Vessels" name="id" value="{{ isset($jqr_pressure_vessels->id) ? $jqr_pressure_vessels->id : '' }}">
+                                    <input type="hidden" class="form_id_bd" name="basic_details_id" value="{{ isset($jqr->id) ? $jqr->id : '' }}">
                                 </form>
                             </div>
                             <!-- Pressure Vessels Ends -->
@@ -877,7 +866,6 @@
                                     <h6 class="mb-0">Non Code Vessels/Tanks</h6>
                                     <small>Enter Non Code Vessels/Tanks.</small>
                                 </div>
-
                                 <form onSubmit="return false" id="non_code_vessels_from">
                                     <div class="row g-3">
                                         <small class="text-light fw-semibold">
@@ -1068,7 +1056,7 @@
                                                     <button type="button" onclick="submitNoCodeVesselsData(true)"
                                                         class="btn btn-success waves-effect waves-light me-sm-3 me-1"><i
                                                             class="ti ti-check"></i>Save</button>
-                                                    <button class="btn btn-primary btn-next"  onclick="submitNoCodeVesselsData(false)" >
+                                                    <button class="btn btn-primary btn-next" onclick="submitNoCodeVesselsData(false)" >
                                                         <span
                                                             class="align-middle d-sm-inline-block d-none me-sm-1">Next</span>
                                                         <i class="ti ti-arrow-right"></i>
@@ -1078,10 +1066,8 @@
                                         </div>
                                         <!-- Action Buttons Ends -->
                                     </div>
-                                    <input type="hidden" class="form_Non_code" name="id"
-                                    value="">
-                                    <input type="hidden" class="form_id_bd" name="basic_details_id"
-                                    value="{{ isset($jqr->id) ? $jqr->id : '' }}">
+                                    <input type="hidden" class="form_Non_code" name="id" value="{{ isset($jqr_non_code->id) ? $jqr_non_code->id : '' }}">
+                                    <input type="hidden" class="form_id_bd" name="basic_details_id" value="{{ isset($jqr->id) ? $jqr->id : '' }}">
                                 </form>
                             </div>
                             <!-- Non code Vessels Ends -->
@@ -1091,7 +1077,6 @@
                                     <h6 class="mb-0">Process/Fuel Gas/Start Gas Piping</h6>
                                     <small>Enter Process/Fuel Gas/Start Gas Piping.</small>
                                 </div>
-
                                 <form onSubmit="return false" id="process_piping_from">
                                     <div class="row g-3">
                                         <small class="text-light fw-semibold">
@@ -1251,10 +1236,10 @@
                                                         <i class="ti ti-arrow-left me-sm-1"></i>
                                                         <span class="align-middle d-sm-inline-block d-none">Previous</span>
                                                     </button>
-                                                    <button type="button"  onclick="submitProcessPipingData(true)"
+                                                    <button type="button" onclick="submitProcessPipingData(true)"
                                                         class="btn btn-success waves-effect waves-light me-sm-3 me-1"><i
                                                             class="ti ti-check"></i>Save</button>
-                                                    <button class="btn btn-primary btn-next"  onclick="submitProcessPipingData(false)" >
+                                                    <button class="btn btn-primary btn-next" onclick="submitProcessPipingData(false)" >
                                                         <span
                                                             class="align-middle d-sm-inline-block d-none me-sm-1">Next</span>
                                                         <i class="ti ti-arrow-right"></i>
@@ -1264,10 +1249,8 @@
                                         </div>
                                         <!-- Action Buttons Ends -->
                                     </div>
-                                    <input type="hidden" class="form_Process_Fuel" name="id"
-                                    value="">
-                                    <input type="hidden" class="form_id_bd" name="basic_details_id"
-                                    value="{{ isset($jqr->id) ? $jqr->id : '' }}">
+                                    <input type="hidden" class="form_Process_Fuel" name="id" value="{{ isset($jqr_process_fuel_gas->id) ? $jqr_process_fuel_gas->id : '' }}">
+                                    <input type="hidden" class="form_id_bd" name="basic_details_id" value="{{ isset($jqr->id) ? $jqr->id : '' }}">
                                 </form>
                             </div>
                             <!-- Process/Fuel Gas/Start Gas Piping Ends -->
@@ -1332,10 +1315,10 @@
                                                         <i class="ti ti-arrow-left me-sm-1"></i>
                                                         <span class="align-middle d-sm-inline-block d-none">Previous</span>
                                                     </button>
-                                                    <button type="button"  onclick="submitBoltingData(true)"
+                                                    <button type="button" onclick="submitBoltingData(true)"
                                                         class="btn btn-success waves-effect waves-light me-sm-3 me-1"><i
                                                             class="ti ti-check"></i>Save</button>
-                                                    <button class="btn btn-primary btn-next"  onclick="submitBoltingData(false)">
+                                                    <button class="btn btn-primary btn-next" onclick="submitBoltingData(false)">
                                                         <span
                                                             class="align-middle d-sm-inline-block d-none me-sm-1">Next</span>
                                                         <i class="ti ti-arrow-right"></i>
@@ -1345,10 +1328,8 @@
                                         </div>
                                         <!-- Action Buttons Ends -->
                                     </div>
-                                    <input type="hidden" class="form_Bolting" name="id"
-                                    value="">
-                                    <input type="hidden" class="form_id_bd" name="basic_details_id"
-                                    value="{{ isset($jqr->id) ? $jqr->id : '' }}">
+                                    <input type="hidden" class="form_Bolting" name="id" value="{{ isset($jqr_bolting->id) ? $jqr_bolting->id : '' }}">
+                                    <input type="hidden" class="form_id_bd" name="basic_details_id" value="{{ isset($jqr->id) ? $jqr->id : '' }}">
                                 </form>
                             </div>
                             <!-- Bolting Ends -->
@@ -1413,12 +1394,12 @@
                                                         <i class="ti ti-arrow-left me-sm-1"></i>
                                                         <span class="align-middle d-sm-inline-block d-none">Previous</span>
                                                     </button>
-                                                    <button type="button"  onclick="submitGasketsData(true)"
+                                                    <button type="button" onclick="submitGasketsData(true)"
                                                         class="btn btn-success waves-effect waves-light me-sm-3 me-1"><i
                                                             class="ti ti-check"></i>Save</button>
                                                     <button class="btn btn-primary btn-next">
                                                         <span
-                                                            class="align-middle d-sm-inline-block d-none me-sm-1"  onclick="submitGasketsData(false)" >Next</span>
+                                                            class="align-middle d-sm-inline-block d-none me-sm-1" onclick="submitGasketsData(false)" >Next</span>
                                                         <i class="ti ti-arrow-right"></i>
                                                     </button>
                                                 </div>
@@ -1426,10 +1407,8 @@
                                         </div>
                                         <!-- Action Buttons Ends -->
                                     </div>
-                                    <input type="hidden" class="form_Gaskets" name="id"
-                                    value="">
-                                    <input type="hidden" class="form_id_bd" name="basic_details_id"
-                                    value="{{ isset($jqr->id) ? $jqr->id : '' }}">
+                                    <input type="hidden" class="form_Gaskets" name="id" value="{{ isset($jqr_gaskets->id) ? $jqr_gaskets->id : '' }}">
+                                    <input type="hidden" class="form_id_bd" name="basic_details_id" value="{{ isset($jqr->id) ? $jqr->id : '' }}">
                                 </form>
                             </div>
                             <!-- Gaskets Ends -->
@@ -1443,7 +1422,8 @@
                                     <div class="row g-3">
                                         <div class="col-sm-6">
                                             <label class="switch">
-                                                <input type="checkbox" class="switch-input" name="customer_avl_applies">
+                                                <input type="checkbox" class="switch-input" name="customer_avl_applies"
+                                                {{ isset($jqr_tubing->customer_avl_applies) ? 'checked': '' }} >
                                                 <span class="switch-toggle-slider">
                                                     <span class="switch-on"></span>
                                                     <span class="switch-off"></span>
@@ -1453,11 +1433,13 @@
                                         </div>
                                         <div class="col-sm-6">
                                             <label class="form-label" for="twitter1">Material Origin REQS</label>
-                                            <input type="text" id="twitter1" name="material_origin_reqs" class="form-control" placeholder="" />
+                                            <input type="text" id="twitter1" name="material_origin_reqs" class="form-control" placeholder=""
+                                            value="{{ isset($jqr_tubing->material_origin_reqs) ? $jqr_tubing->material_origin_reqs : '' }}" />
                                         </div>
                                         <div class="col-sm-6">
                                             <label class="switch">
-                                                <input type="checkbox" class="switch-input" name="origin_traceable_to_melt">
+                                                <input type="checkbox" class="switch-input" name="origin_traceable_to_melt"
+                                                {{ isset($jqr_tubing->origin_traceable_to_melt) ? 'checked': '' }} >
                                                 <span class="switch-toggle-slider">
                                                     <span class="switch-on"></span>
                                                     <span class="switch-off"></span>
@@ -1468,11 +1450,13 @@
                                         <div class="col-sm-6">
                                             <label class="form-label" for="facebook1">Acceptable Material
                                                 Origins</label>
-                                            <input type="text" id="facebook1" name="acceptable_material_origins	" class="form-control" placeholder="" />
+                                            <input type="text" id="facebook1" name="acceptable_material_origins" class="form-control" placeholder=""
+                                            value="{{ isset($jqr_tubing->acceptable_material_origins) ? $jqr_tubing->acceptable_material_origins : '' }}" />
                                         </div>
                                         <div class="col-sm-6">
                                             <label class="switch">
-                                                <input type="checkbox" class="switch-input" name="efx_standard_no_cocs">
+                                                <input type="checkbox" class="switch-input" name="efx_standard_no_cocs"
+                                                {{ isset($jqr_tubing->efx_standard_no_cocs) ? 'checked': '' }} >
                                                 <span class="switch-toggle-slider">
                                                     <span class="switch-on"></span>
                                                     <span class="switch-off"></span>
@@ -1482,7 +1466,8 @@
                                         </div>
                                         <div class="col-sm-6">
                                             <label class="switch">
-                                                <input type="checkbox" class="switch-input" name="tubing_mtrs_required">
+                                                <input type="checkbox" class="switch-input" name="tubing_mtrs_required"
+                                                {{ isset($jqr_tubing->tubing_mtrs_required) ? 'checked': '' }} >
                                                 <span class="switch-toggle-slider">
                                                     <span class="switch-on"></span>
                                                     <span class="switch-off"></span>
@@ -1492,7 +1477,8 @@
                                         </div>
                                         <div class="col-sm-6">
                                             <label class="switch">
-                                                <input type="checkbox" class="switch-input" name="tubing_coc_required">
+                                                <input type="checkbox" class="switch-input" name="tubing_coc_required"
+                                                {{ isset($jqr_tubing->tubing_coc_required) ? 'checked': '' }} >
                                                 <span class="switch-toggle-slider">
                                                     <span class="switch-on"></span>
                                                     <span class="switch-off"></span>
@@ -1502,7 +1488,8 @@
                                         </div>
                                         <div class="col-sm-6">
                                             <label class="switch">
-                                                <input type="checkbox" class="switch-input" name="fitting_mtrs_required">
+                                                <input type="checkbox" class="switch-input" name="fitting_mtrs_required"
+                                                {{ isset($jqr_tubing->fitting_mtrs_required) ? 'checked': '' }} >
                                                 <span class="switch-toggle-slider">
                                                     <span class="switch-on"></span>
                                                     <span class="switch-off"></span>
@@ -1512,7 +1499,8 @@
                                         </div>
                                         <div class="col-sm-6">
                                             <label class="switch">
-                                                <input type="checkbox" class="switch-input" name="fitting_coc_required">
+                                                <input type="checkbox" class="switch-input" name="fitting_coc_required"
+                                                {{ isset($jqr_tubing->fitting_coc_required) ? 'checked': '' }} >
                                                 <span class="switch-toggle-slider">
                                                     <span class="switch-on"></span>
                                                     <span class="switch-off"></span>
@@ -1522,7 +1510,8 @@
                                         </div>
                                         <div class="col-sm-6">
                                             <label class="switch">
-                                                <input type="checkbox" class="switch-input" name="full_traceability">
+                                                <input type="checkbox" class="switch-input" name="full_traceability"
+                                                {{ isset($jqr_tubing->full_traceability) ? 'checked': '' }} >
                                                 <span class="switch-toggle-slider">
                                                     <span class="switch-on"></span>
                                                     <span class="switch-off"></span>
@@ -1533,22 +1522,22 @@
                                         <div class="col-sm-6">
                                             <label class="form-label" for="google1">Material Notes</label>
                                             <textarea class="form-control" name="material_notes" id="exampleFormControlTextarea1"
-                                                rows="3"></textarea>
+                                                rows="3">{{ isset($jqr_tubing->material_notes) ? $jqr_tubing->material_notes : '' }}</textarea>
                                         </div>
                                         <div class="col-sm-6">
                                             <label class="form-label" for="linkedin1">NDE Requirements</label>
                                             <textarea class="form-control" name="nde_requirements" id="exampleFormControlTextarea1"
-                                                rows="3"></textarea>
+                                                rows="3">{{ isset($jqr_tubing->nde_requirements) ? $jqr_tubing->nde_requirements : '' }}</textarea>
                                         </div>
                                         <div class="col-sm-6">
                                             <label class="form-label" for="linkedin1">PMI Requirements</label>
                                             <textarea class="form-control" name="pmi_Requirements" id="exampleFormControlTextarea1"
-                                                rows="3"></textarea>
+                                                rows="3">{{ isset($jqr_tubing->pmi_Requirements) ? $jqr_tubing->pmi_Requirements : '' }}</textarea>
                                         </div>
                                         <div class="col-sm-6">
                                             <label class="form-label" for="linkedin1">Notes</label>
                                             <textarea class="form-control" name="notes" id="exampleFormControlTextarea1"
-                                                rows="3"></textarea>
+                                                rows="3">{{ isset($jqr_tubing->notes) ? $jqr_tubing->notes : '' }}</textarea>
                                         </div>
                                         <!-- Action Buttons -->
                                         <div class="pt-4">
@@ -1561,9 +1550,9 @@
                                                     <button type="button" onclick="submitTubingData(true)"
                                                         class="btn btn-success waves-effect waves-light me-sm-3 me-1"><i
                                                             class="ti ti-check"></i>Save</button>
-                                                    <button class="btn btn-primary btn-next">
+                                                    <button class="btn btn-primary btn-next" onclick="submitTubingData(false)">
                                                         <span
-                                                            class="align-middle d-sm-inline-block d-none me-sm-1" onclick="submitTubingData(false)" >Next</span>
+                                                            class="align-middle d-sm-inline-block d-none me-sm-1">Next</span>
                                                         <i class="ti ti-arrow-right"></i>
                                                     </button>
                                                 </div>
@@ -1571,10 +1560,8 @@
                                         </div>
                                         <!-- Action Buttons Ends -->
                                     </div>
-                                    <input type="hidden" class="form_Tubing" name="id"
-                                    value="">
-                                    <input type="hidden" class="form_id_bd" name="basic_details_id"
-                                    value="{{ isset($jqr->id) ? $jqr->id : '' }}">
+                                    <input type="hidden" class="form_Tubing" name="id" value="{{ isset($jqr_tubing->id) ? $jqr_tubing->id : '' }}">
+                                    <input type="hidden" class="form_id_bd" name="basic_details_id" value="{{ isset($jqr->id) ? $jqr->id : '' }}">
                                 </form>
                             </div>
                             <!-- Tubing Ends -->
@@ -1778,10 +1765,8 @@
                                         </div>
                                         <!-- Action Buttons Ends -->
                                     </div>
-                                    <input type="hidden" class="form_Butt" name="id"
-                                    value="{{ isset($jqr_butt->id) ? $jqr_butt->id : '' }}"> 
-                                    <input type="hidden" class="form_id_bd" name="basic_details_id"
-                                    value="{{ isset($jqr->id) ? $jqr->id : '' }}">
+                                    <input type="hidden" class="form_Butt" name="id" value="{{ isset($jqr_butt->id) ? $jqr_butt->id : '' }}">
+                                    <input type="hidden" class="form_id_bd" name="basic_details_id" value="{{ isset($jqr->id) ? $jqr->id : '' }}">
                                 </form>
                             </div>
                             <!-- Butt Welded/Socket Welded Utility Piping Ends -->
@@ -1884,12 +1869,12 @@
                                                         <i class="ti ti-arrow-left me-sm-1"></i>
                                                         <span class="align-middle d-sm-inline-block d-none">Previous</span>
                                                     </button>
-                                                    <button type="button"  onclick="submitThreadedPipingData(true)"
+                                                    <button type="button" onclick="submitThreadedPipingData(true)"
                                                         class="btn btn-success waves-effect waves-light me-sm-3 me-1"><i
                                                             class="ti ti-check"></i>Save</button>
                                                     <button class="btn btn-primary btn-next">
                                                         <span
-                                                            class="align-middle d-sm-inline-block d-none me-sm-1"  onclick="submitThreadedPipingData(false)" >Next</span>
+                                                            class="align-middle d-sm-inline-block d-none me-sm-1" onclick="submitThreadedPipingData(false)" >Next</span>
                                                         <i class="ti ti-arrow-right"></i>
                                                     </button>
                                                 </div>
@@ -1897,10 +1882,8 @@
                                         </div>
                                         <!-- Action Buttons Ends -->
                                     </div>
-                                    <input type="hidden" class="form_Threaded" name="id"
-                                    value="{{ isset($jqr_threaded_piping->id) ? $jqr_threaded_piping->id : '' }}">
-                                    <input type="hidden" class="form_id_bd" name="basic_details_id"
-                                    value="{{ isset($jqr->id) ? $jqr->id : '' }}">
+                                    <input type="hidden" class="form_Threaded" name="id" value="{{ isset($jqr_threaded_piping->id) ? $jqr_threaded_piping->id : '' }}">
+                                    <input type="hidden" class="form_id_bd" name="basic_details_id" value="{{ isset($jqr->id) ? $jqr->id : '' }}">
                                 </form>
                             </div>
                             <!-- Threaded Piping Ends -->
@@ -1980,14 +1963,12 @@
                                         </div>
                                         <!-- Action Buttons Ends -->
                                     </div>
-                                    <input type="hidden" class="form_Electrical" name="id"
-                                    value="{{ isset($jqr_electrical->id) ? $jqr_electrical->id : '' }}">
-                                    <input type="hidden" class="form_id_bd" name="basic_details_id"
-                                    value="{{ isset($jqr->id) ? $jqr->id : '' }}">
+                                    <input type="hidden" class="form_Electrical" name="id" value="{{ isset($jqr_electrical->id) ? $jqr_electrical->id : '' }}">
+                                    <input type="hidden" class="form_id_bd" name="basic_details_id" value="{{ isset($jqr->id) ? $jqr->id : '' }}">
                                 </form>
                             </div>
                             <!-- Electrical/Instrumentation Ends -->
-                            
+
                             <!-- Preservation -->
                             <div id="preservation" class="content">
                                 <div class="content-header mb-3">
@@ -2045,10 +2026,10 @@
                                                         <i class="ti ti-arrow-left me-sm-1"></i>
                                                         <span class="align-middle d-sm-inline-block d-none">Previous</span>
                                                     </button>
-                                                    <button type="button"  onclick="submitPreservationData(true)"
+                                                    <button type="button" onclick="submitPreservationData(true)"
                                                         class="btn btn-success waves-effect waves-light me-sm-3 me-1"><i
                                                             class="ti ti-check"></i>Save</button>
-                                                    <button class="btn btn-primary btn-next"  onclick="submitPreservationData(false)">
+                                                    <button class="btn btn-primary btn-next" onclick="submitPreservationData(false)">
                                                         <span
                                                             class="align-middle d-sm-inline-block d-none me-sm-1">Next</span>
                                                         <i class="ti ti-arrow-right"></i>
@@ -2058,13 +2039,9 @@
                                         </div>
                                         <!-- Action Buttons Ends -->
                                     </div>
-                                    <input type="hidden" class="form_Preservation" name="id"
-                                    value="{{ isset($jqr_preservation->id) ? $jqr_preservation->id : '' }}">
-                                    
-                                    <input type="hidden" class="form_id_bd" name="basic_details_id"
-                                    value="{{ isset($jqr->id) ? $jqr->id : '' }}">
+                                    <input type="hidden" class="form_Preservation" name="id" value="{{ isset($jqr_preservation->id) ? $jqr_preservation->id : '' }}">
+                                    <input type="hidden" class="form_id_bd" name="basic_details_id" value="{{ isset($jqr->id) ? $jqr->id : '' }}">
                                 </form>
-
                             </div>
                             <!-- Preservation Ends -->
                             <!-- Package Testing -->
@@ -2077,7 +2054,6 @@
                                     Pneumatic Testing
                                 </label>
                                 <hr>
-
                                 <form onSubmit="return false" id="package_testing_from">
                                     <div class="row g-3">
                                         <!-- Pneumatic Testing -->
@@ -2475,18 +2451,16 @@
                                                         <i class="ti ti-arrow-left me-sm-1"></i>
                                                         <span class="align-middle d-sm-inline-block d-none">Previous</span>
                                                     </button>
-                                                    <button type="button"  onclick="submitPackageTestingData(true)"
+                                                    <button type="button" onclick="submitPackageTestingData(true)"
                                                         class="btn btn-success waves-effect waves-light me-sm-3 me-1"><i
                                                             class="ti ti-check"></i>Finish</button>
                                                 </div>
                                             </div>
                                         </div>
                                         <!-- Action Buttons Ends -->
-                                    </div>  
-                                    <input type="hidden" class="form_Package" name="id"
-                                    value="{{ isset($jqr_package_testing->id) ? $jqr_package_testing->id : '' }}">
-                                    <input type="hidden" class="form_id_bd" name="basic_details_id"
-                                    value="{{ isset($jqr->id) ? $jqr->id : '' }}">
+                                    </div>
+                                    <input type="hidden" class="form_Package" name="id" value="{{ isset($jqr_package_testing->id) ? $jqr_package_testing->id : '' }}">
+                                    <input type="hidden" class="form_id_bd" name="basic_details_id" value="{{ isset($jqr->id) ? $jqr->id : '' }}">
                                 </form>
                             </div>
                             <!-- Package Testing Ends -->
@@ -2551,11 +2525,10 @@ if (typeof wizardIconsVertical !== undefined && wizardIconsVertical !== null) {
     if (wizardIconsVerticalBtnNextList) {
         wizardIconsVerticalBtnNextList.forEach(wizardIconsVerticalBtnNext => {
             wizardIconsVerticalBtnNext.addEventListener('click', event => {
-                if ($('#job_name').val() == '') {
-                    alert('Job Name is required');
+                if ($('#job_number').val() == '') {
+                    alert('Job Numer is required');
                 } else {
                     verticalIconsStepper.next();
-                    // submitData(false);
                 }
             });
         });
@@ -2582,27 +2555,29 @@ function submitData(reloadFlag) {
         }
     });
 
-    var formData = $('#basic_details_from').serialize();
-    //var formData = $('#special_material_from').serialize();
-    console.log("Form Data", formData)
-    $.ajax({
-        method: 'POST',
-        url: '/admin/job-quality-requirements/saveData',
-        data: formData,
-        dataType: 'json',
-        success: function(response) {
-            if (response.status == true) {
-                $('.form_id_bd').val(response.id);
-                if (reloadFlag == true) {
-                    window.location.href = response.redirect;
+    if ($('#job_number').val() == '') {
+        alert('Job Numer is required');
+    } else {
+        var formData = $('#basic_details_from').serialize();
+        $.ajax({
+            method: 'POST',
+            url: '/admin/job-quality-requirements/saveData',
+            data: formData,
+            dataType: 'json',
+            success: function(response) {
+                if (response.status == true) {
+                    $('.form_id_bd').val(response.id);
+                    if (reloadFlag == true) {
+                        window.location.href = response.redirect;
+                    }
                 }
+            },
+            error: function(xhr, status, error) {
+                // Handle errors if needed
+                console.error(xhr.responseText);
             }
-        },
-        error: function(xhr, status, error) {
-            // Handle errors if needed
-            console.error(xhr.responseText);
-        }
-    });
+        });
+    }
 }
 
 // Submit Special Data
