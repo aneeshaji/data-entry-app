@@ -166,6 +166,7 @@ class JobQualityRequirementController extends Controller
         $service_info->application = $request->application;
         $service_info->sour_service_required = $request->sour_service_required == 'on' ? '1':'0';
         $service_info->other = $request->other;
+        $service_info->notes = $request->notes;
         $service_info->save();
 
         if ($service_info->id) {
@@ -708,6 +709,7 @@ class JobQualityRequirementController extends Controller
         $jqr_special = SpecialMaterialRequirements::where('basic_details_id', $jqr->id)->first();
         $jqr_general_info = GeneralInformation::where('basic_details_id', $jqr->id)->first();
         $jqr_service_info = ServiceInformation::where('basic_details_id', $jqr->id)->first();
+       // dd( $jqr_service_info); die;
         $jqr_bolting = Bolting::where('basic_details_id', $jqr->id)->first();
         $jqr_butt = ButtWeldedSocketWeldedUtilityPiping::where('basic_details_id', $jqr->id)->first();
         $jqr_electrical = ElectricalInstrumentation::where('basic_details_id', $jqr->id)->first();
@@ -723,18 +725,18 @@ class JobQualityRequirementController extends Controller
             'jqr' => $jqr,
             'jqr_special' => $jqr_special,
             'jqr_general_info' => $jqr_general_info,
-            'jqr_service_info' => $jqr->service_info,
-            'jqr_bolting' => $jqr->jqr_bolting,
-            'jqr_butt' => $jqr->jqr_butt,
-            'jqr_electrical' => $jqr->jqr_electrical,
-            'jqr_non_code' => $jqr->jqr_non_code,
-            'jqr_package_testing' => $jqr->jqr_package_testing,
-            'jqr_preservation' => $jqr->jqr_preservation,
-            'jqr_pressure_vessels' => $jqr->jqr_pressure_vessels,
-            'jqr_process_fuel_gas' => $jqr->jqr_process_fuel_gas,
-            'jqr_structural_skid' => $jqr->jqr_structural_skid,
-            'jqr_threaded_piping' => $jqr->jqr_threaded_piping,
-            'jqr_tubing' => $jqr->jqr_tubing
+            'jqr_service_info' => $jqr_service_info,
+            'jqr_bolting' => $jqr_bolting,
+            'jqr_butt' => $jqr_butt,
+            'jqr_electrical' => $jqr_electrical,
+            'jqr_non_code' => $jqr_non_code,
+            'jqr_package_testing' => $jqr_package_testing,
+            'jqr_preservation' => $jqr_preservation,
+            'jqr_pressure_vessels' => $jqr_pressure_vessels,
+            'jqr_process_fuel_gas' => $jqr_process_fuel_gas,
+            'jqr_structural_skid' => $jqr_structural_skid,
+            'jqr_threaded_piping' => $jqr_threaded_piping,
+            'jqr_tubing' => $jqr_tubing
         ]);
     }
 
