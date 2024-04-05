@@ -14,4 +14,5 @@ class Bolting extends Model
         'mtrs',
         'material_notes'
     ];
+    protected $table ='bolting';
 }

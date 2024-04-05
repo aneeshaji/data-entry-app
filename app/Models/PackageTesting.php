@@ -56,5 +56,6 @@ class PackageTesting extends Model
         'addendum_manufacturing_specifications_complete',
         'addendum_manufacturing_specifications_notes'
     ];
+    protected $table = 'package_testing';
 }
 // PackageTesting

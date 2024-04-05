@@ -253,8 +253,8 @@
                                     <h6 class="mb-0">Special Material Requirements</h6>
                                     <small>Enter special material requirements</small>
                                 </div>
-                                <form onSubmit="return false" id="special_material_from">
                                     <div class="row g-3">
+                                    <form onSubmit="return false" id="special_material_from">
                                         <div class="col-sm-6">
                                             <label class="switch">
                                                 <input type="checkbox" class="switch-input" name="pipes_and_fittings"
@@ -453,12 +453,13 @@
                                             </div>
                                         </div>
                                         <!-- Action Buttons Ends -->
-                                </div>
-                                <input type="hidden" class="form_general_bd" name="id"
+                                        <input type="hidden" class="form_general_bd" name="id"
                                     value="{{ isset($jqr_general_info->id) ? $jqr_general_info->id : '' }}">
-                                <input type="hidden" class="" name="form_id_bd"
+                                <input type="hidden" class="form_id_bd" name="basic_details_id"
                                     value="{{ isset($jqr->id) ? $jqr->id : '' }}">
-                                </from>
+                                </form>
+                                </div>
+                                
                             </div>
                             <!-- General Information Ends -->
                             <!-- Service Information -->
@@ -467,11 +468,12 @@
                                     <h6 class="mb-0">Service Information</h6>
                                     <small>Enter Service Information.</small>
                                 </div>
-                                <form onSubmit="return false" id="service_info_from">
+                             
                                     <div class="row g-3">
+                                    <form onSubmit="return false" id="service_info_from">
                                         <div class="col-sm-6">
                                             <label class="form-label" for="twitter1">Gas Processed</label>
-                                            <input type="text" id="twitter1" name="basic_details_id" class="form-control" placeholder=""
+                                            <input type="text" id="twitter1" name="gas_processed" class="form-control" placeholder=""
                                             value="{{ isset($jqr->service_info->gas_processed) ? $jqr->service_info->gas_processed : '' }}" />
                                         </div>
                                         <div class="col-sm-6">
@@ -498,7 +500,7 @@
                                         <div class="col-sm-6">
                                             <label class="form-label" for="facebook1">Notes</label>
                                             <textarea class="form-control" id="exampleFormControlTextarea1"
-                                                rows="3">{{ isset($jqr->service_info->notes) ? $jqr->service_info->notes : '' }}</textarea>
+                                                rows="3" name="note">{{ isset($jqr->service_info->notes) ? $jqr->service_info->notes : '' }}</textarea>
                                         </div>
                                         <!-- Action Buttons -->
                                         <div class="pt-4">
@@ -511,7 +513,7 @@
                                                     <button type="button" onclick="submitServiceInfoData(true)"
                                                         class="btn btn-success waves-effect waves-light me-sm-3 me-1"><i
                                                             class="ti ti-check"></i>Save</button>
-                                                    <button class="btn btn-primary btn-next" onclick="submitServiceInfoData(true)">
+                                                    <button class="btn btn-primary btn-next" onclick="submitServiceInfoData(false)">
                                                         <span
                                                             class="align-middle d-sm-inline-block d-none me-sm-1">Next</span>
                                                         <i class="ti ti-arrow-right"></i>
@@ -520,12 +522,13 @@
                                             </div>
                                         </div>
                                         <!-- Action Buttons Ends -->
-                                    </div>
-                                    <input type="hidden" class="form_general_info" name="id"
+                                        <input type="hidden" class="form_general_info" name="id"
                                     value="{{ isset($jqr_general_info->id) ? $jqr_general_info->id : '' }}">
                                     <input type="hidden" class="form_id_bd" name="basic_details_id"
                                     value="{{ isset($jqr->id) ? $jqr->id : '' }}">
                                 </form>
+                                    </div>
+                                  
                             </div>
                             <!-- Service Information Ends -->
                             <!-- Structural Skid -->
@@ -653,14 +656,14 @@
                                         <div class="pt-4">
                                             <div class="row justify-content-end">
                                                 <div class="col-sm-9">
-                                                    <button class="btn btn-label-secondary btn-prev me-sm-3 me-1">
+                                                    <button class="btn btn-label-secondary btn-prev me-sm-3 me-1" >
                                                         <i class="ti ti-arrow-left me-sm-1"></i>
                                                         <span class="align-middle d-sm-inline-block d-none">Previous</span>
                                                     </button>
-                                                    <button type="button"
+                                                    <button type="button"  onclick="submitStructuralSkidData(true)"
                                                         class="btn btn-success waves-effect waves-light me-sm-3 me-1"><i
                                                             class="ti ti-check"></i>Save</button>
-                                                    <button class="btn btn-primary btn-next">
+                                                    <button class="btn btn-primary btn-next"  onclick="submitStructuralSkidData(false)"  >
                                                         <span
                                                             class="align-middle d-sm-inline-block d-none me-sm-1">Next</span>
                                                         <i class="ti ti-arrow-right"></i>
@@ -683,7 +686,7 @@
                                     <h6 class="mb-0">Pressure Vessels</h6>
                                     <small>Enter Pressure Vessels.</small>
                                 </div>
-                                <form onSubmit="return false" id="spressure_vessels_from">
+                                <form onSubmit="return false" id="pressure_vessels_from">
                                     <div class="row g-3">
                                         <small class="text-light fw-semibold">
                                             * Indicates Special Material Origin Requirements Must Be Checked 'Yes'
@@ -780,17 +783,17 @@
                                             <small class="text-light fw-semibold d-block">PWHT</small>
                                             <div class="form-check form-check-inline mt-3">
                                                 <input class="form-check-input" type="radio" name="pwht"
-                                                    id="inlineRadio1" value="option1">
+                                                    id="inlineRadio1" value="0">
                                                 <label class="form-check-label" for="inlineRadio1">Yes</label>
                                             </div>
                                             <div class="form-check form-check-inline">
                                                 <input class="form-check-input" type="radio" name="pwht"
-                                                    id="inlineRadio2" value="option2">
+                                                    id="inlineRadio2" value="1">
                                                 <label class="form-check-label" for="inlineRadio2">No</label>
                                             </div>
                                             <div class="form-check form-check-inline">
                                                 <input class="form-check-input" type="radio" name="pwht"
-                                                    id="inlineRadio3" value="option3">
+                                                    id="inlineRadio3" value="2">
                                                 <label class="form-check-label" for="inlineRadio3">Per Code REQ</label>
                                             </div>
                                         </div>
@@ -846,14 +849,14 @@
                                         <div class="pt-4">
                                             <div class="row justify-content-end">
                                                 <div class="col-sm-9">
-                                                    <button class="btn btn-label-secondary btn-prev me-sm-3 me-1">
+                                                    <button class="btn btn-label-secondary btn-prev me-sm-3 me-1" >
                                                         <i class="ti ti-arrow-left me-sm-1"></i>
                                                         <span class="align-middle d-sm-inline-block d-none">Previous</span>
                                                     </button>
-                                                    <button type="button"
+                                                    <button type="button"  onclick="submitPressureVesselsData(true)"
                                                         class="btn btn-success waves-effect waves-light me-sm-3 me-1"><i
                                                             class="ti ti-check"></i>Save</button>
-                                                    <button class="btn btn-primary btn-next">
+                                                    <button class="btn btn-primary btn-next"  onclick="submitPressureVesselsData(false)">
                                                         <span
                                                             class="align-middle d-sm-inline-block d-none me-sm-1">Next</span>
                                                         <i class="ti ti-arrow-right"></i>
@@ -993,17 +996,17 @@
                                             <small class="text-light fw-semibold d-block">PWHT</small>
                                             <div class="form-check form-check-inline mt-3">
                                                 <input class="form-check-input" type="radio" name="pwht"
-                                                    id="inlineRadio1" value="option1">
+                                                    id="inlineRadio1" value="0">
                                                 <label class="form-check-label" for="inlineRadio1">Yes</label>
                                             </div>
                                             <div class="form-check form-check-inline">
                                                 <input class="form-check-input" type="radio" name="pwht"
-                                                    id="inlineRadio2" value="option2">
+                                                    id="inlineRadio2" value="1">
                                                 <label class="form-check-label" for="inlineRadio2">No</label>
                                             </div>
                                             <div class="form-check form-check-inline">
                                                 <input class="form-check-input" type="radio" name="pwht"
-                                                    id="inlineRadio3" value="option3">
+                                                    id="inlineRadio3" value="2">
                                                 <label class="form-check-label" for="inlineRadio3">Per Code REQ</label>
                                             </div>
                                         </div>
@@ -1063,10 +1066,10 @@
                                                         <i class="ti ti-arrow-left me-sm-1"></i>
                                                         <span class="align-middle d-sm-inline-block d-none">Previous</span>
                                                     </button>
-                                                    <button type="button"
+                                                    <button type="button" onclick="submitNoCodeVesselsData(true)"
                                                         class="btn btn-success waves-effect waves-light me-sm-3 me-1"><i
                                                             class="ti ti-check"></i>Save</button>
-                                                    <button class="btn btn-primary btn-next">
+                                                    <button class="btn btn-primary btn-next"  onclick="submitNoCodeVesselsData(false)" >
                                                         <span
                                                             class="align-middle d-sm-inline-block d-none me-sm-1">Next</span>
                                                         <i class="ti ti-arrow-right"></i>
@@ -1248,10 +1251,10 @@
                                                         <i class="ti ti-arrow-left me-sm-1"></i>
                                                         <span class="align-middle d-sm-inline-block d-none">Previous</span>
                                                     </button>
-                                                    <button type="button"
+                                                    <button type="button"  onclick="submitProcessPipingData(true)"
                                                         class="btn btn-success waves-effect waves-light me-sm-3 me-1"><i
                                                             class="ti ti-check"></i>Save</button>
-                                                    <button class="btn btn-primary btn-next">
+                                                    <button class="btn btn-primary btn-next"  onclick="submitProcessPipingData(false)" >
                                                         <span
                                                             class="align-middle d-sm-inline-block d-none me-sm-1">Next</span>
                                                         <i class="ti ti-arrow-right"></i>
@@ -1329,10 +1332,10 @@
                                                         <i class="ti ti-arrow-left me-sm-1"></i>
                                                         <span class="align-middle d-sm-inline-block d-none">Previous</span>
                                                     </button>
-                                                    <button type="button"
+                                                    <button type="button"  onclick="submitBoltingData(true)"
                                                         class="btn btn-success waves-effect waves-light me-sm-3 me-1"><i
                                                             class="ti ti-check"></i>Save</button>
-                                                    <button class="btn btn-primary btn-next">
+                                                    <button class="btn btn-primary btn-next"  onclick="submitBoltingData(false)">
                                                         <span
                                                             class="align-middle d-sm-inline-block d-none me-sm-1">Next</span>
                                                         <i class="ti ti-arrow-right"></i>
@@ -1410,12 +1413,12 @@
                                                         <i class="ti ti-arrow-left me-sm-1"></i>
                                                         <span class="align-middle d-sm-inline-block d-none">Previous</span>
                                                     </button>
-                                                    <button type="button"
+                                                    <button type="button"  onclick="submitGasketsData(true)"
                                                         class="btn btn-success waves-effect waves-light me-sm-3 me-1"><i
                                                             class="ti ti-check"></i>Save</button>
                                                     <button class="btn btn-primary btn-next">
                                                         <span
-                                                            class="align-middle d-sm-inline-block d-none me-sm-1">Next</span>
+                                                            class="align-middle d-sm-inline-block d-none me-sm-1"  onclick="submitGasketsData(false)" >Next</span>
                                                         <i class="ti ti-arrow-right"></i>
                                                     </button>
                                                 </div>
@@ -1555,12 +1558,12 @@
                                                         <i class="ti ti-arrow-left me-sm-1"></i>
                                                         <span class="align-middle d-sm-inline-block d-none">Previous</span>
                                                     </button>
-                                                    <button type="button"
+                                                    <button type="button" onclick="submitTubingData(true)" 
                                                         class="btn btn-success waves-effect waves-light me-sm-3 me-1"><i
                                                             class="ti ti-check"></i>Save</button>
                                                     <button class="btn btn-primary btn-next">
                                                         <span
-                                                            class="align-middle d-sm-inline-block d-none me-sm-1">Next</span>
+                                                            class="align-middle d-sm-inline-block d-none me-sm-1" onclick="submitTubingData(false)" >Next</span>
                                                         <i class="ti ti-arrow-right"></i>
                                                     </button>
                                                 </div>
@@ -1693,18 +1696,18 @@
                                             <small class="text-light fw-semibold d-block">PWHT</small>
                                             <div class="form-check form-check-inline mt-3">
                                                 <input class="form-check-input" type="radio" name="pwht"
-                                                    id="inlineRadio1" name="" value="option1">
+                                                    id="inlineRadio1" name="" value="0">
                                                 <label class="form-check-label" for="inlineRadio1">Yes</label>
                                             </div>
                                             <div class="form-check form-check-inline">
                                                 <input class="form-check-input" type="radio" name="pwht"
-                                                    id="inlineRadio2" name="" value="option2">
+                                                    id="inlineRadio2" name="" value="1">
                                                 <label class="form-check-label" for="inlineRadio2">No</label>
                                             </div>
                                             <div class="form-check form-check-inline">
                                                 <input class="form-check-input" type="radio" name="pwht"
                                                     id="inlineRadio3" name="" value="option3">
-                                                <label class="form-check-label" for="inlineRadio3">Per Code REQ</label>
+                                                <label class="form-check-label" for="2">Per Code REQ</label>
                                             </div>
                                         </div>
                                         <div class="col-sm-6">
@@ -1762,10 +1765,10 @@
                                                         <i class="ti ti-arrow-left me-sm-1"></i>
                                                         <span class="align-middle d-sm-inline-block d-none">Previous</span>
                                                     </button>
-                                                    <button type="button"
+                                                    <button type="button" onclick="submitButtPipingData(true)" 
                                                         class="btn btn-success waves-effect waves-light me-sm-3 me-1"><i
                                                             class="ti ti-check"></i>Save</button>
-                                                    <button class="btn btn-primary btn-next">
+                                                    <button class="btn btn-primary btn-next" onclick="submitButtPipingData(false)" >
                                                         <span
                                                             class="align-middle d-sm-inline-block d-none me-sm-1">Next</span>
                                                         <i class="ti ti-arrow-right"></i>
@@ -1881,12 +1884,12 @@
                                                         <i class="ti ti-arrow-left me-sm-1"></i>
                                                         <span class="align-middle d-sm-inline-block d-none">Previous</span>
                                                     </button>
-                                                    <button type="button"
+                                                    <button type="button"  onclick="submitThreadedPipingData(true)" 
                                                         class="btn btn-success waves-effect waves-light me-sm-3 me-1"><i
                                                             class="ti ti-check"></i>Save</button>
                                                     <button class="btn btn-primary btn-next">
                                                         <span
-                                                            class="align-middle d-sm-inline-block d-none me-sm-1">Next</span>
+                                                            class="align-middle d-sm-inline-block d-none me-sm-1"  onclick="submitThreadedPipingData(false)" >Next</span>
                                                         <i class="ti ti-arrow-right"></i>
                                                     </button>
                                                 </div>
@@ -1964,10 +1967,10 @@
                                                         <i class="ti ti-arrow-left me-sm-1"></i>
                                                         <span class="align-middle d-sm-inline-block d-none">Previous</span>
                                                     </button>
-                                                    <button type="button"
+                                                    <button type="button" onclick="submitElectricalData(true)" 
                                                         class="btn btn-success waves-effect waves-light me-sm-3 me-1"><i
                                                             class="ti ti-check"></i>Save</button>
-                                                    <button class="btn btn-primary btn-next">
+                                                    <button class="btn btn-primary btn-next" onclick="submitElectricalData(false)" >
                                                         <span
                                                             class="align-middle d-sm-inline-block d-none me-sm-1">Next</span>
                                                         <i class="ti ti-arrow-right"></i>
@@ -2041,10 +2044,10 @@
                                                         <i class="ti ti-arrow-left me-sm-1"></i>
                                                         <span class="align-middle d-sm-inline-block d-none">Previous</span>
                                                     </button>
-                                                    <button type="button"
+                                                    <button type="button"  onclick="submitPreservationData(true)"
                                                         class="btn btn-success waves-effect waves-light me-sm-3 me-1"><i
                                                             class="ti ti-check"></i>Save</button>
-                                                    <button class="btn btn-primary btn-next">
+                                                    <button class="btn btn-primary btn-next"  onclick="submitPreservationData(false)">
                                                         <span
                                                             class="align-middle d-sm-inline-block d-none me-sm-1">Next</span>
                                                         <i class="ti ti-arrow-right"></i>
@@ -2054,11 +2057,12 @@
                                         </div>
                                         <!-- Action Buttons Ends -->
                                     </div>
-                                </form>
-                                <input type="hidden" class="form_Preservation" name="id"
+                                    <input type="hidden" class="form_Preservation" name="id"
                                     value="">
                                     <input type="hidden" class="form_id_bd" name="basic_details_id"
                                     value="{{ isset($jqr->id) ? $jqr->id : '' }}">
+                                </form>
+                              
                             </div>
                             <!-- Preservation Ends -->
                             <!-- Package Testing -->
@@ -2468,7 +2472,7 @@
                                                         <i class="ti ti-arrow-left me-sm-1"></i>
                                                         <span class="align-middle d-sm-inline-block d-none">Previous</span>
                                                     </button>
-                                                    <button type="button"
+                                                    <button type="button"  onclick="submitPackageTestingData(true)"
                                                         class="btn btn-success waves-effect waves-light me-sm-3 me-1"><i
                                                             class="ti ti-check"></i>Finish</button>
                                                 </div>
@@ -2757,7 +2761,7 @@ function submitNoCodeVesselsData(reloadFlag) {
         }
     });
 
-    var formData = $('#nocode_vessels_from').serialize();
+    var formData = $('#non_code_vessels_from').serialize();
     console.log("Form Data", formData)
     $.ajax({
         method: 'POST',

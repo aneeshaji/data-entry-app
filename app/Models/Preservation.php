@@ -14,5 +14,6 @@ class Preservation extends Model
         'special_customer_requirements',
         'notes'
     ];
+    protected $table ='preservation';
 }
 // preservation

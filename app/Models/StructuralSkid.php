@@ -30,4 +30,6 @@ class StructuralSkid extends Model
         'hydro_notes',
         'notes'
     ];
+    
+    protected $table ='structural_skid';
 }

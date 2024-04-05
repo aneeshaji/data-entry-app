@@ -142,7 +142,7 @@ class JobQualityRequirementController extends Controller
         $general_info->save();
 
         if ($general_info->id) {
-            return response(['status' => true, 'message' => 'Success', 'id' => $special_material_requirements->id,
+            return response(['status' => true, 'message' => 'Success', 'id' => $general_info->id,
             'redirect' => route('admin.job-quality-requirements')]);
         } else {
             return response(['status' => false, 'message' => 'Error']);
@@ -187,19 +187,20 @@ class JobQualityRequirementController extends Controller
         }
 
         $structural_skid->basic_details_id = $request->basic_details_id;
-        $structural_skid->customer_avl_applies = $request->customer_avl_applies;
+        $structural_skid->customer_avl_applies = $request->customer_avl_applies== 'on' ? '1' : '0';
         $structural_skid->material_origin_reqs = $request->material_origin_reqs;
-        $structural_skid->origin_traceable_to_melt = $request->origin_traceable_to_melt;
+        $structural_skid->origin_traceable_to_melt = $request->origin_traceable_to_melt== 'on' ? '1' : '0';
         $structural_skid->acceptable_material_origins = $request->acceptable_material_origins;
-        $structural_skid->mtrs_required = $request->mtrs_required;
-        $structural_skid->heat_mapping = $request->heat_mapping;
-        $structural_skid->weld_mapping = $request->weld_mapping;
+        $structural_skid->mtrs_required = $request->mtrs_required == 'on' ? '1' : '0';
+        $structural_skid->standard_per_code = $request->standard_per_code == 'on' ? '1' : '0';
+        $structural_skid->heat_mapping = $request->heat_mapping== 'on' ? '1' : '0';
+        $structural_skid->weld_mapping = $request->weld_mapping== 'on' ? '1' : '0';
         $structural_skid->material_notes = $request->material_notes;
-        $structural_skid->nace = $request->nace;
+       // $structural_skid->nace = $request->nace;
         $structural_skid->nde_requirements = $request->nde_requirements;
         $structural_skid->weld_requirements = $request->weld_requirements;
         $structural_skid->governing_code = $request->governing_code;
-        $structural_skid->pwht = $request->pwht;
+        $structural_skid->pwht = $request->pwht== 'on' ? '1' : '0';
         $structural_skid->hydro_hold_time = $request->hydro_hold_time;
         $structural_skid->witnessed = $request->witnessed;
         $structural_skid->hardness_test = $request->hardness_test;
@@ -230,23 +231,23 @@ class JobQualityRequirementController extends Controller
         }
 
         $pressure_vessels->basic_details_id = $request->basic_details_id;
-        $pressure_vessels->customer_avl_applies = $request->customer_avl_applies;
+        $pressure_vessels->customer_avl_applies = $request->customer_avl_applies== 'on' ? '1' : '0';
         $pressure_vessels->material_origin_reqs = $request->material_origin_reqs;
         $pressure_vessels->origin_traceable_to_melt = $request->origin_traceable_to_melt;
         $pressure_vessels->acceptable_material_origins = $request->acceptable_material_origins;
-        $pressure_vessels->mtrs_required = $request->mtrs_required;
-        $pressure_vessels->heat_mapping = $request->heat_mapping;
-        $pressure_vessels->weld_mapping = $request->weld_mapping;
+        $pressure_vessels->mtrs_required = $request->mtrs_required== 'on' ? '1' : '0';
+        $pressure_vessels->heat_mapping = $request->heat_mapping== 'on' ? '1' : '0';
+        $pressure_vessels->weld_mapping = $request->weld_mapping== 'on' ? '1' : '0';
         $pressure_vessels->material_notes = $request->weld_mapping;
-        $pressure_vessels->nace = $request->nace;
+        $pressure_vessels->nace = $request->nace== 'on' ? '1' : '0';
         $pressure_vessels->nde_requirements = $request->nde_requirements;
         $pressure_vessels->weld_requirements = $request->weld_requirements;
         $pressure_vessels->governing_code = $request->governing_code;
         $pressure_vessels->pwht = $request->pwht;
         $pressure_vessels->hydro_hold_time = $request->hydro_hold_time;
-        $pressure_vessels->witnessed = $request->witnessed;
-        $pressure_vessels->hardness_test = $request->hardness_test;
-        $pressure_vessels->max_hardness = $request->max_hardness;
+        $pressure_vessels->witnessed = $request->witnessed== 'on' ? '1' : '0';
+        $pressure_vessels->hardness_test = $request->hardness_test== 'on' ? '1' : '0';
+        $pressure_vessels->max_hardness = $request->max_hardness== 'on' ? '1' : '0';
         $pressure_vessels->hydro_chart_required = $request->hydro_chart_required;
         $pressure_vessels->hydro_notes = $request->hydro_notes;
         $pressure_vessels->notes = $request->notes;
@@ -262,7 +263,7 @@ class JobQualityRequirementController extends Controller
     }
 
     // Non Code Vessels/Tanks
-    public function submitNoCodeVesselsData(Request $request)
+    public function saveNoCodeVesselsData(Request $request)
     {
         // Store Data
         if ($request->id) {
@@ -273,25 +274,25 @@ class JobQualityRequirementController extends Controller
         }
 
         $non_code_vess->basic_details_id = $request->basic_details_id;
-        $non_code_vess->customer_avl_applies = $request->customer_avl_applies;
+        $non_code_vess->customer_avl_applies = $request->customer_avl_applies== 'on' ? '1' : '0';
         $non_code_vess->material_origin_reqs = $request->material_origin_reqs;
         $non_code_vess->origin_traceable_to_melt = $request->origin_traceable_to_melt;
         $non_code_vess->origin_traceable_to_manufacturer = $request->origin_traceable_to_manufacturer;
         $non_code_vess->acceptable_material_origins = $request->acceptable_material_origins;
-        $non_code_vess->standard_code = $request->standard_code;
-        $non_code_vess->mtrs_required = $request->mtrs_required;
-        $non_code_vess->heat_mapping = $request->heat_mapping;
-        $non_code_vess->weld_mapping = $request->weld_mapping;
+        $non_code_vess->standard_code = $request->standard_code== 'on' ? '1' : '0';
+        $non_code_vess->mtrs_required = $request->mtrs_required== 'on' ? '1' : '0';
+        $non_code_vess->heat_mapping = $request->heat_mapping== 'on' ? '1' : '0';
+        $non_code_vess->weld_mapping = $request->weld_mapping== 'on' ? '1' : '0';
         $non_code_vess->material_notes = $request->material_notes;
-        $non_code_vess->nace = $request->nace;
+        $non_code_vess->nace = $request->nace== 'on' ? '1' : '0';
         $non_code_vess->nde_requirements = $request->nde_requirements;
         $non_code_vess->weld_requirements = $request->weld_requirements;
         $non_code_vess->governing_code = $request->governing_code;
         $non_code_vess->pwht = $request->pwht;
         $non_code_vess->hydro_hold_time = $request->hydro_hold_time;
-        $non_code_vess->witnessed = $request->witnessed;
-        $non_code_vess->hardness_test = $request->hardness_test;
-        $non_code_vess->max_hardness = $request->max_hardness;
+        $non_code_vess->witnessed = $request->witnessed== 'on' ? '1' : '0';
+        $non_code_vess->hardness_test = $request->hardness_test== 'on' ? '1' : '0';
+        $non_code_vess->max_hardness = $request->max_hardness== 'on' ? '1' : '0';
         $non_code_vess->hydro_chart_required = $request->hydro_chart_required;
         $non_code_vess->hydro_notes = $request->hydro_notes;
         $non_code_vess->notes = $request->notes;
@@ -306,7 +307,7 @@ class JobQualityRequirementController extends Controller
     }
 
     // Process/Fuel Gas/Start Gas Piping
-    public function submitProcessPipingData(Request $request)
+    public function saveProcessPipingData(Request $request)
     {
         // Store Data
         if ($request->id) {
@@ -317,22 +318,22 @@ class JobQualityRequirementController extends Controller
         }
 
         $process_fual_gas->basic_details_id = $request->basic_details_id;
-        $process_fual_gas->customer_avl_applies = $request->customer_avl_applies;
+        $process_fual_gas->customer_avl_applies = $request->customer_avl_applies== 'on' ? '1' : '0';
         $process_fual_gas->material_origin_reqs = $request->material_origin_reqs;
         $process_fual_gas->origin_traceable_to_melt = $request->origin_traceable_to_melt;
-        $process_fual_gas->standard_code = $request->standard_code;
-        $process_fual_gas->mtrs_required = $request->mtrs_required;
-        $process_fual_gas->heat_mapping = $request->heat_mapping;
-        $process_fual_gas->weld_mapping = $request->weld_mapping;
+        $process_fual_gas->standard_code = $request->standard_code== 'on' ? '1' : '0';
+        $process_fual_gas->mtrs_required = $request->mtrs_required== 'on' ? '1' : '0';
+        $process_fual_gas->heat_mapping = $request->heat_mapping== 'on' ? '1' : '0';
+        $process_fual_gas->weld_mapping = $request->weld_mapping== 'on' ? '1' : '0';
         $process_fual_gas->material_notes = $request->material_notes;
-        $process_fual_gas->nace = $request->nace;
+        $process_fual_gas->nace = $request->nace== 'on' ? '1' : '0';
         $process_fual_gas->nde_requirements = $request->nde_requirements;
         $process_fual_gas->weld_requirements = $request->weld_requirements;
         $process_fual_gas->governing_code = $request->governing_code;
         $process_fual_gas->hydro_hold_time = $request->hydro_hold_time;
-        $process_fual_gas->witnessed = $request->witnessed;
-        $process_fual_gas->hardness_test = $request->hardness_test;
-        $process_fual_gas->max_hardness = $request->max_hardness;
+        $process_fual_gas->witnessed = $request->witnessed== 'on' ? '1' : '0';
+        $process_fual_gas->hardness_test = $request->hardness_test== 'on' ? '1' : '0';
+        $process_fual_gas->max_hardness = $request->max_hardness== 'on' ? '1' : '0';
         $process_fual_gas->hydro_chart_required = $request->hydro_chart_required;
         $process_fual_gas->hydro_notes = $request->hydro_notes;
         $process_fual_gas->notes = $request->notes;
@@ -348,7 +349,7 @@ class JobQualityRequirementController extends Controller
     }
 
     // Bolting
-    public function submitBoltingData(Request $request)
+    public function saveBoltingData(Request $request)
     {
         // Store Data
         if ($request->id) {
@@ -359,11 +360,11 @@ class JobQualityRequirementController extends Controller
         }
 
         $bolting->basic_details_id = $request->basic_details_id;
-        $bolting->efx_standard_no_cocs = $request->efx_standard_no_cocs;
-        $bolting->vendor_coc = $request->vendor_coc;
-        $bolting->manufacturer_coc = $request->manufacturer_coc;
-        $bolting->mtrs = $request->mtrs;
-        $bolting->notes = $request->notes;
+        $bolting->efx_standard_no_cocs = $request->efx_standard_no_cocs== 'on' ? '1' : '0';
+        $bolting->vendor_coc = $request->vendor_coc== 'on' ? '1' : '0';
+        $bolting->manufacturer_coc = $request->manufacturer_coc== 'on' ? '1' : '0';
+        $bolting->mtrs = $request->mtrs== 'on' ? '1' : '0';
+        $bolting->material_notes = $request->material_notes;
 
         $bolting->save();
 
@@ -376,7 +377,7 @@ class JobQualityRequirementController extends Controller
     }
 
     // Gaskets
-    public function submitGasketsData(Request $request)
+    public function saveGasketsData(Request $request)
     {
         // Store Data
         if ($request->id) {
@@ -387,10 +388,11 @@ class JobQualityRequirementController extends Controller
         }
 
         $service_info->basic_details_id = $request->basic_details_id;
-        $service_info->gas_processed = $request->gas_processed;
-        $service_info->application = $request->application;
-        $service_info->sour_service_required = $request->sour_service_required == 'on' ? '1':'0';
-        $service_info->other = $request->other;
+        $service_info->efx_standard_no_cocs = $request->efx_standard_no_cocs== 'on' ? '1' : '0';
+        $service_info->vendor_coc = $request->vendor_coc== 'on' ? '1' : '0';
+        $service_info->manufacturer_coc = $request->manufacturer_coc== 'on' ? '1' : '0';
+        $bolting->mtrs = $request->mtrs== 'on' ? '1' : '0';
+        $bolting->material_notes = $request->material_notes;
         $service_info->save();
 
         if ($service_info->id) {
@@ -402,7 +404,7 @@ class JobQualityRequirementController extends Controller
     }
 
     // Tubing
-    public function submitTubingData(Request $request)
+    public function saveTubingData(Request $request)
     {
         // Store Data
         if ($request->id) {
@@ -413,16 +415,16 @@ class JobQualityRequirementController extends Controller
         }
 
         $tubing->basic_details_id = $request->basic_details_id;
-        $tubing->customer_avl_applies = $request->customer_avl_applies;
+        $tubing->customer_avl_applies = $request->customer_avl_appliess== 'on' ? '1' : '0';
         $tubing->material_origin_reqs = $request->material_origin_reqs;
         $tubing->origin_traceable_to_melt = $request->origin_traceable_to_melt;
         $tubing->acceptable_material_origins = $request->acceptable_material_origins;
-        $tubing->efx_standard_no_cocs = $request->efx_standard_no_cocs;
-        $tubing->tubing_mtrs_required = $request->tubing_mtrs_required;
-        $tubing->tubing_coc_required = $request->tubing_coc_required;
-        $tubing->fitting_mtrs_required = $request->fitting_mtrs_required;
-        $tubing->fitting_coc_required = $request->fitting_coc_required;
-        $tubing->full_traceability = $request->full_traceability;
+        $tubing->efx_standard_no_cocs = $request->efx_standard_no_cocss== 'on' ? '1' : '0';
+        $tubing->tubing_mtrs_required = $request->tubing_mtrs_requireds== 'on' ? '1' : '0';
+        $tubing->tubing_coc_required = $request->tubing_coc_requireds== 'on' ? '1' : '0';
+        $tubing->fitting_mtrs_required = $request->fitting_mtrs_requireds== 'on' ? '1' : '0';
+        $tubing->fitting_coc_required = $request->fitting_coc_requireds== 'on' ? '1' : '0';
+        $tubing->full_traceability = $request->full_traceabilitys== 'on' ? '1' : '0';
         $tubing->material_notes = $request->material_notes;
         $tubing->nde_requirements = $request->nde_requirements;
         $tubing->pmi_Requirements = $request->pmi_Requirements;
@@ -450,23 +452,24 @@ class JobQualityRequirementController extends Controller
         }
 
         $buttPiping->basic_details_id = $request->basic_details_id;
-        $buttPiping->customer_avl_applies = $request->customer_avl_applies;
+        $buttPiping->customer_avl_applies = $request->customer_avl_appliess== 'on' ? '1' : '0';
         $buttPiping->material_origin_reqs = $request->material_origin_reqs;
         $buttPiping->origin_traceable_to_melt = $request->origin_traceable_to_melt;
         $buttPiping->acceptable_material_origins = $request->acceptable_material_origins;
-        $buttPiping->standard_per_code = $request->standard_per_code;
-        $buttPiping->mtrs_provided = $request->mtrs_provided;
-        $buttPiping->heat_mapping = $request->heat_mapping;
-        $buttPiping->weld_mapping = $request->weld_mapping;
+        $buttPiping->standard_per_code = $request->standard_per_codes== 'on' ? '1' : '0';
+        $buttPiping->mtrs_provided = $request->mtrs_provideds== 'on' ? '1' : '0';
+        $buttPiping->heat_mapping = $request->heat_mappings== 'on' ? '1' : '0';
+        $buttPiping->weld_mapping = $request->weld_mappings== 'on' ? '1' : '0';
         $buttPiping->material_notes = $request->material_notes;
+        $buttPiping->nace = $request->nace== 'on' ? '1' : '0' ;
         $buttPiping->nde_requirements = $request->nde_requirements;
         $buttPiping->weld_requirements = $request->weld_requirements;
         $buttPiping->governing_code = $request->governing_code;
         $buttPiping->pwht = $request->pwht;
         $buttPiping->hydro_hold_time = $request->hydro_hold_time;
-        $buttPiping->witnessed = $request->witnessed;
-        $buttPiping->hardness_test = $request->hardness_test;
-        $buttPiping->max_hardness = $request->max_hardness;
+        $buttPiping->witnessed = $request->witnessed == 'on' ? '1' : '0';
+        $buttPiping->hardness_test = $request->hardness_test == 'on' ? '1' : '0';
+        $buttPiping->max_hardness = $request->max_hardness == 'on' ? '1' : '0';
         $buttPiping->hydro_chart_required = $request->hydro_chart_required;
         $buttPiping->hydro_notes = $request->hydro_notes;
         $buttPiping->notes = $request->notes;
@@ -493,15 +496,15 @@ class JobQualityRequirementController extends Controller
         }
 
         $threaded->basic_details_id = $request->basic_details_id;
-        $threaded->customer_avl_applies = $request->customer_avl_applies;
+        $threaded->customer_avl_applies = $request->customer_avl_applies == 'on' ? '1' : '0';
         $threaded->material_origin_reqs = $request->material_origin_reqs;
         $threaded->origin_traceable_to_melt = $request->origin_traceable_to_melt;
         $threaded->acceptable_material_origins = $request->acceptable_material_origins;
-        $threaded->standard_per_code = $request->standard_per_code;
-        $threaded->mtrs_required = $request->mtrs_required;
-        $threaded->heat_mapping = $request->heat_mapping;
+        $threaded->standard_per_code = $request->standard_per_code == 'on' ? '1' : '0';
+        $threaded->mtrs_required = $request->mtrs_required == 'on' ? '1' : '0';
+        $threaded->heat_mapping = $request->heat_mapping == 'on' ? '1' : '0';
         $threaded->material_notes = $request->material_notes;
-        $threaded->nace = $request->nace;
+        $threaded->nace = $request->nace == 'on' ? '1' : '0';
         $threaded->notes = $request->notes;
 
         $threaded->save();
@@ -526,9 +529,9 @@ class JobQualityRequirementController extends Controller
         }
 
         $electrical->basic_details_id = $request->basic_details_id;
-        $electrical->customer_avl_applies = $request->customer_avl_applies;
+        $electrical->customer_avl_applies = $request->customer_avl_applies == 'on' ? '1' : '0';
         $electrical->acceptable_material_origins = $request->acceptable_material_origins;
-        $electrical->vendor_restrictions = $request->vendor_restrictions ;
+        $electrical->vendor_restrictions = $request->vendor_restrictions == 'on' ? '1' : '0' ;
         $electrical->specify = $request->specify;
         $electrical->approved_vendors = $request->approved_vendors;
         $electrical->material_notes = $request->material_notes;
@@ -546,7 +549,7 @@ class JobQualityRequirementController extends Controller
     }
 
     // Preservation
-    public function submitPreservationData(Request $request)
+    public function savePreservationData(Request $request)
     {
         // Store Data
         if ($request->id) {
@@ -557,11 +560,11 @@ class JobQualityRequirementController extends Controller
         }
 
         $preservation->basic_details_id = $request->basic_details_id;
-        $preservation->efx_standard_short_term = $request->efx_standard_short_term;
-        $preservation->efx_standard_long_term = $request->efx_standard_long_term;
-        $preservation->customer_specified_other = $request->customer_specified_other;
+        $preservation->efx_standard_short_term = $request->efx_standard_short_term == 'on' ? '1' : '0';
+        $preservation->efx_standard_long_term = $request->efx_standard_long_term == 'on' ? '1' : '0';
+        $preservation->customer_specified_other = $request->customer_specified_other == 'on' ? '1' : '0';
         $preservation->special_customer_requirements = $request->special_customer_requirements;
-        $preservation->other = $request->other;
+        $preservation->notes = $request->notes;
         $preservation->save();
 
         if ($preservation->id) {
@@ -584,51 +587,51 @@ class JobQualityRequirementController extends Controller
         }
 
         $package_testing->basic_details_id = $request->basic_details_id;
-        $package_testing->pneumatic_testing = $request->pneumatic_testing;
-        $package_testing->pneumatic_testing_customer_third_party_witness_required = $request->pneumatic_testing_customer_third_party_witness_required;
+        $package_testing->pneumatic_testing = $request->pneumatic_testing == 'on' ? '1' : '0';
+        $package_testing->pneumatic_testing_customer_third_party_witness_required = $request->pneumatic_testing_customer_third_party_witness_required == 'on' ? '1' : '0';
         $package_testing->pneumatic_testing_notification_requirement = $request->pneumatic_testing_notification_requirement ;
         $package_testing->system = $request->system;
         $package_testing->test_medium = $request->test_medium;
         $package_testing->test_requirement_pressure = $request->test_requirement_pressure;
         $package_testing->test_requirement_time = $request->test_requirement_time;
         $package_testing->pneumatic_testing_notes = $request->pneumatic_testing_notes;
-        $package_testing->vaccum = $request->vaccum;
-        $package_testing->vaccum_customer_third_party_witness_required = $request->vaccum_customer_third_party_witness_required;
+        $package_testing->vaccum = $request->vaccum == 'on' ? '1' : '0';
+        $package_testing->vaccum_customer_third_party_witness_required = $request->vaccum_customer_third_party_witness_required == 'on' ? '1' : '0';
         $package_testing->vaccum_notification_requirement = $request->vaccum_notification_requirement;
         $package_testing->level = $request->level;
         $package_testing->duration_at_level = $request->duration_at_level;
         $package_testing->vaccum_notes = $request->vaccum_notes;
-        $package_testing->purge_charge = $request->purge_charge;
+        $package_testing->purge_charge = $request->purge_charge == 'on' ? '1' : '0';
         $package_testing->purge_charge_medium = $request->purge_charge_medium;
         $package_testing->purge_charge_pressure = $request->purge_charge_pressure;
         $package_testing->purge_charge_notes = $request->purge_charge_notes;
-        $package_testing->lube_oil_flush = $request->lube_oil_flush;
-        $package_testing->lube_oil_flush_customer_third_party_witness_required = $request->lube_oil_flush_customer_third_party_witness_required;
+        $package_testing->lube_oil_flush = $request->lube_oil_flush == 'on' ? '1' : '0';
+        $package_testing->lube_oil_flush_customer_third_party_witness_required = $request->lube_oil_flush_customer_third_party_witness_required == 'on' ? '1' : '0';
         $package_testing->lube_oil_flush_notification_requirement = $request->lube_oil_flush_notification_requirement;
         $package_testing->lube_oil_flush_notes = $request->lube_oil_flush_notes;
-        $package_testing->run_test = $request->run_test;
-        $package_testing->run_test_customer_third_party_witness_required = $request->run_test_customer_third_party_witness_required;
+        $package_testing->run_test = $request->run_test == 'on' ? '1' : '0';
+        $package_testing->run_test_customer_third_party_witness_required = $request->run_test_customer_third_party_witness_required == 'on' ? '1' : '0';
         $package_testing->run_test_notification_requirement = $request->run_test_notification_requirement;
-        $package_testing->run_test_requirement = $request->run_test_requirement;
+        $package_testing->run_test_requirement = $request->run_test_requirement == 'on' ? '1' : '0';
         $package_testing->run_test_notes = $request->run_test_notes;
-        $package_testing->megger_test = $request->megger_test;
-        $package_testing->megger_test_customer_third_party_witness_required = $request->megger_test_customer_third_party_witness_required;
+        $package_testing->megger_test = $request->megger_test == 'on' ? '1' : '0';
+        $package_testing->megger_test_customer_third_party_witness_required = $request->megger_test_customer_third_party_witness_required == 'on' ? '1' : '0';
         $package_testing->megger_test_notification_requirement = $request->megger_test_notification_requirement;
         $package_testing->megger_test_notes = $request->megger_test_notes;
-        $package_testing->fat_test = $request->fat_test;
-        $package_testing->fat_test_customer_third_party_witness_required = $request->fat_test_customer_third_party_witness_required;
+        $package_testing->fat_test = $request->fat_test == 'on' ? '1' : '0';
+        $package_testing->fat_test_customer_third_party_witness_required = $request->fat_test_customer_third_party_witness_required ;
         $package_testing->fat_test_notification_requirement = $request->fat_test_notification_requirement;
         $package_testing->fat_test_requirement = $request->fat_test_requirement;
         $package_testing->fat_test_notes = $request->fat_test_notes;
-        $package_testing->additional_testing = $request->additional_testing;
-        $package_testing->additional_testing_customer_third_party_witness_required = $request->additional_testing_customer_third_party_witness_required;
+        $package_testing->additional_testing = $request->additional_testing == 'on' ? '1' : '0';
+        $package_testing->additional_testing_customer_third_party_witness_required = $request->additional_testing_customer_third_party_witness_required == 'on' ? '1' : '0';
         $package_testing->additional_testing_notification_requirement = $request->additional_testing_notification_requirement;
         $package_testing->additional_testing_test_requirement = $request->additional_testing_test_requirement;
-        $package_testing->addendum_purchasing_specifications = $request->addendum_purchasing_specifications;
-        $package_testing->addendum_purchasing_specifications_complete = $request->addendum_purchasing_specifications_complete;
+        $package_testing->addendum_purchasing_specifications = $request->addendum_purchasing_specifications == 'on' ? '1' : '0';
+        $package_testing->addendum_purchasing_specifications_complete = $request->addendum_purchasing_specifications_complete == 'on' ? '1' : '0';
         $package_testing->addendum_purchasing_specifications_notes = $request->addendum_purchasing_specifications_notes;
-        $package_testing->addendum_manufacturing_specifications = $request->addendum_manufacturing_specifications;
-        $package_testing->addendum_manufacturing_specifications_complete = $request->addendum_manufacturing_specifications_complete;
+        $package_testing->addendum_manufacturing_specifications = $request->addendum_manufacturing_specifications == 'on' ? '1' : '0';
+        $package_testing->addendum_manufacturing_specifications_complete = $request->addendum_manufacturing_specifications_complete == 'on' ? '1' : '0';
         $package_testing->addendum_manufacturing_specifications_notes = $request->addendum_manufacturing_specifications_notes;
         $package_testing->save();
 
