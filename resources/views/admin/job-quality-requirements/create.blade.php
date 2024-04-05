@@ -1704,7 +1704,7 @@
                                             </div>
                                             <div class="form-check form-check-inline">
                                                 <input class="form-check-input" type="radio" name="pwht"
-                                                    id="inlineRadio3" name="" value="option3">
+                                                    id="inlineRadio3" name="" value="2">
                                                 <label class="form-check-label" for="2">Per Code REQ</label>
                                             </div>
                                         </div>
