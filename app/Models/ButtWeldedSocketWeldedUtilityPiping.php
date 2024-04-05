@@ -30,4 +30,5 @@ class ButtWeldedSocketWeldedUtilityPiping extends Model
         'hydro_notes',
         'notes'
     ];
+    protected $table='butt_welded_socket_welded_utility_piping';
 }

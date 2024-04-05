@@ -17,5 +17,6 @@ class ElectricalInstrumentation extends Model
         'governing_code',
         'notes'
     ];
+    protected $table ='electrical_instrumentation';
 }
-// ElectricalInstrumentation
+// ElectricalInstrumentation;

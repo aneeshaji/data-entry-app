@@ -19,5 +19,6 @@ class ThreadedPiping extends Model
         'nace',
         'notes'
     ];
+    protected $table = 'threaded_piping';
 }
 // ThreadedPiping

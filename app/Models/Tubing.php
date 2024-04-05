@@ -23,5 +23,6 @@ class Tubing extends Model
         'pmi_Requirements',
         'notes'
     ];
+    protected $table = 'tubing';
 }
 //tubing

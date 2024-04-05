@@ -29,6 +29,7 @@ class ProcessFuelGasStartGasPiping extends Model
         'hydro_notes',
         'notes'
     ];
+    protected $table = 'process_fuel_gas_start_gas_piping';
 }
 
 //process_fuel_gas_start_gas_piping
