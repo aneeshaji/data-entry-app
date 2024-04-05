@@ -61,7 +61,8 @@ class JobQualityRequirementController extends Controller
         $basic_details->save();
 
         if ($basic_details->id) {
-            return response(['status' => true, 'message' => 'Success', 'redirect' => route('admin.job-quality-requirements')]);
+            return response(['status' => true, 'message' => 'Success', 'id' => $basic_details->id,
+            'redirect' => route('admin.job-quality-requirements')]);
         } else {
             return response(['status' => false, 'message' => 'Error']);
         }

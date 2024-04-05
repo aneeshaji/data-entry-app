@@ -218,7 +218,6 @@
                                                 placeholder="" aria-label=""
                                                 value="{{ isset($jqr->due_date) ? $jqr->due_date : '' }}" />
                                         </div>
-                                        <input type="hidden" name="id" value="{{ isset($jqr->id) ? $jqr->id : '' }}">
                                         <!-- Action Buttons -->
                                         <div class="pt-4">
                                             <div class="row justify-content-end">
@@ -232,7 +231,7 @@
                                                     <button type="button" onclick="submitData(true)"
                                                         class="btn btn-success waves-effect waves-light me-sm-3 me-1"><i
                                                             class="ti ti-check"></i>Save</button>
-                                                    <button class="btn btn-primary btn-next">
+                                                    <button class="btn btn-primary btn-next" onclick="submitData(false)">
                                                         <span
                                                             class="align-middle d-sm-inline-block d-none me-sm-1">Next</span>
                                                         <i class="ti ti-arrow-right"></i>
@@ -242,6 +241,7 @@
                                         </div>
                                         <!-- Action Buttons Ends -->
                                     </div>
+                                    <input type="hidden" class="form_id_bd" name="id" value="{{ isset($jqr->id) ? $jqr->id : '' }}">
                                 </form>
                             </div>
                             <!-- Basic Project Details Ends -->
@@ -2427,7 +2427,7 @@ if (typeof wizardIconsVertical !== undefined && wizardIconsVertical !== null) {
                     alert('Input can not be left blank');
                 } else {
                     verticalIconsStepper.next();
-                    submitData(false);
+                    // submitData(false);
                 }
             });
         });
@@ -2463,6 +2463,7 @@ function submitData(reloadFlag) {
         dataType: 'json',
         success: function(response) {
             if (response.status == true) {
+                $('.form_id_bd').val(response.id);
                 if (reloadFlag == true) {
                     window.location.href = response.redirect;
                 }
