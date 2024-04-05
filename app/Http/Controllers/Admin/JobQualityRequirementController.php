@@ -719,6 +719,7 @@ class JobQualityRequirementController extends Controller
         $jqr_structural_skid = StructuralSkid::where('basic_details_id', $jqr->id)->first();
         $jqr_threaded_piping = ThreadedPiping::where('basic_details_id', $jqr->id)->first();
         $jqr_tubing = Tubing::where('basic_details_id', $jqr->id)->first();
+        $jqr_gaskets = Gaskets::where('basic_details_id', $jqr->id)->first();
         return view('admin.job-quality-requirements.create', [
             'jqr' => $jqr,
             'jqr_special' => $jqr_special,
@@ -734,7 +735,8 @@ class JobQualityRequirementController extends Controller
             'jqr_process_fuel_gas' => $jqr_process_fuel_gas,
             'jqr_structural_skid' => $jqr_structural_skid,
             'jqr_threaded_piping' => $jqr_threaded_piping,
-            'jqr_tubing' => $jqr_tubing
+            'jqr_tubing' => $jqr_tubing,
+            'jqr_gaskets' => $jqr_gaskets
         ]);
     }
 
