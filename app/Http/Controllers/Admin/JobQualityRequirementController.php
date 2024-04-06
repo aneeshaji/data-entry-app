@@ -656,7 +656,6 @@ class JobQualityRequirementController extends Controller
      */
     public function store(Request $request): RedirectResponse
     {
-        //dd($request);
         // $request->user()->fill($request->validated());
         DB::beginTransaction();
         $basic_details = new BasicDetails();

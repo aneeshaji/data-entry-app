@@ -262,7 +262,7 @@
                                         <div class="col-sm-6">
                                             <label class="switch">
                                                 <input type="checkbox" class="switch-input" name="pipes_and_fittings"
-                                                    {{ isset($jqr_special->pipes_and_fittings) ? 'checked': '' }}>
+                                                {{ isset($jqr_special->pipes_and_fittings) && $jqr_special->pipes_and_fittings == '1' ? 'checked': '' }}>
                                                 <span class="switch-toggle-slider">
                                                     <span class="switch-on"></span>
                                                     <span class="switch-off"></span>
@@ -273,7 +273,7 @@
                                         <div class="col-sm-6">
                                             <label class="switch">
                                                 <input type="checkbox" class="switch-input" name="bolting"
-                                                    {{ isset($jqr_special->bolting) ? 'checked': '' }}>
+                                                {{ isset($jqr_special->bolting) && $jqr_special->bolting == '1'  ? 'checked': '' }}>
                                                 <span class="switch-toggle-slider">
                                                     <span class="switch-on"></span>
                                                     <span class="switch-off"></span>
@@ -284,7 +284,7 @@
                                         <div class="col-sm-6">
                                             <label class="switch">
                                                 <input type="checkbox" class="switch-input" name="pressure_vessels"
-                                                    {{ isset($jqr_special->pressure_vessels) ? 'checked': '' }}>
+                                                    {{ isset($jqr_special->pressure_vessels) && $jqr_special->pressure_vessels == '1' ? 'checked': '' }}>
                                                 <span class="switch-toggle-slider">
                                                     <span class="switch-on"></span>
                                                     <span class="switch-off"></span>
@@ -295,7 +295,7 @@
                                         <div class="col-sm-6">
                                             <label class="switch">
                                                 <input type="checkbox" class="switch-input" name="gaskets"
-                                                    {{ isset($jqr_special->gaskets) ? 'checked': '' }}>
+                                                    {{ isset($jqr_special->gaskets) && $jqr_special->gaskets == '1' ? 'checked': '' }}>
                                                 <span class="switch-toggle-slider">
                                                     <span class="switch-on"></span>
                                                     <span class="switch-off"></span>
@@ -306,7 +306,7 @@
                                         <div class="col-sm-6">
                                             <label class="switch">
                                                 <input type="checkbox" class="switch-input" name="structural_steel"
-                                                    {{ isset($jqr_special->structural_steel) ? 'checked': '' }}>
+                                                    {{ isset($jqr_special->structural_steel) && $jqr_special->structural_steel == '1' ? 'checked': '' }}>
                                                 <span class="switch-toggle-slider">
                                                     <span class="switch-on"></span>
                                                     <span class="switch-off"></span>
@@ -317,7 +317,7 @@
                                         <div class="col-sm-6">
                                             <label class="switch">
                                                 <input type="checkbox" class="switch-input" name="tubing"
-                                                    {{ isset($jqr_special->tubing) ? 'checked': '' }}>
+                                                    {{ isset($jqr_special->tubing) && $jqr_special->tubing == '1' ? 'checked' : '' }}>
                                                 <span class="switch-toggle-slider">
                                                     <span class="switch-on"></span>
                                                     <span class="switch-off"></span>
@@ -349,8 +349,8 @@
                                         <!-- Action Buttons Ends -->
                                         <input type="hidden" class="special_id" name="id" value="{{ isset($jqr_special->id) ? $jqr_special->id : '' }}">
                                         <input type="hidden" class="form_id_bd" name="basic_details_id" value="{{ isset($jqr->id) ? $jqr->id : '' }}">
-                                </div>
-                            </form>
+                                    </div>
+                                </form>
                             </div>
                             <!-- Special Material Requirements Ends -->
                             <!-- General Information -->
@@ -475,8 +475,7 @@
                                         </div>
                                         <div class="col-sm-6">
                                             <label class="switch">
-                                                <input type="checkbox" class="switch-input" name="sour_service_required" {{ isset($jqr_service_info->sour_service_required) ? 'checked': '' }} >
-
+                                                <input type="checkbox" class="switch-input" name="sour_service_required" {{ isset($jqr_service_info->sour_service_required) && $jqr_service_info->sour_service_required == '1' ? 'checked': '' }} >
                                                 <span class="switch-toggle-slider">
                                                     <span class="switch-on"></span>
                                                     <span class="switch-off"></span>
@@ -534,7 +533,7 @@
                                         </small>
                                         <div class="col-sm-6">
                                             <label class="switch">
-                                                <input type="checkbox" class="switch-input" name="customer_avl_applies" {{ isset($jqr_structural_skid->customer_avl_applies) ? 'checked': '' }}>
+                                                <input type="checkbox" class="switch-input" name="customer_avl_applies" {{ isset($jqr_structural_skid->customer_avl_applies) && $jqr_structural_skid->customer_avl_applies == '1' ? 'checked': '' }}>
                                                 <span class="switch-toggle-slider">
                                                     <span class="switch-on"></span>
                                                     <span class="switch-off"></span>
@@ -544,11 +543,11 @@
                                         </div>
                                         <div class="col-sm-6">
                                             <label class="form-label" for="twitter1">Material Origin REQS</label>
-                                            <input type="text" id="twitter1" name="material_origin_reqs" class="form-control" placeholder="" value="{{ isset($jqr_structural_skid->material_origin_reqs) ? $jqr_structural_skid->material_origin_reqs : '' }}" />
+                                            <input type="text" id="twitter1" name="material_origin_reqs" class="form-control" placeholder="" value="{{ isset($jqr_structural_skid->material_origin_reqs) && $jqr_service_info->sour_service_required == '1' ? $jqr_structural_skid->material_origin_reqs : '' }}" />
                                         </div>
                                         <div class="col-sm-6">
                                             <label class="switch">
-                                                <input type="checkbox" class="switch-input" name="origin_traceable_to_melt"  {{ isset($jqr_structural_skid->origin_traceable_to_melt) ? 'checked': '' }} >
+                                                <input type="checkbox" class="switch-input" name="origin_traceable_to_melt"  {{ isset($jqr_structural_skid->origin_traceable_to_melt) && $jqr_structural_skid->origin_traceable_to_melt == '1' ? 'checked': '' }} >
                                                 <span class="switch-toggle-slider">
                                                     <span class="switch-on"></span>
                                                     <span class="switch-off"></span>
@@ -563,7 +562,7 @@
                                         </div>
                                         <div class="col-sm-6">
                                             <label class="switch">
-                                                <input type="checkbox" name="standard_per_code" class="switch-input" {{ isset($jqr_structural_skid->standard_per_code) ? 'checked': '' }}>
+                                                <input type="checkbox" name="standard_per_code" class="switch-input" {{ isset($jqr_structural_skid->standard_per_code) && $jqr_structural_skid->standard_per_code == '1' ? 'checked': '' }}>
                                                 <span class="switch-toggle-slider">
                                                     <span class="switch-on"></span>
                                                     <span class="switch-off"></span>
@@ -573,7 +572,7 @@
                                         </div>
                                         <div class="col-sm-6">
                                             <label class="switch">
-                                                <input type="checkbox" name="mtrs_required" class="switch-input" {{ isset($jqr_structural_skid->mtrs_required) ? 'checked': '' }}>
+                                                <input type="checkbox" name="mtrs_required" class="switch-input" {{ isset($jqr_structural_skid->mtrs_required) && $jqr_structural_skid->mtrs_required == '1' ? 'checked': '' }}>
                                                 <span class="switch-toggle-slider">
                                                     <span class="switch-on"></span>
                                                     <span class="switch-off"></span>
@@ -583,7 +582,7 @@
                                         </div>
                                         <div class="col-sm-6">
                                             <label class="switch">
-                                                <input type="checkbox" name="heat_mapping" class="switch-input" {{ isset($jqr_structural_skid->heat_mapping) ? 'checked': '' }}  >
+                                                <input type="checkbox" name="heat_mapping" class="switch-input" {{ isset($jqr_structural_skid->heat_mapping) && $jqr_structural_skid->heat_mapping == '1' ? 'checked': '' }}  >
                                                 <span class="switch-toggle-slider">
                                                     <span class="switch-on"></span>
                                                     <span class="switch-off"></span>
@@ -593,7 +592,7 @@
                                         </div>
                                         <div class="col-sm-6">
                                             <label class="switch">
-                                                <input type="checkbox" name="weld_mapping" class="switch-input" {{ isset($jqr_structural_skid->weld_mapping) ? 'checked': '' }} >
+                                                <input type="checkbox" name="weld_mapping" class="switch-input" {{ isset($jqr_structural_skid->weld_mapping) && $jqr_structural_skid->weld_mapping == '1' ? 'checked': '' }} >
                                                 <span class="switch-toggle-slider">
                                                     <span class="switch-on"></span>
                                                     <span class="switch-off"></span>
@@ -681,7 +680,7 @@
                                         </small>
                                         <div class="col-sm-6">
                                             <label class="switch">
-                                                <input type="checkbox" class="switch-input" name="customer_avl_applies" {{ isset($jqr_pressure_vessels->customer_avl_applies) ? 'checked': '' }}>
+                                                <input type="checkbox" class="switch-input" name="customer_avl_applies" {{ isset($jqr_pressure_vessels->customer_avl_applies) && $jqr_pressure_vessels->customer_avl_applies == '1' ? 'checked': '' }}>
                                                 <span class="switch-toggle-slider">
                                                     <span class="switch-on"></span>
                                                     <span class="switch-off"></span>
@@ -696,7 +695,7 @@
                                         </div>
                                         <div class="col-sm-6">
                                             <label class="switch">
-                                                <input type="checkbox" class="switch-input" name="origin_traceable_to_melt" {{ isset($jqr_pressure_vessels->origin_traceable_to_melt) ? 'checked': '' }}>
+                                                <input type="checkbox" class="switch-input" name="origin_traceable_to_melt" {{ isset($jqr_pressure_vessels->origin_traceable_to_melt) && $jqr_pressure_vessels->origin_traceable_to_melt == '1' ? 'checked': '' }}>
                                                 <span class="switch-toggle-slider">
                                                     <span class="switch-on"></span>
                                                     <span class="switch-off"></span>
@@ -711,7 +710,7 @@
                                         </div>
                                         <div class="col-sm-6">
                                             <label class="switch">
-                                                <input type="checkbox" class="switch-input" name="mtrs_required"  {{ isset($jqr_pressure_vessels->mtrs_required) ? 'checked': '' }}>
+                                                <input type="checkbox" class="switch-input" name="mtrs_required" {{ isset($jqr_pressure_vessels->mtrs_required) && $jqr_pressure_vessels->mtrs_required == '1' ? 'checked': '' }}>
                                                 <span class="switch-toggle-slider">
                                                     <span class="switch-on"></span>
                                                     <span class="switch-off"></span>
@@ -721,7 +720,7 @@
                                         </div>
                                         <div class="col-sm-6">
                                             <label class="switch">
-                                                <input type="checkbox" class="switch-input" name="heat_mapping" {{ isset($jqr_pressure_vessels->heat_mapping) ? 'checked': '' }} >
+                                                <input type="checkbox" class="switch-input" name="heat_mapping" {{ isset($jqr_pressure_vessels->heat_mapping) && $jqr_pressure_vessels->heat_mapping == '1' ? 'checked': '' }} >
                                                 <span class="switch-toggle-slider">
                                                     <span class="switch-on"></span>
                                                     <span class="switch-off"></span>
@@ -731,7 +730,7 @@
                                         </div>
                                         <div class="col-sm-6">
                                             <label class="switch">
-                                                <input type="checkbox" class="switch-input" name="weld_mapping" {{ isset($jqr_pressure_vessels->weld_mapping) ? 'checked': '' }} >
+                                                <input type="checkbox" class="switch-input" name="weld_mapping" {{ isset($jqr_pressure_vessels->weld_mapping) && $jqr_pressure_vessels->weld_mapping == '1' ? 'checked': '' }} >
                                                 <span class="switch-toggle-slider">
                                                     <span class="switch-on"></span>
                                                     <span class="switch-off"></span>
@@ -746,7 +745,7 @@
                                         </div>
                                         <div class="col-sm-6">
                                             <label class="switch">
-                                                <input type="checkbox" class="switch-input" name="nace"  {{ isset($jqr_pressure_vessels->nace) ? 'checked': '' }} >
+                                                <input type="checkbox" class="switch-input" name="nace" {{ isset($jqr_pressure_vessels->nace) && $jqr_pressure_vessels->nace == '1' ? 'checked': '' }} >
                                                 <span class="switch-toggle-slider">
                                                     <span class="switch-on"></span>
                                                     <span class="switch-off"></span>
@@ -766,7 +765,7 @@
                                         </div>
                                         <div class="col-sm-6">
                                             <label class="form-label" for="linkedin1">Governing Code</label>
-                                            <input type="text" id="linkedin1" name="governing_code" class="form-control" placeholder=""   value="{{ isset($jqr_pressure_vessels->governing_code) ? $jqr_pressure_vessels->governing_code : '' }}"/>
+                                            <input type="text" id="linkedin1" name="governing_code" class="form-control" placeholder="" value="{{ isset($jqr_pressure_vessels->governing_code) ? $jqr_pressure_vessels->governing_code : '' }}"/>
                                         </div>
                                         <div class="col-sm-6">
                                             <small class="text-light fw-semibold d-block">PWHT</small>
@@ -792,7 +791,7 @@
                                         </div>
                                         <div class="col-sm-6">
                                             <label class="switch">
-                                                <input type="checkbox" class="switch-input" name="witnessed" {{ isset($jqr_pressure_vessels->witnessed) ? 'checked': '' }} >
+                                                <input type="checkbox" class="switch-input" name="witnessed" {{ isset($jqr_pressure_vessels->witnessed) && $jqr_pressure_vessels->witnessed == '1' ? 'checked': '' }} >
                                                 <span class="switch-toggle-slider">
                                                     <span class="switch-on"></span>
                                                     <span class="switch-off"></span>
@@ -802,7 +801,7 @@
                                         </div>
                                         <div class="col-sm-6">
                                             <label class="switch">
-                                                <input type="checkbox" class="switch-input" name="hardness_test"  {{ isset($jqr_pressure_vessels->hardness_test) ? 'checked': '' }}>
+                                                <input type="checkbox" class="switch-input" name="hardness_test"  {{ isset($jqr_pressure_vessels->hardness_test) && $jqr_pressure_vessels->hardness_test == '1' ? 'checked': '' }}>
                                                 <span class="switch-toggle-slider">
                                                     <span class="switch-on"></span>
                                                     <span class="switch-off"></span>
@@ -816,7 +815,7 @@
                                         </div>
                                         <div class="col-sm-6">
                                             <label class="switch">
-                                                <input type="checkbox" class="switch-input" name="hydro_chart_required" {{ isset($jqr_pressure_vessels->hydro_chart_required) ? 'checked': '' }} >
+                                                <input type="checkbox" class="switch-input" name="hydro_chart_required" {{ isset($jqr_pressure_vessels->hydro_chart_required) && $jqr_pressure_vessels->hydro_chart_required == '1' ? 'checked': '' }} >
                                                 <span class="switch-toggle-slider">
                                                     <span class="switch-on"></span>
                                                     <span class="switch-off"></span>
@@ -873,7 +872,7 @@
                                         </small>
                                         <div class="col-sm-6">
                                             <label class="switch">
-                                                <input type="checkbox" class="switch-input" name="customer_avl_applies"  {{ isset($jqr_non_code->hydro_chart_required) ? 'checked': '' }} >
+                                                <input type="checkbox" class="switch-input" name="customer_avl_applies" {{ isset($jqr_non_code->hydro_chart_required) && $jqr_non_code->hydro_chart_required == '1' ? 'checked': '' }} >
                                                 <span class="switch-toggle-slider">
                                                     <span class="switch-on"></span>
                                                     <span class="switch-off"></span>
@@ -887,7 +886,7 @@
                                         </div>
                                         <div class="col-sm-6">
                                             <label class="switch">
-                                                <input type="checkbox" class="switch-input" name="origin_traceable_to_manufacturer"  {{ isset($jqr_non_code->origin_traceable_to_manufacturer) ? 'checked': '' }} >
+                                                <input type="checkbox" class="switch-input" name="origin_traceable_to_manufacturer" {{ isset($jqr_non_code->origin_traceable_to_manufacturer) && $jqr_non_code->origin_traceable_to_manufacturer == '1' ? 'checked': '' }} >
                                                 <span class="switch-toggle-slider">
                                                     <span class="switch-on"></span>
                                                     <span class="switch-off"></span>
@@ -897,7 +896,7 @@
                                         </div>
                                         <div class="col-sm-6">
                                             <label class="switch">
-                                                <input type="checkbox" class="switch-input" name="origin_traceable_to_melt"  {{ isset($jqr_non_code->origin_traceable_to_melt) ? 'checked': '' }} >
+                                                <input type="checkbox" class="switch-input" name="origin_traceable_to_melt"  {{ isset($jqr_non_code->origin_traceable_to_melt) && $jqr_non_code->origin_traceable_to_melt == '1' ? 'checked': '' }} >
                                                 <span class="switch-toggle-slider">
                                                      <span class="switch-on"></span>
                                                     <span class="switch-off"></span>
@@ -912,7 +911,7 @@
                                         </div>
                                         <div class="col-sm-6">
                                             <label class="switch">
-                                                <input type="checkbox" class="switch-input" name="standard_code" {{ isset($jqr_non_code->standard_code) ? 'checked': '' }}  >
+                                                <input type="checkbox" class="switch-input" name="standard_code" {{ isset($jqr_non_code->standard_code) && $jqr_non_code->standard_code == '1' ? 'checked': '' }}  >
                                                 <span class="switch-toggle-slider">
                                                     <span class="switch-on"></span>
                                                     <span class="switch-off"></span>
@@ -922,7 +921,7 @@
                                         </div>
                                         <div class="col-sm-6">
                                             <label class="switch">
-                                                <input type="checkbox" class="switch-input" name="mtrs_required" {{ isset($jqr_non_code->mtrs_required) ? 'checked': '' }}>
+                                                <input type="checkbox" class="switch-input" name="mtrs_required" {{ isset($jqr_non_code->mtrs_required) && $jqr_non_code->mtrs_required == '1' ? 'checked': '' }}>
                                                 <span class="switch-toggle-slider">
                                                     <span class="switch-on"></span>
                                                     <span class="switch-off"></span>
@@ -932,7 +931,7 @@
                                         </div>
                                         <div class="col-sm-6">
                                             <label class="switch">
-                                                <input type="checkbox" class="switch-input" name="heat_mapping" {{ isset($jqr_non_code->heat_mapping) ? 'checked': '' }} >
+                                                <input type="checkbox" class="switch-input" name="heat_mapping" {{ isset($jqr_non_code->heat_mapping) && $jqr_non_code->heat_mapping == '1' ? 'checked': '' }} >
                                                 <span class="switch-toggle-slider">
                                                     <span class="switch-on"></span>
                                                     <span class="switch-off"></span>
@@ -942,7 +941,7 @@
                                         </div>
                                         <div class="col-sm-6">
                                             <label class="switch">
-                                                <input type="checkbox" class="switch-input" name="weld_mapping" {{ isset($jqr_non_code->weld_mapping) ? 'checked': '' }} >
+                                                <input type="checkbox" class="switch-input" name="weld_mapping" {{ isset($jqr_non_code->weld_mapping) && $jqr_non_code->weld_mapping == '1' ? 'checked': '' }} >
                                                 <span class="switch-toggle-slider">
                                                     <span class="switch-on"></span>
                                                     <span class="switch-off"></span>
@@ -957,7 +956,7 @@
                                         </div>
                                         <div class="col-sm-6">
                                             <label class="switch">
-                                                <input type="checkbox" class="switch-input" name="nace" {{ isset($jqr_non_code->nace) ? 'checked': '' }} >
+                                                <input type="checkbox" class="switch-input" name="nace" {{ isset($jqr_non_code->nace) && $jqr_non_code->nace == '1' ? 'checked': '' }} >
                                                 <span class="switch-toggle-slider">
                                                     <span class="switch-on"></span>
                                                     <span class="switch-off"></span>
@@ -1003,7 +1002,7 @@
                                         </div>
                                         <div class="col-sm-6">
                                             <label class="switch">
-                                                <input type="checkbox" class="switch-input" name="witnessed" {{ isset($jqr_non_code->witnessed) ? 'checked': '' }}>
+                                                <input type="checkbox" class="switch-input" name="witnessed" {{ isset($jqr_non_code->witnessed) && $jqr_non_code->witnessed == '1' ? 'checked': '' }}>
                                                 <span class="switch-toggle-slider">
                                                     <span class="switch-on"></span>
                                                     <span class="switch-off"></span>
@@ -1013,7 +1012,7 @@
                                         </div>
                                         <div class="col-sm-6">
                                             <label class="switch">
-                                                <input type="checkbox" class="switch-input" name="hardness_test" {{ isset($jqr_non_code->hardness_test) ? 'checked': '' }} >
+                                                <input type="checkbox" class="switch-input" name="hardness_test" {{ isset($jqr_non_code->hardness_test) && $jqr_non_code->hardness_test == '1' ? 'checked': '' }} >
                                                 <span class="switch-toggle-slider">
                                                     <span class="switch-on"></span>
                                                     <span class="switch-off"></span>
@@ -1027,7 +1026,7 @@
                                         </div>
                                         <div class="col-sm-6">
                                             <label class="switch">
-                                                <input type="checkbox" class="switch-input" name="hydro_chart_required"  {{ isset($jqr_non_code->hydro_chart_required) ? 'checked': '' }} >
+                                                <input type="checkbox" class="switch-input" name="hydro_chart_required"  {{ isset($jqr_non_code->hydro_chart_required) && $jqr_non_code->hydro_chart_required == '1' ? 'checked': '' }} >
                                                 <span class="switch-toggle-slider">
                                                     <span class="switch-on"></span>
                                                     <span class="switch-off"></span>
@@ -1084,7 +1083,7 @@
                                         </small>
                                         <div class="col-sm-6">
                                             <label class="switch">
-                                                <input type="checkbox" class="switch-input" name="customer_avl_applies" {{ isset($jqr_process_fuel_gas->customer_avl_applies) ? 'checked': '' }}>
+                                                <input type="checkbox" class="switch-input" name="customer_avl_applies" {{ isset($jqr_process_fuel_gas->customer_avl_applies) && $jqr_process_fuel_gas->customer_avl_applies == '1' ? 'checked': '' }}>
                                                 <span class="switch-toggle-slider">
                                                     <span class="switch-on"></span>
                                                     <span class="switch-off"></span>
@@ -1098,7 +1097,7 @@
                                         </div>
                                         <div class="col-sm-6">
                                             <label class="switch">
-                                                <input type="checkbox" class="switch-input" name="origin_traceable_to_melt" {{ isset($jqr_process_fuel_gas->origin_traceable_to_melt) ? 'checked': '' }}>
+                                                <input type="checkbox" class="switch-input" name="origin_traceable_to_melt" {{ isset($jqr_process_fuel_gas->origin_traceable_to_melt) && $jqr_service_info->sour_service_required == '1' ? 'checked': '' }}>
                                                 <span class="switch-toggle-slider">
                                                     <span class="switch-on"></span>
                                                     <span class="switch-off"></span>
@@ -1113,7 +1112,7 @@
                                         </div>
                                         <div class="col-sm-6">
                                             <label class="switch">
-                                                <input type="checkbox" class="switch-input" name="standard_code"  {{ isset($jqr_process_fuel_gas->standard_code) ? 'checked': '' }} >
+                                                <input type="checkbox" class="switch-input" name="standard_code"  {{ isset($jqr_process_fuel_gas->standard_code) && $jqr_process_fuel_gas->standard_code == '1' ? 'checked': '' }} >
                                                 <span class="switch-toggle-slider">
                                                     <span class="switch-on"></span>
                                                     <span class="switch-off"></span>
@@ -1123,7 +1122,7 @@
                                         </div>
                                         <div class="col-sm-6">
                                             <label class="switch">
-                                                <input type="checkbox" class="switch-input" name="mtrs_required" {{ isset($jqr_process_fuel_gas->mtrs_required) ? 'checked': '' }} >
+                                                <input type="checkbox" class="switch-input" name="mtrs_required" {{ isset($jqr_process_fuel_gas->mtrs_required) && $jqr_process_fuel_gas->mtrs_required == '1' ? 'checked': '' }} >
                                                 <span class="switch-toggle-slider">
                                                     <span class="switch-on"></span>
                                                     <span class="switch-off"></span>
@@ -1133,7 +1132,7 @@
                                         </div>
                                         <div class="col-sm-6">
                                             <label class="switch">
-                                                <input type="checkbox" class="switch-input" name="heat_mapping" {{ isset($jqr_process_fuel_gas->heat_mapping) ? 'checked': '' }}>
+                                                <input type="checkbox" class="switch-input" name="heat_mapping" {{ isset($jqr_process_fuel_gas->heat_mapping) && $jqr_process_fuel_gas->heat_mapping == '1' ? 'checked': '' }}>
                                                 <span class="switch-toggle-slider">
                                                     <span class="switch-on"></span>
                                                     <span class="switch-off"></span>
@@ -1143,7 +1142,7 @@
                                         </div>
                                         <div class="col-sm-6">
                                             <label class="switch">
-                                                <input type="checkbox" class="switch-input" name="weld_mapping" {{ isset($jqr_process_fuel_gas->weld_mapping) ? 'checked': '' }} >
+                                                <input type="checkbox" class="switch-input" name="weld_mapping" {{ isset($jqr_process_fuel_gas->weld_mapping) && $jqr_process_fuel_gas->weld_mapping == '1' ? 'checked': '' }} >
                                                 <span class="switch-toggle-slider">
                                                     <span class="switch-on"></span>
                                                     <span class="switch-off"></span>
@@ -1158,7 +1157,7 @@
                                         </div>
                                         <div class="col-sm-6">
                                             <label class="switch">
-                                                <input type="checkbox" class="switch-input" name="nace" {{ isset($jqr_process_fuel_gas->nace) ? 'checked': '' }} >
+                                                <input type="checkbox" class="switch-input" name="nace" {{ isset($jqr_process_fuel_gas->nace) && $jqr_process_fuel_gas->nace == '1' ? 'checked': '' }} >
                                                 <span class="switch-toggle-slider">
                                                     <span class="switch-on"></span>
                                                     <span class="switch-off"></span>
@@ -1186,7 +1185,7 @@
                                         </div>
                                         <div class="col-sm-6">
                                             <label class="switch">
-                                                <input type="checkbox" class="switch-input" name="witnessed" {{ isset($jqr_process_fuel_gas->witnessed) ? 'checked': '' }}>
+                                                <input type="checkbox" class="switch-input" name="witnessed" {{ isset($jqr_process_fuel_gas->witnessed) && $jqr_process_fuel_gas->witnessed == '1' ? 'checked': '' }}>
                                                 <span class="switch-toggle-slider">
                                                     <span class="switch-on"></span>
                                                     <span class="switch-off"></span>
@@ -1196,7 +1195,7 @@
                                         </div>
                                         <div class="col-sm-6">
                                             <label class="switch">
-                                                <input type="checkbox" class="switch-input" name="hardness_test"  {{ isset($jqr_process_fuel_gas->hardness_test) ? 'checked': '' }} >
+                                                <input type="checkbox" class="switch-input" name="hardness_test" {{ isset($jqr_process_fuel_gas->hardness_test) && $jqr_process_fuel_gas->hardness_test == '1' ? 'checked': '' }} >
                                                 <span class="switch-toggle-slider">
                                                     <span class="switch-on"></span>
                                                     <span class="switch-off"></span>
@@ -1210,7 +1209,7 @@
                                         </div>
                                         <div class="col-sm-6">
                                             <label class="switch">
-                                                <input type="checkbox" class="switch-input" name="hydro_chart_required" {{ isset($jqr_process_fuel_gas->hydro_chart_required) ? 'checked': '' }}>
+                                                <input type="checkbox" class="switch-input" name="hydro_chart_required" {{ isset($jqr_process_fuel_gas->hydro_chart_required) && $jqr_process_fuel_gas->hydro_chart_required == '1' ? 'checked': '' }}>
                                                 <span class="switch-toggle-slider">
                                                     <span class="switch-on"></span>
                                                     <span class="switch-off"></span>
@@ -1264,7 +1263,7 @@
                                     <div class="row g-3">
                                         <div class="col-sm-6">
                                             <label class="switch">
-                                                <input type="checkbox" class="switch-input" name="efx_standard_no_cocs" {{ isset($jqr_bolting->efx_standard_no_cocs) ? 'checked': '' }} >
+                                                <input type="checkbox" class="switch-input" name="efx_standard_no_cocs" {{ isset($jqr_bolting->efx_standard_no_cocs) && $jqr_bolting->efx_standard_no_cocs == '1' ? 'checked': '' }} >
                                                 <span class="switch-toggle-slider">
                                                     <span class="switch-on"></span>
                                                     <span class="switch-off"></span>
@@ -1274,7 +1273,7 @@
                                         </div>
                                         <div class="col-sm-6">
                                             <label class="switch">
-                                                <input type="checkbox" class="switch-input" name="vendor_coc" {{ isset($jqr_bolting->vendor_coc) ? 'checked': '' }}>
+                                                <input type="checkbox" class="switch-input" name="vendor_coc" {{ isset($jqr_bolting->vendor_coc) && $jqr_bolting->vendor_coc == '1' ? 'checked': '' }}>
                                                 <span class="switch-toggle-slider">
                                                     <span class="switch-on"></span>
                                                     <span class="switch-off"></span>
@@ -1284,7 +1283,7 @@
                                         </div>
                                         <div class="col-sm-6">
                                             <label class="switch">
-                                                <input type="checkbox" class="switch-input" name="manufacturer_coc" {{ isset($jqr_bolting->manufacturer_coc) ? 'checked': '' }} >
+                                                <input type="checkbox" class="switch-input" name="manufacturer_coc" {{ isset($jqr_bolting->manufacturer_coc) && $jqr_bolting->manufacturer_coc == '1' ? 'checked': '' }} >
                                                 <span class="switch-toggle-slider">
                                                     <span class="switch-on"></span>
                                                     <span class="switch-off"></span>
@@ -1294,7 +1293,7 @@
                                         </div>
                                         <div class="col-sm-6">
                                             <label class="switch">
-                                                <input type="checkbox" class="switch-input" name="mtrs"  {{ isset($jqr_bolting->mtrs) ? 'checked': '' }} >
+                                                <input type="checkbox" class="switch-input" name="mtrs" {{ isset($jqr_bolting->mtrs) && $jqr_bolting->mtrs == '1' ? 'checked': '' }} >
                                                 <span class="switch-toggle-slider">
                                                     <span class="switch-on"></span>
                                                     <span class="switch-off"></span>
@@ -1343,7 +1342,7 @@
                                     <div class="row g-3">
                                         <div class="col-sm-6">
                                             <label class="switch">
-                                                <input type="checkbox" class="switch-input" name="efx_standard_no_cocs" {{ isset($jqr_gaskets->efx_standard_no_cocs) ? 'checked': '' }} >
+                                                <input type="checkbox" class="switch-input" name="efx_standard_no_cocs" {{ isset($jqr_gaskets->efx_standard_no_cocs) && $jqr_gaskets->efx_standard_no_cocs == '1' ? 'checked': '' }} >
                                                 <span class="switch-toggle-slider">
                                                     <span class="switch-on"></span>
                                                     <span class="switch-off"></span>
@@ -1353,7 +1352,7 @@
                                         </div>
                                         <div class="col-sm-6">
                                             <label class="switch">
-                                                <input type="checkbox" class="switch-input" name="vendor_coc" {{ isset($jqr_gaskets->vendor_coc) ? 'checked': '' }}>
+                                                <input type="checkbox" class="switch-input" name="vendor_coc" {{ isset($jqr_gaskets->vendor_coc) && $jqr_gaskets->vendor_coc == '1' ? 'checked': '' }}>
                                                 <span class="switch-toggle-slider">
                                                     <span class="switch-on"></span>
                                                     <span class="switch-off"></span>
@@ -1363,7 +1362,7 @@
                                         </div>
                                         <div class="col-sm-6">
                                             <label class="switch">
-                                                <input type="checkbox" class="switch-input" name="manufacturer_coc"  {{ isset($jqr_gaskets->manufacturer_coc) ? 'checked': '' }} >
+                                                <input type="checkbox" class="switch-input" name="manufacturer_coc" {{ isset($jqr_gaskets->manufacturer_coc) && $jqr_gaskets->manufacturer_coc == '1' ? 'checked': '' }} >
                                                 <span class="switch-toggle-slider">
                                                     <span class="switch-on"></span>
                                                     <span class="switch-off"></span>
@@ -1373,7 +1372,7 @@
                                         </div>
                                         <div class="col-sm-6">
                                             <label class="switch">
-                                                <input type="checkbox" class="switch-input" name="mtrs"  {{ isset($jqr_gaskets->mtrs) ? 'checked': '' }} >
+                                                <input type="checkbox" class="switch-input" name="mtrs" {{ isset($jqr_gaskets->mtrs) && $jqr_gaskets->mtrs == '1' ? 'checked': '' }} >
                                                 <span class="switch-toggle-slider">
                                                     <span class="switch-on"></span>
                                                     <span class="switch-off"></span>
@@ -1423,7 +1422,7 @@
                                         <div class="col-sm-6">
                                             <label class="switch">
                                                 <input type="checkbox" class="switch-input" name="customer_avl_applies"
-                                                {{ isset($jqr_tubing->customer_avl_applies) ? 'checked': '' }} >
+                                                {{ isset($jqr_tubing->customer_avl_applies) && $jqr_tubing->customer_avl_applies == '1' ? 'checked': '' }} >
                                                 <span class="switch-toggle-slider">
                                                     <span class="switch-on"></span>
                                                     <span class="switch-off"></span>
@@ -1439,7 +1438,7 @@
                                         <div class="col-sm-6">
                                             <label class="switch">
                                                 <input type="checkbox" class="switch-input" name="origin_traceable_to_melt"
-                                                {{ isset($jqr_tubing->origin_traceable_to_melt) ? 'checked': '' }} >
+                                                {{ isset($jqr_tubing->origin_traceable_to_melt) && $jqr_tubing->origin_traceable_to_melt == '1' ? 'checked': '' }} >
                                                 <span class="switch-toggle-slider">
                                                     <span class="switch-on"></span>
                                                     <span class="switch-off"></span>
@@ -1456,7 +1455,7 @@
                                         <div class="col-sm-6">
                                             <label class="switch">
                                                 <input type="checkbox" class="switch-input" name="efx_standard_no_cocs"
-                                                {{ isset($jqr_tubing->efx_standard_no_cocs) ? 'checked': '' }} >
+                                                {{ isset($jqr_tubing->efx_standard_no_cocs) && $jqr_tubing->efx_standard_no_cocs == '1' ? 'checked': '' }} >
                                                 <span class="switch-toggle-slider">
                                                     <span class="switch-on"></span>
                                                     <span class="switch-off"></span>
@@ -1467,7 +1466,7 @@
                                         <div class="col-sm-6">
                                             <label class="switch">
                                                 <input type="checkbox" class="switch-input" name="tubing_mtrs_required"
-                                                {{ isset($jqr_tubing->tubing_mtrs_required) ? 'checked': '' }} >
+                                                {{ isset($jqr_tubing->tubing_mtrs_required) && $jqr_tubing->tubing_mtrs_required == '1' ? 'checked': '' }} >
                                                 <span class="switch-toggle-slider">
                                                     <span class="switch-on"></span>
                                                     <span class="switch-off"></span>
@@ -1478,7 +1477,7 @@
                                         <div class="col-sm-6">
                                             <label class="switch">
                                                 <input type="checkbox" class="switch-input" name="tubing_coc_required"
-                                                {{ isset($jqr_tubing->tubing_coc_required) ? 'checked': '' }} >
+                                                {{ isset($jqr_tubing->tubing_coc_required) && $jqr_tubing->tubing_coc_required == '1' ? 'checked': '' }} >
                                                 <span class="switch-toggle-slider">
                                                     <span class="switch-on"></span>
                                                     <span class="switch-off"></span>
@@ -1489,7 +1488,7 @@
                                         <div class="col-sm-6">
                                             <label class="switch">
                                                 <input type="checkbox" class="switch-input" name="fitting_mtrs_required"
-                                                {{ isset($jqr_tubing->fitting_mtrs_required) ? 'checked': '' }} >
+                                                {{ isset($jqr_tubing->fitting_mtrs_required) && $jqr_tubing->fitting_mtrs_required == '1' ? 'checked': '' }} >
                                                 <span class="switch-toggle-slider">
                                                     <span class="switch-on"></span>
                                                     <span class="switch-off"></span>
@@ -1500,7 +1499,7 @@
                                         <div class="col-sm-6">
                                             <label class="switch">
                                                 <input type="checkbox" class="switch-input" name="fitting_coc_required"
-                                                {{ isset($jqr_tubing->fitting_coc_required) ? 'checked': '' }} >
+                                                {{ isset($jqr_tubing->fitting_coc_required) && $jqr_tubing->fitting_coc_required == '1' ? 'checked': '' }} >
                                                 <span class="switch-toggle-slider">
                                                     <span class="switch-on"></span>
                                                     <span class="switch-off"></span>
@@ -1511,7 +1510,7 @@
                                         <div class="col-sm-6">
                                             <label class="switch">
                                                 <input type="checkbox" class="switch-input" name="full_traceability"
-                                                {{ isset($jqr_tubing->full_traceability) ? 'checked': '' }} >
+                                                {{ isset($jqr_tubing->full_traceability) && $jqr_tubing->full_traceability == '1' ? 'checked': '' }} >
                                                 <span class="switch-toggle-slider">
                                                     <span class="switch-on"></span>
                                                     <span class="switch-off"></span>
@@ -1578,7 +1577,7 @@
                                         </small>
                                         <div class="col-sm-6">
                                             <label class="switch">
-                                                <input type="checkbox" class="switch-input" name="customer_avl_applies" {{ isset($jqr_butt->customer_avl_applies) ? 'checked' : '' }}>
+                                                <input type="checkbox" class="switch-input" name="customer_avl_applies" {{ isset($jqr_butt->customer_avl_applies) && $jqr_butt->customer_avl_applies == '1' ? 'checked' : '' }}>
                                                 <span class="switch-toggle-slider">
                                                     <span class="switch-on"></span>
                                                     <span class="switch-off"></span>
@@ -1592,7 +1591,7 @@
                                         </div>
                                         <div class="col-sm-6">
                                             <label class="switch">
-                                                <input type="checkbox" class="switch-input" name="origin_traceable_to_melt" {{ isset($jqr_butt->origin_traceable_to_melt) ? 'checked' : '' }}>
+                                                <input type="checkbox" class="switch-input" name="origin_traceable_to_melt" {{ isset($jqr_butt->origin_traceable_to_melt) && $jqr_butt->origin_traceable_to_melt == '1' ? 'checked' : '' }}>
                                                 <span class="switch-toggle-slider">
                                                     <span class="switch-on"></span>
                                                     <span class="switch-off"></span>
@@ -1607,7 +1606,7 @@
                                         </div>
                                         <div class="col-sm-6">
                                             <label class="switch">
-                                                <input type="checkbox" class="switch-input" name="standard_per_code" {{ isset($jqr_butt->standard_per_code) ? 'checked' : '' }} >
+                                                <input type="checkbox" class="switch-input" name="standard_per_code" {{ isset($jqr_butt->standard_per_code) && $jqr_butt->standard_per_code == '1' ? 'checked' : '' }} >
                                                 <span class="switch-toggle-slider">
                                                     <span class="switch-on"></span>
                                                     <span class="switch-off"></span>
@@ -1617,7 +1616,7 @@
                                         </div>
                                         <div class="col-sm-6">
                                             <label class="switch">
-                                                <input type="checkbox" class="switch-input" name="mtrs_provided" {{ isset($jqr_butt->mtrs_provided) ? 'checked' : '' }}>
+                                                <input type="checkbox" class="switch-input" name="mtrs_provided" {{ isset($jqr_butt->mtrs_provided) && $jqr_butt->mtrs_provided == '1' ? 'checked' : '' }}>
                                                 <span class="switch-toggle-slider">
                                                     <span class="switch-on"></span>
                                                     <span class="switch-off"></span>
@@ -1627,7 +1626,7 @@
                                         </div>
                                         <div class="col-sm-6">
                                             <label class="switch">
-                                                <input type="checkbox" class="switch-input" name="heat_mapping" {{ isset($jqr_butt->heat_mapping) ? 'checked' : '' }}>
+                                                <input type="checkbox" class="switch-input" name="heat_mapping" {{ isset($jqr_butt->heat_mapping) && $jqr_butt->heat_mapping == '1' ? 'checked' : '' }}>
                                                 <span class="switch-toggle-slider">
                                                     <span class="switch-on"></span>
                                                     <span class="switch-off"></span>
@@ -1637,7 +1636,7 @@
                                         </div>
                                         <div class="col-sm-6">
                                             <label class="switch">
-                                                <input type="checkbox" class="switch-input" name="weld_mapping" {{ isset($jqr_butt->weld_mapping) ? 'checked' : '' }} >
+                                                <input type="checkbox" class="switch-input" name="weld_mapping" {{ isset($jqr_butt->weld_mapping) && $jqr_butt->weld_mapping == '1' ? 'checked' : '' }} >
                                                 <span class="switch-toggle-slider">
                                                     <span class="switch-on"></span>
                                                     <span class="switch-off"></span>
@@ -1652,7 +1651,7 @@
                                         </div>
                                         <div class="col-sm-6">
                                             <label class="switch">
-                                                <input type="checkbox" class="switch-input" name="nace" {{ isset($jqr_butt->nace) ? 'checked' : '' }}>
+                                                <input type="checkbox" class="switch-input" name="nace" {{ isset($jqr_butt->nace) && $jqr_butt->nace == '1' ? 'checked' : '' }}>
                                                 <span class="switch-toggle-slider">
                                                     <span class="switch-on"></span>
                                                     <span class="switch-off"></span>
@@ -1662,7 +1661,7 @@
                                         </div>
                                         <div class="col-sm-6">
                                             <label class="switch">
-                                                <input type="checkbox" class="switch-input" name="nde_requirements" {{ isset($jqr_butt->nde_requirements) ? 'checked' : '' }} >
+                                                <input type="checkbox" class="switch-input" name="nde_requirements" {{ isset($jqr_butt->nde_requirements) && $jqr_butt->nde_requirements == '1' ? 'checked' : '' }} >
                                                 <span class="switch-toggle-slider">
                                                     <span class="switch-on"></span>
                                                     <span class="switch-off"></span>
@@ -1703,7 +1702,7 @@
                                         </div>
                                         <div class="col-sm-6">
                                             <label class="switch">
-                                                <input type="checkbox" class="switch-input" name="witnessed"  {{ isset($jqr_butt->witnessed) ? 'checked' : '' }}>
+                                                <input type="checkbox" class="switch-input" name="witnessed" {{ isset($jqr_butt->witnessed) && $jqr_butt->witnessed == '1' ? 'checked' : '' }}>
                                                 <span class="switch-toggle-slider">
                                                     <span class="switch-on"></span>
                                                     <span class="switch-off"></span>
@@ -1713,7 +1712,7 @@
                                         </div>
                                         <div class="col-sm-6">
                                             <label class="switch">
-                                                <input type="checkbox" class="switch-input" name="hardness_test"  {{ isset($jqr_butt->hardness_test) ? 'checked' : '' }} >
+                                                <input type="checkbox" class="switch-input" name="hardness_test" {{ isset($jqr_butt->hardness_test) && $jqr_butt->hardness_test == '1' ? 'checked' : '' }} >
                                                 <span class="switch-toggle-slider">
                                                     <span class="switch-on"></span>
                                                     <span class="switch-off"></span>
@@ -1727,7 +1726,7 @@
                                         </div>
                                         <div class="col-sm-6">
                                             <label class="switch">
-                                                <input type="checkbox" class="switch-input" name="hydro_chart_required"  {{ isset($jqr_butt->hydro_chart_required) ? 'checked' : '' }} >
+                                                <input type="checkbox" class="switch-input" name="hydro_chart_required" {{ isset($jqr_butt->hydro_chart_required) && $jqr_butt->hydro_chart_required == '1' ? 'checked' : '' }} >
                                                 <span class="switch-toggle-slider">
                                                     <span class="switch-on"></span>
                                                     <span class="switch-off"></span>
@@ -1783,7 +1782,7 @@
                                         </small>
                                         <div class="col-sm-6">
                                             <label class="switch">
-                                                <input type="checkbox" class="switch-input" name="customer_avl_applies" {{ isset($jqr_threaded_piping->customer_avl_applies) ? 'checked' : '' }} >
+                                                <input type="checkbox" class="switch-input" name="customer_avl_applies" {{ isset($jqr_threaded_piping->customer_avl_applies) && $jqr_threaded_piping->customer_avl_applies == '1' ? 'checked' : '' }} >
                                                 <span class="switch-toggle-slider">
                                                     <span class="switch-on"></span>
                                                     <span class="switch-off"></span>
@@ -1797,7 +1796,7 @@
                                         </div>
                                         <div class="col-sm-6">
                                             <label class="switch">
-                                                <input type="checkbox" class="switch-input" name="origin_traceable_to_melt"  {{ isset($jqr_threaded_piping->origin_traceable_to_melt) ? 'checked' : '' }}>
+                                                <input type="checkbox" class="switch-input" name="origin_traceable_to_melt"  {{ isset($jqr_threaded_piping->origin_traceable_to_melt) && $jqr_threaded_piping->origin_traceable_to_melt == '1' ? 'checked' : '' }}>
                                                 <span class="switch-toggle-slider">
                                                     <span class="switch-on"></span>
                                                     <span class="switch-off"></span>
@@ -1812,7 +1811,7 @@
                                         </div>
                                         <div class="col-sm-6">
                                             <label class="switch">
-                                                <input type="checkbox" class="switch-input" name="standard_per_code"  {{ isset($jqr_threaded_piping->standard_per_code) ? 'checked' : '' }} >
+                                                <input type="checkbox" class="switch-input" name="standard_per_code" {{ isset($jqr_threaded_piping->standard_per_code) && $jqr_threaded_piping->standard_per_code == '1' ? 'checked' : '' }} >
                                                 <span class="switch-toggle-slider">
                                                     <span class="switch-on"></span>
                                                     <span class="switch-off"></span>
@@ -1822,7 +1821,7 @@
                                         </div>
                                         <div class="col-sm-6">
                                             <label class="switch">
-                                                <input type="checkbox" class="switch-input" name="mtrs_required"   {{ isset($jqr_threaded_piping->mtrs_required) ? 'checked' : '' }} >
+                                                <input type="checkbox" class="switch-input" name="mtrs_required" {{ isset($jqr_threaded_piping->mtrs_required) && $jqr_threaded_piping->mtrs_required == '1' ? 'checked' : '' }} >
                                                 <span class="switch-toggle-slider">
                                                     <span class="switch-on"></span>
                                                     <span class="switch-off"></span>
@@ -1832,7 +1831,7 @@
                                         </div>
                                         <div class="col-sm-6">
                                             <label class="switch">
-                                                <input type="checkbox" class="switch-input" name="heat_mapping"  {{ isset($jqr_threaded_piping->heat_mapping) ? 'checked' : '' }} >
+                                                <input type="checkbox" class="switch-input" name="heat_mapping" {{ isset($jqr_threaded_piping->heat_mapping) && $jqr_threaded_piping->heat_mapping == '1' ? 'checked' : '' }} >
                                                 <span class="switch-toggle-slider">
                                                     <span class="switch-on"></span>
                                                     <span class="switch-off"></span>
@@ -1847,7 +1846,7 @@
                                         </div>
                                         <div class="col-sm-6">
                                             <label class="switch">
-                                                <input type="checkbox" class="switch-input" name="nace" {{ isset($jqr_threaded_piping->nace) ? 'checked' : '' }}>
+                                                <input type="checkbox" class="switch-input" name="nace" {{ isset($jqr_threaded_piping->nace) && $jqr_threaded_piping->nace == '1' ? 'checked' : '' }}>
                                                 <span class="switch-toggle-slider">
                                                     <span class="switch-on"></span>
                                                     <span class="switch-off"></span>
@@ -1897,7 +1896,7 @@
                                     <div class="row g-3">
                                         <div class="col-sm-6">
                                             <label class="switch">
-                                                <input type="checkbox" class="switch-input" name="customer_avl_applies" {{ isset($jqr_electrical->customer_avl_applies) ? 'checked' : '' }} >
+                                                <input type="checkbox" class="switch-input" name="customer_avl_applies" {{ isset($jqr_electrical->customer_avl_applies) && $jqr_electrical->customer_avl_applies == '1' ? 'checked' : '' }} >
                                                 <span class="switch-toggle-slider">
                                                     <span class="switch-on"></span>
                                                     <span class="switch-off"></span>
@@ -1912,7 +1911,7 @@
                                         </div>
                                         <div class="col-sm-6">
                                             <label class="switch">
-                                                <input type="checkbox" class="switch-input" name="vendor_restrictions" {{ isset($jqr_electrical->vendor_restrictions) ? 'checked' : '' }}>
+                                                <input type="checkbox" class="switch-input" name="vendor_restrictions" {{ isset($jqr_electrical->vendor_restrictions) && $jqr_electrical->vendor_restrictions == '1' ? 'checked' : '' }}>
                                                 <span class="switch-toggle-slider">
                                                     <span class="switch-on"></span>
                                                     <span class="switch-off"></span>
@@ -1979,7 +1978,7 @@
                                     <div class="row g-3">
                                         <div class="col-sm-6">
                                             <label class="switch">
-                                                <input type="checkbox" class="switch-input" name="efx_standard_short_term" {{ isset($jqr_preservation->efx_standard_short_term) ? 'checked': '' }} >
+                                                <input type="checkbox" class="switch-input" name="efx_standard_short_term" {{ isset($jqr_preservation->efx_standard_short_term) && $jqr_preservation->efx_standard_short_term == '1' ? 'checked': '' }} >
                                                 <span class="switch-toggle-slider">
                                                     <span class="switch-on"></span>
                                                     <span class="switch-off"></span>
@@ -1989,7 +1988,7 @@
                                         </div>
                                         <div class="col-sm-6">
                                             <label class="switch">
-                                                <input type="checkbox" class="switch-input" name="efx_standard_long_term" {{ isset($jqr_preservation->efx_standard_long_term) ? 'checked': '' }} >
+                                                <input type="checkbox" class="switch-input" name="efx_standard_long_term" {{ isset($jqr_preservation->efx_standard_long_term) && $jqr_preservation->efx_standard_long_term == '1' ? 'checked': '' }} >
                                                 <span class="switch-toggle-slider">
                                                     <span class="switch-on"></span>
                                                     <span class="switch-off"></span>
@@ -1999,7 +1998,7 @@
                                         </div>
                                         <div class="col-sm-6">
                                             <label class="switch">
-                                                <input type="checkbox" class="switch-input" name="customer_specified_other" {{ isset($jqr_preservation->customer_specified_other) ? 'checked': '' }}>
+                                                <input type="checkbox" class="switch-input" name="customer_specified_other" {{ isset($jqr_preservation->customer_specified_other) && $jqr_preservation->customer_specified_other == '1' ? 'checked': '' }}>
                                                 <span class="switch-toggle-slider">
                                                     <span class="switch-on"></span>
                                                     <span class="switch-off"></span>
@@ -2059,7 +2058,7 @@
                                         <!-- Pneumatic Testing -->
                                         <div class="col-sm-6">
                                             <label class="switch">
-                                                <input type="checkbox" class="switch-input" name="pneumatic_testing" {{ isset($jqr_package_testing->pneumatic_testing) ? 'checked': '' }} >
+                                                <input type="checkbox" class="switch-input" name="pneumatic_testing" {{ isset($jqr_package_testing->pneumatic_testing) && $jqr_package_testing->pneumatic_testing == '1' ? 'checked': '' }} >
                                                 <span class="switch-toggle-slider">
                                                     <span class="switch-on"></span>
                                                     <span class="switch-off"></span>
@@ -2069,7 +2068,7 @@
                                         </div>
                                         <div class="col-sm-6">
                                             <label class="switch">
-                                                <input type="checkbox" class="switch-input" name="pneumatic_testing_customer_third_party_witness_required" {{ isset($jqr_package_testing->pneumatic_testing_customer_third_party_witness_required) ? 'checked': '' }} >
+                                                <input type="checkbox" class="switch-input" name="pneumatic_testing_customer_third_party_witness_required" {{ isset($jqr_package_testing->pneumatic_testing_customer_third_party_witness_required) && $jqr_package_testing->pneumatic_testing_customer_third_party_witness_required == '1' ? 'checked': '' }} >
                                                 <span class="switch-toggle-slider">
                                                     <span class="switch-on"></span>
                                                     <span class="switch-off"></span>
@@ -2112,7 +2111,7 @@
                                         <!-- Vaccum -->
                                         <div class="col-sm-6">
                                             <label class="switch">
-                                                <input type="checkbox" class="switch-input" name="vaccum"  {{ isset($jqr_package_testing->vaccum) ? 'checked': '' }}>
+                                                <input type="checkbox" class="switch-input" name="vaccum" {{ isset($jqr_package_testing->vaccum) && $jqr_package_testing->vaccum == '1' ? 'checked': '' }}>
                                                 <span class="switch-toggle-slider">
                                                     <span class="switch-on"></span>
                                                     <span class="switch-off"></span>
@@ -2122,7 +2121,7 @@
                                         </div>
                                         <div class="col-sm-6">
                                             <label class="switch">
-                                                <input type="checkbox" class="switch-input" name="vaccum_customer_third_party_witness_required" {{ isset($jqr_package_testing->vaccum_customer_third_party_witness_required) ? 'checked': '' }} >
+                                                <input type="checkbox" class="switch-input" name="vaccum_customer_third_party_witness_required" {{ isset($jqr_package_testing->vaccum_customer_third_party_witness_required) && $jqr_package_testing->vaccum_customer_third_party_witness_required == '1' ? 'checked': '' }} >
                                                 <span class="switch-toggle-slider">
                                                     <span class="switch-on"></span>
                                                     <span class="switch-off"></span>
@@ -2157,7 +2156,7 @@
                                         <!-- Purge/Charge -->
                                         <div class="col-sm-6">
                                             <label class="switch">
-                                                <input type="checkbox" class="switch-input" name="purge_charge" {{ isset($jqr_package_testing->purge_charge) ? 'checked': '' }} >
+                                                <input type="checkbox" class="switch-input" name="purge_charge" {{ isset($jqr_package_testing->purge_charge) && $jqr_package_testing->purge_charge == '1' ? 'checked': '' }} >
                                                 <span class="switch-toggle-slider">
                                                     <span class="switch-on"></span>
                                                     <span class="switch-off"></span>
@@ -2186,7 +2185,7 @@
                                         <!-- Lube Oil Flush -->
                                         <div class="col-sm-6">
                                             <label class="switch">
-                                                <input type="checkbox" class="switch-input" name="lube_oil_flush"  {{ isset($jqr_package_testing->lube_oil_flush) ? 'checked': '' }} >
+                                                <input type="checkbox" class="switch-input" name="lube_oil_flush"  {{ isset($jqr_package_testing->lube_oil_flush) && $jqr_package_testing->lube_oil_flush == '1' ? 'checked': '' }} >
                                                 <span class="switch-toggle-slider">
                                                     <span class="switch-on"></span>
                                                     <span class="switch-off"></span>
@@ -2196,7 +2195,7 @@
                                         </div>
                                         <div class="col-sm-6">
                                             <label class="switch">
-                                                <input type="checkbox" class="switch-input" name="lube_oil_flush_customer_third_party_witness_required"  {{ isset($jqr_package_testing->lube_oil_flush_customer_third_party_witness_required) ? 'checked': '' }} >
+                                                <input type="checkbox" class="switch-input" name="lube_oil_flush_customer_third_party_witness_required" {{ isset($jqr_package_testing->lube_oil_flush_customer_third_party_witness_required) && $jqr_package_testing->lube_oil_flush_customer_third_party_witness_required == '1' ? 'checked': '' }} >
                                                 <span class="switch-toggle-slider">
                                                     <span class="switch-on"></span>
                                                     <span class="switch-off"></span>
@@ -2223,7 +2222,7 @@
                                         <!-- Run Test -->
                                         <div class="col-sm-6">
                                             <label class="switch">
-                                                <input type="checkbox" class="switch-input" name="run_test" {{ isset($jqr_package_testing->run_test) ? 'checked': '' }} >
+                                                <input type="checkbox" class="switch-input" name="run_test" {{ isset($jqr_package_testing->run_test) && $jqr_package_testing->run_test == '1' ? 'checked': '' }} >
                                                 <span class="switch-toggle-slider">
                                                     <span class="switch-on"></span>
                                                     <span class="switch-off"></span>
@@ -2233,7 +2232,7 @@
                                         </div>
                                         <div class="col-sm-6">
                                             <label class="switch">
-                                                <input type="checkbox" class="switch-input" name="run_test_customer_third_party_witness_required" {{ isset($jqr_package_testing->run_test_customer_third_party_witness_required) ? 'checked': '' }}>
+                                                <input type="checkbox" class="switch-input" name="run_test_customer_third_party_witness_required" {{ isset($jqr_package_testing->run_test_customer_third_party_witness_required) && $jqr_package_testing->run_test_customer_third_party_witness_required == '1' ? 'checked': '' }}>
                                                 <span class="switch-toggle-slider">
                                                     <span class="switch-on"></span>
                                                     <span class="switch-off"></span>
@@ -2277,7 +2276,7 @@
                                         <!-- Megger Test -->
                                         <div class="col-sm-6">
                                             <label class="switch">
-                                                <input type="checkbox" class="switch-input" name="megger_test" {{ isset($jqr_package_testing->megger_test) ? 'checked': '' }} >
+                                                <input type="checkbox" class="switch-input" name="megger_test" {{ isset($jqr_package_testing->megger_test) && $jqr_package_testing->megger_test == '1' ? 'checked': '' }} >
                                                 <span class="switch-toggle-slider">
                                                     <span class="switch-on"></span>
                                                     <span class="switch-off"></span>
@@ -2287,7 +2286,7 @@
                                         </div>
                                         <div class="col-sm-6">
                                             <label class="switch">
-                                                <input type="checkbox" class="switch-input" name="megger_test_customer_third_party_witness_required" {{ isset($jqr_package_testing->megger_test_customer_third_party_witness_required) ? 'checked': '' }}>
+                                                <input type="checkbox" class="switch-input" name="megger_test_customer_third_party_witness_required" {{ isset($jqr_package_testing->megger_test_customer_third_party_witness_required) && $jqr_package_testing->megger_test_customer_third_party_witness_required == '1' ? 'checked': '' }}>
                                                 <span class="switch-toggle-slider">
                                                     <span class="switch-on"></span>
                                                     <span class="switch-off"></span>
@@ -2314,7 +2313,7 @@
                                         <!-- Fat Test -->
                                         <div class="col-sm-6">
                                             <label class="switch">
-                                                <input type="checkbox" class="switch-input" name="fat_test" {{ isset($jqr_package_testing->fat_test) ? 'checked': '' }} >
+                                                <input type="checkbox" class="switch-input" name="fat_test" {{ isset($jqr_package_testing->fat_test) && $jqr_package_testing->fat_test == '1'? 'checked': '' }} >
                                                 <span class="switch-toggle-slider">
                                                     <span class="switch-on"></span>
                                                     <span class="switch-off"></span>
@@ -2324,7 +2323,7 @@
                                         </div>
                                         <div class="col-sm-6">
                                             <label class="switch">
-                                                <input type="checkbox" class="switch-input" name="fat_test_customer_third_party_witness_required" {{ isset($jqr_package_testing->fat_test_customer_third_party_witness_required) ? 'checked': '' }} >
+                                                <input type="checkbox" class="switch-input" name="fat_test_customer_third_party_witness_required" {{ isset($jqr_package_testing->fat_test_customer_third_party_witness_required) && $jqr_package_testing->fat_test_customer_third_party_witness_required == '1' ? 'checked': '' }} >
                                                 <span class="switch-toggle-slider">
                                                     <span class="switch-on"></span>
                                                     <span class="switch-off"></span>
@@ -2356,7 +2355,7 @@
                                         <!-- Additional Testing -->
                                         <div class="col-sm-6">
                                             <label class="switch">
-                                                <input type="checkbox" class="switch-input" name="additional_testing" {{ isset($jqr_package_testing->additional_testing) ? 'checked': '' }} >
+                                                <input type="checkbox" class="switch-input" name="additional_testing" {{ isset($jqr_package_testing->additional_testing) && $jqr_package_testing->additional_testing == '1' ? 'checked': '' }} >
                                                 <span class="switch-toggle-slider">
                                                     <span class="switch-on"></span>
                                                     <span class="switch-off"></span>
@@ -2366,7 +2365,7 @@
                                         </div>
                                         <div class="col-sm-6">
                                             <label class="switch">
-                                                <input type="checkbox" class="switch-input" name="additional_testing_customer_third_party_witness_required"  {{ isset($jqr_package_testing->additional_testing_customer_third_party_witness_required) ? 'checked': '' }} >
+                                                <input type="checkbox" class="switch-input" name="additional_testing_customer_third_party_witness_required"  {{ isset($jqr_package_testing->additional_testing_customer_third_party_witness_required) && $jqr_package_testing->additional_testing_customer_third_party_witness_required == '1' ? 'checked': '' }} >
                                                 <span class="switch-toggle-slider">
                                                     <span class="switch-on"></span>
                                                     <span class="switch-off"></span>
@@ -2389,7 +2388,7 @@
                                         <hr>
                                         <div class="col-sm-6">
                                             <label class="switch">
-                                                <input type="checkbox" class="switch-input" name="addendum_purchasing_specifications" {{ isset($jqr_package_testing->addendum_purchasing_specifications) ? 'checked': '' }}>
+                                                <input type="checkbox" class="switch-input" name="addendum_purchasing_specifications" {{ isset($jqr_package_testing->addendum_purchasing_specifications) && $jqr_package_testing->addendum_purchasing_specifications == '1' ? 'checked': '' }}>
                                                 <span class="switch-toggle-slider">
                                                     <span class="switch-on"></span>
                                                     <span class="switch-off"></span>
@@ -2399,7 +2398,7 @@
                                         </div>
                                         <div class="col-sm-6">
                                             <label class="switch">
-                                                <input type="checkbox" class="switch-input" name="addendum_purchasing_specifications_complete" {{ isset($jqr_package_testing->addendum_purchasing_specifications_complete) ? 'checked': '' }} >
+                                                <input type="checkbox" class="switch-input" name="addendum_purchasing_specifications_complete" {{ isset($jqr_package_testing->addendum_purchasing_specifications_complete) && $jqr_package_testing->addendum_purchasing_specifications_complete == '1' ? 'checked': '' }} >
                                                 <span class="switch-toggle-slider">
                                                     <span class="switch-on"></span>
                                                     <span class="switch-off"></span>
@@ -2417,7 +2416,7 @@
                                         <div class="col-sm-6"></div>
                                         <div class="col-sm-6">
                                             <label class="switch">
-                                                <input type="checkbox" class="switch-input" name="addendum_manufacturing_specifications"  {{ isset($jqr_package_testing->addendum_manufacturing_specifications) ? 'checked': '' }} >
+                                                <input type="checkbox" class="switch-input" name="addendum_manufacturing_specifications"  {{ isset($jqr_package_testing->addendum_manufacturing_specifications) && $jqr_package_testing->addendum_manufacturing_specifications == '1' ? 'checked': '' }} >
                                                 <span class="switch-toggle-slider">
                                                     <span class="switch-on"></span>
                                                     <span class="switch-off"></span>
@@ -2428,7 +2427,7 @@
 
                                         <div class="col-sm-6">
                                             <label class="switch">
-                                                <input type="checkbox" class="switch-input" name="addendum_manufacturing_specifications_complete"  {{ isset($jqr_package_testing->addendum_manufacturing_specifications_complete) ? 'checked': '' }}>
+                                                <input type="checkbox" class="switch-input" name="addendum_manufacturing_specifications_complete" {{ isset($jqr_package_testing->addendum_manufacturing_specifications_complete) && $jqr_package_testing->addendum_manufacturing_specifications == '1' ? 'checked': '' }}>
                                                 <span class="switch-toggle-slider">
                                                     <span class="switch-on"></span>
                                                     <span class="switch-off"></span>
