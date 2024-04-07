@@ -28,12 +28,6 @@ return new class extends Migration
             $table->string('weld_requirements')->nullable();
             $table->string('governing_code')->nullable();
             $table->tinyInteger('pwht')->nullable()->comment('1 => Yes, 0 => No');
-            $table->string('hydro_hold_time')->nullable();
-            $table->tinyInteger('witnessed')->nullable()->comment('1 => Yes, 0 => No');
-            $table->tinyInteger('hardness_test')->nullable()->comment('1 => Yes, 0 => No');
-            $table->tinyInteger('max_hardness')->nullable()->comment('1 => Yes, 0 => No');
-            $table->string('hydro_chart_required')->nullable();
-            $table->text('hydro_notes')->nullable();
             $table->text('notes')->nullable();
 
             $table->timestamps();

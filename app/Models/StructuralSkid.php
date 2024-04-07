@@ -17,19 +17,12 @@ class StructuralSkid extends Model
         'heat_mapping',
         'weld_mapping',
         'material_notes',
-        'nace',
         'nde_requirements',
         'weld_requirements',
         'governing_code',
         'pwht',
-        'hydro_hold_time',
-        'witnessed',
-        'hardness_test',
-        'max_hardness',
-        'hydro_chart_required',
-        'hydro_notes',
         'notes'
     ];
-    
+
     protected $table ='structural_skid';
 }

@@ -202,12 +202,12 @@ class JobQualityRequirementController extends Controller
         $structural_skid->weld_requirements = $request->weld_requirements;
         $structural_skid->governing_code = $request->governing_code;
         $structural_skid->pwht = $request->pwht== 'on' ? '1' : '0';
-        $structural_skid->hydro_hold_time = $request->hydro_hold_time;
-        $structural_skid->witnessed = $request->witnessed;
-        $structural_skid->hardness_test = $request->hardness_test;
-        $structural_skid->max_hardness = $request->max_hardness;
-        $structural_skid->hydro_chart_required = $request->hydro_chart_required;
-        $structural_skid->hydro_notes = $request->hydro_notes;
+        //$structural_skid->hydro_hold_time = $request->hydro_hold_time;
+        //$structural_skid->witnessed = $request->witnessed;
+        //$structural_skid->hardness_test = $request->hardness_test;
+        //$structural_skid->max_hardness = $request->max_hardness;
+        //$structural_skid->hydro_chart_required = $request->hydro_chart_required;
+        //$structural_skid->hydro_notes = $request->hydro_notes;
         $structural_skid->notes = $request->notes;
 
         $structural_skid->save();
