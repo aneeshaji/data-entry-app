@@ -2207,12 +2207,13 @@
                                         <div class="col-sm-6">
                                             <label class="form-label" for="twitter1">Lube Oil Flush Notification
                                                 Requirement</label>
-                                            <input type="text" id="twitter1" name="lube_oil_flush_notification_requirement"  {{ isset($jqr_package_testing->lube_oil_flush_notification_requirement) ? $jqr_package_testing->lube_oil_flush_notification_requirement : '' }} class="form-control" placeholder="" />
+                                            <input type="text" id="twitter1" name="lube_oil_flush_notification_requirement"
+                                            value="{{ isset($jqr_package_testing->lube_oil_flush_notification_requirement) ? $jqr_package_testing->lube_oil_flush_notification_requirement : '' }}" class="form-control" placeholder="" />
                                         </div>
                                         <div class="col-sm-6">
                                             <label class="form-label" for="twitter1">Lube Oil Flush Notes</label>
-                                            <textarea class="form-control" name="lube_oil_flush_notes" {{ isset($jqr_package_testing->lube_oil_flush_notes) ? $jqr_package_testing->lube_oil_flush_notes : '' }} id="exampleFormControlTextarea1"
-                                                rows="3"></textarea>
+                                            <textarea class="form-control" name="lube_oil_flush_notes" id="exampleFormControlTextarea1"
+                                                rows="3">{{ isset($jqr_package_testing->lube_oil_flush_notes) ? $jqr_package_testing->lube_oil_flush_notes : '' }}</textarea>
                                         </div>
                                         <!-- Lube Oil Flush Ends -->
                                         <label class="form-check-label" for="deliveryAdd">
@@ -2249,13 +2250,15 @@
                                         <div class="col-sm-6">
                                             <small class="text-light fw-semibold d-block">Run Test Requirement</small>
                                             <div class="form-check form-check-inline mt-3">
-                                                <input class="form-check-input" name="run_test_requirement" type="checkbox" id="inlineCheckbox1"
-                                                    value="1">
+                                                <input class="form-check-input" name="run_test_requirement[]" type="checkbox" id="inlineCheckbox1"
+                                                    value="1"
+                                                    {{ isset($jqr_package_testing_run_test_requirements) && in_array('1', $jqr_package_testing_run_test_requirements) ? 'checked' : '' }}>
                                                 <label class="form-check-label" for="inlineCheckbox1">Loaded</label>
                                             </div>
                                             <div class="form-check form-check-inline">
-                                                <input class="form-check-input" name="run_test_requirement" type="checkbox" id="inlineCheckbox2"
-                                                    value="2">
+                                                <input class="form-check-input" name="run_test_requirement[]" type="checkbox" id="inlineCheckbox2"
+                                                    value="2"
+                                                    {{ isset($jqr_package_testing_run_test_requirements) && in_array('2', $jqr_package_testing_run_test_requirements) ? 'checked' : '' }}>
                                                 <label class="form-check-label" for="inlineCheckbox2">No Load</label>
                                             </div>
                                         </div>
@@ -2588,7 +2591,6 @@ function submitSpecialData(reloadFlag) {
     });
 
     var formData = $('#special_material_from').serialize();
-    console.log("Form Data", formData)
     $.ajax({
         method: 'POST',
         url: '/admin/job-quality-requirements/saveSpecialData',
@@ -2619,7 +2621,6 @@ function submitGeneralInfoData(reloadFlag) {
     });
 
     var formData = $('#general_info_from').serialize();
-    console.log("Form Data", formData)
     $.ajax({
         method: 'POST',
         url: '/admin/job-quality-requirements/saveGeneralData',
@@ -2649,7 +2650,6 @@ function submitServiceInfoData(reloadFlag) {
     });
 
     var formData = $('#service_info_from').serialize();
-    console.log("Form Data", formData)
     $.ajax({
         method: 'POST',
         url: '/admin/job-quality-requirements/saveServiceData',
@@ -2679,7 +2679,6 @@ function submitStructuralSkidData(reloadFlag) {
     });
 
     var formData = $('#structural_skid_from').serialize();
-    console.log("Form Data", formData)
     $.ajax({
         method: 'POST',
         url: '/admin/job-quality-requirements/saveStructuralSkidData',
@@ -2709,7 +2708,6 @@ function submitPressureVesselsData(reloadFlag) {
     });
 
     var formData = $('#pressure_vessels_from').serialize();
-    console.log("Form Data", formData)
     $.ajax({
         method: 'POST',
         url: '/admin/job-quality-requirements/savePressureVesselsData',
@@ -2739,7 +2737,6 @@ function submitNoCodeVesselsData(reloadFlag) {
     });
 
     var formData = $('#non_code_vessels_from').serialize();
-    console.log("Form Data", formData)
     $.ajax({
         method: 'POST',
         url: '/admin/job-quality-requirements/saveNoCodeVesselsData',
@@ -2769,7 +2766,6 @@ function submitProcessPipingData(reloadFlag) {
     });
 
     var formData = $('#process_piping_from').serialize();
-    console.log("Form Data", formData)
     $.ajax({
         method: 'POST',
         url: '/admin/job-quality-requirements/saveProcessPipingData',
@@ -2799,7 +2795,6 @@ function submitBoltingData(reloadFlag) {
     });
 
     var formData = $('#bolting_from').serialize();
-    console.log("Form Data", formData)
     $.ajax({
         method: 'POST',
         url: '/admin/job-quality-requirements/saveBoltingData',
@@ -2829,7 +2824,6 @@ function submitGasketsData(reloadFlag) {
     });
 
     var formData = $('#gaskets_from').serialize();
-    console.log("Form Data", formData)
     $.ajax({
         method: 'POST',
         url: '/admin/job-quality-requirements/saveGasketsData',
@@ -2859,7 +2853,6 @@ function submitTubingData(reloadFlag) {
     });
 
     var formData = $('#tubing_from').serialize();
-    console.log("Form Data", formData)
     $.ajax({
         method: 'POST',
         url: '/admin/job-quality-requirements/saveTubingData',
@@ -2889,7 +2882,6 @@ function submitButtPipingData(reloadFlag) {
     });
 
     var formData = $('#butt_piping_from').serialize();
-    console.log("Form Data", formData)
     $.ajax({
         method: 'POST',
         url: '/admin/job-quality-requirements/saveButtPipingData',
@@ -2919,7 +2911,6 @@ function submitThreadedPipingData(reloadFlag) {
     });
 
     var formData = $('#threaded_piping_from').serialize();
-    console.log("Form Data", formData)
     $.ajax({
         method: 'POST',
         url: '/admin/job-quality-requirements/saveThreadedPipingData',
@@ -2949,7 +2940,6 @@ function submitElectricalData(reloadFlag) {
     });
 
     var formData = $('#electrical_from').serialize();
-    console.log("Form Data", formData)
     $.ajax({
         method: 'POST',
         url: '/admin/job-quality-requirements/saveElectricalData',
@@ -2979,7 +2969,6 @@ function submitPreservationData(reloadFlag) {
     });
 
     var formData = $('#preservation_from').serialize();
-    console.log("Form Data", formData)
     $.ajax({
         method: 'POST',
         url: '/admin/job-quality-requirements/savePreservationData',
@@ -3009,7 +2998,6 @@ function submitPackageTestingData(reloadFlag) {
     });
 
     var formData = $('#package_testing_from').serialize();
-    console.log("Form Data", formData)
     $.ajax({
         method: 'POST',
         url: '/admin/job-quality-requirements/savePackageTestingData',

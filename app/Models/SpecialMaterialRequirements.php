@@ -16,4 +16,3 @@ class SpecialMaterialRequirements extends Model
         'tubing'
     ];
 }
-// SpecialMaterialRequirements

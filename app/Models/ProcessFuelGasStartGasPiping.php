@@ -6,6 +6,8 @@ use Illuminate\Database\Eloquent\Model;
 
 class ProcessFuelGasStartGasPiping extends Model
 {
+    protected $table = 'process_fuel_gas_start_gas_piping';
+
     protected $fillable = [
         'basic_details_id',
         'customer_avl_applies',
@@ -29,7 +31,4 @@ class ProcessFuelGasStartGasPiping extends Model
         'hydro_notes',
         'notes'
     ];
-    protected $table = 'process_fuel_gas_start_gas_piping';
 }
-
-//process_fuel_gas_start_gas_piping

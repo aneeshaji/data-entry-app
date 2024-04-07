@@ -6,6 +6,8 @@ use Illuminate\Database\Eloquent\Model;
 
 class PackageTesting extends Model
 {
+    protected $table = 'package_testing';
+
     protected $fillable = [
         'basic_details_id',
         'pneumatic_testing',
@@ -35,6 +37,7 @@ class PackageTesting extends Model
         'run_test_notification_requirement',
         'run_test_requirement',
         'run_test_requirement',
+        'run_test_duration',
         'run_test_notes',
         'megger_test',
         'megger_test_customer_third_party_witness_required',
@@ -56,6 +59,4 @@ class PackageTesting extends Model
         'addendum_manufacturing_specifications_complete',
         'addendum_manufacturing_specifications_notes'
     ];
-    protected $table = 'package_testing';
 }
-// PackageTesting

@@ -492,7 +492,7 @@ class JobQualityRequirementController extends Controller
         $threaded->basic_details_id = $request->basic_details_id;
         $threaded->customer_avl_applies = $request->customer_avl_applies == 'on' ? '1' : '0';
         $threaded->material_origin_reqs = $request->material_origin_reqs;
-        $threaded->origin_traceable_to_melt = $request->origin_traceable_to_melt;
+        $threaded->origin_traceable_to_melt = $request->origin_traceable_to_melt == 'on' ? '1' : '0';
         $threaded->acceptable_material_origins = $request->acceptable_material_origins;
         $threaded->standard_per_code = $request->standard_per_code == 'on' ? '1' : '0';
         $threaded->mtrs_required = $request->mtrs_required == 'on' ? '1' : '0';
@@ -606,14 +606,17 @@ class JobQualityRequirementController extends Controller
         $package_testing->run_test = $request->run_test == 'on' ? '1' : '0';
         $package_testing->run_test_customer_third_party_witness_required = $request->run_test_customer_third_party_witness_required == 'on' ? '1' : '0';
         $package_testing->run_test_notification_requirement = $request->run_test_notification_requirement;
-        $package_testing->run_test_requirement = $request->run_test_requirement == 'on' ? '1' : '0';
+
+        $package_testing->run_test_requirement = implode(',', (array) $request->run_test_requirement);
+
+        $package_testing->run_test_duration = $request->run_test_duration;
         $package_testing->run_test_notes = $request->run_test_notes;
         $package_testing->megger_test = $request->megger_test == 'on' ? '1' : '0';
         $package_testing->megger_test_customer_third_party_witness_required = $request->megger_test_customer_third_party_witness_required == 'on' ? '1' : '0';
         $package_testing->megger_test_notification_requirement = $request->megger_test_notification_requirement;
         $package_testing->megger_test_notes = $request->megger_test_notes;
         $package_testing->fat_test = $request->fat_test == 'on' ? '1' : '0';
-        $package_testing->fat_test_customer_third_party_witness_required = $request->fat_test_customer_third_party_witness_required ;
+        $package_testing->fat_test_customer_third_party_witness_required = $request->fat_test_customer_third_party_witness_required == 'on' ? '1' : '0';
         $package_testing->fat_test_notification_requirement = $request->fat_test_notification_requirement;
         $package_testing->fat_test_requirement = $request->fat_test_requirement;
         $package_testing->fat_test_notes = $request->fat_test_notes;
@@ -712,6 +715,13 @@ class JobQualityRequirementController extends Controller
         $jqr_threaded_piping = ThreadedPiping::where('basic_details_id', $jqr->id)->first();
         $jqr_tubing = Tubing::where('basic_details_id', $jqr->id)->first();
         $jqr_gaskets = Gaskets::where('basic_details_id', $jqr->id)->first();
+
+        if ($jqr_package_testing->run_test_requirement) {
+            $jqr_package_testing_run_test_requirements = explode(',', $jqr_package_testing->run_test_requirement);
+        } else {
+            $jqr_package_testing_run_test_requirements = [];
+        }
+
         return view('admin.job-quality-requirements.create', [
             'jqr' => $jqr,
             'jqr_special' => $jqr_special,
@@ -722,6 +732,7 @@ class JobQualityRequirementController extends Controller
             'jqr_electrical' => $jqr_electrical,
             'jqr_non_code' => $jqr_non_code,
             'jqr_package_testing' => $jqr_package_testing,
+            'jqr_package_testing_run_test_requirements' => $jqr_package_testing_run_test_requirements,
             'jqr_preservation' => $jqr_preservation,
             'jqr_pressure_vessels' => $jqr_pressure_vessels,
             'jqr_process_fuel_gas' => $jqr_process_fuel_gas,
