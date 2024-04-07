@@ -716,7 +716,7 @@ class JobQualityRequirementController extends Controller
         $jqr_tubing = Tubing::where('basic_details_id', $jqr->id)->first();
         $jqr_gaskets = Gaskets::where('basic_details_id', $jqr->id)->first();
 
-        if ($jqr_package_testing->run_test_requirement) {
+        if ($jqr_package_testing != null && $jqr_package_testing->run_test_requirement) {
             $jqr_package_testing_run_test_requirements = explode(',', $jqr_package_testing->run_test_requirement);
         } else {
             $jqr_package_testing_run_test_requirements = [];
