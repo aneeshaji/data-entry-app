@@ -188,26 +188,19 @@ class JobQualityRequirementController extends Controller
         }
 
         $structural_skid->basic_details_id = $request->basic_details_id;
-        $structural_skid->customer_avl_applies = $request->customer_avl_applies== 'on' ? '1' : '0';
+        $structural_skid->customer_avl_applies = $request->customer_avl_applies == 'on' ? '1' : '0';
         $structural_skid->material_origin_reqs = $request->material_origin_reqs;
-        $structural_skid->origin_traceable_to_melt = $request->origin_traceable_to_melt== 'on' ? '1' : '0';
+        $structural_skid->origin_traceable_to_melt = $request->origin_traceable_to_melt == 'on' ? '1' : '0';
         $structural_skid->acceptable_material_origins = $request->acceptable_material_origins;
         $structural_skid->mtrs_required = $request->mtrs_required == 'on' ? '1' : '0';
         $structural_skid->standard_per_code = $request->standard_per_code == 'on' ? '1' : '0';
-        $structural_skid->heat_mapping = $request->heat_mapping== 'on' ? '1' : '0';
-        $structural_skid->weld_mapping = $request->weld_mapping== 'on' ? '1' : '0';
+        $structural_skid->heat_mapping = $request->heat_mapping == 'on' ? '1' : '0';
+        $structural_skid->weld_mapping = $request->weld_mapping == 'on' ? '1' : '0';
         $structural_skid->material_notes = $request->material_notes;
-       // $structural_skid->nace = $request->nace;
         $structural_skid->nde_requirements = $request->nde_requirements;
         $structural_skid->weld_requirements = $request->weld_requirements;
         $structural_skid->governing_code = $request->governing_code;
-        $structural_skid->pwht = $request->pwht== 'on' ? '1' : '0';
-        //$structural_skid->hydro_hold_time = $request->hydro_hold_time;
-        //$structural_skid->witnessed = $request->witnessed;
-        //$structural_skid->hardness_test = $request->hardness_test;
-        //$structural_skid->max_hardness = $request->max_hardness;
-        //$structural_skid->hydro_chart_required = $request->hydro_chart_required;
-        //$structural_skid->hydro_notes = $request->hydro_notes;
+        $structural_skid->pwht = $request->pwht;
         $structural_skid->notes = $request->notes;
 
         $structural_skid->save();

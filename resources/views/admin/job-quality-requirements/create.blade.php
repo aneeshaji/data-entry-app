@@ -623,12 +623,12 @@
                                             <small class="text-light fw-semibold d-block">PWHT</small>
                                             <div class="form-check form-check-inline mt-3">
                                                 <input class="form-check-input" type="radio" name="pwht"
-                                                    id="inlineRadio1" value="0" {{ isset($jqr_structural_skid->pwht) && $jqr_structural_skid->pwht == '1'  ? 'checked': '' }}>
+                                                    id="inlineRadio1" value="1" {{ isset($jqr_structural_skid->pwht) && $jqr_structural_skid->pwht == '1'  ? 'checked': '' }}>
                                                 <label class="form-check-label" for="inlineRadio1">Yes</label>
                                             </div>
                                             <div class="form-check form-check-inline">
                                                 <input class="form-check-input" type="radio" name="pwht"
-                                                    id="inlineRadio2" value="1"  {{ isset($jqr_structural_skid->pwht) && $jqr_structural_skid->pwht == '0'  ? 'checked': '' }} >
+                                                    id="inlineRadio2" value="0"  {{ isset($jqr_structural_skid->pwht) && $jqr_structural_skid->pwht == '0'  ? 'checked': '' }} >
                                                 <label class="form-check-label" for="inlineRadio2">No - EFX
                                                     Standard</label>
                                             </div>
