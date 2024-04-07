@@ -17,7 +17,7 @@ return new class extends Migration
             $table->string('customer_avl_applies')->nullable()->comment('1 => Yes, 0 => No');
             $table->string('material_origin_reqs')->nullable();
             $table->string('origin_traceable_to_melt')->nullable();
-            $table->string('acceptable_material_origins');
+            $table->string('acceptable_material_origins')->nullable();
             $table->tinyInteger('standard_per_code')->nullable()->comment('1 => Yes, 0 => No');
             $table->tinyInteger('mtrs_required')->nullable()->comment('1 => Yes, 0 => No');
             $table->tinyInteger('heat_mapping')->nullable()->comment('1 => Yes, 0 => No');
