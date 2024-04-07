@@ -227,7 +227,7 @@ class JobQualityRequirementController extends Controller
         $pressure_vessels->basic_details_id = $request->basic_details_id;
         $pressure_vessels->customer_avl_applies = $request->customer_avl_applies == 'on' ? '1' : '0';
         $pressure_vessels->material_origin_reqs = $request->material_origin_reqs;
-        $pressure_vessels->origin_traceable_to_melt = $request->origin_traceable_to_melt;
+        $pressure_vessels->origin_traceable_to_melt = $request->origin_traceable_to_melt == 'on' ? '1' : '0';
         $pressure_vessels->acceptable_material_origins = $request->acceptable_material_origins;
         $pressure_vessels->mtrs_required = $request->mtrs_required == 'on' ? '1' : '0';
         $pressure_vessels->heat_mapping = $request->heat_mapping== 'on' ? '1' : '0';
@@ -242,7 +242,7 @@ class JobQualityRequirementController extends Controller
         $pressure_vessels->witnessed = $request->witnessed == 'on' ? '1' : '0';
         $pressure_vessels->hardness_test = $request->hardness_test == 'on' ? '1' : '0';
         $pressure_vessels->max_hardness = $request->max_hardness;
-        $pressure_vessels->hydro_chart_required = $request->hydro_chart_required;
+        $pressure_vessels->hydro_chart_required = $request->hydro_chart_required == 'on' ? '1' : '0';
         $pressure_vessels->hydro_notes = $request->hydro_notes;
         $pressure_vessels->notes = $request->notes;
 
