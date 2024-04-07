@@ -6,6 +6,8 @@ use Illuminate\Database\Eloquent\Model;
 
 class ThreadedPiping extends Model
 {
+    protected $table = 'threaded_piping';
+
     protected $fillable = [
         'basic_details_id',
         'customer_avl_applies',
@@ -19,6 +21,4 @@ class ThreadedPiping extends Model
         'nace',
         'notes'
     ];
-    protected $table = 'threaded_piping';
 }
-// ThreadedPiping

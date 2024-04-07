@@ -6,6 +6,8 @@ use Illuminate\Database\Eloquent\Model;
 
 class ElectricalInstrumentation extends Model
 {
+    protected $table ='electrical_instrumentation';
+
     protected $fillable = [
         'basic_details_id',
         'customer_avl_applies',
@@ -17,6 +19,4 @@ class ElectricalInstrumentation extends Model
         'governing_code',
         'notes'
     ];
-    protected $table ='electrical_instrumentation';
 }
-// ElectricalInstrumentation;

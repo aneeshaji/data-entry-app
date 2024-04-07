@@ -6,6 +6,8 @@ use Illuminate\Database\Eloquent\Model;
 
 class StructuralSkid extends Model
 {
+    protected $table ='structural_skid';
+
     protected $fillable = [
         'basic_details_id',
         'customer_avl_applies',
@@ -23,6 +25,4 @@ class StructuralSkid extends Model
         'pwht',
         'notes'
     ];
-
-    protected $table ='structural_skid';
 }

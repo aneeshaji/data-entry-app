@@ -6,6 +6,8 @@ use Illuminate\Database\Eloquent\Model;
 
 class Bolting extends Model
 {
+    protected $table ='bolting';
+    
     protected $fillable = [
         'basic_details_id',
         'efx_standard_no_cocs',
@@ -14,5 +16,4 @@ class Bolting extends Model
         'mtrs',
         'material_notes'
     ];
-    protected $table ='bolting';
 }

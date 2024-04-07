@@ -32,5 +32,3 @@ class NonCodeVesselsTanks extends Model
         'notes'
     ];
 }
-
-//non_code_vessels_tanks

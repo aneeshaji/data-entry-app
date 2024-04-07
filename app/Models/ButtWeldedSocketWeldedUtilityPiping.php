@@ -6,6 +6,8 @@ use Illuminate\Database\Eloquent\Model;
 
 class ButtWeldedSocketWeldedUtilityPiping extends Model
 {
+    protected $table='butt_welded_socket_welded_utility_piping';
+
     protected $fillable = [
         'basic_details_id',
         'customer_avl_applies',
@@ -30,5 +32,4 @@ class ButtWeldedSocketWeldedUtilityPiping extends Model
         'hydro_notes',
         'notes'
     ];
-    protected $table='butt_welded_socket_welded_utility_piping';
 }

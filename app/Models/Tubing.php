@@ -6,6 +6,8 @@ use Illuminate\Database\Eloquent\Model;
 
 class Tubing extends Model
 {
+    protected $table = 'tubing';
+
     protected $fillable = [
         'basic_details_id',
         'customer_avl_applies',
@@ -23,6 +25,4 @@ class Tubing extends Model
         'pmi_Requirements',
         'notes'
     ];
-    protected $table = 'tubing';
 }
-//tubing

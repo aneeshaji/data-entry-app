@@ -6,6 +6,8 @@ use Illuminate\Database\Eloquent\Model;
 
 class Preservation extends Model
 {
+    protected $table ='preservation';
+
     protected $fillable = [
         'basic_details_id',
         'efx_standard_short_term',
@@ -14,6 +16,4 @@ class Preservation extends Model
         'special_customer_requirements',
         'notes'
     ];
-    protected $table ='preservation';
 }
-// preservation
