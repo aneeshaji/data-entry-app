@@ -543,7 +543,7 @@
                                         </div>
                                         <div class="col-sm-6">
                                             <label class="form-label" for="twitter1">Material Origin REQS</label>
-                                            <input type="text" id="twitter1" name="material_origin_reqs" class="form-control" placeholder="" value="{{ isset($jqr_structural_skid->material_origin_reqs) && $jqr_service_info->sour_service_required == '1' ? $jqr_structural_skid->material_origin_reqs : '' }}" />
+                                            <input type="text" id="twitter1" name="material_origin_reqs" class="form-control" placeholder="" value="{{ isset($jqr_structural_skid->material_origin_reqs) ? $jqr_structural_skid->material_origin_reqs : '' }}" />
                                         </div>
                                         <div class="col-sm-6">
                                             <label class="switch">
@@ -623,12 +623,12 @@
                                             <small class="text-light fw-semibold d-block">PWHT</small>
                                             <div class="form-check form-check-inline mt-3">
                                                 <input class="form-check-input" type="radio" name="pwht"
-                                                    id="inlineRadio1" value="0" {{ isset($jqr_structural_skid->pwht) && $jqr_structural_skid->pwht == '0'  ? 'checked': '' }}>
+                                                    id="inlineRadio1" value="0" {{ isset($jqr_structural_skid->pwht) && $jqr_structural_skid->pwht == '1'  ? 'checked': '' }}>
                                                 <label class="form-check-label" for="inlineRadio1">Yes</label>
                                             </div>
                                             <div class="form-check form-check-inline">
                                                 <input class="form-check-input" type="radio" name="pwht"
-                                                    id="inlineRadio2" value="1"  {{ isset($jqr_structural_skid->pwht) && $jqr_structural_skid->pwht == '1'  ? 'checked': '' }} >
+                                                    id="inlineRadio2" value="1"  {{ isset($jqr_structural_skid->pwht) && $jqr_structural_skid->pwht == '0'  ? 'checked': '' }} >
                                                 <label class="form-check-label" for="inlineRadio2">No - EFX
                                                     Standard</label>
                                             </div>
@@ -649,10 +649,10 @@
                                                         <i class="ti ti-arrow-left me-sm-1"></i>
                                                         <span class="align-middle d-sm-inline-block d-none">Previous</span>
                                                     </button>
-                                                    <button type="button"  onclick="submitStructuralSkidData(true)"
+                                                    <button type="button" onclick="submitStructuralSkidData(true)"
                                                         class="btn btn-success waves-effect waves-light me-sm-3 me-1"><i
                                                             class="ti ti-check"></i>Save</button>
-                                                    <button class="btn btn-primary btn-next"  onclick="submitStructuralSkidData(false)"  >
+                                                    <button class="btn btn-primary btn-next" onclick="submitStructuralSkidData(false)"  >
                                                         <span
                                                             class="align-middle d-sm-inline-block d-none me-sm-1">Next</span>
                                                         <i class="ti ti-arrow-right"></i>
