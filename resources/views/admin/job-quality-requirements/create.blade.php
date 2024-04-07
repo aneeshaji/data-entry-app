@@ -2549,6 +2549,11 @@ if (typeof wizardIconsVertical !== undefined && wizardIconsVertical !== null) {
     }
 }
 
+// Disabling sections on page load
+if ($('.form_id_bd').val() == '') {
+    $('.step').css('pointer-events', 'none');
+}
+
 // Submit Basic Data
 function submitData(reloadFlag) {
     $.ajaxSetup({
@@ -2567,6 +2572,8 @@ function submitData(reloadFlag) {
             data: formData,
             dataType: 'json',
             success: function(response) {
+                // Enbling sections after first save
+                $('.step').css('pointer-events', 'auto');
                 if (response.status == true) {
                     $('.form_id_bd').val(response.id);
                     if (reloadFlag == true) {
