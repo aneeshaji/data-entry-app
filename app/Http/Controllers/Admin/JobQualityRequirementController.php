@@ -268,26 +268,26 @@ class JobQualityRequirementController extends Controller
         }
 
         $non_code_vess->basic_details_id = $request->basic_details_id;
-        $non_code_vess->customer_avl_applies = $request->customer_avl_applies== 'on' ? '1' : '0';
+        $non_code_vess->customer_avl_applies = $request->customer_avl_applies == 'on' ? '1' : '0';
         $non_code_vess->material_origin_reqs = $request->material_origin_reqs;
-        $non_code_vess->origin_traceable_to_melt = $request->origin_traceable_to_melt;
-        $non_code_vess->origin_traceable_to_manufacturer = $request->origin_traceable_to_manufacturer;
+        $non_code_vess->origin_traceable_to_melt = $request->origin_traceable_to_melt == 'on' ? '1' : '0';
+        $non_code_vess->origin_traceable_to_manufacturer = $request->origin_traceable_to_manufacturer == 'on' ? '1' : '0';
         $non_code_vess->acceptable_material_origins = $request->acceptable_material_origins;
-        $non_code_vess->standard_code = $request->standard_code== 'on' ? '1' : '0';
-        $non_code_vess->mtrs_required = $request->mtrs_required== 'on' ? '1' : '0';
-        $non_code_vess->heat_mapping = $request->heat_mapping== 'on' ? '1' : '0';
-        $non_code_vess->weld_mapping = $request->weld_mapping== 'on' ? '1' : '0';
+        $non_code_vess->standard_code = $request->standard_code == 'on' ? '1' : '0';
+        $non_code_vess->mtrs_required = $request->mtrs_required == 'on' ? '1' : '0';
+        $non_code_vess->heat_mapping = $request->heat_mapping == 'on' ? '1' : '0';
+        $non_code_vess->weld_mapping = $request->weld_mapping == 'on' ? '1' : '0';
         $non_code_vess->material_notes = $request->material_notes;
-        $non_code_vess->nace = $request->nace== 'on' ? '1' : '0';
+        $non_code_vess->nace = $request->nace == 'on' ? '1' : '0';
         $non_code_vess->nde_requirements = $request->nde_requirements;
         $non_code_vess->weld_requirements = $request->weld_requirements;
         $non_code_vess->governing_code = $request->governing_code;
         $non_code_vess->pwht = $request->pwht;
         $non_code_vess->hydro_hold_time = $request->hydro_hold_time;
-        $non_code_vess->witnessed = $request->witnessed== 'on' ? '1' : '0';
-        $non_code_vess->hardness_test = $request->hardness_test== 'on' ? '1' : '0';
+        $non_code_vess->witnessed = $request->witnessed == 'on' ? '1' : '0';
+        $non_code_vess->hardness_test = $request->hardness_test == 'on' ? '1' : '0';
         $non_code_vess->max_hardness = $request->max_hardness;
-        $non_code_vess->hydro_chart_required = $request->hydro_chart_required;
+        $non_code_vess->hydro_chart_required = $request->hydro_chart_required == 'on' ? '1' : '0';
         $non_code_vess->hydro_notes = $request->hydro_notes;
         $non_code_vess->notes = $request->notes;
         $non_code_vess->save();
@@ -314,7 +314,7 @@ class JobQualityRequirementController extends Controller
         $process_fual_gas->basic_details_id = $request->basic_details_id;
         $process_fual_gas->customer_avl_applies = $request->customer_avl_applies == 'on' ? '1' : '0';
         $process_fual_gas->material_origin_reqs = $request->material_origin_reqs;
-        $process_fual_gas->origin_traceable_to_melt = $request->origin_traceable_to_melt;
+        $process_fual_gas->origin_traceable_to_melt = $request->origin_traceable_to_melt == 'on' ? '1' : '0';
         $process_fual_gas->acceptable_material_origins = $request->acceptable_material_origins;
         $process_fual_gas->standard_code = $request->standard_code == 'on' ? '1' : '0';
         $process_fual_gas->mtrs_required = $request->mtrs_required == 'on' ? '1' : '0';
@@ -329,7 +329,7 @@ class JobQualityRequirementController extends Controller
         $process_fual_gas->witnessed = $request->witnessed == 'on' ? '1' : '0';
         $process_fual_gas->hardness_test = $request->hardness_test == 'on' ? '1' : '0';
         $process_fual_gas->max_hardness = $request->max_hardness;
-        $process_fual_gas->hydro_chart_required = $request->hydro_chart_required;
+        $process_fual_gas->hydro_chart_required = $request->hydro_chart_required == 'on' ? '1' : '0';
         $process_fual_gas->hydro_notes = $request->hydro_notes;
         $process_fual_gas->notes = $request->notes;
 
@@ -355,10 +355,10 @@ class JobQualityRequirementController extends Controller
         }
 
         $bolting->basic_details_id = $request->basic_details_id;
-        $bolting->efx_standard_no_cocs = $request->efx_standard_no_cocs== 'on' ? '1' : '0';
-        $bolting->vendor_coc = $request->vendor_coc== 'on' ? '1' : '0';
+        $bolting->efx_standard_no_cocs = $request->efx_standard_no_cocs == 'on' ? '1' : '0';
+        $bolting->vendor_coc = $request->vendor_coc == 'on' ? '1' : '0';
         $bolting->manufacturer_coc = $request->manufacturer_coc== 'on' ? '1' : '0';
-        $bolting->mtrs = $request->mtrs== 'on' ? '1' : '0';
+        $bolting->mtrs = $request->mtrs == 'on' ? '1' : '0';
         $bolting->material_notes = $request->material_notes;
 
         $bolting->save();
@@ -383,10 +383,10 @@ class JobQualityRequirementController extends Controller
         }
 
         $service_info->basic_details_id = $request->basic_details_id;
-        $service_info->efx_standard_no_cocs = $request->efx_standard_no_cocs== 'on' ? '1' : '0';
-        $service_info->vendor_coc = $request->vendor_coc== 'on' ? '1' : '0';
-        $service_info->manufacturer_coc = $request->manufacturer_coc== 'on' ? '1' : '0';
-        $service_info->mtrs = $request->mtrs== 'on' ? '1' : '0';
+        $service_info->efx_standard_no_cocs = $request->efx_standard_no_cocs == 'on' ? '1' : '0';
+        $service_info->vendor_coc = $request->vendor_coc == 'on' ? '1' : '0';
+        $service_info->manufacturer_coc = $request->manufacturer_coc == 'on' ? '1' : '0';
+        $service_info->mtrs = $request->mtrs == 'on' ? '1' : '0';
         $service_info->material_notes = $request->material_notes;
         $service_info->save();
 
@@ -410,16 +410,16 @@ class JobQualityRequirementController extends Controller
         }
 
         $tubing->basic_details_id = $request->basic_details_id;
-        $tubing->customer_avl_applies = $request->customer_avl_appliess== 'on' ? '1' : '0';
+        $tubing->customer_avl_applies = $request->customer_avl_applies == 'on' ? '1' : '0';
         $tubing->material_origin_reqs = $request->material_origin_reqs;
-        $tubing->origin_traceable_to_melt = $request->origin_traceable_to_melt;
+        $tubing->origin_traceable_to_melt = $request->origin_traceable_to_melt == 'on' ? '1' : '0';
         $tubing->acceptable_material_origins = $request->acceptable_material_origins;
-        $tubing->efx_standard_no_cocs = $request->efx_standard_no_cocss== 'on' ? '1' : '0';
-        $tubing->tubing_mtrs_required = $request->tubing_mtrs_requireds== 'on' ? '1' : '0';
-        $tubing->tubing_coc_required = $request->tubing_coc_requireds== 'on' ? '1' : '0';
-        $tubing->fitting_mtrs_required = $request->fitting_mtrs_requireds== 'on' ? '1' : '0';
-        $tubing->fitting_coc_required = $request->fitting_coc_requireds== 'on' ? '1' : '0';
-        $tubing->full_traceability = $request->full_traceabilitys== 'on' ? '1' : '0';
+        $tubing->efx_standard_no_cocs = $request->efx_standard_no_cocs == 'on' ? '1' : '0';
+        $tubing->tubing_mtrs_required = $request->tubing_mtrs_required == 'on' ? '1' : '0';
+        $tubing->tubing_coc_required = $request->tubing_coc_required == 'on' ? '1' : '0';
+        $tubing->fitting_mtrs_required = $request->fitting_mtrs_required == 'on' ? '1' : '0';
+        $tubing->fitting_coc_required = $request->fitting_coc_required == 'on' ? '1' : '0';
+        $tubing->full_traceability = $request->full_traceability == 'on' ? '1' : '0';
         $tubing->material_notes = $request->material_notes;
         $tubing->nde_requirements = $request->nde_requirements;
         $tubing->pmi_Requirements = $request->pmi_Requirements;
@@ -446,25 +446,25 @@ class JobQualityRequirementController extends Controller
         }
 
         $buttPiping->basic_details_id = $request->basic_details_id;
-        $buttPiping->customer_avl_applies = $request->customer_avl_appliess== 'on' ? '1' : '0';
+        $buttPiping->customer_avl_applies = $request->customer_avl_applies == 'on' ? '1' : '0';
         $buttPiping->material_origin_reqs = $request->material_origin_reqs;
-        $buttPiping->origin_traceable_to_melt = $request->origin_traceable_to_melt;
+        $buttPiping->origin_traceable_to_melt = $request->origin_traceable_to_melt == 'on' ? '1' : '0';
         $buttPiping->acceptable_material_origins = $request->acceptable_material_origins;
-        $buttPiping->standard_per_code = $request->standard_per_codes== 'on' ? '1' : '0';
-        $buttPiping->mtrs_provided = $request->mtrs_provideds== 'on' ? '1' : '0';
-        $buttPiping->heat_mapping = $request->heat_mappings== 'on' ? '1' : '0';
-        $buttPiping->weld_mapping = $request->weld_mappings== 'on' ? '1' : '0';
+        $buttPiping->standard_per_code = $request->standard_per_code == 'on' ? '1' : '0';
+        $buttPiping->mtrs_provided = $request->mtrs_provided == 'on' ? '1' : '0';
+        $buttPiping->heat_mapping = $request->heat_mapping == 'on' ? '1' : '0';
+        $buttPiping->weld_mapping = $request->weld_mapping == 'on' ? '1' : '0';
         $buttPiping->material_notes = $request->material_notes;
-        $buttPiping->nace = $request->nace== 'on' ? '1' : '0' ;
-        $buttPiping->nde_requirements = $request->nde_requirements;
+        $buttPiping->nace = $request->nace == 'on' ? '1' : '0' ;
+        $buttPiping->nde_requirements = $request->nde_requirements == 'on' ? '1' : '0';;
         $buttPiping->weld_requirements = $request->weld_requirements;
         $buttPiping->governing_code = $request->governing_code;
         $buttPiping->pwht = $request->pwht;
         $buttPiping->hydro_hold_time = $request->hydro_hold_time;
         $buttPiping->witnessed = $request->witnessed == 'on' ? '1' : '0';
         $buttPiping->hardness_test = $request->hardness_test == 'on' ? '1' : '0';
-        $buttPiping->max_hardness = $request->max_hardness == 'on' ? '1' : '0';
-        $buttPiping->hydro_chart_required = $request->hydro_chart_required;
+        $buttPiping->max_hardness = $request->max_hardness;
+        $buttPiping->hydro_chart_required = $request->hydro_chart_required == 'on' ? '1' : '0';
         $buttPiping->hydro_notes = $request->hydro_notes;
         $buttPiping->notes = $request->notes;
 

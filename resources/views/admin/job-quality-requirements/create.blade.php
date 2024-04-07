@@ -872,7 +872,7 @@
                                         </small>
                                         <div class="col-sm-6">
                                             <label class="switch">
-                                                <input type="checkbox" class="switch-input" name="customer_avl_applies" {{ isset($jqr_non_code->hydro_chart_required) && $jqr_non_code->hydro_chart_required == '1' ? 'checked': '' }} >
+                                                <input type="checkbox" class="switch-input" name="customer_avl_applies" {{ isset($jqr_non_code->customer_avl_applies) && $jqr_non_code->customer_avl_applies == '1' ? 'checked': '' }} >
                                                 <span class="switch-toggle-slider">
                                                     <span class="switch-on"></span>
                                                     <span class="switch-off"></span>
@@ -1097,7 +1097,7 @@
                                         </div>
                                         <div class="col-sm-6">
                                             <label class="switch">
-                                                <input type="checkbox" class="switch-input" name="origin_traceable_to_melt" {{ isset($jqr_process_fuel_gas->origin_traceable_to_melt) && $jqr_service_info->sour_service_required == '1' ? 'checked': '' }}>
+                                                <input type="checkbox" class="switch-input" name="origin_traceable_to_melt" {{ isset($jqr_process_fuel_gas->origin_traceable_to_melt) && $jqr_process_fuel_gas->origin_traceable_to_melt == '1' ? 'checked': '' }}>
                                                 <span class="switch-toggle-slider">
                                                     <span class="switch-on"></span>
                                                     <span class="switch-off"></span>
