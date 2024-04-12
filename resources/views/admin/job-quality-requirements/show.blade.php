@@ -345,11 +345,11 @@
                                 <td colspan="6" class="text-center text-bold">BOLTING</td>
                             </tr>
                             <tr>
-                                <td class="">EFX Standard No COC's / No MTR's : {{ isset($jqr_bolting->efx_standard_no_cocs) ? ($jqr_bolting->efx_standard_no_cocs == '1' ? 'Yes' : 'No') : '' }}</td>
-                                <td colspan="5">Vendor COC: {{ isset($jqr_bolting->vendor_coc) ? ($jqr_bolting->vendor_coc == '1' ? 'Yes' : 'No') : '' }}</td>
+                                <td class="">EFX STANDARD NO COC's / NO MTR's : {{ isset($jqr_bolting->efx_standard_no_cocs) ? ($jqr_bolting->efx_standard_no_cocs == '1' ? 'Yes' : 'No') : '' }}</td>
+                                <td colspan="5">VENDOR COC: {{ isset($jqr_bolting->vendor_coc) ? ($jqr_bolting->vendor_coc == '1' ? 'Yes' : 'No') : '' }}</td>
                             </tr>
                             <tr>
-                                <td class="">Manufacturer COCs : {{ isset($jqr_bolting->manufacturer_coc) ? ($jqr_bolting->manufacturer_coc == '1' ? 'Yes' : 'No') : '' }}</td>
+                                <td class="">MANUFACTURER COCs : {{ isset($jqr_bolting->manufacturer_coc) ? ($jqr_bolting->manufacturer_coc == '1' ? 'Yes' : 'No') : '' }}</td>
                                 <td colspan="5">MTRS: {{ isset($jqr_bolting->mtrs) ? ($jqr_bolting->mtrs == '1' ? 'Yes' : 'No') : '' }}</td>
                             </tr>
 
@@ -366,11 +366,11 @@
                                 <td colspan="6" class="text-center text-bold">GASKETS</td>
                             </tr>
                             <tr>
-                                <td class="">EFX Standard No COC's / No MTR's: {{ isset($jqr_gaskets->efx_standard_no_cocs) ? ($jqr_gaskets->efx_standard_no_cocs == '1' ? 'Yes' : 'No') : '' }}</td>
-                                <td colspan="5">Vendor COC: {{ isset($jqr_gaskets->vendor_coc) ? ($jqr_gaskets->vendor_coc == '1' ? 'Yes' : 'No') : '' }}</td>
+                                <td class="">EFX STANDARD NO COC's / NO MTR's: {{ isset($jqr_gaskets->efx_standard_no_cocs) ? ($jqr_gaskets->efx_standard_no_cocs == '1' ? 'Yes' : 'No') : '' }}</td>
+                                <td colspan="5">VENDOR COC: {{ isset($jqr_gaskets->vendor_coc) ? ($jqr_gaskets->vendor_coc == '1' ? 'Yes' : 'No') : '' }}</td>
                             </tr>
                             <tr>
-                                <td class="">Manufacturer COCs: {{ isset($jqr_gaskets->manufacturer_coc) ? ($jqr_gaskets->manufacturer_coc == '1' ? 'Yes' : 'No') : '' }}</td>
+                                <td class="">MANUFACTURER COCs: {{ isset($jqr_gaskets->manufacturer_coc) ? ($jqr_gaskets->manufacturer_coc == '1' ? 'Yes' : 'No') : '' }}</td>
                                 <td colspan="5">MTRS: {{ isset($jqr_gaskets->mtrs) ? ($jqr_gaskets->mtrs == '1' ? 'Yes' : 'No') : '' }}</td>
                             </tr>
 
@@ -402,18 +402,18 @@
                                 Indicates Special Material Origin Requirements Must Be Checked 'Yes'</td>
                             </tr>
                             <tr>
-                                <td colspan="6" class="">EFX Standard No COC's / No MTR's: {{ isset($jqr_tubing->efx_standard_no_cocs) ? ($jqr_tubing->efx_standard_no_cocs == '1' ? 'Yes' : 'No') : '' }}</td>
+                                <td colspan="6" class="">EFX STANDARD NO COC's / NO MTR's: {{ isset($jqr_tubing->efx_standard_no_cocs) ? ($jqr_tubing->efx_standard_no_cocs == '1' ? 'Yes' : 'No') : '' }}</td>
                             </tr>
                             <tr>
-                                <td class="">Tubing MTRS Required: {{ isset($jqr_tubing->tubing_mtrs_required) ? ($jqr_tubing->tubing_mtrs_required == '1' ? 'Yes' : 'No') : '' }}</td>
-                                <td colspan="5" class="">Tubing COC Required: {{ isset($jqr_tubing->tubing_coc_required) ? ($jqr_tubing->tubing_coc_required == '1' ? 'Yes' : 'No') : '' }}</td>
+                                <td class="">TUBING MTRS REQUIRED: {{ isset($jqr_tubing->tubing_mtrs_required) ? ($jqr_tubing->tubing_mtrs_required == '1' ? 'Yes' : 'No') : '' }}</td>
+                                <td colspan="5" class="">TUBING COC REQUIRED: {{ isset($jqr_tubing->tubing_coc_required) ? ($jqr_tubing->tubing_coc_required == '1' ? 'Yes' : 'No') : '' }}</td>
                             </tr>
                             <tr>
-                                <td class="">Fitting MTRS Required: {{ isset($jqr_tubing->fitting_mtrs_required) ? ($jqr_tubing->fitting_mtrs_required == '1' ? 'Yes' : 'No') : '' }}</td>
-                                <td colspan="5" class="">Fitting COC Required: {{ isset($jqr_tubing->fitting_coc_required) ? ($jqr_tubing->fitting_coc_required == '1' ? 'Yes' : 'No') : '' }}</td>
+                                <td class="">FITTING MTRS REQUIRED: {{ isset($jqr_tubing->fitting_mtrs_required) ? ($jqr_tubing->fitting_mtrs_required == '1' ? 'Yes' : 'No') : '' }}</td>
+                                <td colspan="5" class="">FITTING COC REQUIRED: {{ isset($jqr_tubing->fitting_coc_required) ? ($jqr_tubing->fitting_coc_required == '1' ? 'Yes' : 'No') : '' }}</td>
                             </tr>
                             <tr>
-                                <td colspan="6">Full Traceability(w/HEAT MAPPING): {{ isset($jqr_tubing->full_traceability) ? ($jqr_tubing->full_traceability == '1' ? 'Yes' : 'No') : '' }}</td>
+                                <td colspan="6">FULL TRACEABILITY(w/HEAT MAPPING): {{ isset($jqr_tubing->full_traceability) ? ($jqr_tubing->full_traceability == '1' ? 'Yes' : 'No') : '' }}</td>
                             </tr>
                             <tr>
                                 <td colspan="6">MATERIAL NOTES: {{ isset($jqr_tubing->material_notes) ? $jqr_tubing->material_notes : '' }}</td>
@@ -434,7 +434,7 @@
                     <table class="table table-bordered table-hover">
                         <tbody>
                             <tr>
-                                <td colspan="6" class="text-center text-bold">Butt Welded/Socket Welded Utility Piping</td>
+                                <td colspan="6" class="text-center text-bold">BUTT WELDED/SOCKET WELDED UTILITY PIPING</td>
                             </tr>
                             <tr>
                                 <td class="text-bold">MATERIAL REQUIREMENTS</td>
@@ -453,7 +453,7 @@
                                 Indicates Special Material Origin Requirements Must Be Checked 'Yes'</td>
                             </tr>
                             <tr>
-                                <td colspan="" class="">MTRS Provided: {{ isset($jqr_butt->mtrs_provided) ? ($jqr_butt->mtrs_provided == '1' ? 'Yes' : 'No') : '' }}</td>
+                                <td colspan="" class="">MTRS PROVIDED: {{ isset($jqr_butt->mtrs_provided) ? ($jqr_butt->mtrs_provided == '1' ? 'Yes' : 'No') : '' }}</td>
                                 <td colspan="5" class="">HEAT MAPPING: {{ isset($jqr_butt->heat_mapping) ? ($jqr_butt->heat_mapping == '1' ? 'Yes' : 'No') : '' }}</td>
                             </tr>
                             <tr>
@@ -476,16 +476,16 @@
                                 <td colspan="5">PWHT: {{ ($jqr_butt->pwht == '0') ? "Yes" : (($jqr_butt->pwht == '1')  ? "N0" : "Per Code REQ") }}</td>
                             </tr>
                             <tr>
-                                <td>Hydro Hold Time: {{ isset($jqr_butt->hydro_hold_time) ? $jqr_butt->hydro_hold_time : '' }}</td>
-                                <td colspan="5">Witnessed: {{ isset($jqr_butt->witnessed) ? ($jqr_butt->witnessed == '1' ? 'Yes' : 'No') : '' }}</td>
+                                <td>HYDRO HOLD TIME: {{ isset($jqr_butt->hydro_hold_time) ? $jqr_butt->hydro_hold_time : '' }}</td>
+                                <td colspan="5">WITNESSED: {{ isset($jqr_butt->witnessed) ? ($jqr_butt->witnessed == '1' ? 'Yes' : 'No') : '' }}</td>
                             </tr>
                             <tr>
-                                <td>Hardness Test: {{ isset($jqr_butt->hardness_test) ? ($jqr_butt->hardness_test == '1' ? 'Yes' : 'No') : '' }}</td>
-                                <td colspan="5">Max Hardness: {{ $jqr_butt->max_hardness }}</td>
+                                <td>HARDNESS TEST: {{ isset($jqr_butt->hardness_test) ? ($jqr_butt->hardness_test == '1' ? 'Yes' : 'No') : '' }}</td>
+                                <td colspan="5">MAX HARDNESS: {{ $jqr_butt->max_hardness }}</td>
                             </tr>
                             <tr>
-                                <td>Hydro Chart Required: {{ isset($jqr_butt->hydro_chart_required) ? ($jqr_butt->hydro_chart_required == '1' ? 'Yes' : 'No') : '' }}</td>
-                                <td colspan="5">Hydro Notes: {{ isset($jqr_butt->hydro_notes) ? $jqr_butt->hydro_notes : '' }}</td>
+                                <td>HYDRO CHART REQUIRED: {{ isset($jqr_butt->hydro_chart_required) ? ($jqr_butt->hydro_chart_required == '1' ? 'Yes' : 'No') : '' }}</td>
+                                <td colspan="5">HYDRO NOTES: {{ isset($jqr_butt->hydro_notes) ? $jqr_butt->hydro_notes : '' }}</td>
                             </tr>
                             <tr>
                                 <td colspan="6">NOTES: {{ isset($jqr_butt->notes) ? $jqr_butt->notes : '' }}</td>
@@ -497,7 +497,7 @@
                     <table style="overflow:hidden" class="table table-bordered table-hover">
                         <tbody>
                             <tr>
-                                <td colspan="6" class="text-center text-bold">Threaded Piping</td>
+                                <td colspan="6" class="text-center text-bold">THREADED PIPING</td>
                             </tr>
                             <tr>
                                 <td class="text-bold">MATERIAL REQUIREMENTS</td>
@@ -517,7 +517,7 @@
                             </tr>
                             <tr>
                                 <td colspan="" class="">MTRS REQUIRED: {{ isset($jqr_threaded_piping->mtrs_required) ? ($jqr_threaded_piping->mtrs_required == '1' ? 'Yes' : 'No') : '' }}</td>
-                                <td colspan="5" class="">*Heat Mapping(FULL TRACEABILITY): {{ isset($jqr_threaded_piping->heat_mapping) ? ($jqr_threaded_piping->heat_mapping == '1' ? 'Yes' : 'No') : '' }}</td>
+                                <td colspan="5" class="">*HEAT MAPPING(FULL TRACEABILITY): {{ isset($jqr_threaded_piping->heat_mapping) ? ($jqr_threaded_piping->heat_mapping == '1' ? 'Yes' : 'No') : '' }}</td>
                             </tr>
                             <tr>
                                 <td colspan="6">MATERIAL NOTES: {{ isset($jqr_threaded_piping->material_notes) ? $jqr_threaded_piping->material_notes : '' }}</td>
@@ -543,19 +543,19 @@
                             </tr>
                             <tr>
                                 <td>ACCEPTABLE MATERIAL ORIGINS: {{ isset($jqr_electrical->acceptable_material_origins)  ? $jqr_electrical->acceptable_material_origins : '' }}</td>
-                                <td colspan="5">Vendor Restrictions: {{ isset($jqr_electrical->vendor_restrictions) ? ($jqr_electrical->vendor_restrictions == '1' ? 'Yes' : 'No') : '' }}</td>
+                                <td colspan="5">VENDOR RESTRICTIONS: {{ isset($jqr_electrical->vendor_restrictions) ? ($jqr_electrical->vendor_restrictions == '1' ? 'Yes' : 'No') : '' }}</td>
                             </tr>
                             <tr>
-                                <td colspan="6" class="">Specify: {{ isset($jqr_electrical->specify) ? $jqr_electrical->specify : '' }}</td>
+                                <td colspan="6" class="">SPECIFY: {{ isset($jqr_electrical->specify) ? $jqr_electrical->specify : '' }}</td>
                             </tr>
                             <tr>
-                                <td colspan="6" class="">Approved Vendor(S): {{ isset($jqr_electrical->approved_vendors) ? $jqr_electrical->approved_vendors : '' }}</td>
+                                <td colspan="6" class="">APPROVED VENDOR(S): {{ isset($jqr_electrical->approved_vendors) ? $jqr_electrical->approved_vendors : '' }}</td>
                             </tr>
                             <tr>
                                 <td colspan="6">MATERIAL NOTES: {{ isset($jqr_electrical->material_notes) ? $jqr_electrical->material_notes : '' }}</td>
                             </tr>
                             <tr>
-                                <td colspan="6">Governing Code: {{ isset($jqr_electrical->governing_code) ? $jqr_electrical->governing_code : '' }}</td>
+                                <td colspan="6">GOVERNING CODE: {{ isset($jqr_electrical->governing_code) ? $jqr_electrical->governing_code : '' }}</td>
                             </tr>
                             <tr>
                                 <td colspan="6">NOTES: {{ isset($jqr_electrical->notes) ? $jqr_electrical->notes : '' }}</td>
@@ -570,12 +570,12 @@
                                 <td colspan="6" class="text-center text-bold">Preservation</td>
                             </tr>
                             <tr>
-                                <td class="">EFX Standard Short Term(6 Mo): {{ isset($jqr_preservation->efx_standard_short_term) ? ($jqr_preservation->efx_standard_short_term == '1' ? 'Yes' : 'No') : '' }}</td>
-                                <td colspan="5">EFX Standard Long Term(6 Mo): {{ isset($jqr_preservation->efx_standard_long_term) ? ($jqr_preservation->efx_standard_long_term == '1' ? 'Yes' : 'No') : '' }}</td>
+                                <td class="">EFX STANDARD SHORT TERM(6 Mo): {{ isset($jqr_preservation->efx_standard_short_term) ? ($jqr_preservation->efx_standard_short_term == '1' ? 'Yes' : 'No') : '' }}</td>
+                                <td colspan="5">EFX STANDARD LONG TERM(6 Mo): {{ isset($jqr_preservation->efx_standard_long_term) ? ($jqr_preservation->efx_standard_long_term == '1' ? 'Yes' : 'No') : '' }}</td>
                             </tr>
                             <tr>
-                                <td>Customer Specified/Other: {{ isset($jqr_preservation->customer_specified_other) ? ($jqr_preservation->customer_specified_other == '1' ? 'Yes' : 'No') : '' }}</td>
-                                <td colspan="5">Special Customer Requirements: {{ isset($jqr_preservation->special_customer_requirements) ? $jqr_preservation->special_customer_requirements : '' }}</td>
+                                <td>CUSTOMER SPECIFIED/OTHER: {{ isset($jqr_preservation->customer_specified_other) ? ($jqr_preservation->customer_specified_other == '1' ? 'Yes' : 'No') : '' }}</td>
+                                <td colspan="5">SPECIAL CUSTOMER REQUIREMENTS: {{ isset($jqr_preservation->special_customer_requirements) ? $jqr_preservation->special_customer_requirements : '' }}</td>
                             </tr>
                             <tr>
                                 <td colspan="6">NOTES: {{ isset($jqr_preservation->notes) ? $jqr_preservation->notes : '' }}</td>
@@ -590,104 +590,104 @@
                                 <td colspan="6" class="text-center text-bold">Package Testing</td>
                             </tr>
                             <tr>
-                                <td colspan="" class="">Pneumatic Testing: {{ isset($jqr_package_testing->pneumatic_testing) ? ($jqr_package_testing->pneumatic_testing == '1' ? 'Yes' : 'No') : '' }}</td>
-                                <td colspan="5">Pneumatic Testing Customer/Third Party Witness Required: {{ isset($jqr_package_testing->pneumatic_testing_customer_third_party_witness_required) ? ($jqr_package_testing->pneumatic_testing_customer_third_party_witness_required	== '1' ? 'Yes' : 'No') : '' }}</td>
+                                <td colspan="" class="">PNEUMATIC TESTING: {{ isset($jqr_package_testing->pneumatic_testing) ? ($jqr_package_testing->pneumatic_testing == '1' ? 'Yes' : 'No') : '' }}</td>
+                                <td colspan="5">PNEUMATIC TESTING CUSTOMER/THIRD PARTY WITNESS REQUIRED: {{ isset($jqr_package_testing->pneumatic_testing_customer_third_party_witness_required) ? ($jqr_package_testing->pneumatic_testing_customer_third_party_witness_required	== '1' ? 'Yes' : 'No') : '' }}</td>
                             </tr>
                             <tr>
-                                <td class="">Pneumatic Testing Notification Requirement: {{ isset($jqr_package_testing->pneumatic_testing_notification_requirement) ? $jqr_package_testing->pneumatic_testing_notification_requirement : '' }}</td>
-                                <td colspan="5">System: {{ isset($jqr_package_testing->system) ? $jqr_package_testing->system : '' }}</td>
+                                <td class="">PNEUMATIC TESTING Notification Requirement: {{ isset($jqr_package_testing->pneumatic_testing_notification_requirement) ? $jqr_package_testing->pneumatic_testing_notification_requirement : '' }}</td>
+                                <td colspan="5">SYSTEM: {{ isset($jqr_package_testing->system) ? $jqr_package_testing->system : '' }}</td>
                             </tr>
                             <tr>
-                                <td>Test Medium: {{ isset($jqr_package_testing->test_medium) ? $jqr_package_testing->test_medium : '' }}</td>
-                                <td colspan="5">Test Requirement Pressure: {{ isset($jqr_package_testing->test_requirement_pressure) ? $jqr_package_testing->test_requirement_pressure : '' }}</td>
+                                <td>TEST MEDIUM: {{ isset($jqr_package_testing->test_medium) ? $jqr_package_testing->test_medium : '' }}</td>
+                                <td colspan="5">TEST REQUIREMRN PRESSURE: {{ isset($jqr_package_testing->test_requirement_pressure) ? $jqr_package_testing->test_requirement_pressure : '' }}</td>
                             </tr>
                             <tr>
-                                <td>Test Requirement Time: {{ isset($jqr_package_testing->test_requirement_time) ? $jqr_package_testing->test_requirement_time : ''  }}</td>
-                                <td colspan="5">Pneumatic Testing Notes: {{ isset($jqr_package_testing->pneumatic_testing_notes) ? $jqr_package_testing->pneumatic_testing_notes : '' }}</td>
-                            </tr>
-
-                            <tr>
-                                <td>Vaccum: {{ isset($jqr_package_testing->vaccum) ? ($jqr_package_testing->vaccum == '1' ? 'Yes' : 'No') : '' }}</td>
-                                <td colspan="5">Vaccum Customer/Third Party Witness Required: {{ isset($jqr_package_testing->vaccum_customer_third_party_witness_required) ? ($jqr_package_testing->vaccum_customer_third_party_witness_required == '1' ? 'Yes' : 'No') : '' }}</td>
-                            </tr>
-                            <tr>
-                                <td>Vaccum Notification Requirement: {{ isset($jqr_package_testing->vaccum_notification_requirement) ? $jqr_package_testing->vaccum_notification_requirement : '' }}</td>
-                                <td colspan="5">Level: {{ $jqr_package_testing->level }}</td>
-                            </tr>
-                            <tr>
-                                <td>Duration At Level: {{ isset($jqr_package_testing->duration_at_level) ? $jqr_package_testing->duration_at_level : '' }}</td>
-                                <td colspan="5">Vaccum Notes: {{ isset($jqr_package_testing->vaccum_notes) ? $jqr_package_testing->vaccum_notes : '' }}</td>
+                                <td>TEST REQUIREMENT TIME: {{ isset($jqr_package_testing->test_requirement_time) ? $jqr_package_testing->test_requirement_time : ''  }}</td>
+                                <td colspan="5">PNEUMATIC TESTING Notes: {{ isset($jqr_package_testing->pneumatic_testing_notes) ? $jqr_package_testing->pneumatic_testing_notes : '' }}</td>
                             </tr>
 
                             <tr>
-                                <td>Purge/Charge: {{ isset($jqr_package_testing->purge_charge) ? ($jqr_package_testing->purge_charge == '1' ? 'Yes' : 'No') : '' }}</td>
-                                <td colspan="5">Purge/Charge Pressure: {{ isset($jqr_package_testing->purge_charge_pressure) ? $jqr_package_testing->purge_charge_pressure : '' }}</td>
+                                <td>VACCUM: {{ isset($jqr_package_testing->vaccum) ? ($jqr_package_testing->vaccum == '1' ? 'Yes' : 'No') : '' }}</td>
+                                <td colspan="5">VACCUM CUSTOMER/THIRD PARTY WITNESS REQUIRED: {{ isset($jqr_package_testing->vaccum_customer_third_party_witness_required) ? ($jqr_package_testing->vaccum_customer_third_party_witness_required == '1' ? 'Yes' : 'No') : '' }}</td>
                             </tr>
                             <tr>
-                                <td>Purge/Charge Medium: {{ isset($jqr_package_testing->purge_charge_medium) ? $jqr_package_testing->purge_charge_medium : '' }}</td>
-                                <td colspan="5">Purge/Charge Notes: {{ isset($jqr_package_testing->purge_charge_notes) ? $jqr_package_testing->purge_charge_notes : '' }}</td>
-                            </tr>
-
-                            <tr>
-                                <td>Lube Oil Flush: {{ isset($jqr_package_testing->lube_oil_flush) ? ($jqr_package_testing->lube_oil_flush == '1' ? 'Yes' : 'No') : '' }}</td>
-                                <td colspan="5">Lube Oil Flush Customer/Third Party Witness Required: {{ isset($jqr_package_testing->lube_oil_flush_customer_third_party_witness_required) ? ($jqr_package_testing->lube_oil_flush_customer_third_party_witness_required == '1' ? 'Yes' : 'No') : '' }}</td>
+                                <td>VACCUM NOTIFICATION REQUIREMENT: {{ isset($jqr_package_testing->vaccum_notification_requirement) ? $jqr_package_testing->vaccum_notification_requirement : '' }}</td>
+                                <td colspan="5">LEVEL: {{ $jqr_package_testing->level }}</td>
                             </tr>
                             <tr>
-                                <td>Lube Oil Flush Notification Requirement: {{ isset($jqr_package_testing->lube_oil_flush_notification_requirement) ? $jqr_package_testing->lube_oil_flush_notification_requirement : '' }}</td>
-                                <td colspan="5">Lube Oil Flush Notes: {{ $jqr_package_testing->lube_oil_flush_notes }}</td>
-                            </tr>
-                            <tr>
-                                <td>Run Test: {{ isset($jqr_package_testing->pneumatic_testing_customer_third_party_witness_required) ? ($jqr_package_testing->pneumatic_testing_customer_third_party_witness_required == '1' ? 'Yes' : 'No') : '' }}</td>
-                                <td colspan="5">Run Test Customer/Third Party Witness Required: {{ isset($jqr_package_testing->run_test_customer_third_party_witness_required) ? ($jqr_package_testing->run_test_customer_third_party_witness_required == '1' ? 'Yes' : 'No') : '' }}</td>
-                            </tr>
-                            <tr>
-                                <td>Run Test Notification Requirement: {{ isset($jqr_package_testing->run_test_notification_requirement) ? $jqr_package_testing->run_test_notification_requirement : '' }}</td>
-                                <td colspan="5">Run Test Requirement: {{ isset($run_test_reqs) ? $run_test_reqs : ''  }}</td>
-                            </tr>
-                            <tr>
-                                <td>Run Test Duration: {{ isset($jqr_package_testing->run_test_duration) ? $jqr_package_testing->run_test_duration : '' }}</td>
-                                <td colspan="5">Run Test Notes: {{ isset($jqr_package_testing->run_test_notes) ? $jqr_package_testing->run_test_notes : '' }}</td>
+                                <td>DURATION AT LEVEL: {{ isset($jqr_package_testing->duration_at_level) ? $jqr_package_testing->duration_at_level : '' }}</td>
+                                <td colspan="5">VACCUM NOTES: {{ isset($jqr_package_testing->vaccum_notes) ? $jqr_package_testing->vaccum_notes : '' }}</td>
                             </tr>
 
                             <tr>
-                                <td>Megger Test: {{ isset($jqr_package_testing->megger_test) ? ($jqr_package_testing->megger_test == '1' ? 'Yes' : 'No') : '' }}</td>
-                                <td colspan="5">Megger Test Customer/Third Party Witness Required: {{ isset($jqr_package_testing->megger_test_customer_third_party_witness_required) ? ($jqr_package_testing->megger_test_customer_third_party_witness_required == '1' ? 'Yes' : 'No') : '' }}</td>
+                                <td>PURGE/CHARGE: {{ isset($jqr_package_testing->purge_charge) ? ($jqr_package_testing->purge_charge == '1' ? 'Yes' : 'No') : '' }}</td>
+                                <td colspan="5">PURGE/CHARGE PRESSURE: {{ isset($jqr_package_testing->purge_charge_pressure) ? $jqr_package_testing->purge_charge_pressure : '' }}</td>
                             </tr>
                             <tr>
-                                <td>Megger Test Notification Requirement: {{ isset($jqr_package_testing->megger_test_notes) ? $jqr_package_testing->megger_test_notes : '' }}</td>
-                                <td colspan="5">Megger Test Notes: {{ isset($jqr_package_testing->megger_test_notes) ? $jqr_package_testing->megger_test_notes : '' }}</td>
-                            </tr>
-                            <tr>
-                                <td>Fat Test: {{ isset($jqr_package_testing->fat_test) ? ($jqr_package_testing->fat_test == '1' ? 'Yes' : 'No') : '' }}</td>
-                                <td colspan="5">Fat Test Customer/Third Party Witness Required: {{ isset($jqr_package_testing->fat_test_customer_third_party_witness_required) ? ($jqr_package_testing->pneumatic_testing_customer_third_party_witness_required == '1' ? 'Yes' : 'No') : '' }}</td>
-                            </tr>
-                            <tr>
-                                <td>Fat Test Notification Requirement: {{ isset($jqr_package_testing->fat_test_notification_requirement) ? $jqr_package_testing->fat_test_notification_requirement : '' }}</td>
-                                <td colspan="5">Fat Test Requirement: {{ isset($jqr_package_testing->fat_test_requirement) ? $jqr_package_testing->fat_test_requirement : '' }}</td>
-                            </tr>
-                            <tr>
-                                <td colspan="6">Fat Test Notes: {{ isset($jqr_package_testing->fat_test_notes) ? $jqr_package_testing->fat_test_notes : '' }}</td>
-                            </tr>
-                            <tr>
-                                <td>Additional Testing: {{ isset($jqr_package_testing->additional_testing) ? ($jqr_package_testing->additional_testing == '1' ? 'Yes' : 'No') : '' }}</td>
-                                <td colspan="5">Additional Testing Customer/Third Party Witness Required: {{ isset($jqr_package_testing->additional_testing_customer_third_party_witness_required) ? ($jqr_package_testing->additional_testing_customer_third_party_witness_required == '1' ? 'Yes' : 'No') : '' }}</td>
-                            </tr>
-                            <tr>
-                                <td>Additional Testing Notification Requirement: {{ isset($jqr_package_testing->additional_testing_notification_requirement)  ? $jqr_package_testing->additional_testing_notification_requirement : '' }}</td>
-                                <td colspan="5">Additional Testing Test/Requirements: {{ isset($jqr_package_testing->additional_testing_test_requirement) ? $jqr_package_testing->additional_testing_test_requirement : '' }}</td>
+                                <td>PURGE/CHARGE Medium: {{ isset($jqr_package_testing->purge_charge_medium) ? $jqr_package_testing->purge_charge_medium : '' }}</td>
+                                <td colspan="5">PURGE/CHARGE Notes: {{ isset($jqr_package_testing->purge_charge_notes) ? $jqr_package_testing->purge_charge_notes : '' }}</td>
                             </tr>
 
                             <tr>
-                                <td>Addendum Purchasing Specifications: {{ isset($jqr_package_testing->addendum_purchasing_specifications) ? ($jqr_package_testing->addendum_purchasing_specifications == '1' ? 'Yes' : 'No') : '' }}</td>
-                                <td colspan="5">Addendum Purchasing Specifications Complete: {{ isset($jqr_package_testing->addendum_purchasing_specifications_complete) ? ($jqr_package_testing->addendum_purchasing_specifications_complete == '1' ? 'Yes' : 'No') : '' }}</td>
+                                <td>LUBE OIL FLUSH: {{ isset($jqr_package_testing->lube_oil_flush) ? ($jqr_package_testing->lube_oil_flush == '1' ? 'Yes' : 'No') : '' }}</td>
+                                <td colspan="5">LUBE OIL FLUSH CUSTOMER/THIRD PARTY WITNESS REQUIRED: {{ isset($jqr_package_testing->lube_oil_flush_customer_third_party_witness_required) ? ($jqr_package_testing->lube_oil_flush_customer_third_party_witness_required == '1' ? 'Yes' : 'No') : '' }}</td>
                             </tr>
                             <tr>
-                                <td>Addendum Purchasing Specifications Notes: {{ $jqr_package_testing->addendum_purchasing_specifications_notes }}</td>
-                                <td colspan="5">Addendum Manufacturing Specifications: {{ isset($jqr_package_testing->addendum_manufacturing_specifications) ? ($jqr_package_testing->addendum_manufacturing_specifications == '1' ? 'Yes' : 'No') : '' }}</td>
+                                <td>LUBE OIL FLUSH NOTIFICATION REQUIREMENT: {{ isset($jqr_package_testing->lube_oil_flush_notification_requirement) ? $jqr_package_testing->lube_oil_flush_notification_requirement : '' }}</td>
+                                <td colspan="5">LUBE OIL FLUSH NOTES: {{ $jqr_package_testing->lube_oil_flush_notes }}</td>
                             </tr>
                             <tr>
-                                <td>Addendum Manufacturing Specifications Complete: {{ isset($jqr_package_testing->addendum_manufacturing_specifications_complete) ? ($jqr_package_testing->addendum_manufacturing_specifications_complete == '1' ? 'Yes' : 'No') : '' }}</td>
-                                <td colspan="5">Addendum Manufacturing Specifications Notes: {{ isset($jqr_package_testing->addendum_manufacturing_specifications_notes) ? $jqr_package_testing->addendum_manufacturing_specifications_notes : '' }}</td>
+                                <td>RUN TEST: {{ isset($jqr_package_testing->pneumatic_testing_customer_third_party_witness_required) ? ($jqr_package_testing->pneumatic_testing_customer_third_party_witness_required == '1' ? 'Yes' : 'No') : '' }}</td>
+                                <td colspan="5">RUN TEST CUSTOMER/THIRD PARTY WITNESS REQUIRED: {{ isset($jqr_package_testing->run_test_customer_third_party_witness_required) ? ($jqr_package_testing->run_test_customer_third_party_witness_required == '1' ? 'Yes' : 'No') : '' }}</td>
+                            </tr>
+                            <tr>
+                                <td>RUN TEST NOTIFICATION REQUIREMENT: {{ isset($jqr_package_testing->run_test_notification_requirement) ? $jqr_package_testing->run_test_notification_requirement : '' }}</td>
+                                <td colspan="5">RUN TEST REQUIREMENT: {{ isset($run_test_reqs) ? $run_test_reqs : ''  }}</td>
+                            </tr>
+                            <tr>
+                                <td>RUN TEST DURATION: {{ isset($jqr_package_testing->run_test_duration) ? $jqr_package_testing->run_test_duration : '' }}</td>
+                                <td colspan="5">REQUIREMENT NOTES: {{ isset($jqr_package_testing->run_test_notes) ? $jqr_package_testing->run_test_notes : '' }}</td>
+                            </tr>
+
+                            <tr>
+                                <td>MEGGER TEST: {{ isset($jqr_package_testing->megger_test) ? ($jqr_package_testing->megger_test == '1' ? 'Yes' : 'No') : '' }}</td>
+                                <td colspan="5">MEGGER TEST CUSTOMER/THIRD PARTY WITNESS REQUIRED: {{ isset($jqr_package_testing->megger_test_customer_third_party_witness_required) ? ($jqr_package_testing->megger_test_customer_third_party_witness_required == '1' ? 'Yes' : 'No') : '' }}</td>
+                            </tr>
+                            <tr>
+                                <td>MEGGER TEST NOTIFICATION REQUIREMENT: {{ isset($jqr_package_testing->megger_test_notes) ? $jqr_package_testing->megger_test_notes : '' }}</td>
+                                <td colspan="5">MEGGER TEST NOTES: {{ isset($jqr_package_testing->megger_test_notes) ? $jqr_package_testing->megger_test_notes : '' }}</td>
+                            </tr>
+                            <tr>
+                                <td>FAT TEST: {{ isset($jqr_package_testing->fat_test) ? ($jqr_package_testing->fat_test == '1' ? 'Yes' : 'No') : '' }}</td>
+                                <td colspan="5">FAT TEST CUSTOMER/THIRD PARTY WITNESS REQUIRED: {{ isset($jqr_package_testing->fat_test_customer_third_party_witness_required) ? ($jqr_package_testing->pneumatic_testing_customer_third_party_witness_required == '1' ? 'Yes' : 'No') : '' }}</td>
+                            </tr>
+                            <tr>
+                                <td>FAT TEST NOTIFICATION REQUIREMENT: {{ isset($jqr_package_testing->fat_test_notification_requirement) ? $jqr_package_testing->fat_test_notification_requirement : '' }}</td>
+                                <td colspan="5">FAT TEST REQUIREMENT: {{ isset($jqr_package_testing->fat_test_requirement) ? $jqr_package_testing->fat_test_requirement : '' }}</td>
+                            </tr>
+                            <tr>
+                                <td colspan="6">FAT TEST NOTES: {{ isset($jqr_package_testing->fat_test_notes) ? $jqr_package_testing->fat_test_notes : '' }}</td>
+                            </tr>
+                            <tr>
+                                <td>ADDITIONAL TESTING: {{ isset($jqr_package_testing->additional_testing) ? ($jqr_package_testing->additional_testing == '1' ? 'Yes' : 'No') : '' }}</td>
+                                <td colspan="5">ADDITIONAL TESTING CUSTOMER/THIRD PARTY WITNESS REQUIRED: {{ isset($jqr_package_testing->additional_testing_customer_third_party_witness_required) ? ($jqr_package_testing->additional_testing_customer_third_party_witness_required == '1' ? 'Yes' : 'No') : '' }}</td>
+                            </tr>
+                            <tr>
+                                <td>ADDITIONAL TESTING NOTIFICATION REQUIREMENT: {{ isset($jqr_package_testing->additional_testing_notification_requirement)  ? $jqr_package_testing->additional_testing_notification_requirement : '' }}</td>
+                                <td colspan="5">ADDITIONAL TESTING TEST/REQUIREMENTS: {{ isset($jqr_package_testing->additional_testing_test_requirement) ? $jqr_package_testing->additional_testing_test_requirement : '' }}</td>
+                            </tr>
+
+                            <tr>
+                                <td>ADDENDUM PURCHASING SPECIFICATIONS: {{ isset($jqr_package_testing->addendum_purchasing_specifications) ? ($jqr_package_testing->addendum_purchasing_specifications == '1' ? 'Yes' : 'No') : '' }}</td>
+                                <td colspan="5">ADDENDUM PURCHASING SPECIFICATIONS COMPLETE: {{ isset($jqr_package_testing->addendum_purchasing_specifications_complete) ? ($jqr_package_testing->addendum_purchasing_specifications_complete == '1' ? 'Yes' : 'No') : '' }}</td>
+                            </tr>
+                            <tr>
+                                <td>ADDENDUM PURCHASING SPECIFICATIONS NOTES: {{ $jqr_package_testing->addendum_purchasing_specifications_notes }}</td>
+                                <td colspan="5">ADDENDUM MANUFACTURING SPECIFICATIONS: {{ isset($jqr_package_testing->addendum_manufacturing_specifications) ? ($jqr_package_testing->addendum_manufacturing_specifications == '1' ? 'Yes' : 'No') : '' }}</td>
+                            </tr>
+                            <tr>
+                                <td>ADDENDUM MANUFACTURING SPECIFICATIONS COMPLETE: {{ isset($jqr_package_testing->addendum_manufacturing_specifications_complete) ? ($jqr_package_testing->addendum_manufacturing_specifications_complete == '1' ? 'Yes' : 'No') : '' }}</td>
+                                <td colspan="5">ADDENDUM MANUFACTURING SPECIFICATIONS NOTES: {{ isset($jqr_package_testing->addendum_manufacturing_specifications_notes) ? $jqr_package_testing->addendum_manufacturing_specifications_notes : '' }}</td>
                             </tr>
                         </tbody>
                     </table>
