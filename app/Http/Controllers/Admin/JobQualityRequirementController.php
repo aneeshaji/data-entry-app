@@ -83,6 +83,14 @@ class JobQualityRequirementController extends Controller
 
         if ($jqr_package_testing != null && $jqr_package_testing->run_test_requirement) {
             $jqr_package_testing_run_test_requirements = explode(',', $jqr_package_testing->run_test_requirement);
+            $run = [];
+            if (in_array('1', $jqr_package_testing_run_test_requirements)) {
+                $run[] = 'Loaded';
+            }
+            if (in_array('2', $jqr_package_testing_run_test_requirements)) {
+                $run[] = 'No Load';
+            }
+            $run_test_reqs = implode(",", $run);
         } else {
             $jqr_package_testing_run_test_requirements = [];
         }
@@ -104,7 +112,7 @@ class JobQualityRequirementController extends Controller
             'jqr_threaded_piping' => $jqr_threaded_piping,
             'jqr_tubing' => $jqr_tubing,
             'jqr_gaskets' => $jqr_gaskets,
-            'jqr_package_testing_run_test_requirements' => $jqr_package_testing_run_test_requirements
+            'run_test_reqs' => $run_test_reqs
         ];
 
         $pdf = PDF::loadView('admin.job-quality-requirements.show', $data);
@@ -756,6 +764,14 @@ class JobQualityRequirementController extends Controller
 
         if ($jqr_package_testing != null && $jqr_package_testing->run_test_requirement) {
             $jqr_package_testing_run_test_requirements = explode(',', $jqr_package_testing->run_test_requirement);
+            $run = [];
+            if (in_array('1', $jqr_package_testing_run_test_requirements)) {
+                $run[] = 'Loaded';
+            }
+            if (in_array('2', $jqr_package_testing_run_test_requirements)) {
+                $run[] = 'No Load';
+            }
+            $run_test_reqs = implode(",", $run);
         } else {
             $jqr_package_testing_run_test_requirements = [];
         }
@@ -770,7 +786,7 @@ class JobQualityRequirementController extends Controller
             'jqr_electrical' => $jqr_electrical,
             'jqr_non_code' => $jqr_non_code,
             'jqr_package_testing' => $jqr_package_testing,
-            'jqr_package_testing_run_test_requirements' => $jqr_package_testing_run_test_requirements,
+            'run_test_reqs' => $run_test_reqs,
             'jqr_preservation' => $jqr_preservation,
             'jqr_pressure_vessels' => $jqr_pressure_vessels,
             'jqr_process_fuel_gas' => $jqr_process_fuel_gas,
