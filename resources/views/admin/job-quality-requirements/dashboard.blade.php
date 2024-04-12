@@ -15,9 +15,9 @@
                                     <span class="avatar-initial rounded bg-label-primary"><i
                                             class="ti ti-truck ti-md"></i></span>
                                 </div>
-                                <h4 class="ms-1 mb-0">42</h4>
+                                <h4 class="ms-1 mb-0">{{ isset($jqrs_count) ? $jqrs_count : '' }}</h4>
                             </div>
-                            <p class="mb-1">Total JQR's</p>
+                            <p class="mb-1">Total Jobs</p>
                             <!-- <p class="mb-0">
                                 <span class="fw-medium me-1">+18.2%</span>
                                 <small class="text-muted">than last week</small>
@@ -25,7 +25,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-sm-6 col-lg-4 mb-4">
+                <!-- <div class="col-sm-6 col-lg-4 mb-4">
                     <div class="card card-border-shadow-warning">
                         <div class="card-body">
                             <div class="d-flex align-items-center mb-2 pb-1">
@@ -36,14 +36,14 @@
                                 <h4 class="ms-1 mb-0">8</h4>
                             </div>
                             <p class="mb-1">In Progress JQR's</p>
-                            <!-- <p class="mb-0">
+                            <p class="mb-0">
                                 <span class="fw-medium me-1">-8.7%</span>
                                 <small class="text-muted">than last week</small>
-                            </p> -->
+                            </p>
                         </div>
                     </div>
-                </div>
-                <div class="col-sm-6 col-lg-4 mb-4">
+                </div> -->
+                <!-- <div class="col-sm-6 col-lg-4 mb-4">
                     <div class="card card-border-shadow-danger">
                         <div class="card-body">
                             <div class="d-flex align-items-center mb-2 pb-1">
@@ -54,13 +54,13 @@
                                 <h4 class="ms-1 mb-0">27</h4>
                             </div>
                             <p class="mb-1">Completed JQR's</p>
-                            <!-- <p class="mb-0">
+                            <p class="mb-0">
                                 <span class="fw-medium me-1">+4.3%</span>
                                 <small class="text-muted">than last week</small>
-                            </p> -->
+                            </p>
                         </div>
                     </div>
-                </div>
+                </div> -->
                 <!-- <div class="col-sm-6 col-lg-3 mb-4">
                     <div class="card card-border-shadow-info">
                         <div class="card-body">
