@@ -61,6 +61,14 @@ class JobQualityRequirementController extends Controller
         return view('admin.job-quality-requirements.create');
     }
 
+    /**
+     * Generate PDF.
+     * Created On : 10-04-2024
+     * Author : Aneesh Ajithkumar
+     * Email : dev.aneeshajithkumar@gmail.com
+     *
+     * @return \Illuminate\Contracts\Support\Renderable
+     */
     public function generatePDF($id)
     {
         $id = decrypt($id);
@@ -126,6 +134,7 @@ class JobQualityRequirementController extends Controller
             // For Edit
             $basic_details = BasicDetails::where('id', $request->id)->first();
         } else {
+            // For Create
             $basic_details = new BasicDetails();
         }
         $basic_details->job_number = $request->job_number;
@@ -699,9 +708,7 @@ class JobQualityRequirementController extends Controller
         }
     }
 
-
-
-     /**
+    /**
      * Save JQR.
      * Created On : 02-04-2024
      * Author : Aneesh Ajithkumar
@@ -736,7 +743,7 @@ class JobQualityRequirementController extends Controller
 
      /**
      * View JQR.
-     * Created On : 02-04-2024
+     * Created On : 09-04-2024
      * Author : Aneesh Ajithkumar
      * Email : dev.aneeshajithkumar@gmail.com
      *

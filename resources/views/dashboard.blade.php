@@ -18,10 +18,10 @@
                                 <h4 class="ms-1 mb-0">42</h4>
                             </div>
                             <p class="mb-1">Total JQR's</p>
-                            <p class="mb-0">
+                            <!-- <p class="mb-0">
                                 <span class="fw-medium me-1">+18.2%</span>
                                 <small class="text-muted">than last week</small>
-                            </p>
+                            </p> -->
                         </div>
                     </div>
                 </div>
@@ -36,10 +36,10 @@
                                 <h4 class="ms-1 mb-0">8</h4>
                             </div>
                             <p class="mb-1">In Progress JQR's</p>
-                            <p class="mb-0">
+                            <!-- <p class="mb-0">
                                 <span class="fw-medium me-1">-8.7%</span>
                                 <small class="text-muted">than last week</small>
-                            </p>
+                            </p> -->
                         </div>
                     </div>
                 </div>
@@ -54,10 +54,10 @@
                                 <h4 class="ms-1 mb-0">27</h4>
                             </div>
                             <p class="mb-1">Completed JQR's</p>
-                            <p class="mb-0">
+                            <!-- <p class="mb-0">
                                 <span class="fw-medium me-1">+4.3%</span>
                                 <small class="text-muted">than last week</small>
-                            </p>
+                            </p> -->
                         </div>
                     </div>
                 </div>
