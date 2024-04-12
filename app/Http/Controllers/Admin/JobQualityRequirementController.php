@@ -42,9 +42,25 @@ class JobQualityRequirementController extends Controller
     public function index()
     {
         $jqrs = BasicDetails::orderBy('created_at','DESC')
-        ->paginate(10);
-        return view('admin.job-quality-requirements.list', [
+                            ->paginate(10);
+        return view('admin.job-quality-requirements.index', [
             'jqrs' => $jqrs
+        ]);
+    }
+
+    /**
+     * JQR Dashboard.
+     * Created On : 12-04-2024
+     * Author : Aneesh Ajithkumar
+     * Email : dev.aneeshajithkumar@gmail.com
+     *
+     * @return \Illuminate\Contracts\Support\Renderable
+     */
+    public function dashboard()
+    {
+        $jqrs_count = BasicDetails::count();
+        return view('admin.job-quality-requirements.dashboard', [
+            'jqrs_count' => $jqrs_count
         ]);
     }
 
