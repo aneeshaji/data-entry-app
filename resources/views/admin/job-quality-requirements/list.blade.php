@@ -53,7 +53,9 @@
                                             <a class="dropdown-item"
                                                 href="{{ url('admin/job-quality-requirements/' . encrypt($value->id) . '/edit') }}"><i
                                                     class="ti ti-pencil me-1"></i> Edit</a>
-                                            <a class="dropdown-item" href="javascript:void(0);"><i
+                                            <a class="dropdown-item" href="{{ url('admin/job-quality-requirements/' . encrypt($value->id)) }}"><i
+                                                    class="ti ti-download"></i> View</a>
+                                            <a class="dropdown-item" href="{{ url('/generate-pdf/'. encrypt($value->id)) }}"><i
                                                     class="ti ti-download"></i> Download</a>
                                         </div>
                                     </div>

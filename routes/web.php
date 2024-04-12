@@ -25,6 +25,10 @@ Route::middleware('auth')->group(function () {
             'index' => 'admin.job-quality-requirements'
         ]
     ]);
+
+    // Download pdf
+    Route::get('/generate-pdf/{id}', [JobQualityRequirementController::class, 'generatePDF']);
+
     // AJAX Routes
     Route::post('/admin/job-quality-requirements/saveData', [JobQualityRequirementController::class, 'saveData']);
     Route::post('/admin/job-quality-requirements/saveSpecialData', [JobQualityRequirementController::class, 'saveSpecialData']);
@@ -42,7 +46,6 @@ Route::middleware('auth')->group(function () {
     Route::post('/admin/job-quality-requirements/saveElectricalData', [JobQualityRequirementController::class, 'saveElectricalData']);
     Route::post('/admin/job-quality-requirements/savePreservationData', [JobQualityRequirementController::class, 'savePreservationData']);
     Route::post('/admin/job-quality-requirements/savePackageTestingData', [JobQualityRequirementController::class, 'savePackageTestingData']);
-
 });
 
 require __DIR__.'/auth.php';

@@ -26,6 +26,7 @@ use App\Models\StructuralSkid;
 use App\Models\ThreadedPiping;
 use App\Models\Tubing;
 use App\Models\Gaskets;
+use Barryvdh\DomPDF\Facade\Pdf;
 
 
 class JobQualityRequirementController extends Controller
@@ -58,6 +59,56 @@ class JobQualityRequirementController extends Controller
     public function create()
     {
         return view('admin.job-quality-requirements.create');
+    }
+
+    public function generatePDF($id)
+    {
+        $id = decrypt($id);
+        $jqr = BasicDetails::where('id', $id)->first();
+        $jqr_special = SpecialMaterialRequirements::where('basic_details_id', $jqr->id)->first();
+        $jqr_general_info = GeneralInformation::where('basic_details_id', $jqr->id)->first();
+        $jqr_service_info = ServiceInformation::where('basic_details_id', $jqr->id)->first();
+        $jqr_bolting = Bolting::where('basic_details_id', $jqr->id)->first();
+        $jqr_butt = ButtWeldedSocketWeldedUtilityPiping::where('basic_details_id', $jqr->id)->first();
+        $jqr_electrical = ElectricalInstrumentation::where('basic_details_id', $jqr->id)->first();
+        $jqr_non_code = NonCodeVesselsTanks::where('basic_details_id', $jqr->id)->first();
+        $jqr_package_testing = PackageTesting::where('basic_details_id', $jqr->id)->first();
+        $jqr_preservation = Preservation::where('basic_details_id', $jqr->id)->first();
+        $jqr_pressure_vessels = PressureVessels::where('basic_details_id', $jqr->id)->first();
+        $jqr_process_fuel_gas = ProcessFuelGasStartGasPiping::where('basic_details_id', $jqr->id)->first();
+        $jqr_structural_skid = StructuralSkid::where('basic_details_id', $jqr->id)->first();
+        $jqr_threaded_piping = ThreadedPiping::where('basic_details_id', $jqr->id)->first();
+        $jqr_tubing = Tubing::where('basic_details_id', $jqr->id)->first();
+        $jqr_gaskets = Gaskets::where('basic_details_id', $jqr->id)->first();
+
+        if ($jqr_package_testing != null && $jqr_package_testing->run_test_requirement) {
+            $jqr_package_testing_run_test_requirements = explode(',', $jqr_package_testing->run_test_requirement);
+        } else {
+            $jqr_package_testing_run_test_requirements = [];
+        }
+
+        $data = [
+            'jqr' => $jqr,
+            'jqr_special' => $jqr_special,
+            'jqr_general_info' => $jqr_general_info,
+            'jqr_service_info' => $jqr_service_info,
+            'jqr_bolting' => $jqr_bolting,
+            'jqr_butt' => $jqr_butt,
+            'jqr_electrical' => $jqr_electrical,
+            'jqr_non_code' => $jqr_non_code,
+            'jqr_package_testing' => $jqr_package_testing,
+            'jqr_preservation' => $jqr_preservation,
+            'jqr_pressure_vessels' => $jqr_pressure_vessels,
+            'jqr_process_fuel_gas' => $jqr_process_fuel_gas,
+            'jqr_structural_skid' => $jqr_structural_skid,
+            'jqr_threaded_piping' => $jqr_threaded_piping,
+            'jqr_tubing' => $jqr_tubing,
+            'jqr_gaskets' => $jqr_gaskets,
+            'jqr_package_testing_run_test_requirements' => $jqr_package_testing_run_test_requirements
+        ];
+
+        $pdf = PDF::loadView('admin.job-quality-requirements.show', $data);
+        return $pdf->download('jqrms.pdf');
     }
 
     public function saveData(Request $request)
@@ -685,7 +736,49 @@ class JobQualityRequirementController extends Controller
      */
     public function show(string $id)
     {
-        //
+        $id = decrypt($id);
+        $jqr = BasicDetails::where('id', $id)->first();
+        $jqr_special = SpecialMaterialRequirements::where('basic_details_id', $jqr->id)->first();
+        $jqr_general_info = GeneralInformation::where('basic_details_id', $jqr->id)->first();
+        $jqr_service_info = ServiceInformation::where('basic_details_id', $jqr->id)->first();
+        $jqr_bolting = Bolting::where('basic_details_id', $jqr->id)->first();
+        $jqr_butt = ButtWeldedSocketWeldedUtilityPiping::where('basic_details_id', $jqr->id)->first();
+        $jqr_electrical = ElectricalInstrumentation::where('basic_details_id', $jqr->id)->first();
+        $jqr_non_code = NonCodeVesselsTanks::where('basic_details_id', $jqr->id)->first();
+        $jqr_package_testing = PackageTesting::where('basic_details_id', $jqr->id)->first();
+        $jqr_preservation = Preservation::where('basic_details_id', $jqr->id)->first();
+        $jqr_pressure_vessels = PressureVessels::where('basic_details_id', $jqr->id)->first();
+        $jqr_process_fuel_gas = ProcessFuelGasStartGasPiping::where('basic_details_id', $jqr->id)->first();
+        $jqr_structural_skid = StructuralSkid::where('basic_details_id', $jqr->id)->first();
+        $jqr_threaded_piping = ThreadedPiping::where('basic_details_id', $jqr->id)->first();
+        $jqr_tubing = Tubing::where('basic_details_id', $jqr->id)->first();
+        $jqr_gaskets = Gaskets::where('basic_details_id', $jqr->id)->first();
+
+        if ($jqr_package_testing != null && $jqr_package_testing->run_test_requirement) {
+            $jqr_package_testing_run_test_requirements = explode(',', $jqr_package_testing->run_test_requirement);
+        } else {
+            $jqr_package_testing_run_test_requirements = [];
+        }
+
+        return view('admin.job-quality-requirements.show', [
+            'jqr' => $jqr,
+            'jqr_special' => $jqr_special,
+            'jqr_general_info' => $jqr_general_info,
+            'jqr_service_info' => $jqr_service_info,
+            'jqr_bolting' => $jqr_bolting,
+            'jqr_butt' => $jqr_butt,
+            'jqr_electrical' => $jqr_electrical,
+            'jqr_non_code' => $jqr_non_code,
+            'jqr_package_testing' => $jqr_package_testing,
+            'jqr_package_testing_run_test_requirements' => $jqr_package_testing_run_test_requirements,
+            'jqr_preservation' => $jqr_preservation,
+            'jqr_pressure_vessels' => $jqr_pressure_vessels,
+            'jqr_process_fuel_gas' => $jqr_process_fuel_gas,
+            'jqr_structural_skid' => $jqr_structural_skid,
+            'jqr_threaded_piping' => $jqr_threaded_piping,
+            'jqr_tubing' => $jqr_tubing,
+            'jqr_gaskets' => $jqr_gaskets
+        ]);
     }
 
      /**
