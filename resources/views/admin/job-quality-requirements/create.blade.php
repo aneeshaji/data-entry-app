@@ -2248,7 +2248,7 @@
                                             <input type="text" id="twitter1" name="run_test_notification_requirement" value="{{ isset($jqr_package_testing->run_test_notification_requirement) ? $jqr_package_testing->run_test_notification_requirement : '' }}" class="form-control" placeholder="" />
                                         </div>
                                         <div class="col-sm-6">
-                                            <small class="text-light fw-semibold d-block">Run Test Requirement</small>
+                                            <label class="form-label">Run Test Requirement</label>
                                             <div class="form-check form-check-inline mt-3">
                                                 <input class="form-check-input" name="run_test_requirement[]" type="checkbox" id="inlineCheckbox1"
                                                     value="1"
