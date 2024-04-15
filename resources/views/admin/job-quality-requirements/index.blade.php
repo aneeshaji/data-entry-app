@@ -8,69 +8,93 @@
                 <div id="sticky-wrapper" class="sticky-wrapper" style="height: 85.675px;">
                     <div class="card-header sticky-element bg-label-secondary d-flex justify-content-sm-between align-items-sm-center flex-column flex-sm-row"
                         style="">
-                        <h4 class="py-3 mb-4"><span class="text-muted fw-light">Job Quality Requirements /</span> List</h4>
-                        <div class="action-btns">
+                        <h4 class="py-3 mb-4"><span class="text-muted fw-light">Job Quality Requirements /</span> List
+                        </h4>
+                        <div class="action-btns add-jqr-btn">
                             <!-- <button class="btn btn-label-primary me-3 waves-effect">
                                 <span class="align-middle"> Back</span>
                             </button> -->
-                            <a href="{{ url('/admin/job-quality-requirements/create') }}" class="btn btn-primary waves-effect waves-light">Add JQR</a>
+                            <a href="{{ url('/admin/job-quality-requirements/create') }}"
+                                class="btn btn-primary waves-effect waves-light">Add JQR</a>
                         </div>
                     </div>
                 </div>
                 <!-- <h5 class="card-header">Hoverable rows</h5> -->
+                <div class="card">
+                    <!-- <h5 class="card-header">Advanced Search</h5> -->
+                    <!--Search Form -->
+                    <div class="card-body">
+                        <form class="dt_adv_search">
+                            <div class="row">
+                                <div class="col-12">
+                                    <div class="row g-3">
+                                        <div class="col-12 col-sm-6 col-lg-4">
+                                            <label class="form-label">MTRS Required</label>
+                                            <select id='mtrs_required' class="form-control" style="width: 200px">
+                                                    <option disabled selected>-Select-</option>
+                                                    <option value="1">Yes</option>
+                                                    <option value="0">No</option>
+                                                </select>
+                                        </div>
+                                        <div class="col-12 col-sm-6 col-lg-4">
+                                            <label class="form-label">NDE Requirements Required</label>
+                                            <select id='nde_requirements_required' class="form-control"
+                                                    style="width: 200px">
+                                                    <option disabled selected>-Select-</option>
+                                                    <option value="1">Yes</option>
+                                                    <option value="0">No</option>
+                                                </select>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                    <!-- <hr class="mt-0"> -->
+                </div>
                 <div class="table-responsive text-nowrap">
-                    <table class="table table-hover">
+                    <table class="table table-hover data-table">
                         <thead>
+                            <!-- <tr>
+                                <div class="container">
+                                    <div class="inline-div">
+                                        <div class="form-group">
+                                            <label><strong>MTRS Required</strong></label>
+                                            <select id='mtrs_required' class="form-control" style="width: 200px">
+                                                <option disabled selected>-Select-</option>
+                                                <option value="1">Yes</option>
+                                                <option value="0">No</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div class="inline-div">
+                                        <div class="form-group">
+                                            <label><strong>NDE Requirements Required</strong></label>
+                                            <select id='nde_requirements_required' class="form-control"
+                                                style="width: 200px">
+                                                <option disabled selected>-Select-</option>
+                                                <option value="1">Yes</option>
+                                                <option value="0">No</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                </div>
+                            </tr> -->
                             <tr>
-                                <th>Sl.No</th>
+                                <th>Job Number</th>
                                 <th>Job Name</th>
                                 <th>Stages</th>
                                 <th>Release Date</th>
                                 <th>Due Date</th>
+                                <th>MTRS Required</th>
+                                <th>NDE Requirements Required</th>
                                 <th>Actions</th>
                             </tr>
                         </thead>
-                        <tbody class="table-border-bottom-0">
-                            @if ($jqrs->count() > 0)
-                            @foreach ($jqrs as $key => $value)
-                            <tr>
-                                <td>
-                                    <span class="fw-medium">{{ $key + 1 }}</span>
-                                </td>
-                                <td>{{ $value->job_name }}</td>
-                                <td>
-                                    {{ $value->stages }}
-                                </td>
-                                <td><span class="">{{ $value->release_date }}</span></td>
-                                <td><span class="">{{ $value->due_date }}</span></td>
-                                <td>
-                                    <div class="dropdown">
-                                        <button type="button" class="btn p-0 dropdown-toggle hide-arrow"
-                                            data-bs-toggle="dropdown">
-                                            <i class="ti ti-dots-vertical"></i>
-                                        </button>
-                                        <div class="dropdown-menu">
-                                            <a class="dropdown-item"
-                                                href="{{ url('admin/job-quality-requirements/' . encrypt($value->id) . '/edit') }}"><i
-                                                    class="ti ti-pencil me-1"></i> Edit</a>
-                                            <a class="dropdown-item" href="{{ url('admin/job-quality-requirements/' . encrypt($value->id)) }}"><i
-                                                    class="ti ti-download"></i> View</a>
-                                            <a class="dropdown-item" href="{{ url('/generate-pdf/'. encrypt($value->id)) }}"><i
-                                                    class="ti ti-download"></i> Download</a>
-                                        </div>
-                                    </div>
-                                </td>
-                            </tr>
-                            @endforeach
-                            @else
-                            <td colspan="6" class="text-bold text-danger text-center">
-                                No Data Found
-                            </td>
-                            @endif
-                        </tbody>
+
                     </table>
                 </div>
-                {{ $jqrs->render() }}
+
             </div>
         </div>
         <!-- / Content -->
@@ -110,3 +134,62 @@
         <div class="content-backdrop fade"></div>
     </div>
 </x-app-layout>
+<script>
+$(function() {
+    var table = $('.data-table').DataTable({
+        processing: true,
+        serverSide: true,
+        ajax: {
+            url: "{{ route('admin.job-quality-requirements') }}",
+            data: function(d) {
+                d.mtrs_required = $('#mtrs_required').val(),
+                    d.nde_requirements_required = $('#nde_requirements_required').val(),
+                    d.search = $('input[type="search"]').val()
+            }
+        },
+        columns: [{
+                data: 'job_number',
+                name: 'job_number'
+            },
+            {
+                data: 'job_name',
+                name: 'job_name'
+            },
+            {
+                data: 'stages',
+                name: 'stages'
+            },
+            {
+                data: 'release_date',
+                name: 'release_date'
+            },
+            {
+                data: 'due_date',
+                name: 'due_date'
+            },
+            {
+                data: 'mtrs_required',
+                name: 'mtrs_required'
+            },
+            {
+                data: 'nde_requirements_required',
+                name: 'nde_requirements_required'
+            },
+            {
+                data: 'action',
+                name: 'action',
+                orderable: false,
+                searchable: false
+            }
+        ]
+    });
+
+    $('#mtrs_required').change(function() {
+        table.draw();
+    });
+
+    $('#nde_requirements_required').change(function() {
+        table.draw();
+    });
+});
+</script>

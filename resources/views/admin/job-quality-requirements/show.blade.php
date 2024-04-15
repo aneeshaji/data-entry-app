@@ -184,7 +184,8 @@
                                 <td colspan="6">MATERIAL NOTES: {{ isset($jqr_pressure_vessels->material_notes) ? $jqr_pressure_vessels->material_notes : '' }}</td>
                             </tr>
                             <tr>
-                                <td colspan="6">NACE: {{ isset($jqr_pressure_vessels->nace) ? ($jqr_pressure_vessels->nace == '1' ? 'Yes' : 'No') : '' }}</td>
+                                <td colspan="">NACE: {{ isset($jqr_pressure_vessels->nace) ? ($jqr_pressure_vessels->nace == '1' ? 'Yes' : 'No') : '' }}</td>
+                                <td colspan="5">NDE REQUIREMENTS REQUIRED: {{ isset($jqr_pressure_vessels->nde_requirements_required) ? ($jqr_pressure_vessels->nde_requirements_required == '1' ? 'Yes' : 'No') : '' }}</td>
                             </tr>
                             <tr>
                                 <td colspan="6">NDE REQUIREMENTS: {{ isset($jqr_pressure_vessels->nde_requirements) ? $jqr_pressure_vessels->nde_requirements : '' }}</td>
@@ -259,7 +260,7 @@
                             </tr>
                             <tr>
                                 <td>GOVERNING CODE: {{ isset($jqr_non_code->governing_code) ? $jqr_non_code->governing_code : '' }}</td>
-                                <td colspan="5">PWHT: {{ ($jqr_non_code->pwht == '0') ? "Yes" : (($jqr_non_code->pwht == '1')  ? "No" : "Per Code REQ") }}</td>
+                                <td colspan="5">PWHT: {{ isset($jqr_non_code->pwht) ? (($jqr_non_code->pwht == '0') ? "Yes" : (($jqr_non_code->pwht == '1')  ? "No" : "Per Code REQ")) : '' }}</td>
                             </tr>
                             <tr>
                                 <td>HYDRO HOLD TIME: {{ isset($jqr_non_code->hydro_hold_time) ? $jqr_non_code->hydro_hold_time : '' }}</td>
@@ -473,7 +474,7 @@
                             </tr>
                             <tr>
                                 <td>GOVERNING CODE: {{ isset($jqr_butt->governing_code) ? $jqr_butt->governing_code : '' }}</td>
-                                <td colspan="5">PWHT: {{ ($jqr_butt->pwht == '0') ? "Yes" : (($jqr_butt->pwht == '1')  ? "N0" : "Per Code REQ") }}</td>
+                                <td colspan="5">PWHT: {{ isset($jqr_butt->pwht) ? (($jqr_butt->pwht == '0') ? "Yes" : (($jqr_butt->pwht == '1')  ? "N0" : "Per Code REQ")) : '' }}</td>
                             </tr>
                             <tr>
                                 <td>HYDRO HOLD TIME: {{ isset($jqr_butt->hydro_hold_time) ? $jqr_butt->hydro_hold_time : '' }}</td>
@@ -481,7 +482,7 @@
                             </tr>
                             <tr>
                                 <td>HARDNESS TEST: {{ isset($jqr_butt->hardness_test) ? ($jqr_butt->hardness_test == '1' ? 'Yes' : 'No') : '' }}</td>
-                                <td colspan="5">MAX HARDNESS: {{ $jqr_butt->max_hardness }}</td>
+                                <td colspan="5">MAX HARDNESS: {{ isset($jqr_butt->max_hardness) ? $jqr_butt->max_hardness : '' }}</td>
                             </tr>
                             <tr>
                                 <td>HYDRO CHART REQUIRED: {{ isset($jqr_butt->hydro_chart_required) ? ($jqr_butt->hydro_chart_required == '1' ? 'Yes' : 'No') : '' }}</td>
@@ -612,7 +613,7 @@
                             </tr>
                             <tr>
                                 <td>VACCUM NOTIFICATION REQUIREMENT: {{ isset($jqr_package_testing->vaccum_notification_requirement) ? $jqr_package_testing->vaccum_notification_requirement : '' }}</td>
-                                <td colspan="5">LEVEL: {{ $jqr_package_testing->level }}</td>
+                                <td colspan="5">LEVEL: {{ isset($jqr_package_testing->level) ? $jqr_package_testing->level : '' }}</td>
                             </tr>
                             <tr>
                                 <td>DURATION AT LEVEL: {{ isset($jqr_package_testing->duration_at_level) ? $jqr_package_testing->duration_at_level : '' }}</td>
@@ -634,7 +635,7 @@
                             </tr>
                             <tr>
                                 <td>LUBE OIL FLUSH NOTIFICATION REQUIREMENT: {{ isset($jqr_package_testing->lube_oil_flush_notification_requirement) ? $jqr_package_testing->lube_oil_flush_notification_requirement : '' }}</td>
-                                <td colspan="5">LUBE OIL FLUSH NOTES: {{ $jqr_package_testing->lube_oil_flush_notes }}</td>
+                                <td colspan="5">LUBE OIL FLUSH NOTES: {{ isset($jqr_package_testing->lube_oil_flush_notes) ? $jqr_package_testing->lube_oil_flush_notes : '' }}</td>
                             </tr>
                             <tr>
                                 <td>RUN TEST: {{ isset($jqr_package_testing->pneumatic_testing_customer_third_party_witness_required) ? ($jqr_package_testing->pneumatic_testing_customer_third_party_witness_required == '1' ? 'Yes' : 'No') : '' }}</td>
@@ -682,7 +683,7 @@
                                 <td colspan="5">ADDENDUM PURCHASING SPECIFICATIONS COMPLETE: {{ isset($jqr_package_testing->addendum_purchasing_specifications_complete) ? ($jqr_package_testing->addendum_purchasing_specifications_complete == '1' ? 'Yes' : 'No') : '' }}</td>
                             </tr>
                             <tr>
-                                <td>ADDENDUM PURCHASING SPECIFICATIONS NOTES: {{ $jqr_package_testing->addendum_purchasing_specifications_notes }}</td>
+                                <td>ADDENDUM PURCHASING SPECIFICATIONS NOTES: {{ isset($jqr_package_testing->addendum_purchasing_specifications_notes) ? $jqr_package_testing->addendum_purchasing_specifications_notes : '' }}</td>
                                 <td colspan="5">ADDENDUM MANUFACTURING SPECIFICATIONS: {{ isset($jqr_package_testing->addendum_manufacturing_specifications) ? ($jqr_package_testing->addendum_manufacturing_specifications == '1' ? 'Yes' : 'No') : '' }}</td>
                             </tr>
                             <tr>

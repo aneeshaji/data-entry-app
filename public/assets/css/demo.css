@@ -127,3 +127,29 @@
   text-align: center;
   margin-top: 1rem;
 }
+.inline-div {
+  display: inline-block;
+  width: 45%; /* Adjust width as needed */
+  padding: 10px;
+  margin: 5px;
+}
+.dataTables_length {
+  padding-left: 20px;
+  padding-top: 20px;
+}
+.dataTables_filter {
+  /* padding-right: 20px; */
+  padding-top: 20px;
+}
+.dataTables_info {
+  padding-left: 20px;
+  padding-bottom: 20px;
+}
+.pagination {
+  padding-right: 20px;
+  padding-bottom: 20px;
+}
+.add-jqr-btn {
+  padding-bottom: 20px;
+}
+
