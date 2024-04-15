@@ -49,7 +49,7 @@ class JobQualityRequirementController extends Controller
                     $btn = '<div class="dropdown"><button type="button" class="btn p-0 dropdown-toggle hide-arrow"
                         data-bs-toggle="dropdown">
                         <i class="ti ti-dots-vertical"></i>
-                        </button><div class="dropdown-menu"><a class="dropdown-item" href="' . url('admin/job-quality-requirements', encrypt($row->id) . '/edit') . '">
+                        </button><div class="dropdown-menu"><a class="dropdown-item" href="' . url('admin/job-quality-requirements/' . encrypt($row->id) . '/edit') . '">
                         <i class="ti ti-pencil me-1"></i>Edit</a>';
                     $btn = $btn . '<a class="dropdown-item" href="' . url('admin/job-quality-requirements', encrypt($row->id)) . '">
                         <i class="ti ti-eye"></i>View</a>';
