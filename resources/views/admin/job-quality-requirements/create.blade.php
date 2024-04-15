@@ -754,6 +754,16 @@
                                             </label>
                                         </div>
                                         <div class="col-sm-6">
+                                            <label class="switch">
+                                                <input type="checkbox" class="switch-input" name="nde_requirements_required" {{ isset($jqr_pressure_vessels->nde_requirements_required) && $jqr_pressure_vessels->nde_requirements_required == '1' ? 'checked': '' }} >
+                                                <span class="switch-toggle-slider">
+                                                    <span class="switch-on"></span>
+                                                    <span class="switch-off"></span>
+                                                </span>
+                                                <span class="switch-label">NDE Requirements Required</span>
+                                            </label>
+                                        </div>
+                                        <div class="col-sm-6">
                                             <label class="form-label" for="linkedin1">NDE Requirements</label>
                                             <textarea class="form-control" name="nde_requirements" id="exampleFormControlTextarea1"
                                                 rows="3">{{ isset($jqr_pressure_vessels->nde_requirements) ? $jqr_pressure_vessels->nde_requirements: '' }}</textarea>

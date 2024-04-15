@@ -17,6 +17,7 @@ class PressureVessels extends Model
         'weld_mapping',
         'material_notes',
         'nace',
+        'nde_requirements_required',
         'nde_requirements',
         'weld_requirements',
         'governing_code',

@@ -2,32 +2,32 @@
 
 namespace App\Http\Controllers\Admin;
 
-use App\Http\Requests\JobQualityRequirementCreateRequest;
-use Illuminate\Http\RedirectResponse;
-use Illuminate\Http\Request;
-use Illuminate\Support\Facades\DB;
 use App\Http\Controllers\Controller;
-use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\Redirect;
-use Illuminate\View\View;
+use App\Http\Requests\JobQualityRequirementCreateRequest;
 use App\Models\BasicDetails;
-use App\Models\SpecialMaterialRequirements;
-use App\Models\GeneralInformation;
-use App\Models\ServiceInformation;
 use App\Models\Bolting;
 use App\Models\ButtWeldedSocketWeldedUtilityPiping;
 use App\Models\ElectricalInstrumentation;
+use App\Models\Gaskets;
+use App\Models\GeneralInformation;
 use App\Models\NonCodeVesselsTanks;
 use App\Models\PackageTesting;
 use App\Models\Preservation;
 use App\Models\PressureVessels;
 use App\Models\ProcessFuelGasStartGasPiping;
+use App\Models\ServiceInformation;
+use App\Models\SpecialMaterialRequirements;
 use App\Models\StructuralSkid;
 use App\Models\ThreadedPiping;
 use App\Models\Tubing;
-use App\Models\Gaskets;
 use Barryvdh\DomPDF\Facade\Pdf;
-
+use Illuminate\Http\RedirectResponse;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Redirect;
+use Illuminate\View\View;
+use DataTables;
 
 class JobQualityRequirementController extends Controller
 {
@@ -39,13 +39,53 @@ class JobQualityRequirementController extends Controller
      *
      * @return \Illuminate\Contracts\Support\Renderable
      */
-    public function index()
+    public function index(Request $request)
     {
-        $jqrs = BasicDetails::orderBy('created_at','DESC')
-                            ->paginate(10);
-        return view('admin.job-quality-requirements.index', [
-            'jqrs' => $jqrs
-        ]);
+        if ($request->ajax()) {
+            $data = BasicDetails::with('pressureVessels');
+            return Datatables::of($data)
+                ->addIndexColumn()
+                ->addColumn('action', function ($row) {
+                    $btn = '<div class="dropdown"><button type="button" class="btn p-0 dropdown-toggle hide-arrow"
+                        data-bs-toggle="dropdown">
+                        <i class="ti ti-dots-vertical"></i>
+                        </button><div class="dropdown-menu"><a class="dropdown-item" href="' . url('admin/job-quality-requirements', encrypt($row->id) . '/edit') . '">
+                        <i class="ti ti-pencil me-1"></i>Edit</a>';
+                    $btn = $btn . '<a class="dropdown-item" href="' . url('admin/job-quality-requirements', encrypt($row->id)) . '">
+                        <i class="ti ti-eye"></i>View</a>';
+                    $btn = $btn . '<a class="dropdown-item" href="' . url('/generate-pdf', encrypt($row->id)) . '">
+                        <i class="ti ti-download"></i>Download</a></div></div>';
+                    return $btn;
+                })
+                ->addColumn('mtrs_required', function (BasicDetails $basic_details) {
+                    return isset($basic_details->pressureVessels->mtrs_required) ? ($basic_details->pressureVessels->mtrs_required == '1' ? 'Yes' : 'No') : '';
+                })
+                ->addColumn('nde_requirements_required', function (BasicDetails $basic_details) {
+                    return isset($basic_details->pressureVessels->nde_requirements_required) ? ($basic_details->pressureVessels->nde_requirements_required == '1' ? 'Yes' : 'No') : '';
+                })
+                ->filter(function ($query) use ($request) {
+                    if ($request->mtrs_required != NULL) {
+                        $query->whereHas('pressureVessels', function ($q) use ($request) {
+                            $q->where('mtrs_required', $request->mtrs_required);
+                        });
+                    }
+                    if ($request->nde_requirements_required != NULL) {
+                        $query->whereHas('pressureVessels', function ($q) use ($request) {
+                            $q->where('nde_requirements_required', $request->nde_requirements_required);
+                        });
+                    }
+                    if (!empty($request->get('search'))) {
+                        $query->where(function ($w) use ($request) {
+                            $search = $request->get('search');
+                            $w
+                                ->orWhere('job_number', 'LIKE', "%$search%")
+                                ->orWhere('job_name', 'LIKE', "%$search%");
+                        });
+                    }
+                })
+                ->make(true);
+        }
+        return view('admin.job-quality-requirements.index');
     }
 
     /**
@@ -64,7 +104,7 @@ class JobQualityRequirementController extends Controller
         ]);
     }
 
-     /**
+    /**
      * Create JQR.
      * Created On : 02-04-2024
      * Author : Aneesh Ajithkumar
@@ -114,7 +154,9 @@ class JobQualityRequirementController extends Controller
             if (in_array('2', $jqr_package_testing_run_test_requirements)) {
                 $run[] = 'No Load';
             }
-            $run_test_reqs = implode(",", $run);
+            if ($run != null) {
+                $run_test_reqs = isset($run) ? implode(',', $run) : '';
+            }
         } else {
             $jqr_package_testing_run_test_requirements = [];
         }
@@ -162,7 +204,7 @@ class JobQualityRequirementController extends Controller
 
         if ($basic_details->id) {
             return response(['status' => true, 'message' => 'Success', 'id' => $basic_details->id,
-            'redirect' => route('admin.job-quality-requirements')]);
+                'redirect' => route('admin.job-quality-requirements')]);
         } else {
             return response(['status' => false, 'message' => 'Error']);
         }
@@ -175,17 +217,17 @@ class JobQualityRequirementController extends Controller
             // For Edit
             $special_material_requirements = SpecialMaterialRequirements::where('id', $request->id)->first();
         } else {
-            $special_material_requirements  = new SpecialMaterialRequirements();
+            $special_material_requirements = new SpecialMaterialRequirements();
         }
 
         $special_material_requirements->basic_details_id = $request->basic_details_id;
-        $special_material_requirements->pipes_and_fittings = $request->pipes_and_fittings == 'on' ? '1':'0';
+        $special_material_requirements->pipes_and_fittings = $request->pipes_and_fittings == 'on' ? '1' : '0';
 
-        $special_material_requirements->bolting =  $request->bolting == 'on' ? '1':'0';
-        $special_material_requirements->pressure_vessels = $request->pressure_vessels == 'on' ? '1':'0';
-        $special_material_requirements->gaskets =  $request->gaskets == 'on' ? '1':'0';
-        $special_material_requirements->structural_steel =  $request->structural_steel == 'on' ? '1':'0';
-        $special_material_requirements->tubing =  $request->tubing == 'on' ? '1':'0';
+        $special_material_requirements->bolting = $request->bolting == 'on' ? '1' : '0';
+        $special_material_requirements->pressure_vessels = $request->pressure_vessels == 'on' ? '1' : '0';
+        $special_material_requirements->gaskets = $request->gaskets == 'on' ? '1' : '0';
+        $special_material_requirements->structural_steel = $request->structural_steel == 'on' ? '1' : '0';
+        $special_material_requirements->tubing = $request->tubing == 'on' ? '1' : '0';
         $special_material_requirements->save();
 
         if ($special_material_requirements->id) {
@@ -194,12 +236,12 @@ class JobQualityRequirementController extends Controller
                 'message' => 'Success',
                 'id' => $special_material_requirements->id,
                 'basic_details_id' => $special_material_requirements->basic_details_id,
-                'redirect' => route('admin.job-quality-requirements')]);
+                'redirect' => route('admin.job-quality-requirements')
+            ]);
         } else {
             return response(['status' => false, 'message' => 'Error']);
         }
     }
-
 
     public function saveGeneralData(Request $request)
     {
@@ -208,7 +250,7 @@ class JobQualityRequirementController extends Controller
             // For Edit
             $general_info = GeneralInformation::where('id', $request->id)->first();
         } else {
-            $general_info  = new GeneralInformation();
+            $general_info = new GeneralInformation();
         }
 
         $general_info->basic_details_id = $request->basic_details_id;
@@ -227,12 +269,11 @@ class JobQualityRequirementController extends Controller
 
         if ($general_info->id) {
             return response(['status' => true, 'message' => 'Success', 'id' => $general_info->id,
-            'redirect' => route('admin.job-quality-requirements')]);
+                'redirect' => route('admin.job-quality-requirements')]);
         } else {
             return response(['status' => false, 'message' => 'Error']);
         }
     }
-
 
     public function saveServiceData(Request $request)
     {
@@ -241,20 +282,20 @@ class JobQualityRequirementController extends Controller
             // For Edit
             $service_info = ServiceInformation::where('id', $request->id)->first();
         } else {
-            $service_info  = new ServiceInformation();
+            $service_info = new ServiceInformation();
         }
 
         $service_info->basic_details_id = $request->basic_details_id;
         $service_info->gas_processed = $request->gas_processed;
         $service_info->application = $request->application;
-        $service_info->sour_service_required = $request->sour_service_required == 'on' ? '1':'0';
+        $service_info->sour_service_required = $request->sour_service_required == 'on' ? '1' : '0';
         $service_info->other = $request->other;
         $service_info->notes = $request->notes;
         $service_info->save();
 
         if ($service_info->id) {
             return response(['status' => true, 'message' => 'Success', 'id' => $service_info->id,
-            'redirect' => route('admin.job-quality-requirements')]);
+                'redirect' => route('admin.job-quality-requirements')]);
         } else {
             return response(['status' => false, 'message' => 'Error']);
         }
@@ -268,7 +309,7 @@ class JobQualityRequirementController extends Controller
             // For Edit
             $structural_skid = StructuralSkid::where('id', $request->id)->first();
         } else {
-            $structural_skid  = new StructuralSkid();
+            $structural_skid = new StructuralSkid();
         }
 
         $structural_skid->basic_details_id = $request->basic_details_id;
@@ -291,7 +332,7 @@ class JobQualityRequirementController extends Controller
 
         if ($structural_skid->id) {
             return response(['status' => true, 'message' => 'Success', 'id' => $structural_skid->id,
-            'redirect' => route('admin.job-quality-requirements')]);
+                'redirect' => route('admin.job-quality-requirements')]);
         } else {
             return response(['status' => false, 'message' => 'Error']);
         }
@@ -305,7 +346,7 @@ class JobQualityRequirementController extends Controller
             // For Edit
             $pressure_vessels = PressureVessels::where('id', $request->id)->first();
         } else {
-            $pressure_vessels  = new PressureVessels();
+            $pressure_vessels = new PressureVessels();
         }
 
         $pressure_vessels->basic_details_id = $request->basic_details_id;
@@ -314,10 +355,11 @@ class JobQualityRequirementController extends Controller
         $pressure_vessels->origin_traceable_to_melt = $request->origin_traceable_to_melt == 'on' ? '1' : '0';
         $pressure_vessels->acceptable_material_origins = $request->acceptable_material_origins;
         $pressure_vessels->mtrs_required = $request->mtrs_required == 'on' ? '1' : '0';
-        $pressure_vessels->heat_mapping = $request->heat_mapping== 'on' ? '1' : '0';
-        $pressure_vessels->weld_mapping = $request->weld_mapping== 'on' ? '1' : '0';
+        $pressure_vessels->heat_mapping = $request->heat_mapping == 'on' ? '1' : '0';
+        $pressure_vessels->weld_mapping = $request->weld_mapping == 'on' ? '1' : '0';
         $pressure_vessels->material_notes = $request->material_notes;
         $pressure_vessels->nace = $request->nace == 'on' ? '1' : '0';
+        $pressure_vessels->nde_requirements_required = $request->nde_requirements_required == 'on' ? '1' : '0';
         $pressure_vessels->nde_requirements = $request->nde_requirements;
         $pressure_vessels->weld_requirements = $request->weld_requirements;
         $pressure_vessels->governing_code = $request->governing_code;
@@ -334,7 +376,7 @@ class JobQualityRequirementController extends Controller
 
         if ($pressure_vessels->id) {
             return response(['status' => true, 'message' => 'Success', 'id' => $pressure_vessels->id,
-            'redirect' => route('admin.job-quality-requirements')]);
+                'redirect' => route('admin.job-quality-requirements')]);
         } else {
             return response(['status' => false, 'message' => 'Error']);
         }
@@ -348,7 +390,7 @@ class JobQualityRequirementController extends Controller
             // For Edit
             $non_code_vess = NonCodeVesselsTanks::where('id', $request->id)->first();
         } else {
-            $non_code_vess  = new NonCodeVesselsTanks();
+            $non_code_vess = new NonCodeVesselsTanks();
         }
 
         $non_code_vess->basic_details_id = $request->basic_details_id;
@@ -378,7 +420,7 @@ class JobQualityRequirementController extends Controller
 
         if ($non_code_vess->id) {
             return response(['status' => true, 'message' => 'Success', 'id' => $non_code_vess->id,
-            'redirect' => route('admin.job-quality-requirements')]);
+                'redirect' => route('admin.job-quality-requirements')]);
         } else {
             return response(['status' => false, 'message' => 'Error']);
         }
@@ -392,7 +434,7 @@ class JobQualityRequirementController extends Controller
             // For Edit
             $process_fual_gas = ProcessFuelGasStartGasPiping::where('id', $request->id)->first();
         } else {
-            $process_fual_gas  = new ProcessFuelGasStartGasPiping();
+            $process_fual_gas = new ProcessFuelGasStartGasPiping();
         }
 
         $process_fual_gas->basic_details_id = $request->basic_details_id;
@@ -421,7 +463,7 @@ class JobQualityRequirementController extends Controller
 
         if ($process_fual_gas->id) {
             return response(['status' => true, 'message' => 'Success', 'id' => $process_fual_gas->id,
-            'redirect' => route('admin.job-quality-requirements')]);
+                'redirect' => route('admin.job-quality-requirements')]);
         } else {
             return response(['status' => false, 'message' => 'Error']);
         }
@@ -435,13 +477,13 @@ class JobQualityRequirementController extends Controller
             // For Edit
             $bolting = Bolting::where('id', $request->id)->first();
         } else {
-            $bolting  = new Bolting();
+            $bolting = new Bolting();
         }
 
         $bolting->basic_details_id = $request->basic_details_id;
         $bolting->efx_standard_no_cocs = $request->efx_standard_no_cocs == 'on' ? '1' : '0';
         $bolting->vendor_coc = $request->vendor_coc == 'on' ? '1' : '0';
-        $bolting->manufacturer_coc = $request->manufacturer_coc== 'on' ? '1' : '0';
+        $bolting->manufacturer_coc = $request->manufacturer_coc == 'on' ? '1' : '0';
         $bolting->mtrs = $request->mtrs == 'on' ? '1' : '0';
         $bolting->material_notes = $request->material_notes;
 
@@ -449,7 +491,7 @@ class JobQualityRequirementController extends Controller
 
         if ($bolting->id) {
             return response(['status' => true, 'message' => 'Success', 'id' => $bolting->id,
-            'redirect' => route('admin.job-quality-requirements')]);
+                'redirect' => route('admin.job-quality-requirements')]);
         } else {
             return response(['status' => false, 'message' => 'Error']);
         }
@@ -463,7 +505,7 @@ class JobQualityRequirementController extends Controller
             // For Edit
             $service_info = Gaskets::where('id', $request->id)->first();
         } else {
-            $service_info  = new Gaskets();
+            $service_info = new Gaskets();
         }
 
         $service_info->basic_details_id = $request->basic_details_id;
@@ -476,7 +518,7 @@ class JobQualityRequirementController extends Controller
 
         if ($service_info->id) {
             return response(['status' => true, 'message' => 'Success', 'id' => $service_info->id,
-            'redirect' => route('admin.job-quality-requirements')]);
+                'redirect' => route('admin.job-quality-requirements')]);
         } else {
             return response(['status' => false, 'message' => 'Error']);
         }
@@ -490,7 +532,7 @@ class JobQualityRequirementController extends Controller
             // For Edit
             $tubing = Tubing::where('id', $request->id)->first();
         } else {
-            $tubing  = new Tubing();
+            $tubing = new Tubing();
         }
 
         $tubing->basic_details_id = $request->basic_details_id;
@@ -512,7 +554,7 @@ class JobQualityRequirementController extends Controller
 
         if ($tubing->id) {
             return response(['status' => true, 'message' => 'Success', 'id' => $tubing->id,
-            'redirect' => route('admin.job-quality-requirements')]);
+                'redirect' => route('admin.job-quality-requirements')]);
         } else {
             return response(['status' => false, 'message' => 'Error']);
         }
@@ -526,7 +568,7 @@ class JobQualityRequirementController extends Controller
             // For Edit
             $buttPiping = ButtWeldedSocketWeldedUtilityPiping::where('id', $request->id)->first();
         } else {
-            $buttPiping  = new ButtWeldedSocketWeldedUtilityPiping();
+            $buttPiping = new ButtWeldedSocketWeldedUtilityPiping();
         }
 
         $buttPiping->basic_details_id = $request->basic_details_id;
@@ -539,7 +581,7 @@ class JobQualityRequirementController extends Controller
         $buttPiping->heat_mapping = $request->heat_mapping == 'on' ? '1' : '0';
         $buttPiping->weld_mapping = $request->weld_mapping == 'on' ? '1' : '0';
         $buttPiping->material_notes = $request->material_notes;
-        $buttPiping->nace = $request->nace == 'on' ? '1' : '0' ;
+        $buttPiping->nace = $request->nace == 'on' ? '1' : '0';
         $buttPiping->nde_requirements = $request->nde_requirements == 'on' ? '1' : '0';;
         $buttPiping->weld_requirements = $request->weld_requirements;
         $buttPiping->governing_code = $request->governing_code;
@@ -556,7 +598,7 @@ class JobQualityRequirementController extends Controller
 
         if ($buttPiping->id) {
             return response(['status' => true, 'message' => 'Success', 'id' => $buttPiping->id,
-            'redirect' => route('admin.job-quality-requirements')]);
+                'redirect' => route('admin.job-quality-requirements')]);
         } else {
             return response(['status' => false, 'message' => 'Error']);
         }
@@ -570,7 +612,7 @@ class JobQualityRequirementController extends Controller
             // For Edit
             $threaded = ThreadedPiping::where('id', $request->id)->first();
         } else {
-            $threaded  = new ThreadedPiping();
+            $threaded = new ThreadedPiping();
         }
 
         $threaded->basic_details_id = $request->basic_details_id;
@@ -589,7 +631,7 @@ class JobQualityRequirementController extends Controller
 
         if ($threaded->id) {
             return response(['status' => true, 'message' => 'Success', 'id' => $threaded->id,
-            'redirect' => route('admin.job-quality-requirements')]);
+                'redirect' => route('admin.job-quality-requirements')]);
         } else {
             return response(['status' => false, 'message' => 'Error']);
         }
@@ -603,13 +645,13 @@ class JobQualityRequirementController extends Controller
             // For Edit
             $electrical = ElectricalInstrumentation::where('id', $request->id)->first();
         } else {
-            $electrical  = new ElectricalInstrumentation();
+            $electrical = new ElectricalInstrumentation();
         }
 
         $electrical->basic_details_id = $request->basic_details_id;
         $electrical->customer_avl_applies = $request->customer_avl_applies == 'on' ? '1' : '0';
         $electrical->acceptable_material_origins = $request->acceptable_material_origins;
-        $electrical->vendor_restrictions = $request->vendor_restrictions == 'on' ? '1' : '0' ;
+        $electrical->vendor_restrictions = $request->vendor_restrictions == 'on' ? '1' : '0';
         $electrical->specify = $request->specify;
         $electrical->approved_vendors = $request->approved_vendors;
         $electrical->material_notes = $request->material_notes;
@@ -620,7 +662,7 @@ class JobQualityRequirementController extends Controller
 
         if ($electrical->id) {
             return response(['status' => true, 'message' => 'Success', 'id' => $electrical->id,
-            'redirect' => route('admin.job-quality-requirements')]);
+                'redirect' => route('admin.job-quality-requirements')]);
         } else {
             return response(['status' => false, 'message' => 'Error']);
         }
@@ -634,7 +676,7 @@ class JobQualityRequirementController extends Controller
             // For Edit
             $preservation = Preservation::where('id', $request->id)->first();
         } else {
-            $preservation  = new Preservation();
+            $preservation = new Preservation();
         }
 
         $preservation->basic_details_id = $request->basic_details_id;
@@ -647,7 +689,7 @@ class JobQualityRequirementController extends Controller
 
         if ($preservation->id) {
             return response(['status' => true, 'message' => 'Success', 'id' => $preservation->id,
-            'redirect' => route('admin.job-quality-requirements')]);
+                'redirect' => route('admin.job-quality-requirements')]);
         } else {
             return response(['status' => false, 'message' => 'Error']);
         }
@@ -661,13 +703,13 @@ class JobQualityRequirementController extends Controller
             // For Edit
             $package_testing = PackageTesting::where('id', $request->id)->first();
         } else {
-            $package_testing  = new PackageTesting();
+            $package_testing = new PackageTesting();
         }
 
         $package_testing->basic_details_id = $request->basic_details_id;
         $package_testing->pneumatic_testing = $request->pneumatic_testing == 'on' ? '1' : '0';
         $package_testing->pneumatic_testing_customer_third_party_witness_required = $request->pneumatic_testing_customer_third_party_witness_required == 'on' ? '1' : '0';
-        $package_testing->pneumatic_testing_notification_requirement = $request->pneumatic_testing_notification_requirement ;
+        $package_testing->pneumatic_testing_notification_requirement = $request->pneumatic_testing_notification_requirement;
         $package_testing->system = $request->system;
         $package_testing->test_medium = $request->test_medium;
         $package_testing->test_requirement_pressure = $request->test_requirement_pressure;
@@ -718,7 +760,7 @@ class JobQualityRequirementController extends Controller
 
         if ($package_testing->id) {
             return response(['status' => true, 'message' => 'Success', 'id' => $package_testing->id,
-            'redirect' => route('admin.job-quality-requirements')]);
+                'redirect' => route('admin.job-quality-requirements')]);
         } else {
             return response(['status' => false, 'message' => 'Error']);
         }
@@ -748,8 +790,7 @@ class JobQualityRequirementController extends Controller
             // Commit And Redirected To Listing
             DB::commit();
             return response(['status' => true, 'message' => 'Success']);
-            //return redirect()->route('admin.job-quality-requirements.list')->with('success','Basic Details Added Successfully.');
-
+            // return redirect()->route('admin.job-quality-requirements.list')->with('success','Basic Details Added Successfully.');
         } catch (\Throwable $th) {
             // Rollback and return with Error
             DB::rollBack();
@@ -757,7 +798,7 @@ class JobQualityRequirementController extends Controller
         }
     }
 
-     /**
+    /**
      * View JQR.
      * Created On : 09-04-2024
      * Author : Aneesh Ajithkumar
@@ -794,7 +835,9 @@ class JobQualityRequirementController extends Controller
             if (in_array('2', $jqr_package_testing_run_test_requirements)) {
                 $run[] = 'No Load';
             }
-            $run_test_reqs = implode(",", $run);
+            if ($run != null) {
+                $run_test_reqs = isset($run) ? implode(',', $run) : '';
+            }
         } else {
             $jqr_package_testing_run_test_requirements = [];
         }
@@ -809,7 +852,7 @@ class JobQualityRequirementController extends Controller
             'jqr_electrical' => $jqr_electrical,
             'jqr_non_code' => $jqr_non_code,
             'jqr_package_testing' => $jqr_package_testing,
-            'run_test_reqs' => $run_test_reqs,
+            'run_test_reqs' => isset($run_test_reqs) ? $run_test_reqs : '',
             'jqr_preservation' => $jqr_preservation,
             'jqr_pressure_vessels' => $jqr_pressure_vessels,
             'jqr_process_fuel_gas' => $jqr_process_fuel_gas,
@@ -820,7 +863,7 @@ class JobQualityRequirementController extends Controller
         ]);
     }
 
-     /**
+    /**
      * Edit JQR.
      * Created On : 02-04-2024
      * Author : Aneesh Ajithkumar
@@ -875,7 +918,7 @@ class JobQualityRequirementController extends Controller
         ]);
     }
 
-     /**
+    /**
      * Update JQR.
      * Created On : 02-04-2024
      * Author : Aneesh Ajithkumar
