@@ -31,19 +31,26 @@
                                         <div class="col-12 col-sm-6 col-lg-4">
                                             <label class="form-label">MTRS Required</label>
                                             <select id='mtrs_required' class="form-control" style="width: 200px">
-                                                    <option disabled selected>-Select-</option>
-                                                    <option value="1">Yes</option>
-                                                    <option value="0">No</option>
-                                                </select>
+                                                <option disabled selected>-Select-</option>
+                                                <option value="1">Yes</option>
+                                                <option value="0">No</option>
+                                            </select>
                                         </div>
                                         <div class="col-12 col-sm-6 col-lg-4">
                                             <label class="form-label">NDE Requirements Required</label>
                                             <select id='nde_requirements_required' class="form-control"
-                                                    style="width: 200px">
-                                                    <option disabled selected>-Select-</option>
-                                                    <option value="1">Yes</option>
-                                                    <option value="0">No</option>
-                                                </select>
+                                                style="width: 200px">
+                                                <option disabled selected>-Select-</option>
+                                                <option value="1">Yes</option>
+                                                <option value="0">No</option>
+                                            </select>
+                                        </div>
+                                        <div class="col-12 col-sm-6 col-lg-4">
+                                            <button id="reset" class="btn btn-secondary waves-effect waves-light btn-reset" tabindex="0"
+                                                aria-controls="DataTables_Table_0" type="button" aria-haspopup="dialog"
+                                                aria-expanded="false"><span><i class="ti ti-reload"></i>
+                                                    </span></button>
+                                            <!-- <button type="button" id="reset" class="btn rounded-pill btn-info waves-effect waves-light">Info</button> -->
                                         </div>
                                     </div>
                                 </div>
@@ -86,8 +93,8 @@
                                 <th>Stages</th>
                                 <th>Release Date</th>
                                 <th>Due Date</th>
-                                <th>MTRS Required</th>
-                                <th>NDE Requirements Required</th>
+                                <!-- <th>MTRS Required</th>
+                                <th>NDE Requirements Required</th> -->
                                 <th>Actions</th>
                             </tr>
                         </thead>
@@ -168,14 +175,6 @@ $(function() {
                 name: 'due_date'
             },
             {
-                data: 'mtrs_required',
-                name: 'mtrs_required'
-            },
-            {
-                data: 'nde_requirements_required',
-                name: 'nde_requirements_required'
-            },
-            {
                 data: 'action',
                 name: 'action',
                 orderable: false,
@@ -190,6 +189,13 @@ $(function() {
 
     $('#nde_requirements_required').change(function() {
         table.draw();
+    });
+
+    $('#reset').click(function() {
+        $('#mtrs_required').val('');
+        $('#nde_requirements_required').val('');
+        $('input[type="search"]').val('').trigger('keyup');
+        table.ajax.reload();
     });
 });
 </script>
