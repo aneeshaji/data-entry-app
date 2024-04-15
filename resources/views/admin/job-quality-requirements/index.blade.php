@@ -93,8 +93,8 @@
                                 <th>Stages</th>
                                 <th>Release Date</th>
                                 <th>Due Date</th>
-                                <!-- <th>MTRS Required</th>
-                                <th>NDE Requirements Required</th> -->
+                                <th>MTRS Req</th>
+                                <th>NDE Req</th>
                                 <th>Actions</th>
                             </tr>
                         </thead>
@@ -173,6 +173,14 @@ $(function() {
             {
                 data: 'due_date',
                 name: 'due_date'
+            },
+            {
+                data: 'mtrs_required',
+                name: 'mtrs_required'
+            },
+            {
+                data: 'nde_requirements_required',
+                name: 'nde_requirements_required'
             },
             {
                 data: 'action',
