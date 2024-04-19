@@ -196,7 +196,7 @@
 
                             <tr>
                                 <td>GOVERNING CODE: {{ isset($jqr_pressure_vessels->governing_code) ? $jqr_pressure_vessels->governing_code : '' }}</td>
-                                <td colspan="5">PWHT: {{ ($jqr_pressure_vessels->pwht == '0') ? "Yes" : (($jqr_pressure_vessels->pwht == '1')  ? "No" : "Per Code REQ") }}</td>
+                                <td colspan="5">PWHT: {{ isset($jqr_pressure_vessels->pwht) ? (($jqr_pressure_vessels->pwht == '0') ? "Yes" : (($jqr_pressure_vessels->pwht == '1')  ? "No" : "Per Code REQ")) : '' }}</td>
                             </tr>
                             <tr>
                                 <td>HYDRO HOLD TIME: {{ isset($jqr_pressure_vessels->hydro_hold_time) ? $jqr_pressure_vessels->hydro_hold_time : '' }}</td>
