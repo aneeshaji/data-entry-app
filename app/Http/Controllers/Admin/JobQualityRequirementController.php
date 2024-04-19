@@ -51,7 +51,7 @@ class JobQualityRequirementController extends Controller
                         <i class="ti ti-dots-vertical"></i>
                         </button><div class="dropdown-menu"><a class="dropdown-item" href="' . url('admin/job-quality-requirements/' . encrypt($row->id) . '/edit') . '">
                         <i class="ti ti-pencil me-1"></i>Edit</a>';
-                    $btn = $btn . '<a class="dropdown-item" href="' . url('admin/job-quality-requirements', encrypt($row->id)) . '">
+                    $btn = $btn . '<a class="dropdown-item" target="_blank" href="' . url('admin/job-quality-requirements', encrypt($row->id)) . '">
                         <i class="ti ti-eye"></i>View</a>';
                     $btn = $btn . '<a class="dropdown-item" href="' . url('/generate-pdf', encrypt($row->id)) . '">
                         <i class="ti ti-download"></i>Download</a></div></div>';

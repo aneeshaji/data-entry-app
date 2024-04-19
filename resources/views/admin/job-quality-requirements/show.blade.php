@@ -48,7 +48,7 @@
                             </tr>
                             <tr>
                                 <td>Pressure Vessels(400.11): {{ isset($jqr_special->pressure_vessels) ? ($jqr_special->pressure_vessels == '1' ? 'Yes' : 'No') : '' }}</td>
-                                <td colspan="5">Gaskets: {{ $jqr_special->gaskets }}</td>
+                                <td colspan="5">Gaskets: {{ isset($jqr_special->gaskets) ? $jqr_special->gaskets : '' }}</td>
                             </tr>
                             <tr>
                                 <td>Structural Steel(410.01): {{ isset($jqr_special->structural_steel) ? ($jqr_special->structural_steel == '1' ? 'Yes' : 'No') : '' }}</td>
@@ -117,11 +117,11 @@
                                 <td colspan="5">*CUSTOMER/CLIENT AVL APPLIES: {{ isset($jqr_structural_skid->customer_avl_applies) ? ($jqr_structural_skid->customer_avl_applies == '1' ? 'Yes' : 'No') : '' }}</td>
                             </tr>
                             <tr>
-                                <td>MATERIAL ORIGIN REQS: {{ $jqr_structural_skid->material_origin_reqs }}</td>
+                                <td>MATERIAL ORIGIN REQS: {{ isset($jqr_structural_skid->material_origin_reqs) ? $jqr_structural_skid->material_origin_reqs : '' }}</td>
                                 <td colspan="5">ORIGIN TRACEABLE TO MELT(BILLET): {{ isset($jqr_structural_skid->customer_avl_applies) ? ($jqr_structural_skid->customer_avl_applies == '1' ? 'Yes' : 'No') : '' }}</td>
                             </tr>
                             <tr>
-                                <td>ACCEPTABLE MATERIAL ORIGINS: {{ $jqr_structural_skid->acceptable_material_origins }}</td>
+                                <td>ACCEPTABLE MATERIAL ORIGINS: {{ isset($jqr_structural_skid->acceptable_material_origins) ? $jqr_structural_skid->acceptable_material_origins : '' }}</td>
                                 <td colspan="5">STANDARD PER CODE(NO MTRS): {{ isset($jqr_structural_skid->customer_avl_applies) ? ($jqr_structural_skid->customer_avl_applies == '1' ? 'Yes' : 'No') : '' }}</td>
                             </tr>
                             <tr>
