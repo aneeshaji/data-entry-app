@@ -163,7 +163,7 @@
                                 <td colspan="5">*CUSTOMER/CLIENT AVL APPLIES: {{ isset($jqr_pressure_vessels->customer_avl_applies) ? ($jqr_pressure_vessels->customer_avl_applies == '1' ? 'Yes' : 'No') : '' }}</td>
                             </tr>
                             <tr>
-                                <td>MATERIAL ORIGIN REQS: {{ $jqr_pressure_vessels->material_origin_reqs }}</td>
+                                <td>MATERIAL ORIGIN REQS: {{ isset($jqr_pressure_vessels->material_origin_reqs) ? $jqr_pressure_vessels->material_origin_reqs : '' }}</td>
                                 <td colspan="5">ORIGIN TRACEABLE TO MELT(BILLET): {{ isset($jqr_pressure_vessels->origin_traceable_to_melt) ? ($jqr_pressure_vessels->origin_traceable_to_melt == '1' ? 'Yes' : 'No') : '' }}</td>
                             </tr>
                             <tr>
