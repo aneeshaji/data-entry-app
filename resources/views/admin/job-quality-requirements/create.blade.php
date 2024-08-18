@@ -27,7 +27,7 @@
                                 </button>
                             </div>
                             <div class="line"></div>
-                            <div class="step" data-target="#special_material">
+                            <!-- <div class="step" data-target="#special_material">
                                 <button type="button" class="step-trigger">
                                     <span class="bs-stepper-circle">
                                         <i class="ti ti-brand-matrix"></i>
@@ -37,8 +37,8 @@
                                         <span class="bs-stepper-subtitle">Add special material <br> requirements</span>
                                     </span>
                                 </button>
-                            </div>
-                            <div class="line"></div>
+                            </div> -->
+                            <!-- <div class="line"></div>
                             <div class="step" data-target="#personal-info-vertical">
                                 <button type="button" class="step-trigger">
                                     <span class="bs-stepper-circle">
@@ -49,8 +49,8 @@
                                         <span class="bs-stepper-subtitle">Add general information</span>
                                     </span>
                                 </button>
-                            </div>
-                            <div class="line"></div>
+                            </div> -->
+                            <!-- <div class="line"></div>
                             <div class="step" data-target="#social-links-vertical">
                                 <button type="button" class="step-trigger">
                                     <span class="bs-stepper-circle"><i class="ti ti-server-cog"></i> </span>
@@ -70,7 +70,7 @@
                                     </span>
                                 </button>
                             </div>
-                            <div class="line"></div>
+                            <div class="line"></div> -->
                             <div class="step" data-target="#pressure_vessels">
                                 <button type="button" class="step-trigger">
                                     <span class="bs-stepper-circle"><i class="ti ti-atom-2"></i> </span>
@@ -80,7 +80,7 @@
                                     </span>
                                 </button>
                             </div>
-                            <div class="line"></div>
+                            <!-- <div class="line"></div>
                             <div class="step" data-target="#non_code_vessels">
                                 <button type="button" class="step-trigger">
                                     <span class="bs-stepper-circle"><i class="ti ti-alert-square"></i> </span>
@@ -90,7 +90,7 @@
                                     </span>
                                 </button>
                             </div>
-                            <div class="line"></div>
+                            <div class="line"></div> -->
                             <div class="step" data-target="#process_fuel_gas_piping">
                                 <button type="button" class="step-trigger">
                                     <span class="bs-stepper-circle"><i class="ti ti-chart-treemap"></i> </span>
@@ -101,7 +101,7 @@
                                     </span>
                                 </button>
                             </div>
-                            <div class="line"></div>
+                            <!-- <div class="line"></div>
                             <div class="step" data-target="#bolting">
                                 <button type="button" class="step-trigger">
                                     <span class="bs-stepper-circle"><i class="ti ti-bong"></i> </span>
@@ -111,8 +111,8 @@
                                     </span>
                                 </button>
                             </div>
-                            <div class="line"></div>
-                            <div class="step" data-target="#gaskets">
+                            <div class="line"></div> -->
+                            <!-- <div class="step" data-target="#gaskets">
                                 <button type="button" class="step-trigger">
                                     <span class="bs-stepper-circle"><i class="ti ti-cylinder"></i> </span>
                                     <span class="bs-stepper-label">
@@ -131,8 +131,8 @@
                                     </span>
                                 </button>
                             </div>
-                            <div class="line"></div>
-                            <div class="step" data-target="#butt_welded">
+                            <div class="line"></div> -->
+                            <!-- <div class="step" data-target="#butt_welded">
                                 <button type="button" class="step-trigger">
                                     <span class="bs-stepper-circle"><i class="ti ti-shield"></i> </span>
                                     <span class="bs-stepper-label">
@@ -143,8 +143,8 @@
                                     </span>
                                 </button>
                             </div>
-                            <div class="line"></div>
-                            <div class="step" data-target="#threaded_piping">
+                            <div class="line"></div> -->
+                            <!-- <div class="step" data-target="#threaded_piping">
                                 <button type="button" class="step-trigger">
                                     <span class="bs-stepper-circle"><i class="ti ti-needle-thread"></i> </span>
                                     <span class="bs-stepper-label">
@@ -173,8 +173,8 @@
                                     </span>
                                 </button>
                             </div>
-                            <div class="line"></div>
-                            <div class="step" data-target="#package_testing">
+                            <div class="line"></div> -->
+                            <!-- <div class="step" data-target="#package_testing">
                                 <button type="button" class="step-trigger">
                                     <span class="bs-stepper-circle"><i class="ti ti-package"></i> </span>
                                     <span class="bs-stepper-label">
@@ -182,7 +182,7 @@
                                         <span class="bs-stepper-subtitle">Add package testing</span>
                                     </span>
                                 </button>
-                            </div>
+                            </div> -->
                         </div>
                         <div class="bs-stepper-content">
                             <!-- <form onSubmit="return false"> -->
@@ -1247,12 +1247,15 @@
                                                     </button>
                                                     <button type="button" onclick="submitProcessPipingData(true)"
                                                         class="btn btn-success waves-effect waves-light me-sm-3 me-1"><i
-                                                            class="ti ti-check"></i>Save</button>
-                                                    <button class="btn btn-primary btn-next" onclick="submitProcessPipingData(false)" >
+                                                            class="ti ti-check"></i>Finish</button>
+                                                    <!-- <button type="button" onclick="submitProcessPipingData(true)"
+                                                        class="btn btn-success waves-effect waves-light me-sm-3 me-1"><i
+                                                            class="ti ti-check"></i>Save</button> -->
+                                                    <!-- <button class="btn btn-primary btn-next" onclick="submitProcessPipingData(false)" >
                                                         <span
                                                             class="align-middle d-sm-inline-block d-none me-sm-1">Next</span>
                                                         <i class="ti ti-arrow-right"></i>
-                                                    </button>
+                                                    </button> -->
                                                 </div>
                                             </div>
                                         </div>
@@ -2582,7 +2585,7 @@ function submitData(reloadFlag) {
             data: formData,
             dataType: 'json',
             success: function(response) {
-                // Enbling sections after first save
+                // Enabling sections after first save
                 $('.step').css('pointer-events', 'auto');
                 if (response.status == true) {
                     $('.form_id_bd').val(response.id);
