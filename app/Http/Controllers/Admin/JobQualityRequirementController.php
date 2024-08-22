@@ -28,6 +28,7 @@ use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\View\View;
 use DataTables;
+use Carbon\Carbon;
 
 class JobQualityRequirementController extends Controller
 {
@@ -185,8 +186,16 @@ class JobQualityRequirementController extends Controller
         return $pdf->download('jqrms.pdf');
     }
 
+    /**
+     * Save JQR Basic Details.
+     * Created On : 03-04-2024
+     * Author : Aneesh Ajithkumar
+     * Email : dev.aneeshajithkumar@gmail.com
+     *
+     * @return \Illuminate\Contracts\Support\Renderable
+     */
     public function saveData(Request $request)
-    {
+    {   
         // Store Data
         if ($request->id) {
             // For Edit
@@ -197,16 +206,43 @@ class JobQualityRequirementController extends Controller
         }
         $basic_details->job_number = $request->job_number;
         $basic_details->job_name = $request->job_name;
-        $basic_details->stages = $request->stages;
+        //$basic_details->stages = $request->stages;
         $basic_details->release_date = $request->release_date;
         $basic_details->due_date = $request->due_date;
-        $basic_details->save();
+    
+        // Parse the scheduled_test_date from the request
+        if ($request->scheduled_test_date) {
+            $parsedScheduledTestDate = Carbon::parse($request->scheduled_test_date);
+            // Calculate the date 7 days 
+            $document_deliverables_due_date = $parsedScheduledTestDate->addDays(7)->toDateString();
+        }
 
+        $basic_details->customer_order_purchase_date = $request->customer_order_purchase_date;
+        $basic_details->fab_start_date = $request->fab_start_date;
+        $basic_details->scheduled_test_date = $request->scheduled_test_date;
+        $basic_details->document_deliverables_due_date = $document_deliverables_due_date;
+        $basic_details->job_revision_number = $request->job_revision_number;
+        $basic_details->production_number = $request->production_number;
+        $basic_details->no_of_modules = $request->no_of_modules;
+        $basic_details->save();
+        // Batch insert based on no of modules
+        if ($basic_details->id && $request->job_number) {
+            for ($i = 0; $i < $request->no_of_modules; $i++) {
+                $data[] = [
+                    'job_number' => $request->job_number . '-' . str_pad($i + 1, 2, '0', STR_PAD_LEFT),
+                    'no_of_modules' => '0',
+                    'job_revision_number' => $request->job_revision_number ?? '',
+                    'scheduled_test_date' => $request->scheduled_test_date ?? ''
+                ];
+            }
+            $result = BasicDetails::insert($data);
+        }
+       
         if ($basic_details->id) {
             return response(['status' => true, 'message' => 'Success', 'id' => $basic_details->id,
                 'redirect' => route('admin.job-quality-requirements')]);
         } else {
-            return response(['status' => false, 'message' => 'Error']);
+            return response(['status' => false, 'message' => 'Error creating JQR']);
         }
     }
 

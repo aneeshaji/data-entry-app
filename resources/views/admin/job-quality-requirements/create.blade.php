@@ -195,7 +195,7 @@
                                 <form onSubmit="return false" id="basic_details_from">
                                     <div class="row g-3">
                                         <div class="col-sm-6">
-                                            <label class="form-label" for="first-name1">Job/Project Number</label>
+                                            <label class="form-label" for="first-name1">Job ID/Number</label>
                                             <input type="text" id="job_number" class="form-control" placeholder=""
                                                 name="job_number" value="{{ isset($jqr->job_number) ? $jqr->job_number : '' }}" />
                                         </div>
@@ -205,12 +205,12 @@
                                                 placeholder="" aria-label=""
                                                 value="{{ isset($jqr->job_name) ? $jqr->job_name : '' }}" />
                                         </div>
-                                        <div class="col-sm-6">
+                                        <!-- <div class="col-sm-6">
                                             <label class="form-label" for="email1">Stages</label>
                                             <input type="text" id="email1" class="form-control" name="stages"
                                                 placeholder="" aria-label=""
                                                 value="{{ isset($jqr->stages) ? $jqr->stages : '' }}" />
-                                        </div>
+                                        </div> -->
                                         <div class="col-sm-6">
                                             <label class="form-label" for="email1">Release Date</label>
                                             <input type="date" id="email1" class="form-control" name="release_date"
@@ -218,10 +218,52 @@
                                                 value="{{ isset($jqr->release_date) ? $jqr->release_date : '' }}" />
                                         </div>
                                         <div class="col-sm-6">
-                                            <label class="form-label" for="email1">Due Date</label>
+                                            <label class="form-label" for="due_date">Due Date As Per PO</label>
                                             <input type="date" id="email1" name="due_date" class="form-control"
                                                 placeholder="" aria-label=""
                                                 value="{{ isset($jqr->due_date) ? $jqr->due_date : '' }}" />
+                                        </div>
+                                        <div class="col-sm-6">
+                                            <label class="form-label" for="customer_order_purchase_date">Date Purchase Order received from Customer</label>
+                                            <input type="date" id="customer_order_purchase_date" name="customer_order_purchase_date" class="form-control"
+                                                placeholder="" aria-label=""
+                                                value="{{ isset($jqr->customer_order_purchase_date) ? $jqr->customer_order_purchase_date : '' }}" />
+                                        </div>
+                                        <div class="col-sm-6">
+                                            <label class="form-label" for="fab_start_date">FAB Start Date</label>
+                                            <input type="date" id="fab_start_date" name="fab_start_date" class="form-control"
+                                                placeholder="" aria-label=""
+                                                value="{{ isset($jqr->fab_start_date) ? $jqr->fab_start_date : '' }}" />
+                                        </div>
+                                        <div class="col-sm-6">
+                                            <label class="form-label" for="scheduled_test_date">Scheduled Test Date</label>
+                                            <input type="date" id="scheduled_test_date" name="scheduled_test_date" class="form-control"
+                                                placeholder="" aria-label=""
+                                                value="{{ isset($jqr->scheduled_test_date) ? $jqr->scheduled_test_date : '' }}" required />
+                                        </div>
+                                        <div class="col-sm-6">
+                                            <label class="form-label" for="email1">Document Deliverables Due Date</label>
+                                            <input type="date" id="document_deliverables_due_date" name="document_deliverables_due_date" class="form-control"
+                                                placeholder="" aria-label=""
+                                                value="{{ isset($jqr->document_deliverables_due_date) ? $jqr->document_deliverables_due_date : '' }}" />
+                                        </div>
+                                        <div class="col-sm-6">
+                                            <label class="form-label" for="job_revision_number">Job Revision Number</label>
+                                            <input type="text" id="job_revision_number" class="form-control" name="job_revision_number"
+                                                placeholder="" aria-label=""
+                                                value="{{ isset($jqr->job_revision_number) ? $jqr->job_revision_number : '' }}" />
+                                        </div>
+                                        <div class="col-sm-6">
+                                            <label class="form-label" for="production_number">Production Number</label>
+                                            <input type="text" id="production_number" class="form-control" name="production_number"
+                                                placeholder="" aria-label=""
+                                                value="{{ isset($jqr->production_number) ? $jqr->production_number : '' }}" />
+                                        </div>
+                                        <div class="col-sm-6">
+                                            <label class="form-label" for="no_of_modules">No of Modules</label>
+                                            <input type="text" id="no_of_modules" class="form-control" name="no_of_modules"
+                                                placeholder="" aria-label=""
+                                                value="{{ isset($jqr->no_of_modules) ? $jqr->no_of_modules : '' }}" required />
                                         </div>
                                         <!-- Action Buttons -->
                                         <div class="pt-4">

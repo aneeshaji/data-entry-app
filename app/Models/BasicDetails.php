@@ -11,6 +11,13 @@ class BasicDetails extends Model
         'job_number',
         'job_name',
         'stages',
+        'no_of_modules',
+        'job_revision_number',
+        'customer_order_purchase_date',
+        'fab_start_date',
+        'production_number',
+        'scheduled_test_date',
+        'document_deliverables_due_date	',
         'release_date',
         'issue_date',
         'status'
