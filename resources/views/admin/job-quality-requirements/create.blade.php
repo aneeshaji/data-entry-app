@@ -265,6 +265,82 @@
                                                 placeholder="" aria-label=""
                                                 value="{{ isset($jqr->no_of_modules) ? $jqr->no_of_modules : '' }}" required />
                                         </div>
+                                        <!-- Statues -->
+                                        <div class="col-sm-12">
+                                            <label class="form-label" for="no_of_modules">Status of Document Deliverables</label>
+                                            <div class="card">
+                                                <div class="table-responsive text-nowrap">
+                                                    <table class="table table-hover data-table">
+                                                        <thead>
+                                                            <tr>
+                                                                <th>Report</th>
+                                                                <th>Status</th>
+                                                                <th>Legend</th>
+                                                            </tr>
+                                                        </thead>
+                                                        <tbody>
+                                                            <tr>
+                                                                <th>NDE</th>
+                                                                <td>
+                                                                    <select id="selectpickerBasic" class="" data-style="btn-default">
+                                                                        <option selected disabled>-Select-</option>
+                                                                        @foreach($documentDeliverablesStatuses as $status)
+                                                                            <option value="{{ $status->id }}">{{ $status->name }}</option>
+                                                                        @endforeach
+                                                                    </select>
+                                                                </td>
+                                                                <td>
+                                                                    <span class="badge bg-success">DD Completed</span>
+                                                                </td>
+                                                            </tr>
+                                                            <tr>
+                                                                <th>Hydro</th>
+                                                                <td>
+                                                                    <select id="selectpickerBasic" class="" data-style="btn-default">
+                                                                        <option selected disabled>-Select-</option>
+                                                                        @foreach($documentDeliverablesStatuses as $status)
+                                                                            <option value="{{ $status->id }}">{{ $status->name }}</option>
+                                                                        @endforeach
+                                                                    </select>
+                                                                </td>
+                                                                <td>
+                                                                    <span class="badge bg-success">DD Completed</span>
+                                                                </td>
+                                                            </tr>
+                                                            <tr>
+                                                                <th>Heat Map</th>
+                                                                <td>
+                                                                    <select id="selectpickerBasic" class="" data-style="btn-default">
+                                                                        <option selected disabled>-Select-</option>
+                                                                        @foreach($documentDeliverablesStatuses as $status)
+                                                                            <option value="{{ $status->id }}">{{ $status->name }}</option>
+                                                                        @endforeach
+                                                                    </select>
+                                                                </td>
+                                                                <td>
+                                                                    <span class="badge bg-success">DD Completed</span>
+                                                                </td>
+                                                            </tr>
+                                                            <tr>
+                                                                <th>Weld Map</th>
+                                                                <td>
+                                                                    <select id="selectpickerBasic" class="" data-style="btn-default">
+                                                                        <option selected disabled>-Select-</option>
+                                                                        @foreach($documentDeliverablesStatuses as $status)
+                                                                            <option value="{{ $status->id }}">{{ $status->name }}</option>
+                                                                        @endforeach
+                                                                    </select>
+                                                                </td>
+                                                                <td>
+                                                                    <span class="badge bg-success">DD Completed</span>
+                                                                </td>
+                                                            </tr>
+                                                        </tbody>
+                                                    </table>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <!-- Statues Ends -->
                                         <!-- Action Buttons -->
                                         <div class="pt-4">
                                             <div class="row justify-content-end">

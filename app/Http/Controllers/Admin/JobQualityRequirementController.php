@@ -20,6 +20,7 @@ use App\Models\SpecialMaterialRequirements;
 use App\Models\StructuralSkid;
 use App\Models\ThreadedPiping;
 use App\Models\Tubing;
+use App\Models\DocumentDeliverablesStatus;
 use Barryvdh\DomPDF\Facade\Pdf;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
@@ -115,7 +116,10 @@ class JobQualityRequirementController extends Controller
      */
     public function create()
     {
-        return view('admin.job-quality-requirements.create');
+        $documentDeliverablesStatuses = DocumentDeliverablesStatus::all();
+        return view('admin.job-quality-requirements.create', [
+            'documentDeliverablesStatuses' => $documentDeliverablesStatuses
+        ]);
     }
 
     /**
