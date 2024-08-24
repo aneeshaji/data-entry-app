@@ -199,12 +199,13 @@ class JobQualityRequirementController extends Controller
      * @return \Illuminate\Contracts\Support\Renderable
      */
     public function saveData(Request $request)
-    {
+    {   
         $validator = \Validator::make($request->all(), [
             'job_number' => 'required|max:255',
             'no_of_modules' => 'required|max:255',
             'job_revision_number' => 'required|max:255',
-            'scheduled_test_date' => 'required|date'
+            'scheduled_test_date' => 'required|date',
+            'company_logo' => 'image|mimes:jpg,jpeg,png,gif|max:2048'
         ]);
         if ($validator->fails()) {
             return response()->json([
@@ -212,6 +213,16 @@ class JobQualityRequirementController extends Controller
                 'errors' => $validator->errors(),
             ], 422);
         } else {
+            // Handle the Company logo upload
+            if ($request->hasFile('company_logo')) {
+                $companyLogo = 'company-logo-'.time().'.'.$request->company_logo->extension();
+                $request->company_logo->move(public_path('uploads/company-logo'), $companyLogo);
+                $user = Auth::user();
+                if ($user) {
+                    $user->company_logo = $companyLogo ?? '';
+                    $user->save();      
+                }
+            }
             // Store Data
             if ($request->id) {
                 // For Edit
@@ -220,6 +231,7 @@ class JobQualityRequirementController extends Controller
                 // For Create
                 $basic_details = new BasicDetails();
             }
+            
             $basic_details->job_number = $request->job_number;
             $basic_details->job_name = $request->job_name;
             //$basic_details->stages = $request->stages;
@@ -260,18 +272,18 @@ class JobQualityRequirementController extends Controller
             
             $basic_details->save();
             
-            // // Batch insert based on no of modules
-            // if ($basic_details->id && $request->job_number) {
-            //     for ($i = 0; $i < $request->no_of_modules; $i++) {
-            //         $data[] = [
-            //             'job_number' => $request->job_number . '-' . str_pad($i + 1, 2, '0', STR_PAD_LEFT),
-            //             'no_of_modules' => '0',
-            //             'job_revision_number' => $request->job_revision_number ?? '',
-            //             'scheduled_test_date' => $request->scheduled_test_date ?? ''
-            //         ];
-            //     }
-            //     $result = BasicDetails::insert($data);
-            // }
+            // Batch insert based on no of modules
+            if ($basic_details->id && $request->job_number && $request->no_of_modules && $request->id == null && $request->no_of_modules > 0) {
+                for ($i = 0; $i < $request->no_of_modules; $i++) {
+                    $data[] = [
+                        'job_number' => $request->job_number . '-' . str_pad($i + 1, 2, '0', STR_PAD_LEFT),
+                        'no_of_modules' => '0',
+                        'job_revision_number' => $request->job_revision_number ?? '',
+                        'scheduled_test_date' => $request->scheduled_test_date ?? ''
+                    ];
+                }
+                $result = BasicDetails::insert($data);
+            }
             if ($basic_details->id) {
                 return response(['status' => true, 'message' => 'Success', 'id' => $basic_details->id,
                     'redirect' => route('admin.job-quality-requirements')]);

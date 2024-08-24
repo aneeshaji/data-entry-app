@@ -192,7 +192,8 @@
                                     <h6 class="mb-0">Basic Project Details</h6>
                                     <small>Enter Basic Project Details.</small>
                                 </div>
-                                <form onSubmit="return false" id="basic_details_from">
+                                <!-- <form onSubmit="return false" id="basic_details_from"> -->
+								<form id="basic_details_from" method="POST" enctype="multipart/form-data">
                                     <div class="row g-3">
                                         <div class="col-sm-6">
                                             <label class="form-label" for="first-name1">Job ID/Number</label>
@@ -312,7 +313,7 @@
                                                             <tr>
                                                                 <th>NDE</th>
                                                                 <td>
-                                                                    <select id="selectNdeStatus" class="test" name="status_of_docs_deliverables_nde" data-style="btn-default">
+                                                                    <select class="doc-status" name="status_of_docs_deliverables_nde" data-style="btn-default">
                                                                         <option selected disabled>-Select-</option>
                                                                         @foreach($documentDeliverablesStatuses as $status)
                                                                             <option value="{{ $status->id }}" {{ isset($jqr->status_of_docs_deliverables_nde) && $status->id == $jqr->status_of_docs_deliverables_nde ? 'selected' : '' }}>{{ $status->name }}</option>
@@ -320,13 +321,13 @@
                                                                     </select>
                                                                 </td>
                                                                 <td>
-                                                                    <span class="badge bg-success" id="ndeLegend">DD Completed</span>
+                                                                    <span class="badge bg-secondary">None</span>
                                                                 </td>
                                                             </tr>
                                                             <tr>
                                                                 <th>Hydro</th>
                                                                 <td>
-                                                                    <select id="selectHydroStatus" class="test" name="status_of_docs_deliverables_hydro" data-style="btn-default">
+                                                                    <select class="doc-status" name="status_of_docs_deliverables_hydro" data-style="btn-default">
                                                                         <option selected disabled>-Select-</option>
                                                                         @foreach($documentDeliverablesStatuses as $status)
                                                                             <option value="{{ $status->id }}" {{ isset($jqr->status_of_docs_deliverables_hydro) && $status->id == $jqr->status_of_docs_deliverables_hydro ? 'selected' : '' }}>{{ $status->name }}</option>
@@ -334,13 +335,13 @@
                                                                     </select>
                                                                 </td>
                                                                 <td>
-                                                                    <span class="badge bg-success" id="hydroLegend">DD Completed</span>
+                                                                    <span class="badge bg-secondary">None</span>
                                                                 </td>
                                                             </tr>
                                                             <tr>
                                                                 <th>Heat Map</th>
                                                                 <td>
-                                                                    <select id="selectpickerBasic" class="" name="status_of_docs_deliverables_heat_map" data-style="btn-default">
+                                                                    <select class="doc-status" name="status_of_docs_deliverables_heat_map" data-style="btn-default">
                                                                         <option selected disabled>-Select-</option>
                                                                         @foreach($documentDeliverablesStatuses as $status)
                                                                             <option value="{{ $status->id }}" {{ isset($jqr->status_of_docs_deliverables_heat_map) && $status->id == $jqr->status_of_docs_deliverables_heat_map ? 'selected' : '' }}>{{ $status->name }}</option>
@@ -348,13 +349,13 @@
                                                                     </select>
                                                                 </td>
                                                                 <td>
-                                                                    <span class="badge bg-success" id="heatMapLegend">DD Completed</span>
+                                                                    <span class="badge bg-secondary">None</span>
                                                                 </td>
                                                             </tr>
                                                             <tr>
                                                                 <th>Weld Map</th>
                                                                 <td>
-                                                                    <select id="selectpickerBasic" class="" name="status_of_docs_deliverables_weld_map" data-style="btn-default">
+                                                                    <select class="doc-status" name="status_of_docs_deliverables_weld_map" data-style="btn-default">
                                                                         <option selected disabled>-Select-</option>
                                                                         @foreach($documentDeliverablesStatuses as $status)
                                                                             <option value="{{ $status->id }}" {{ isset($jqr->status_of_docs_deliverables_weld_map) && $status->id == $jqr->status_of_docs_deliverables_weld_map ? 'selected' : '' }}>{{ $status->name }}</option>
@@ -362,7 +363,7 @@
                                                                     </select>
                                                                 </td>
                                                                 <td>
-                                                                    <span class="badge bg-success" id="weldMapLegend">DD Completed</span>
+                                                                    <span class="badge bg-secondary">None</span>
                                                                 </td>
                                                             </tr>
                                                         </tbody>
@@ -2667,7 +2668,6 @@
             </div>
         </footer>
         <!-- / Footer -->
-
         <div class="content-backdrop fade"></div>
     </div>
 </x-app-layout>
@@ -2688,11 +2688,11 @@ if (typeof wizardIconsVertical !== undefined && wizardIconsVertical !== null) {
     if (wizardIconsVerticalBtnNextList) {
         wizardIconsVerticalBtnNextList.forEach(wizardIconsVerticalBtnNext => {
             wizardIconsVerticalBtnNext.addEventListener('click', event => {
-                if ($('#job_number').val() == '') {
-                    //alert('Job Numer is required');
-                } else {
+                // if ($('#job_number').val() == '') {
+                //     //alert('Job Numer is required');
+                // } else {
                     verticalIconsStepper.next();
-                }
+                // }
             });
         });
     }
@@ -2710,23 +2710,61 @@ if (typeof wizardIconsVertical !== undefined && wizardIconsVertical !== null) {
     }
 }
 
-
+// Setting Doc Status Labels
 $(document).ready(function() {
-	// // Handle the change event of the dropdown
-	// $('.category').on('change', function() {
-	// 	// Get the selected value
-	// 	var selectedValue = $(this).val();
+    function updateBadge(element) {
+        // Get the selected value
+        let selectedStatusText = element.find('option:selected').text();
+        let selectedStatusValue = element.val();
 
-	// 	// Set the selected value inside the div
-	// 	$('#selectedCategory').text(selectedValue);
-	// });
-	$('.test').on('change', function() {
-		// Get the selected value
-		var selectedValue = $(this).find('option:selected').text();
+        // Update the corresponding span
+        let nextTd = element.closest('td').next('td');
+        nextTd.find('span').text(selectedStatusText);
 
-		// Update the corresponding span
-		var nextTd = $(this).closest('td').next('td');
-        nextTd.find('span').text(selectedValue);
+        // Get the class of the span inside the next 'td'
+        let lastTdClass = nextTd.find('span').attr('class');
+        
+        // Split the classes to remove the old background class
+        if (lastTdClass) {
+            nextTd.find('span').removeClass(lastTdClass.split(' ')[1]);
+        }
+
+        // Apply new class based on selected value
+        switch(selectedStatusValue) {
+            case '1':
+                nextTd.find('span').addClass('bg-success');
+                break;
+            case '2':
+                nextTd.find('span').addClass('bg-warning');
+                break;
+            case '3':
+                nextTd.find('span').addClass('bg-danger');
+                break;
+            case '4':
+                nextTd.find('span').addClass('bg-primary');
+                break;
+            case '5':
+                nextTd.find('span').addClass('bg-info');
+                break;
+            case '6':
+                nextTd.find('span').addClass('bg-dark');
+                break;
+            default:
+                nextTd.find('span').addClass('bg-secondary');
+                break;
+        }
+    }
+
+    // Event listener for dropdown changes
+    $('.doc-status').on('change', function() {
+        updateBadge($(this));
+    });
+
+    // Trigger change event on page load for edit page
+    $('.doc-status').each(function() {
+        if ($(this).val() !== null && $(this).val() !== '') {
+            updateBadge($(this));
+        }
     });
 });
 
@@ -2748,56 +2786,54 @@ function submitData(reloadFlag) {
             'X-CSRF-TOKEN': jQuery('meta[name="csrf-token"]').attr('content')
         }
     });
-    // if ($('#job_number').val() == '') {
-    //     alert('Job Numer is required');
-    // } else {
-        var formData = $('#basic_details_from').serialize();
-        $.ajax({
-            method: 'POST',
-            url: '/admin/job-quality-requirements/saveData',
-            data: formData,
-            dataType: 'json',
-            success: function(response) {
-                // Enabling sections after first save
-                $('.step').css('pointer-events', 'auto');
-                if (response.status == true) {
-                    $('.form_id_bd').val(response.id);
-                    if (reloadFlag == true) {
-                        window.location.href = response.redirect;
-                    }
-                }
-            },
-            error: function(response) {
-                // Handle errors if needed
-                let errors = response.responseJSON.errors;
-                if (errors) {
-                    let jobnumberMessage = errors.job_number ? errors.job_number[0] : '';
-                    if (jobnumberMessage) {
-                        $('#jobnumberValidation').prepend(jobnumberMessage + '<br>');
-                        $('#jobnumberValidation').show();
-                    }
+    
+	var formData = new FormData($('#basic_details_from')[0]); // Create a FormData object
+	$.ajax({
+		method: 'POST',
+		url: '/admin/job-quality-requirements/saveData',
+		data: formData,
+		contentType: false, // Important: prevent jQuery from automatically processing the data
+		processData: false, // Important: tell jQuery not to process the data
+		success: function(response) {
+			// Enabling sections after first save
+			$('.step').css('pointer-events', 'auto');
+			if (response.status == true) {
+				$('.form_id_bd').val(response.id);
+				if (reloadFlag == true) {
+					window.location.href = response.redirect;
+				}
+			}
+		},
+		error: function(response) {
+			// Handle errors if needed
+			let errors = response.responseJSON.errors;
+			if (errors) {
+				let jobnumberMessage = errors.job_number ? errors.job_number[0] : '';
+				if (jobnumberMessage) {
+					$('#jobnumberValidation').prepend(jobnumberMessage + '<br>');
+					$('#jobnumberValidation').show();
+				}
 
-                    let noOfModulesMessage = errors.no_of_modules ? errors.no_of_modules[0] : '';
-                    if (noOfModulesMessage) {
-                        $('#noOfModulesValidation').prepend(noOfModulesMessage + '<br>');
-                        $('#noOfModulesValidation').show();
-                    }
+				let noOfModulesMessage = errors.no_of_modules ? errors.no_of_modules[0] : '';
+				if (noOfModulesMessage) {
+					$('#noOfModulesValidation').prepend(noOfModulesMessage + '<br>');
+					$('#noOfModulesValidation').show();
+				}
 
-                    let jobRevisionNumberMessage = errors.job_revision_number ? errors.job_revision_number[0] : '';
-                    if (jobRevisionNumberMessage) {
-                        $('#jobRevisionNumberValidation').prepend(jobRevisionNumberMessage + '<br>');
-                        $('#jobRevisionNumberValidation').show();
-                    }
+				let jobRevisionNumberMessage = errors.job_revision_number ? errors.job_revision_number[0] : '';
+				if (jobRevisionNumberMessage) {
+					$('#jobRevisionNumberValidation').prepend(jobRevisionNumberMessage + '<br>');
+					$('#jobRevisionNumberValidation').show();
+				}
 
-					let scheduledTestDateMessage = errors.scheduled_test_date ? errors.scheduled_test_date[0] : '';
-                    if (jobRevisionNumberMessage) {
-                        $('#scheduledTestDateValidation').prepend(scheduledTestDateMessage + '<br>');
-                        $('#scheduledTestDateValidation').show();
-                    }
-                }
-            }
-        });
-    // }
+				let scheduledTestDateMessage = errors.scheduled_test_date ? errors.scheduled_test_date[0] : '';
+				if (jobRevisionNumberMessage) {
+					$('#scheduledTestDateValidation').prepend(scheduledTestDateMessage + '<br>');
+					$('#scheduledTestDateValidation').show();
+				}
+			}
+		}
+	});
 }
 
 // Submit Special Data
