@@ -12,10 +12,7 @@ return new class extends Migration
     public function up(): void
     {
         Schema::table('basic_details', function (Blueprint $table) {
-            $table->string('status_of_docs_deliverables_nde')->after('fab_start_date')->nullable();
-            $table->string('status_of_docs_deliverables_hydro')->after('status_of_docs_deliverables_nde')->nullable();
-            $table->string('status_of_docs_deliverables_heat_map')->after('status_of_docs_deliverables_hydro')->nullable();
-            $table->string('status_of_docs_deliverables_weld_map')->after('status_of_docs_deliverables_heat_map')->nullable();
+            $table->string('job_number')->nullable(false)->change();
         });
     }
 

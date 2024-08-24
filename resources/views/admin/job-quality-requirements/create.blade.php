@@ -197,7 +197,10 @@
                                         <div class="col-sm-6">
                                             <label class="form-label" for="first-name1">Job ID/Number</label>
                                             <input type="text" id="job_number" class="form-control" placeholder=""
-                                                name="job_number" value="{{ isset($jqr->job_number) ? $jqr->job_number : '' }}" />
+                                                name="job_number" value="{{ isset($jqr->job_number) ? $jqr->job_number : '' }}" required />
+                                            <div class="alert alert-danger alert-dismissible" id="jobnumberValidation" role="alert"> 
+                                                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                                            </div>
                                         </div>
                                         <div class="col-sm-6">
                                             <label class="form-label" for="email1">Job Name</label>
@@ -240,7 +243,10 @@
                                             <input type="date" id="scheduled_test_date" name="scheduled_test_date" class="form-control"
                                                 placeholder="" aria-label=""
                                                 value="{{ isset($jqr->scheduled_test_date) ? $jqr->scheduled_test_date : '' }}" required />
-                                        </div>
+											<div class="alert alert-danger alert-dismissible" id="scheduledTestDateValidation" role="alert"> 
+                                                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                                            </div>
+										</div>
                                         <div class="col-sm-6">
                                             <label class="form-label" for="email1">Document Deliverables Due Date</label>
                                             <input type="date" id="document_deliverables_due_date" name="document_deliverables_due_date" class="form-control"
@@ -252,6 +258,15 @@
                                             <input type="text" id="job_revision_number" class="form-control" name="job_revision_number"
                                                 placeholder="" aria-label=""
                                                 value="{{ isset($jqr->job_revision_number) ? $jqr->job_revision_number : '' }}" />
+                                            <div class="alert alert-danger alert-dismissible" id="jobRevisionNumberValidation" role="alert"> 
+                                                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                                            </div>
+                                        </div>
+                                        <div class="col-sm-6">
+                                            <label class="form-label" for="jqr_revision_date">JQR Revision Date</label>
+                                            <input type="date" id="jqr_revision_date" name="jqr_revision_date" class="form-control"
+                                                placeholder="" aria-label=""
+                                                value="{{ isset($jqr->jqr_revision_date) ? $jqr->jqr_revision_date : '' }}" />
                                         </div>
                                         <div class="col-sm-6">
                                             <label class="form-label" for="production_number">Production Number</label>
@@ -264,8 +279,23 @@
                                             <input type="text" id="no_of_modules" class="form-control" name="no_of_modules"
                                                 placeholder="" aria-label=""
                                                 value="{{ isset($jqr->no_of_modules) ? $jqr->no_of_modules : '' }}" required />
+                                            <div class="alert alert-danger alert-dismissible" id="noOfModulesValidation" role="alert"> 
+                                                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                                            </div>
                                         </div>
-                                        <!-- Statues -->
+                                        <div class="col-sm-6">
+                                            <label class="form-label" for="form_number">Form Number</label>
+                                            <input type="text" id="form_number" class="form-control" name="form_number"
+                                                placeholder="" aria-label=""
+                                                value="{{ isset($jqr->form_number) ? $jqr->form_number : '' }}" required />
+                                        </div>
+                                        <div class="col-sm-6">
+                                            <label class="form-label" for="company_logo">Company Logo</label>
+                                            <input type="file" id="company_logo" class="form-control" name="company_logo"
+                                                placeholder="" aria-label=""
+                                                value="{{ isset($jqr->company_logo) ? $jqr->company_logo : '' }}" required />
+                                        </div>
+                                        <!-- Statuses -->
                                         <div class="col-sm-12">
                                             <label class="form-label" for="no_of_modules">Status of Document Deliverables</label>
                                             <div class="card">
@@ -282,57 +312,57 @@
                                                             <tr>
                                                                 <th>NDE</th>
                                                                 <td>
-                                                                    <select id="selectpickerBasic" class="" data-style="btn-default">
+                                                                    <select id="selectNdeStatus" class="test" name="status_of_docs_deliverables_nde" data-style="btn-default">
                                                                         <option selected disabled>-Select-</option>
                                                                         @foreach($documentDeliverablesStatuses as $status)
-                                                                            <option value="{{ $status->id }}">{{ $status->name }}</option>
+                                                                            <option value="{{ $status->id }}" {{ isset($jqr->status_of_docs_deliverables_nde) && $status->id == $jqr->status_of_docs_deliverables_nde ? 'selected' : '' }}>{{ $status->name }}</option>
                                                                         @endforeach
                                                                     </select>
                                                                 </td>
                                                                 <td>
-                                                                    <span class="badge bg-success">DD Completed</span>
+                                                                    <span class="badge bg-success" id="ndeLegend">DD Completed</span>
                                                                 </td>
                                                             </tr>
                                                             <tr>
                                                                 <th>Hydro</th>
                                                                 <td>
-                                                                    <select id="selectpickerBasic" class="" data-style="btn-default">
+                                                                    <select id="selectHydroStatus" class="test" name="status_of_docs_deliverables_hydro" data-style="btn-default">
                                                                         <option selected disabled>-Select-</option>
                                                                         @foreach($documentDeliverablesStatuses as $status)
-                                                                            <option value="{{ $status->id }}">{{ $status->name }}</option>
+                                                                            <option value="{{ $status->id }}" {{ isset($jqr->status_of_docs_deliverables_hydro) && $status->id == $jqr->status_of_docs_deliverables_hydro ? 'selected' : '' }}>{{ $status->name }}</option>
                                                                         @endforeach
                                                                     </select>
                                                                 </td>
                                                                 <td>
-                                                                    <span class="badge bg-success">DD Completed</span>
+                                                                    <span class="badge bg-success" id="hydroLegend">DD Completed</span>
                                                                 </td>
                                                             </tr>
                                                             <tr>
                                                                 <th>Heat Map</th>
                                                                 <td>
-                                                                    <select id="selectpickerBasic" class="" data-style="btn-default">
+                                                                    <select id="selectpickerBasic" class="" name="status_of_docs_deliverables_heat_map" data-style="btn-default">
                                                                         <option selected disabled>-Select-</option>
                                                                         @foreach($documentDeliverablesStatuses as $status)
-                                                                            <option value="{{ $status->id }}">{{ $status->name }}</option>
+                                                                            <option value="{{ $status->id }}" {{ isset($jqr->status_of_docs_deliverables_heat_map) && $status->id == $jqr->status_of_docs_deliverables_heat_map ? 'selected' : '' }}>{{ $status->name }}</option>
                                                                         @endforeach
                                                                     </select>
                                                                 </td>
                                                                 <td>
-                                                                    <span class="badge bg-success">DD Completed</span>
+                                                                    <span class="badge bg-success" id="heatMapLegend">DD Completed</span>
                                                                 </td>
                                                             </tr>
                                                             <tr>
                                                                 <th>Weld Map</th>
                                                                 <td>
-                                                                    <select id="selectpickerBasic" class="" data-style="btn-default">
+                                                                    <select id="selectpickerBasic" class="" name="status_of_docs_deliverables_weld_map" data-style="btn-default">
                                                                         <option selected disabled>-Select-</option>
                                                                         @foreach($documentDeliverablesStatuses as $status)
-                                                                            <option value="{{ $status->id }}">{{ $status->name }}</option>
+                                                                            <option value="{{ $status->id }}" {{ isset($jqr->status_of_docs_deliverables_weld_map) && $status->id == $jqr->status_of_docs_deliverables_weld_map ? 'selected' : '' }}>{{ $status->name }}</option>
                                                                         @endforeach
                                                                     </select>
                                                                 </td>
                                                                 <td>
-                                                                    <span class="badge bg-success">DD Completed</span>
+                                                                    <span class="badge bg-success" id="weldMapLegend">DD Completed</span>
                                                                 </td>
                                                             </tr>
                                                         </tbody>
@@ -340,7 +370,7 @@
                                                 </div>
                                             </div>
                                         </div>
-                                        <!-- Statues Ends -->
+                                        <!-- Statuses Ends -->
                                         <!-- Action Buttons -->
                                         <div class="pt-4">
                                             <div class="row justify-content-end">
@@ -2659,7 +2689,7 @@ if (typeof wizardIconsVertical !== undefined && wizardIconsVertical !== null) {
         wizardIconsVerticalBtnNextList.forEach(wizardIconsVerticalBtnNext => {
             wizardIconsVerticalBtnNext.addEventListener('click', event => {
                 if ($('#job_number').val() == '') {
-                    alert('Job Numer is required');
+                    //alert('Job Numer is required');
                 } else {
                     verticalIconsStepper.next();
                 }
@@ -2680,6 +2710,32 @@ if (typeof wizardIconsVertical !== undefined && wizardIconsVertical !== null) {
     }
 }
 
+
+$(document).ready(function() {
+	// // Handle the change event of the dropdown
+	// $('.category').on('change', function() {
+	// 	// Get the selected value
+	// 	var selectedValue = $(this).val();
+
+	// 	// Set the selected value inside the div
+	// 	$('#selectedCategory').text(selectedValue);
+	// });
+	$('.test').on('change', function() {
+		// Get the selected value
+		var selectedValue = $(this).find('option:selected').text();
+
+		// Update the corresponding span
+		var nextTd = $(this).closest('td').next('td');
+        nextTd.find('span').text(selectedValue);
+    });
+});
+
+// Validation Sections FOr Basic Details
+$('#jobnumberValidation').hide();
+$('#noOfModulesValidation').hide();
+$('#jobRevisionNumberValidation').hide();
+$('#scheduledTestDateValidation').hide();
+
 // Disabling sections on page load
 if ($('.form_id_bd').val() == '') {
     $('.step').css('pointer-events', 'none');
@@ -2692,10 +2748,9 @@ function submitData(reloadFlag) {
             'X-CSRF-TOKEN': jQuery('meta[name="csrf-token"]').attr('content')
         }
     });
-
-    if ($('#job_number').val() == '') {
-        alert('Job Numer is required');
-    } else {
+    // if ($('#job_number').val() == '') {
+    //     alert('Job Numer is required');
+    // } else {
         var formData = $('#basic_details_from').serialize();
         $.ajax({
             method: 'POST',
@@ -2712,12 +2767,37 @@ function submitData(reloadFlag) {
                     }
                 }
             },
-            error: function(xhr, status, error) {
+            error: function(response) {
                 // Handle errors if needed
-                console.error(xhr.responseText);
+                let errors = response.responseJSON.errors;
+                if (errors) {
+                    let jobnumberMessage = errors.job_number ? errors.job_number[0] : '';
+                    if (jobnumberMessage) {
+                        $('#jobnumberValidation').prepend(jobnumberMessage + '<br>');
+                        $('#jobnumberValidation').show();
+                    }
+
+                    let noOfModulesMessage = errors.no_of_modules ? errors.no_of_modules[0] : '';
+                    if (noOfModulesMessage) {
+                        $('#noOfModulesValidation').prepend(noOfModulesMessage + '<br>');
+                        $('#noOfModulesValidation').show();
+                    }
+
+                    let jobRevisionNumberMessage = errors.job_revision_number ? errors.job_revision_number[0] : '';
+                    if (jobRevisionNumberMessage) {
+                        $('#jobRevisionNumberValidation').prepend(jobRevisionNumberMessage + '<br>');
+                        $('#jobRevisionNumberValidation').show();
+                    }
+
+					let scheduledTestDateMessage = errors.scheduled_test_date ? errors.scheduled_test_date[0] : '';
+                    if (jobRevisionNumberMessage) {
+                        $('#scheduledTestDateValidation').prepend(scheduledTestDateMessage + '<br>');
+                        $('#scheduledTestDateValidation').show();
+                    }
+                }
             }
         });
-    }
+    // }
 }
 
 // Submit Special Data

@@ -199,54 +199,85 @@ class JobQualityRequirementController extends Controller
      * @return \Illuminate\Contracts\Support\Renderable
      */
     public function saveData(Request $request)
-    {   
-        // Store Data
-        if ($request->id) {
-            // For Edit
-            $basic_details = BasicDetails::where('id', $request->id)->first();
+    {
+        $validator = \Validator::make($request->all(), [
+            'job_number' => 'required|max:255',
+            'no_of_modules' => 'required|max:255',
+            'job_revision_number' => 'required|max:255',
+            'scheduled_test_date' => 'required|date'
+        ]);
+        if ($validator->fails()) {
+            return response()->json([
+                'status' => 'error',
+                'errors' => $validator->errors(),
+            ], 422);
         } else {
-            // For Create
-            $basic_details = new BasicDetails();
-        }
-        $basic_details->job_number = $request->job_number;
-        $basic_details->job_name = $request->job_name;
-        //$basic_details->stages = $request->stages;
-        $basic_details->release_date = $request->release_date;
-        $basic_details->due_date = $request->due_date;
-    
-        // Parse the scheduled_test_date from the request
-        if ($request->scheduled_test_date) {
-            $parsedScheduledTestDate = Carbon::parse($request->scheduled_test_date);
-            // Calculate the date 7 days 
-            $document_deliverables_due_date = $parsedScheduledTestDate->addDays(7)->toDateString();
-        }
-
-        $basic_details->customer_order_purchase_date = $request->customer_order_purchase_date;
-        $basic_details->fab_start_date = $request->fab_start_date;
-        $basic_details->scheduled_test_date = $request->scheduled_test_date;
-        $basic_details->document_deliverables_due_date = $document_deliverables_due_date;
-        $basic_details->job_revision_number = $request->job_revision_number;
-        $basic_details->production_number = $request->production_number;
-        $basic_details->no_of_modules = $request->no_of_modules;
-        $basic_details->save();
-        // Batch insert based on no of modules
-        if ($basic_details->id && $request->job_number) {
-            for ($i = 0; $i < $request->no_of_modules; $i++) {
-                $data[] = [
-                    'job_number' => $request->job_number . '-' . str_pad($i + 1, 2, '0', STR_PAD_LEFT),
-                    'no_of_modules' => '0',
-                    'job_revision_number' => $request->job_revision_number ?? '',
-                    'scheduled_test_date' => $request->scheduled_test_date ?? ''
-                ];
+            // Store Data
+            if ($request->id) {
+                // For Edit
+                $basic_details = BasicDetails::where('id', $request->id)->first();
+            } else {
+                // For Create
+                $basic_details = new BasicDetails();
             }
-            $result = BasicDetails::insert($data);
-        }
-       
-        if ($basic_details->id) {
-            return response(['status' => true, 'message' => 'Success', 'id' => $basic_details->id,
-                'redirect' => route('admin.job-quality-requirements')]);
-        } else {
-            return response(['status' => false, 'message' => 'Error creating JQR']);
+            $basic_details->job_number = $request->job_number;
+            $basic_details->job_name = $request->job_name;
+            //$basic_details->stages = $request->stages;
+            $basic_details->release_date = $request->release_date;
+            $basic_details->due_date = $request->due_date;
+        
+            // Parse the scheduled_test_date from the request
+            if ($request->scheduled_test_date) {
+                $parsedScheduledTestDate = Carbon::parse($request->scheduled_test_date);
+                // Calculate the date after 7 days 
+                $document_deliverables_due_date = $parsedScheduledTestDate->addDays(7)->toDateString();
+            }
+
+            $basic_details->customer_order_purchase_date = $request->customer_order_purchase_date;
+            $basic_details->fab_start_date = $request->fab_start_date;
+            $basic_details->scheduled_test_date = $request->scheduled_test_date;
+            if (isset($document_deliverables_due_date)) {
+                $basic_details->document_deliverables_due_date = $document_deliverables_due_date;
+            }
+            $basic_details->job_revision_number = $request->job_revision_number;
+            $basic_details->production_number = $request->production_number;
+            $basic_details->no_of_modules = $request->no_of_modules;
+            $basic_details->jqr_revision_date = $request->jqr_revision_date;
+            $basic_details->form_number = $request->form_number;
+            //Statuses of docs deliverables
+            if ($request->status_of_docs_deliverables_nde != null ) {
+                $basic_details->status_of_docs_deliverables_nde = $request->status_of_docs_deliverables_nde;
+            }
+            if ($request->status_of_docs_deliverables_hydro != null) {
+                $basic_details->status_of_docs_deliverables_hydro = $request->status_of_docs_deliverables_hydro;
+            }
+            if ($request->status_of_docs_deliverables_heat_map != null) {
+                $basic_details->status_of_docs_deliverables_heat_map = $request->status_of_docs_deliverables_heat_map;
+            }
+            if ($request->status_of_docs_deliverables_weld_map != null) {
+                $basic_details->status_of_docs_deliverables_weld_map = $request->status_of_docs_deliverables_weld_map;
+            }
+            
+            $basic_details->save();
+            
+            // // Batch insert based on no of modules
+            // if ($basic_details->id && $request->job_number) {
+            //     for ($i = 0; $i < $request->no_of_modules; $i++) {
+            //         $data[] = [
+            //             'job_number' => $request->job_number . '-' . str_pad($i + 1, 2, '0', STR_PAD_LEFT),
+            //             'no_of_modules' => '0',
+            //             'job_revision_number' => $request->job_revision_number ?? '',
+            //             'scheduled_test_date' => $request->scheduled_test_date ?? ''
+            //         ];
+            //     }
+            //     $result = BasicDetails::insert($data);
+            // }
+            if ($basic_details->id) {
+                return response(['status' => true, 'message' => 'Success', 'id' => $basic_details->id,
+                    'redirect' => route('admin.job-quality-requirements')]);
+            } else {
+                return response(['status' => false, 'message' => 'Error creating JQR']);
+            }
         }
     }
 
@@ -930,6 +961,7 @@ class JobQualityRequirementController extends Controller
         $jqr_threaded_piping = ThreadedPiping::where('basic_details_id', $jqr->id)->first();
         $jqr_tubing = Tubing::where('basic_details_id', $jqr->id)->first();
         $jqr_gaskets = Gaskets::where('basic_details_id', $jqr->id)->first();
+        $documentDeliverablesStatuses = DocumentDeliverablesStatus::all();
 
         if ($jqr_package_testing != null && $jqr_package_testing->run_test_requirement) {
             $jqr_package_testing_run_test_requirements = explode(',', $jqr_package_testing->run_test_requirement);
@@ -954,7 +986,8 @@ class JobQualityRequirementController extends Controller
             'jqr_structural_skid' => $jqr_structural_skid,
             'jqr_threaded_piping' => $jqr_threaded_piping,
             'jqr_tubing' => $jqr_tubing,
-            'jqr_gaskets' => $jqr_gaskets
+            'jqr_gaskets' => $jqr_gaskets,
+            'documentDeliverablesStatuses' => $documentDeliverablesStatuses
         ]);
     }
 

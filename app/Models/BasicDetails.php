@@ -18,6 +18,13 @@ class BasicDetails extends Model
         'production_number',
         'scheduled_test_date',
         'document_deliverables_due_date	',
+        'status_of_docs_deliverables_nde',
+        'status_of_docs_deliverables_hydro',
+        'status_of_docs_deliverables_heat_map',
+        'status_of_docs_deliverables_weld_map',
+        'jqr_revision_date',
+        'company_logo',
+        'form_number',
         'release_date',
         'issue_date',
         'status'
