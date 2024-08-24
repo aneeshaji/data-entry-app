@@ -192,12 +192,16 @@
                                     <h6 class="mb-0">Basic Project Details</h6>
                                     <small>Enter Basic Project Details.</small>
                                 </div>
-                                <form onSubmit="return false" id="basic_details_from">
+                                <!-- <form onSubmit="return false" id="basic_details_from"> -->
+								<form id="basic_details_from" method="POST" enctype="multipart/form-data">
                                     <div class="row g-3">
                                         <div class="col-sm-6">
-                                            <label class="form-label" for="first-name1">Job/Project Number</label>
+                                            <label class="form-label" for="first-name1">Job ID/Number</label>
                                             <input type="text" id="job_number" class="form-control" placeholder=""
-                                                name="job_number" value="{{ isset($jqr->job_number) ? $jqr->job_number : '' }}" />
+                                                name="job_number" value="{{ isset($jqr->job_number) ? $jqr->job_number : '' }}" required />
+                                            <div class="alert alert-danger alert-dismissible" id="jobnumberValidation" role="alert"> 
+                                                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                                            </div>
                                         </div>
                                         <div class="col-sm-6">
                                             <label class="form-label" for="email1">Job Name</label>
@@ -205,12 +209,12 @@
                                                 placeholder="" aria-label=""
                                                 value="{{ isset($jqr->job_name) ? $jqr->job_name : '' }}" />
                                         </div>
-                                        <div class="col-sm-6">
+                                        <!-- <div class="col-sm-6">
                                             <label class="form-label" for="email1">Stages</label>
                                             <input type="text" id="email1" class="form-control" name="stages"
                                                 placeholder="" aria-label=""
                                                 value="{{ isset($jqr->stages) ? $jqr->stages : '' }}" />
-                                        </div>
+                                        </div> -->
                                         <div class="col-sm-6">
                                             <label class="form-label" for="email1">Release Date</label>
                                             <input type="date" id="email1" class="form-control" name="release_date"
@@ -218,11 +222,156 @@
                                                 value="{{ isset($jqr->release_date) ? $jqr->release_date : '' }}" />
                                         </div>
                                         <div class="col-sm-6">
-                                            <label class="form-label" for="email1">Due Date</label>
+                                            <label class="form-label" for="due_date">Due Date As Per PO</label>
                                             <input type="date" id="email1" name="due_date" class="form-control"
                                                 placeholder="" aria-label=""
                                                 value="{{ isset($jqr->due_date) ? $jqr->due_date : '' }}" />
                                         </div>
+                                        <div class="col-sm-6">
+                                            <label class="form-label" for="customer_order_purchase_date">Date Purchase Order received from Customer</label>
+                                            <input type="date" id="customer_order_purchase_date" name="customer_order_purchase_date" class="form-control"
+                                                placeholder="" aria-label=""
+                                                value="{{ isset($jqr->customer_order_purchase_date) ? $jqr->customer_order_purchase_date : '' }}" />
+                                        </div>
+                                        <div class="col-sm-6">
+                                            <label class="form-label" for="fab_start_date">FAB Start Date</label>
+                                            <input type="date" id="fab_start_date" name="fab_start_date" class="form-control"
+                                                placeholder="" aria-label=""
+                                                value="{{ isset($jqr->fab_start_date) ? $jqr->fab_start_date : '' }}" />
+                                        </div>
+                                        <div class="col-sm-6">
+                                            <label class="form-label" for="scheduled_test_date">Scheduled Test Date</label>
+                                            <input type="date" id="scheduled_test_date" name="scheduled_test_date" class="form-control"
+                                                placeholder="" aria-label=""
+                                                value="{{ isset($jqr->scheduled_test_date) ? $jqr->scheduled_test_date : '' }}" required />
+											<div class="alert alert-danger alert-dismissible" id="scheduledTestDateValidation" role="alert"> 
+                                                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                                            </div>
+										</div>
+                                        <div class="col-sm-6">
+                                            <label class="form-label" for="email1">Document Deliverables Due Date</label>
+                                            <input type="date" id="document_deliverables_due_date" name="document_deliverables_due_date" class="form-control"
+                                                placeholder="" aria-label=""
+                                                value="{{ isset($jqr->document_deliverables_due_date) ? $jqr->document_deliverables_due_date : '' }}" />
+                                        </div>
+                                        <div class="col-sm-6">
+                                            <label class="form-label" for="job_revision_number">Job Revision Number</label>
+                                            <input type="text" id="job_revision_number" class="form-control" name="job_revision_number"
+                                                placeholder="" aria-label=""
+                                                value="{{ isset($jqr->job_revision_number) ? $jqr->job_revision_number : '' }}" />
+                                            <div class="alert alert-danger alert-dismissible" id="jobRevisionNumberValidation" role="alert"> 
+                                                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                                            </div>
+                                        </div>
+                                        <div class="col-sm-6">
+                                            <label class="form-label" for="jqr_revision_date">JQR Revision Date</label>
+                                            <input type="date" id="jqr_revision_date" name="jqr_revision_date" class="form-control"
+                                                placeholder="" aria-label=""
+                                                value="{{ isset($jqr->jqr_revision_date) ? $jqr->jqr_revision_date : '' }}" />
+                                        </div>
+                                        <div class="col-sm-6">
+                                            <label class="form-label" for="production_number">Production Number</label>
+                                            <input type="text" id="production_number" class="form-control" name="production_number"
+                                                placeholder="" aria-label=""
+                                                value="{{ isset($jqr->production_number) ? $jqr->production_number : '' }}" />
+                                        </div>
+                                        <div class="col-sm-6">
+                                            <label class="form-label" for="no_of_modules">No of Modules</label>
+                                            <input type="text" id="no_of_modules" class="form-control" name="no_of_modules"
+                                                placeholder="" aria-label=""
+                                                value="{{ isset($jqr->no_of_modules) ? $jqr->no_of_modules : '' }}" required />
+                                            <div class="alert alert-danger alert-dismissible" id="noOfModulesValidation" role="alert"> 
+                                                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                                            </div>
+                                        </div>
+                                        <div class="col-sm-6">
+                                            <label class="form-label" for="form_number">Form Number</label>
+                                            <input type="text" id="form_number" class="form-control" name="form_number"
+                                                placeholder="" aria-label=""
+                                                value="{{ isset($jqr->form_number) ? $jqr->form_number : '' }}" required />
+                                        </div>
+                                        <div class="col-sm-6">
+                                            <label class="form-label" for="company_logo">Company Logo</label>
+                                            <input type="file" id="company_logo" class="form-control" name="company_logo"
+                                                placeholder="" aria-label=""
+                                                value="{{ isset($jqr->company_logo) ? $jqr->company_logo : '' }}" required />
+                                        </div>
+                                        <!-- Statuses -->
+                                        <div class="col-sm-12">
+                                            <label class="form-label" for="no_of_modules">Status of Document Deliverables</label>
+                                            <div class="card">
+                                                <div class="table-responsive text-nowrap">
+                                                    <table class="table table-hover data-table">
+                                                        <thead>
+                                                            <tr>
+                                                                <th>Report</th>
+                                                                <th>Status</th>
+                                                                <th>Legend</th>
+                                                            </tr>
+                                                        </thead>
+                                                        <tbody>
+                                                            <tr>
+                                                                <th>NDE</th>
+                                                                <td>
+                                                                    <select class="doc-status" name="status_of_docs_deliverables_nde" data-style="btn-default">
+                                                                        <option selected disabled>-Select-</option>
+                                                                        @foreach($documentDeliverablesStatuses as $status)
+                                                                            <option value="{{ $status->id }}" {{ isset($jqr->status_of_docs_deliverables_nde) && $status->id == $jqr->status_of_docs_deliverables_nde ? 'selected' : '' }}>{{ $status->name }}</option>
+                                                                        @endforeach
+                                                                    </select>
+                                                                </td>
+                                                                <td>
+                                                                    <span class="badge bg-secondary">None</span>
+                                                                </td>
+                                                            </tr>
+                                                            <tr>
+                                                                <th>Hydro</th>
+                                                                <td>
+                                                                    <select class="doc-status" name="status_of_docs_deliverables_hydro" data-style="btn-default">
+                                                                        <option selected disabled>-Select-</option>
+                                                                        @foreach($documentDeliverablesStatuses as $status)
+                                                                            <option value="{{ $status->id }}" {{ isset($jqr->status_of_docs_deliverables_hydro) && $status->id == $jqr->status_of_docs_deliverables_hydro ? 'selected' : '' }}>{{ $status->name }}</option>
+                                                                        @endforeach
+                                                                    </select>
+                                                                </td>
+                                                                <td>
+                                                                    <span class="badge bg-secondary">None</span>
+                                                                </td>
+                                                            </tr>
+                                                            <tr>
+                                                                <th>Heat Map</th>
+                                                                <td>
+                                                                    <select class="doc-status" name="status_of_docs_deliverables_heat_map" data-style="btn-default">
+                                                                        <option selected disabled>-Select-</option>
+                                                                        @foreach($documentDeliverablesStatuses as $status)
+                                                                            <option value="{{ $status->id }}" {{ isset($jqr->status_of_docs_deliverables_heat_map) && $status->id == $jqr->status_of_docs_deliverables_heat_map ? 'selected' : '' }}>{{ $status->name }}</option>
+                                                                        @endforeach
+                                                                    </select>
+                                                                </td>
+                                                                <td>
+                                                                    <span class="badge bg-secondary">None</span>
+                                                                </td>
+                                                            </tr>
+                                                            <tr>
+                                                                <th>Weld Map</th>
+                                                                <td>
+                                                                    <select class="doc-status" name="status_of_docs_deliverables_weld_map" data-style="btn-default">
+                                                                        <option selected disabled>-Select-</option>
+                                                                        @foreach($documentDeliverablesStatuses as $status)
+                                                                            <option value="{{ $status->id }}" {{ isset($jqr->status_of_docs_deliverables_weld_map) && $status->id == $jqr->status_of_docs_deliverables_weld_map ? 'selected' : '' }}>{{ $status->name }}</option>
+                                                                        @endforeach
+                                                                    </select>
+                                                                </td>
+                                                                <td>
+                                                                    <span class="badge bg-secondary">None</span>
+                                                                </td>
+                                                            </tr>
+                                                        </tbody>
+                                                    </table>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <!-- Statuses Ends -->
                                         <!-- Action Buttons -->
                                         <div class="pt-4">
                                             <div class="row justify-content-end">
@@ -2519,7 +2668,6 @@
             </div>
         </footer>
         <!-- / Footer -->
-
         <div class="content-backdrop fade"></div>
     </div>
 </x-app-layout>
@@ -2540,11 +2688,11 @@ if (typeof wizardIconsVertical !== undefined && wizardIconsVertical !== null) {
     if (wizardIconsVerticalBtnNextList) {
         wizardIconsVerticalBtnNextList.forEach(wizardIconsVerticalBtnNext => {
             wizardIconsVerticalBtnNext.addEventListener('click', event => {
-                if ($('#job_number').val() == '') {
-                    alert('Job Numer is required');
-                } else {
+                // if ($('#job_number').val() == '') {
+                //     //alert('Job Numer is required');
+                // } else {
                     verticalIconsStepper.next();
-                }
+                // }
             });
         });
     }
@@ -2562,6 +2710,70 @@ if (typeof wizardIconsVertical !== undefined && wizardIconsVertical !== null) {
     }
 }
 
+// Setting Doc Status Labels
+$(document).ready(function() {
+    function updateBadge(element) {
+        // Get the selected value
+        let selectedStatusText = element.find('option:selected').text();
+        let selectedStatusValue = element.val();
+
+        // Update the corresponding span
+        let nextTd = element.closest('td').next('td');
+        nextTd.find('span').text(selectedStatusText);
+
+        // Get the class of the span inside the next 'td'
+        let lastTdClass = nextTd.find('span').attr('class');
+        
+        // Split the classes to remove the old background class
+        if (lastTdClass) {
+            nextTd.find('span').removeClass(lastTdClass.split(' ')[1]);
+        }
+
+        // Apply new class based on selected value
+        switch(selectedStatusValue) {
+            case '1':
+                nextTd.find('span').addClass('bg-success');
+                break;
+            case '2':
+                nextTd.find('span').addClass('bg-warning');
+                break;
+            case '3':
+                nextTd.find('span').addClass('bg-danger');
+                break;
+            case '4':
+                nextTd.find('span').addClass('bg-primary');
+                break;
+            case '5':
+                nextTd.find('span').addClass('bg-info');
+                break;
+            case '6':
+                nextTd.find('span').addClass('bg-dark');
+                break;
+            default:
+                nextTd.find('span').addClass('bg-secondary');
+                break;
+        }
+    }
+
+    // Event listener for dropdown changes
+    $('.doc-status').on('change', function() {
+        updateBadge($(this));
+    });
+
+    // Trigger change event on page load for edit page
+    $('.doc-status').each(function() {
+        if ($(this).val() !== null && $(this).val() !== '') {
+            updateBadge($(this));
+        }
+    });
+});
+
+// Validation Sections FOr Basic Details
+$('#jobnumberValidation').hide();
+$('#noOfModulesValidation').hide();
+$('#jobRevisionNumberValidation').hide();
+$('#scheduledTestDateValidation').hide();
+
 // Disabling sections on page load
 if ($('.form_id_bd').val() == '') {
     $('.step').css('pointer-events', 'none');
@@ -2574,32 +2786,54 @@ function submitData(reloadFlag) {
             'X-CSRF-TOKEN': jQuery('meta[name="csrf-token"]').attr('content')
         }
     });
+    
+	var formData = new FormData($('#basic_details_from')[0]); // Create a FormData object
+	$.ajax({
+		method: 'POST',
+		url: '/admin/job-quality-requirements/saveData',
+		data: formData,
+		contentType: false, // Important: prevent jQuery from automatically processing the data
+		processData: false, // Important: tell jQuery not to process the data
+		success: function(response) {
+			// Enabling sections after first save
+			$('.step').css('pointer-events', 'auto');
+			if (response.status == true) {
+				$('.form_id_bd').val(response.id);
+				if (reloadFlag == true) {
+					window.location.href = response.redirect;
+				}
+			}
+		},
+		error: function(response) {
+			// Handle errors if needed
+			let errors = response.responseJSON.errors;
+			if (errors) {
+				let jobnumberMessage = errors.job_number ? errors.job_number[0] : '';
+				if (jobnumberMessage) {
+					$('#jobnumberValidation').prepend(jobnumberMessage + '<br>');
+					$('#jobnumberValidation').show();
+				}
 
-    if ($('#job_number').val() == '') {
-        alert('Job Numer is required');
-    } else {
-        var formData = $('#basic_details_from').serialize();
-        $.ajax({
-            method: 'POST',
-            url: '/admin/job-quality-requirements/saveData',
-            data: formData,
-            dataType: 'json',
-            success: function(response) {
-                // Enabling sections after first save
-                $('.step').css('pointer-events', 'auto');
-                if (response.status == true) {
-                    $('.form_id_bd').val(response.id);
-                    if (reloadFlag == true) {
-                        window.location.href = response.redirect;
-                    }
-                }
-            },
-            error: function(xhr, status, error) {
-                // Handle errors if needed
-                console.error(xhr.responseText);
-            }
-        });
-    }
+				let noOfModulesMessage = errors.no_of_modules ? errors.no_of_modules[0] : '';
+				if (noOfModulesMessage) {
+					$('#noOfModulesValidation').prepend(noOfModulesMessage + '<br>');
+					$('#noOfModulesValidation').show();
+				}
+
+				let jobRevisionNumberMessage = errors.job_revision_number ? errors.job_revision_number[0] : '';
+				if (jobRevisionNumberMessage) {
+					$('#jobRevisionNumberValidation').prepend(jobRevisionNumberMessage + '<br>');
+					$('#jobRevisionNumberValidation').show();
+				}
+
+				let scheduledTestDateMessage = errors.scheduled_test_date ? errors.scheduled_test_date[0] : '';
+				if (jobRevisionNumberMessage) {
+					$('#scheduledTestDateValidation').prepend(scheduledTestDateMessage + '<br>');
+					$('#scheduledTestDateValidation').show();
+				}
+			}
+		}
+	});
 }
 
 // Submit Special Data
