@@ -542,37 +542,40 @@ class JobQualityRequirementController extends Controller
         // Store Data
         if ($request->id) {
             // For Edit
-            $process_fual_gas = ProcessFuelGasStartGasPiping::where('id', $request->id)->first();
+            $process_fuel_gas = ProcessFuelGasStartGasPiping::where('id', $request->id)->first();
         } else {
-            $process_fual_gas = new ProcessFuelGasStartGasPiping();
+            $process_fuel_gas = new ProcessFuelGasStartGasPiping();
         }
 
-        $process_fual_gas->basic_details_id = $request->basic_details_id;
-        $process_fual_gas->customer_avl_applies = $request->customer_avl_applies == 'on' ? '1' : '0';
-        $process_fual_gas->material_origin_reqs = $request->material_origin_reqs;
-        $process_fual_gas->origin_traceable_to_melt = $request->origin_traceable_to_melt == 'on' ? '1' : '0';
-        $process_fual_gas->acceptable_material_origins = $request->acceptable_material_origins;
-        $process_fual_gas->standard_code = $request->standard_code == 'on' ? '1' : '0';
-        $process_fual_gas->mtrs_required = $request->mtrs_required == 'on' ? '1' : '0';
-        $process_fual_gas->heat_mapping = $request->heat_mapping == 'on' ? '1' : '0';
-        $process_fual_gas->weld_mapping = $request->weld_mapping == 'on' ? '1' : '0';
-        $process_fual_gas->material_notes = $request->material_notes;
-        $process_fual_gas->nace = $request->nace == 'on' ? '1' : '0';
-        $process_fual_gas->nde_requirements = $request->nde_requirements;
-        $process_fual_gas->weld_requirements = $request->weld_requirements;
-        $process_fual_gas->governing_code = $request->governing_code;
-        $process_fual_gas->hydro_hold_time = $request->hydro_hold_time;
-        $process_fual_gas->witnessed = $request->witnessed == 'on' ? '1' : '0';
-        $process_fual_gas->hardness_test = $request->hardness_test == 'on' ? '1' : '0';
-        $process_fual_gas->max_hardness = $request->max_hardness;
-        $process_fual_gas->hydro_chart_required = $request->hydro_chart_required == 'on' ? '1' : '0';
-        $process_fual_gas->hydro_notes = $request->hydro_notes;
-        $process_fual_gas->notes = $request->notes;
+        $process_fuel_gas->basic_details_id = $request->basic_details_id;
+        $process_fuel_gas->customer_avl_applies = $request->customer_avl_applies == 'on' ? '1' : '0';
+        $process_fuel_gas->material_origin_reqs = $request->material_origin_reqs;
+        $process_fuel_gas->origin_traceable_to_melt = $request->origin_traceable_to_melt == 'on' ? '1' : '0';
+        $process_fuel_gas->acceptable_material_origins = $request->acceptable_material_origins;
+        $process_fuel_gas->standard_code = $request->standard_code == 'on' ? '1' : '0';
+        $process_fuel_gas->mtrs_required = $request->mtrs_required == 'on' ? '1' : '0';
+        $process_fuel_gas->heat_mapping = $request->heat_mapping == 'on' ? '1' : '0';
+        $process_fuel_gas->weld_mapping = $request->weld_mapping == 'on' ? '1' : '0';
+        $process_fuel_gas->material_notes = $request->material_notes;
+        $process_fuel_gas->nace = $request->nace == 'on' ? '1' : '0';
+        $process_fuel_gas->nde_requirements = $request->nde_requirements;
+        $process_fuel_gas->weld_requirements = $request->weld_requirements;
+        $process_fuel_gas->governing_code = $request->governing_code;
+        $process_fuel_gas->hydro_hold_time = $request->hydro_hold_time;
+        $process_fuel_gas->witnessed = $request->witnessed == 'on' ? '1' : '0';
+        $process_fuel_gas->hardness_test = $request->hardness_test == 'on' ? '1' : '0';
+        $process_fuel_gas->max_hardness = $request->max_hardness;
+        $process_fuel_gas->hydro_chart_required = $request->hydro_chart_required == 'on' ? '1' : '0';
+        $process_fuel_gas->hydro_notes = $request->hydro_notes;
+        $process_fuel_gas->notes = $request->notes;
+        $process_fuel_gas->nde_requirements_required = $request->nde_requirements_required;
+        $process_fuel_gas->date_of_confirmation = $request->date_of_confirmation;
+        $process_fuel_gas->nde_reports_comments = $request->nde_reports_comments;
 
-        $process_fual_gas->save();
+        $process_fuel_gas->save();
 
-        if ($process_fual_gas->id) {
-            return response(['status' => true, 'message' => 'Success', 'id' => $process_fual_gas->id,
+        if ($process_fuel_gas->id) {
+            return response(['status' => true, 'message' => 'Success', 'id' => $process_fuel_gas->id,
                 'redirect' => route('admin.job-quality-requirements')]);
         } else {
             return response(['status' => false, 'message' => 'Error']);

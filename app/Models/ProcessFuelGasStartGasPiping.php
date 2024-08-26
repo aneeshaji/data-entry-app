@@ -29,6 +29,9 @@ class ProcessFuelGasStartGasPiping extends Model
         'max_hardness',
         'hydro_chart_required',
         'hydro_notes',
-        'notes'
+        'notes',
+        'nde_requirements_required',
+        'date_of_confirmation',
+        'nde_reports_comments'
     ];
 }
