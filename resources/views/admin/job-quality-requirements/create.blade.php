@@ -28,7 +28,7 @@
                                 </button>
                             </div>
                             <div class="line"></div>
-                            <!-- <div class="step" data-target="#special_material">
+                            <div class="step" data-target="#special_material">
                                 <button type="button" class="step-trigger">
                                     <span class="bs-stepper-circle">
                                         <i class="ti ti-brand-matrix"></i>
@@ -38,7 +38,7 @@
                                         <span class="bs-stepper-subtitle">Add special material <br> requirements</span>
                                     </span>
                                 </button>
-                            </div> -->
+                            </div>
                             <div class="line"></div>
                             <div class="step" data-target="#personal-info-vertical">
                                 <button type="button" class="step-trigger">
@@ -420,7 +420,7 @@
                                                 <span class="switch-label">Pipes & Fittings(400.01)</span>
                                             </label>
                                         </div>
-                                        <div class="col-sm-6">
+                                        <!-- <div class="col-sm-6">
                                             <label class="switch">
                                                 <input type="checkbox" class="switch-input" name="bolting"
                                                 {{ isset($jqr_special->bolting) && $jqr_special->bolting == '1'  ? 'checked': '' }}>
@@ -430,7 +430,7 @@
                                                 </span>
                                                 <span class="switch-label">Bolting(400.01)</span>
                                             </label>
-                                        </div>
+                                        </div> -->
                                         <div class="col-sm-6">
                                             <label class="switch">
                                                 <input type="checkbox" class="switch-input" name="pressure_vessels"
@@ -442,7 +442,7 @@
                                                 <span class="switch-label">Pressure Vessels(400.11)</span>
                                             </label>
                                         </div>
-                                        <div class="col-sm-6">
+                                        <!-- <div class="col-sm-6">
                                             <label class="switch">
                                                 <input type="checkbox" class="switch-input" name="gaskets"
                                                     {{ isset($jqr_special->gaskets) && $jqr_special->gaskets == '1' ? 'checked': '' }}>
@@ -452,8 +452,8 @@
                                                 </span>
                                                 <span class="switch-label">Gaskets(400.01)</span>
                                             </label>
-                                        </div>
-                                        <div class="col-sm-6">
+                                        </div> -->
+                                        <!-- <div class="col-sm-6">
                                             <label class="switch">
                                                 <input type="checkbox" class="switch-input" name="structural_steel"
                                                     {{ isset($jqr_special->structural_steel) && $jqr_special->structural_steel == '1' ? 'checked': '' }}>
@@ -463,8 +463,8 @@
                                                 </span>
                                                 <span class="switch-label">Structural Steel(410.01)</span>
                                             </label>
-                                        </div>
-                                        <div class="col-sm-6">
+                                        </div> -->
+                                        <!-- <div class="col-sm-6">
                                             <label class="switch">
                                                 <input type="checkbox" class="switch-input" name="tubing"
                                                     {{ isset($jqr_special->tubing) && $jqr_special->tubing == '1' ? 'checked' : '' }}>
@@ -473,6 +473,16 @@
                                                     <span class="switch-off"></span>
                                                 </span>
                                                 <span class="switch-label">Tubing(420.01)</span>
+                                            </label>
+                                        </div> -->
+                                        <div class="col-sm-6">
+                                            <label class="switch">
+                                                <input type="checkbox" class="switch-input" name="q_stock_material" {{ isset($jqr_special->q_stock_material) && $jqr_special->q_stock_material == '1' ? 'checked': '' }}>
+                                                <span class="switch-toggle-slider">
+                                                    <span class="switch-on"></span>
+                                                    <span class="switch-off"></span>
+                                                </span>
+                                                <span class="switch-label">Any Q Stock Material</span>
                                             </label>
                                         </div>
                                         <!-- Action Buttons -->

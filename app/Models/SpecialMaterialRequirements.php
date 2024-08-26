@@ -13,6 +13,7 @@ class SpecialMaterialRequirements extends Model
         'pressure_vessels',
         'gaskets',
         'structural_steel',
-        'tubing'
+        'tubing',
+        'q_stock_material'
     ];
 }

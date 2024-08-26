@@ -331,6 +331,7 @@ class JobQualityRequirementController extends Controller
         $special_material_requirements->gaskets = $request->gaskets == 'on' ? '1' : '0';
         $special_material_requirements->structural_steel = $request->structural_steel == 'on' ? '1' : '0';
         $special_material_requirements->tubing = $request->tubing == 'on' ? '1' : '0';
+        $special_material_requirements->q_stock_material = $request->q_stock_material == 'on' ? '1' : '0';
         $special_material_requirements->save();
 
         if ($special_material_requirements->id) {
