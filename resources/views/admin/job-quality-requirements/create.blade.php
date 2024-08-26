@@ -81,7 +81,7 @@
                                     </span>
                                 </button>
                             </div>
-                            <!-- <div class="line"></div>
+                            <div class="line"></div>
                             <div class="step" data-target="#non_code_vessels">
                                 <button type="button" class="step-trigger">
                                     <span class="bs-stepper-circle"><i class="ti ti-alert-square"></i> </span>
@@ -91,7 +91,7 @@
                                     </span>
                                 </button>
                             </div>
-                            <div class="line"></div> -->
+                            <div class="line"></div>
                             <div class="step" data-target="#process_fuel_gas_piping">
                                 <button type="button" class="step-trigger">
                                     <span class="bs-stepper-circle"><i class="ti ti-chart-treemap"></i> </span>
@@ -959,7 +959,7 @@
                                             </select>
                                         </div>
                                         <div class="col-sm-6">
-                                            <label class="form-label" for="date_of_confirmation">Date of confirmation (by Quality Assurance)</label>
+                                            <label class="form-label" for="date_of_confirmation">Date of confirmation (By Quality Assurance)</label>
                                             <input type="date" id="date_of_confirmation" name="date_of_confirmation" class="form-control"
                                                 placeholder="" aria-label=""
                                                 value="{{ isset($jqr_pressure_vessels->date_of_confirmation) ? $jqr_pressure_vessels->date_of_confirmation : '' }}" />
@@ -1216,6 +1216,15 @@
                                                 <span class="switch-label">*NACE</span>
                                             </label>
                                         </div>
+                                        <div class="col-md-6 mb-6">
+                                            <label for="selectpickerBasic" class="form-label">NDE Rquirements Required</label>
+                                            <select id="selectpickerBasic" class="selectpicker w-100" name="nde_requirements_required" data-style="btn-default">
+                                                <option selected disabled>-Select-</option>
+                                                @foreach($ndeReportsRequiredStatuses as $status)
+                                                    <option value="{{ $status->id }}" {{ isset($jqr_non_code->nde_requirements_required) && $status->id == $jqr_non_code->nde_requirements_required ? 'selected' : '' }}>{{ $status->name }}</option>
+                                                @endforeach
+                                            </select>
+                                        </div>
                                         <div class="col-sm-6">
                                             <label class="form-label" for="linkedin1">NDE Requirements</label>
                                             <textarea class="form-control" name="nde_requirements" id="exampleFormControlTextarea1"
@@ -1296,6 +1305,43 @@
                                             <textarea class="form-control" name="notes" id="exampleFormControlTextarea1"
                                                 rows="3">{{ isset($jqr_non_code->notes) ? $jqr_non_code->notes : '' }}</textarea>
                                         </div>
+                                        <div class="col-sm-6">
+                                            <label class="form-label" for="date_of_confirmation">Date of confirmation (By Quality Assurance)</label>
+                                            <input type="date" id="date_of_confirmation" name="date_of_confirmation" class="form-control"
+                                                placeholder="" aria-label=""
+                                                value="{{ isset($jqr_non_code->date_of_confirmation) ? $jqr_non_code->date_of_confirmation : '' }}" />
+                                        </div>
+                                        <div class="col-sm-6">
+                                            <label class="form-label" for="nde_reports_comments">NDE Reports Comments</label>
+                                            <textarea class="form-control" name="nde_reports_comments" id="exampleFormControlTextarea1"
+                                                rows="3">{{ isset($jqr_non_code->nde_reports_comments) ? $jqr_non_code->nde_reports_comments: '' }}</textarea>
+                                        </div>
+                                         <!-- Doc Statuses -->
+                                        <!-- NDE --> 
+                                        <div class="col-sm-6">
+                                            <label class="form-label" for="linkedin1">NDE Status</label>
+                                            <div class="alert alert-primary nde-status" role="alert">None</div>
+                                        </div>
+                                        <!-- NDE Ends -->
+                                        <!-- Hydro --> 
+                                        <div class="col-sm-6">
+                                            <label class="form-label" for="linkedin1">Hydro Status</label>
+                                            <div class="alert alert-primary hydro-status" role="alert">None</div>
+                                        </div>
+                                        <!-- Hydro Ends -->
+                                        <!-- Heat Map --> 
+                                        <div class="col-sm-6">
+                                            <label class="form-label" for="linkedin1">Heat Map Status</label>
+                                            <div class="alert alert-primary heat-map-status" role="alert">None</div>
+                                        </div>
+                                        <!-- Heat Map Ends --> 
+                                        <!-- Weld Map --> 
+                                        <div class="col-sm-6">
+                                            <label class="form-label" for="linkedin1">Wels Map Status</label>
+                                            <div class="alert alert-primary weld-map-status" role="alert">None</div>
+                                        </div>
+                                        <!-- Weld Map Ends -->  
+                                        <!-- Doc Statuses Ends -->
                                         <!-- Action Buttons -->
                                         <div class="pt-4">
                                             <div class="row justify-content-end">
@@ -1489,7 +1535,7 @@
                                                 rows="3">{{ isset($jqr_process_fuel_gas->notes) ? $jqr_process_fuel_gas->notes : '' }}</textarea>
                                         </div>
                                         <div class="col-sm-6">
-                                            <label class="form-label" for="date_of_confirmation">Date of confirmation (by Quality Assurance)</label>
+                                            <label class="form-label" for="date_of_confirmation">Date of confirmation (By Quality Assurance)</label>
                                             <input type="date" id="date_of_confirmation" name="date_of_confirmation" class="form-control"
                                                 placeholder="" aria-label=""
                                                 value="{{ isset($jqr_process_fuel_gas->date_of_confirmation) ? $jqr_process_fuel_gas->date_of_confirmation : '' }}" />
