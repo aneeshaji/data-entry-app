@@ -526,6 +526,9 @@ class JobQualityRequirementController extends Controller
         $non_code_vess->hydro_chart_required = $request->hydro_chart_required == 'on' ? '1' : '0';
         $non_code_vess->hydro_notes = $request->hydro_notes;
         $non_code_vess->notes = $request->notes;
+        $non_code_vess->nde_requirements_required = $request->nde_requirements_required;
+        $non_code_vess->date_of_confirmation = $request->date_of_confirmation;
+        $non_code_vess->nde_reports_comments = $request->nde_reports_comments;
         $non_code_vess->save();
 
         if ($non_code_vess->id) {
