@@ -23,7 +23,6 @@ class BasicDetails extends Model
         'status_of_docs_deliverables_heat_map',
         'status_of_docs_deliverables_weld_map',
         'jqr_revision_date',
-        'company_logo',
         'form_number',
         'release_date',
         'issue_date',
@@ -36,5 +35,37 @@ class BasicDetails extends Model
     public function pressureVessels()
     {
         return $this->belongsTo(PressureVessels::class, 'id', 'basic_details_id');
+    }
+
+    /**
+     * Get NDE Doc Status.
+     */
+    public function ndeStatus()
+    {
+        return $this->belongsTo(DocumentDeliverablesStatus::class, 'status_of_docs_deliverables_nde', 'id');
+    }
+
+    /**
+     * Get Hydro Doc Status.
+     */
+    public function hydroStatus()
+    {
+        return $this->belongsTo(DocumentDeliverablesStatus::class, 'status_of_docs_deliverables_hydro', 'id');
+    }
+
+    /**
+     * Get Heat Map Doc Status.
+     */
+    public function heatMapStatus()
+    {
+        return $this->belongsTo(DocumentDeliverablesStatus::class, 'status_of_docs_deliverables_heat_map', 'id');
+    }
+
+    /**
+     * Get Weld Map Doc Status.
+     */
+    public function weldMapStatus()
+    {
+        return $this->belongsTo(DocumentDeliverablesStatus::class, 'status_of_docs_deliverables_weld_map', 'id');
     }
 }

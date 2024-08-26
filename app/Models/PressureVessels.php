@@ -28,6 +28,16 @@ class PressureVessels extends Model
         'max_hardness',
         'hydro_chart_required',
         'hydro_notes',
-        'notes'
+        'notes',
+        'date_of_confirmation',
+        'nde_reports_comments'
     ];
+
+    /**
+     * Get Basic Details Data.
+     */
+    public function basicDetails()
+    {
+        return $this->belongsTo(BasicDetails::class, 'basic_details_id', 'id');
+    }
 }
