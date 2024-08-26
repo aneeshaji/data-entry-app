@@ -21,6 +21,7 @@ use App\Models\StructuralSkid;
 use App\Models\ThreadedPiping;
 use App\Models\Tubing;
 use App\Models\DocumentDeliverablesStatus;
+use App\Models\NdeReportsRequiredStatus;
 use Barryvdh\DomPDF\Facade\Pdf;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
@@ -117,8 +118,10 @@ class JobQualityRequirementController extends Controller
     public function create()
     {
         $documentDeliverablesStatuses = DocumentDeliverablesStatus::all();
+        $ndeReportsRequiredStatuses = NdeReportsRequiredStatus::all();
         return view('admin.job-quality-requirements.create', [
-            'documentDeliverablesStatuses' => $documentDeliverablesStatuses
+            'documentDeliverablesStatuses' => $documentDeliverablesStatuses,
+            'ndeReportsRequiredStatuses' => $ndeReportsRequiredStatuses
         ]);
     }
 
@@ -285,8 +288,25 @@ class JobQualityRequirementController extends Controller
                 $result = BasicDetails::insert($data);
             }
             if ($basic_details->id) {
-                return response(['status' => true, 'message' => 'Success', 'id' => $basic_details->id,
-                    'redirect' => route('admin.job-quality-requirements')]);
+                // Getting doc statuses
+                $statusData = BasicDetails::with('ndeStatus')
+                                            ->with('hydroStatus')
+                                            ->with('heatMapStatus')
+                                            ->with('weldMapStatus')
+                                            ->where('id', $basic_details->id)
+                                            ->first();
+                return response([
+                    'status' => true, 
+                    'message' => 'Success', 
+                    'id' => $basic_details->id,
+                    'doc_statuses' =>  [
+                        'nde' => $statusData->ndeStatus->name ?? '',
+                        'hydro' => $statusData->hydroStatus->name ?? '',
+                        'heat_map' => $statusData->heatMapStatus->name ?? '',
+                        'weld_map' => $statusData->weldMapStatus->name ?? ''
+                    ],
+                    'redirect' => route('admin.job-quality-requirements')
+                ]);
             } else {
                 return response(['status' => false, 'message' => 'Error creating JQR']);
             }
@@ -442,7 +462,7 @@ class JobQualityRequirementController extends Controller
         $pressure_vessels->weld_mapping = $request->weld_mapping == 'on' ? '1' : '0';
         $pressure_vessels->material_notes = $request->material_notes;
         $pressure_vessels->nace = $request->nace == 'on' ? '1' : '0';
-        $pressure_vessels->nde_requirements_required = $request->nde_requirements_required == 'on' ? '1' : '0';
+        $pressure_vessels->nde_requirements_required = $request->nde_requirements_required;
         $pressure_vessels->nde_requirements = $request->nde_requirements;
         $pressure_vessels->weld_requirements = $request->weld_requirements;
         $pressure_vessels->governing_code = $request->governing_code;
@@ -454,6 +474,8 @@ class JobQualityRequirementController extends Controller
         $pressure_vessels->hydro_chart_required = $request->hydro_chart_required == 'on' ? '1' : '0';
         $pressure_vessels->hydro_notes = $request->hydro_notes;
         $pressure_vessels->notes = $request->notes;
+        $pressure_vessels->date_of_confirmation = $request->date_of_confirmation;
+        $pressure_vessels->nde_reports_comments = $request->nde_reports_comments;
 
         $pressure_vessels->save();
 
@@ -957,7 +979,11 @@ class JobQualityRequirementController extends Controller
     public function edit(string $id)
     {
         $id = decrypt($id);
-        $jqr = BasicDetails::where('id', $id)->first();
+        $jqr = BasicDetails::with('ndeStatus')
+                            ->with('hydroStatus')
+                            ->with('heatMapStatus')
+                            ->with('weldMapStatus')
+                            ->where('id', $id)->first();
         $jqr_special = SpecialMaterialRequirements::where('basic_details_id', $jqr->id)->first();
         $jqr_general_info = GeneralInformation::where('basic_details_id', $jqr->id)->first();
         $jqr_service_info = ServiceInformation::where('basic_details_id', $jqr->id)->first();
@@ -974,12 +1000,22 @@ class JobQualityRequirementController extends Controller
         $jqr_tubing = Tubing::where('basic_details_id', $jqr->id)->first();
         $jqr_gaskets = Gaskets::where('basic_details_id', $jqr->id)->first();
         $documentDeliverablesStatuses = DocumentDeliverablesStatus::all();
-
+        $ndeReportsRequiredStatuses = NdeReportsRequiredStatus::all();
+        
         if ($jqr_package_testing != null && $jqr_package_testing->run_test_requirement) {
             $jqr_package_testing_run_test_requirements = explode(',', $jqr_package_testing->run_test_requirement);
         } else {
             $jqr_package_testing_run_test_requirements = [];
         }
+
+        $doc_statuses = [
+            'nde' => $jqr->ndeStatus->name ?? '',
+            'hydro' => $jqr->hydroStatus->name ?? '',
+            'heat_map' => $jqr->heatMapStatus->name ?? '',
+            'weld_map' => $jqr->weldMapStatus->name ?? ''
+        ];
+
+        //$json_doc_statuses = json_encode($doc_statuses);
 
         return view('admin.job-quality-requirements.create', [
             'jqr' => $jqr,
@@ -999,7 +1035,9 @@ class JobQualityRequirementController extends Controller
             'jqr_threaded_piping' => $jqr_threaded_piping,
             'jqr_tubing' => $jqr_tubing,
             'jqr_gaskets' => $jqr_gaskets,
-            'documentDeliverablesStatuses' => $documentDeliverablesStatuses
+            'documentDeliverablesStatuses' => $documentDeliverablesStatuses,
+            'ndeReportsRequiredStatuses' => $ndeReportsRequiredStatuses,
+            'doc_statuses' => $doc_statuses
         ]);
     }
 

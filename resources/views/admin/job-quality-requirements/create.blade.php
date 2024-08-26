@@ -2,7 +2,8 @@
     <div class="content-wrapper">
         <!-- Content -->
         <div class="container-xxl flex-grow-1 container-p-y">
-            <h4 class="fw-bold py-3 mb-4"><span class="text-muted fw-light">Job Quality Requirements / </span> Create
+            <h4 class="fw-bold py-3 mb-4"><span class="text-muted fw-light">Job Quality Requirements / </span> 
+                {{ isset($jqr->id) ? "Edit" : "Create" }}
             </h4>
             <!-- <p class="mb-4">
                 Icons used on this page are made by
@@ -294,7 +295,7 @@
                                             <label class="form-label" for="company_logo">Company Logo</label>
                                             <input type="file" id="company_logo" class="form-control" name="company_logo"
                                                 placeholder="" aria-label=""
-                                                value="{{ isset($jqr->company_logo) ? $jqr->company_logo : '' }}" required />
+                                                value="{{ isset($jqr->company_logo) ? $jqr->company_logo : '' }}" required/>
                                         </div>
                                         <!-- Statuses -->
                                         <div class="col-sm-12">
@@ -902,16 +903,36 @@
                                                 <span class="switch-label">*NACE</span>
                                             </label>
                                         </div>
+                                        <div class="col-md-6 mb-6">
+                                            <label for="selectpickerBasic" class="form-label">NDE Reports Required</label>
+                                            <select id="selectpickerBasic" class="selectpicker w-100" name="nde_requirements_required" data-style="btn-default">
+                                                <option selected disabled>-Select-</option>
+                                                @foreach($ndeReportsRequiredStatuses as $status)
+                                                    <option value="{{ $status->id }}" {{ isset($jqr_pressure_vessels->nde_requirements_required) && $status->id == $jqr_pressure_vessels->nde_requirements_required ? 'selected' : '' }}>{{ $status->name }}</option>
+                                                @endforeach
+                                            </select>
+                                        </div>
                                         <div class="col-sm-6">
+                                            <label class="form-label" for="date_of_confirmation">Date of confirmation (by Quality Assurance)</label>
+                                            <input type="date" id="date_of_confirmation" name="date_of_confirmation" class="form-control"
+                                                placeholder="" aria-label=""
+                                                value="{{ isset($jqr_pressure_vessels->date_of_confirmation) ? $jqr_pressure_vessels->date_of_confirmation : '' }}" />
+                                        </div>
+                                        <div class="col-sm-6">
+                                            <label class="form-label" for="nde_reports_comments">NDE Reports Comments</label>
+                                            <textarea class="form-control" name="nde_reports_comments" id="exampleFormControlTextarea1"
+                                                rows="3">{{ isset($jqr_pressure_vessels->nde_reports_comments) ? $jqr_pressure_vessels->nde_reports_comments: '' }}</textarea>
+                                        </div>
+                                        <!-- <div class="col-sm-6">
                                             <label class="switch">
                                                 <input type="checkbox" class="switch-input" name="nde_requirements_required" {{ isset($jqr_pressure_vessels->nde_requirements_required) && $jqr_pressure_vessels->nde_requirements_required == '1' ? 'checked': '' }} >
                                                 <span class="switch-toggle-slider">
                                                     <span class="switch-on"></span>
                                                     <span class="switch-off"></span>
                                                 </span>
-                                                <span class="switch-label">NDE Requirements Required</span>
+                                                <span class="switch-label">NDE Reports Required</span>
                                             </label>
-                                        </div>
+                                        </div> -->
                                         <div class="col-sm-6">
                                             <label class="form-label" for="linkedin1">NDE Requirements</label>
                                             <textarea class="form-control" name="nde_requirements" id="exampleFormControlTextarea1"
@@ -992,6 +1013,32 @@
                                             <textarea class="form-control" name="notes" id="exampleFormControlTextarea1"
                                                 rows="3"> {{ isset($jqr_pressure_vessels->notes) ? $jqr_pressure_vessels->notes: '' }}</textarea>
                                         </div>
+                                        <!-- Doc Statuses -->
+                                        <!-- NDE --> 
+                                        <div class="col-sm-6">
+                                            <label class="form-label" for="linkedin1">NDE Status</label>
+                                            <div class="alert alert-primary nde-status" role="alert">None</div>
+                                        </div>
+                                        <!-- NDE Ends -->
+                                        <!-- Hydro --> 
+                                        <div class="col-sm-6">
+                                            <label class="form-label" for="linkedin1">Hydro Status</label>
+                                            <div class="alert alert-primary hydro-status" role="alert">None</div>
+                                        </div>
+                                        <!-- Hydro Ends -->
+                                        <!-- Heat Map --> 
+                                        <div class="col-sm-6">
+                                            <label class="form-label" for="linkedin1">Heat Map Status</label>
+                                            <div class="alert alert-primary heat-map-status" role="alert">None</div>
+                                        </div>
+                                        <!-- Heat Map Ends --> 
+                                        <!-- Weld Map --> 
+                                        <div class="col-sm-6">
+                                            <label class="form-label" for="linkedin1">Wels Map Status</label>
+                                            <div class="alert alert-primary weld-map-status" role="alert">None</div>
+                                        </div>
+                                        <!-- Weld Map Ends -->  
+                                        <!-- Doc Statuses Ends -->
                                         <!-- Action Buttons -->
                                         <div class="pt-4">
                                             <div class="row justify-content-end">
@@ -2636,6 +2683,8 @@
             </div>
             <hr class="container-m-nx mb-5" />
         </div>
+        
+        <input type="hidden" name="doc-statuses" id="docStatuses" value="{{ isset($doc_statuses) ? json_encode($doc_statuses) : '' }}">
         <!-- / Content -->
         <!-- Footer -->
         <footer class="content-footer footer bg-footer-theme">
@@ -2688,11 +2737,10 @@ if (typeof wizardIconsVertical !== undefined && wizardIconsVertical !== null) {
     if (wizardIconsVerticalBtnNextList) {
         wizardIconsVerticalBtnNextList.forEach(wizardIconsVerticalBtnNext => {
             wizardIconsVerticalBtnNext.addEventListener('click', event => {
-                // if ($('#job_number').val() == '') {
-                //     //alert('Job Numer is required');
-                // } else {
+                if ($('#job_number').val() != '' && $('#scheduled_test_date').val() != '' 
+                && $('#job_revision_number').val() != '' && $('#no_of_modules').val() != '' ) {
                     verticalIconsStepper.next();
-                // }
+                }
             });
         });
     }
@@ -2766,6 +2814,11 @@ $(document).ready(function() {
             updateBadge($(this));
         }
     });
+
+    let docStatusesJson = $('#docStatuses').val();
+    // Parse the JSON string into a JavaScript object
+    let docStatuses = JSON.parse(docStatusesJson);
+    updateDocStatuses(docStatuses);
 });
 
 // Validation Sections FOr Basic Details
@@ -2777,6 +2830,65 @@ $('#scheduledTestDateValidation').hide();
 // Disabling sections on page load
 if ($('.form_id_bd').val() == '') {
     $('.step').css('pointer-events', 'none');
+}
+
+function updateDocStatuses(statuses) {
+    if (statuses) {
+        // Define an object mapping status keys to class names
+        const statusClassMap = {
+            nde: 'nde-status',
+            hydro: 'hydro-status',
+            heat_map: 'heat-map-status',
+            weld_map: 'weld-map-status'
+        };
+
+        // Loop through each status key
+        for (const [key, className] of Object.entries(statusClassMap)) {
+            // Get the element for the current status
+            let element = $('.' + className);
+            let classList = element.attr('class').split(' ');
+            
+            // Remove the old status class
+            if (classList.length > 1) {
+                element.removeClass(classList.find(cls => cls.startsWith('alert-')));
+            }
+
+            // Get the selected status for the current key
+            let selectedStatus = statuses[key];
+
+            // Check if the status is empty and update accordingly
+            if (!selectedStatus || selectedStatus.trim() === '') {
+                element.text('None');
+                element.addClass('alert-dark');
+            } else {
+                element.text(selectedStatus);
+                // Add the new class based on the selected status
+                switch (selectedStatus) {
+                    case 'DD Completed':
+                        element.addClass('alert-success');
+                        break;
+                    case 'Shop Complete':
+                        element.addClass('alert-warning');
+                        break;
+                    case 'Attention':
+                        element.addClass('alert-danger');
+                        break;
+                    case 'Rework':
+                        element.addClass('alert-primary');
+                        break;
+                    case 'Review':
+                        element.addClass('alert-info');
+                        break;
+                    case 'Outsourced':
+                        element.addClass('alert-dark');
+                        break;
+                    default:
+                        element.addClass('alert-secondary');
+                        break;
+                }
+            }
+        }
+    }
 }
 
 // Submit Basic Data
@@ -2801,7 +2913,9 @@ function submitData(reloadFlag) {
 				$('.form_id_bd').val(response.id);
 				if (reloadFlag == true) {
 					window.location.href = response.redirect;
-				}
+				} else {
+                    updateDocStatuses(response.doc_statuses);
+                }
 			}
 		},
 		error: function(response) {
