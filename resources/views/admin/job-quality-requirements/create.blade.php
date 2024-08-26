@@ -553,18 +553,18 @@
                                                 name="job_type"
                                                 value="{{ isset($jqr_general_info->job_type) ? $jqr_general_info->job_type : '' }}" />
                                         </div>
-                                        <div class="col-sm-6">
+                                        <!-- <div class="col-sm-6">
                                             <label class="form-label" for="last-name1">JQR Revision Number</label>
                                             <input type="text" id="last-name1" class="form-control" placeholder=""
                                                 name="job_revision_number"
                                                 value="{{ isset($jqr_general_info->job_revision_number) ? $jqr_general_info->job_revision_number : '' }}" />
-                                        </div>
-                                        <div class="col-sm-6">
+                                        </div> -->
+                                        <!-- <div class="col-sm-6">
                                             <label class="form-label" for="last-name1">Date Revised</label>
                                             <input type="date" id="last-name1" class="form-control" placeholder=""
                                                 name="date_revised"
                                                 value="{{ isset($jqr_general_info->date_revised) ? $jqr_general_info->date_revised : '' }}" />
-                                        </div>
+                                        </div> -->
                                         <div class="col-sm-6">
                                             <label class="form-label" for="last-name1">Date Approved By Engineer</label>
                                             <input type="date" id="last-name1" name="date_approved" class="form-control"
