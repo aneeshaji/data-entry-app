@@ -39,7 +39,7 @@
                                     </span>
                                 </button>
                             </div> -->
-                            <!-- <div class="line"></div>
+                            <div class="line"></div>
                             <div class="step" data-target="#personal-info-vertical">
                                 <button type="button" class="step-trigger">
                                     <span class="bs-stepper-circle">
@@ -50,7 +50,7 @@
                                         <span class="bs-stepper-subtitle">Add general information</span>
                                     </span>
                                 </button>
-                            </div> -->
+                            </div>
                             <!-- <div class="line"></div>
                             <div class="step" data-target="#social-links-vertical">
                                 <button type="button" class="step-trigger">
@@ -570,6 +570,42 @@
                                             <input type="date" id="last-name1" name="date_approved" class="form-control"
                                                 placeholder=""
                                                 value="{{ isset($jqr_general_info->date_approved) ? $jqr_general_info->date_approved : '' }}" />
+                                        </div>
+                                        <div class="col-sm-6">
+                                            <label class="form-label" for="req_fab_completetion_date">Required Fab Completion Date</label>
+                                            <input type="date" id="req_fab_completetion_date" name="req_fab_completetion_date" class="form-control"
+                                                placeholder=""
+                                                value="{{ isset($jqr_general_info->req_fab_completetion_date) ? $jqr_general_info->req_fab_completetion_date : '' }}" />
+                                        </div>
+                                        <div class="col-sm-6">
+                                            <label class="switch">
+                                                <input type="checkbox" class="switch-input" name="spoling_required" {{ isset($jqr_general_info->spoling_required) && $jqr_general_info->spoling_required == '1' ? 'checked': '' }}>
+                                                <span class="switch-toggle-slider">
+                                                    <span class="switch-on"></span>
+                                                    <span class="switch-off"></span>
+                                                </span>
+                                                <span class="switch-label">Spooling Required</span>
+                                            </label>
+                                        </div>
+                                        <div class="col-sm-6">
+                                            <label class="switch">
+                                                <input type="checkbox" class="switch-input" name="vessels_required" {{ isset($jqr_general_info->vessels_required) && $jqr_general_info->vessels_required == '1' ? 'checked': '' }}>
+                                                <span class="switch-toggle-slider">
+                                                    <span class="switch-on"></span>
+                                                    <span class="switch-off"></span>
+                                                </span>
+                                                <span class="switch-label">Vessels Required</span>
+                                            </label>
+                                        </div>
+                                        <div class="col-sm-6">
+                                            <label class="switch">
+                                                <input type="checkbox" class="switch-input" name="vessels_outsourced" {{ isset($jqr_general_info->vessels_outsourced) && $jqr_general_info->vessels_outsourced == '1' ? 'checked': '' }}>
+                                                <span class="switch-toggle-slider">
+                                                    <span class="switch-on"></span>
+                                                    <span class="switch-off"></span>
+                                                </span>
+                                                <span class="switch-label">Vessels Outsourced</span>
+                                            </label>
                                         </div>
                                         <div class="col-sm-6">
                                             <label class="form-label" for="last-name1">Notes</label>

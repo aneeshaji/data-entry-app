@@ -325,7 +325,7 @@ class JobQualityRequirementController extends Controller
 
         $special_material_requirements->basic_details_id = $request->basic_details_id;
         $special_material_requirements->pipes_and_fittings = $request->pipes_and_fittings == 'on' ? '1' : '0';
-
+        
         $special_material_requirements->bolting = $request->bolting == 'on' ? '1' : '0';
         $special_material_requirements->pressure_vessels = $request->pressure_vessels == 'on' ? '1' : '0';
         $special_material_requirements->gaskets = $request->gaskets == 'on' ? '1' : '0';
@@ -368,6 +368,10 @@ class JobQualityRequirementController extends Controller
         $general_info->date_revised = $request->date_revised;
         $general_info->date_approved = $request->date_approved;
         $general_info->notes = $request->notes;
+        $general_info->req_fab_completetion_date = $request->req_fab_completetion_date;
+        $general_info->spoling_required = $request->spoling_required == 'on' ? '1' : '0';
+        $general_info->vessels_required = $request->vessels_required == 'on' ? '1' : '0';
+        $general_info->vessels_outsourced = $request->vessels_outsourced == 'on' ? '1' : '0';
         $general_info->save();
 
         if ($general_info->id) {
@@ -1014,8 +1018,6 @@ class JobQualityRequirementController extends Controller
             'heat_map' => $jqr->heatMapStatus->name ?? '',
             'weld_map' => $jqr->weldMapStatus->name ?? ''
         ];
-
-        //$json_doc_statuses = json_encode($doc_statuses);
 
         return view('admin.job-quality-requirements.create', [
             'jqr' => $jqr,

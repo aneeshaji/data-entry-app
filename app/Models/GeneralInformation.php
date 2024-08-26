@@ -18,6 +18,10 @@ class GeneralInformation extends Model
         'job_revision_number',
         'date_revised',
         'date_approved',
-        'notes'
+        'notes',
+        'req_fab_completetion_date',
+        'spoling_required',
+        'vessels_required',
+        'vessels_outsourced'
     ];
 }
