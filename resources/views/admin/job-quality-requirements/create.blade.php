@@ -312,6 +312,20 @@
                                                         </thead>
                                                         <tbody>
                                                             <tr>
+                                                                <th>MTR'S</th>
+                                                                <td>
+                                                                    <select class="doc-status" name="status_of_docs_deliverables_mtrs" data-style="btn-default">
+                                                                        <option selected disabled>-Select-</option>
+                                                                        @foreach($documentDeliverablesStatuses as $status)
+                                                                            <option value="{{ $status->id }}" {{ isset($jqr->status_of_docs_deliverables_mtrs) && $status->id == $jqr->status_of_docs_deliverables_mtrs ? 'selected' : '' }}>{{ $status->name }}</option>
+                                                                        @endforeach
+                                                                    </select>
+                                                                </td>
+                                                                <td>
+                                                                    <span class="badge bg-secondary">None</span>
+                                                                </td>
+                                                            </tr>
+                                                            <tr>
                                                                 <th>NDE</th>
                                                                 <td>
                                                                     <select class="doc-status" name="status_of_docs_deliverables_nde" data-style="btn-default">
@@ -951,12 +965,16 @@
                                         </div>
                                         <div class="col-md-6 mb-6">
                                             <label for="selectpickerBasic" class="form-label">NDE Rquirements Required</label>
-                                            <select id="selectpickerBasic" class="selectpicker w-100" name="nde_requirements_required" data-style="btn-default">
+                                            <select class="selectpicker w-100 nde-req-dropdown" name="nde_requirements_required" data-style="btn-default">
                                                 <option selected disabled>-Select-</option>
                                                 @foreach($ndeReportsRequiredStatuses as $status)
-                                                    <option value="{{ $status->id }}" {{ isset($jqr_pressure_vessels->nde_requirements_required) && $status->id == $jqr_pressure_vessels->nde_requirements_required ? 'selected' : '' }}>{{ $status->name }}</option>
+                                                    <option data-code="{{ $status->code }}" value="{{ $status->id }}" {{ isset($jqr_pressure_vessels->nde_requirements_required) && $status->id == $jqr_pressure_vessels->nde_requirements_required ? 'selected' : '' }}>{{ $status->name }}</option>
                                                 @endforeach
                                             </select>
+                                        </div>
+                                        <div class="col-sm-6">
+                                            <label class="form-label" for="nde_req_code">NDE Rquirements Code</label>
+                                            <input type="text" class="form-control nde-req-code-input" disabled readonly/>
                                         </div>
                                         <div class="col-sm-6">
                                             <label class="form-label" for="date_of_confirmation">Date of confirmation (By Quality Assurance)</label>
@@ -1060,6 +1078,12 @@
                                                 rows="3"> {{ isset($jqr_pressure_vessels->notes) ? $jqr_pressure_vessels->notes: '' }}</textarea>
                                         </div>
                                         <!-- Doc Statuses -->
+                                        <!-- MTRS --> 
+                                        <div class="col-sm-6">
+                                            <label class="form-label" for="linkedin1">MTR's Status</label>
+                                            <div class="alert alert-primary mtrs-status" role="alert">None</div>
+                                        </div>
+                                        <!-- MTRS Ends -->
                                         <!-- NDE --> 
                                         <div class="col-sm-6">
                                             <label class="form-label" for="linkedin1">NDE Status</label>
@@ -1218,12 +1242,16 @@
                                         </div>
                                         <div class="col-md-6 mb-6">
                                             <label for="selectpickerBasic" class="form-label">NDE Rquirements Required</label>
-                                            <select id="selectpickerBasic" class="selectpicker w-100" name="nde_requirements_required" data-style="btn-default">
+                                            <select class="selectpicker w-100 nde-req-dropdown" name="nde_requirements_required" data-style="btn-default">
                                                 <option selected disabled>-Select-</option>
                                                 @foreach($ndeReportsRequiredStatuses as $status)
-                                                    <option value="{{ $status->id }}" {{ isset($jqr_non_code->nde_requirements_required) && $status->id == $jqr_non_code->nde_requirements_required ? 'selected' : '' }}>{{ $status->name }}</option>
+                                                    <option data-code="{{ $status->code }}" value="{{ $status->id }}" {{ isset($jqr_non_code->nde_requirements_required) && $status->id == $jqr_non_code->nde_requirements_required ? 'selected' : '' }}>{{ $status->name }}</option>
                                                 @endforeach
                                             </select>
+                                        </div>
+                                        <div class="col-sm-6">
+                                            <label class="form-label" for="nde_req_code">NDE Rquirements Code</label>
+                                            <input type="text" class="form-control nde-req-code-input" disabled readonly/>
                                         </div>
                                         <div class="col-sm-6">
                                             <label class="form-label" for="linkedin1">NDE Requirements</label>
@@ -1316,7 +1344,13 @@
                                             <textarea class="form-control" name="nde_reports_comments" id="exampleFormControlTextarea1"
                                                 rows="3">{{ isset($jqr_non_code->nde_reports_comments) ? $jqr_non_code->nde_reports_comments: '' }}</textarea>
                                         </div>
-                                         <!-- Doc Statuses -->
+                                        <!-- Doc Statuses -->
+                                        <!-- MTRS --> 
+                                        <div class="col-sm-6">
+                                            <label class="form-label" for="linkedin1">MTR's Status</label>
+                                            <div class="alert alert-primary mtrs-status" role="alert">None</div>
+                                        </div>
+                                        <!-- MTRS Ends -->
                                         <!-- NDE --> 
                                         <div class="col-sm-6">
                                             <label class="form-label" for="linkedin1">NDE Status</label>
@@ -1455,12 +1489,16 @@
                                         </div>
                                         <div class="col-md-6 mb-6">
                                             <label for="selectpickerBasic" class="form-label">NDE Rquirements Required</label>
-                                            <select id="selectpickerBasic" class="selectpicker w-100" name="nde_requirements_required" data-style="btn-default">
+                                            <select id="selectpickerBasic" class="selectpicker w-100 nde-req-dropdown" name="nde_requirements_required" data-style="btn-default">
                                                 <option selected disabled>-Select-</option>
                                                 @foreach($ndeReportsRequiredStatuses as $status)
-                                                    <option value="{{ $status->id }}" {{ isset($jqr_process_fuel_gas->nde_requirements_required) && $status->id == $jqr_process_fuel_gas->nde_requirements_required ? 'selected' : '' }}>{{ $status->name }}</option>
+                                                    <option data-code="{{ $status->code }}" value="{{ $status->id }}" {{ isset($jqr_process_fuel_gas->nde_requirements_required) && $status->id == $jqr_process_fuel_gas->nde_requirements_required ? 'selected' : '' }}>{{ $status->name }}</option>
                                                 @endforeach
                                             </select>
+                                        </div>
+                                        <div class="col-sm-6">
+                                            <label class="form-label" for="nde_req_code">NDE Rquirements Code</label>
+                                            <input type="text" class="form-control nde-req-code-input" disabled readonly/>
                                         </div>
                                         <div class="col-sm-6">
                                             <label class="switch">
@@ -1546,6 +1584,12 @@
                                                 rows="3">{{ isset($jqr_process_fuel_gas->nde_reports_comments) ? $jqr_process_fuel_gas->nde_reports_comments: '' }}</textarea>
                                         </div>
                                         <!-- Doc Statuses -->
+                                        <!-- MTRS --> 
+                                        <div class="col-sm-6">
+                                            <label class="form-label" for="linkedin1">MTR's Status</label>
+                                            <div class="alert alert-primary mtrs-status" role="alert">None</div>
+                                        </div>
+                                        <!-- MTRS Ends -->
                                         <!-- NDE --> 
                                         <div class="col-sm-6">
                                             <label class="form-label" for="linkedin1">NDE Status</label>
@@ -2957,6 +3001,37 @@ $(document).ready(function() {
     // Parse the JSON string into a JavaScript object
     let docStatuses = JSON.parse(docStatusesJson);
     updateDocStatuses(docStatuses);
+
+    // Function to update the input field based on dropdown selection
+    function updateInputField() {
+        $('.nde-req-dropdown').each(function() {
+            var selectedCode = $(this).find('option:selected').data('code'); // Get the selected code
+            var codeInput = $(this).closest('.col-md-6').siblings('.col-sm-6').find('.nde-req-code-input'); // Find the related input field
+            if (typeof selectedCode !== 'undefined') {
+                console.log("Initial Load", selectedCode);
+                codeInput.val(selectedCode); // Update the related input field
+            } else {
+                console.log("Initial Load - No Code Available");
+                codeInput.val('No Code Available'); // Clear the input if no code is available
+            }
+        });
+    }
+
+    // Call the function on page load to populate all input fields
+    updateInputField();
+
+    // Bind the change event to update input fields when dropdown changes
+    $('.nde-req-dropdown').on('change', function() {
+        var selectedCode = $(this).find('option:selected').data('code'); // Get the selected code
+        var codeInput = $(this).closest('.col-md-6').siblings('.col-sm-6').find('.nde-req-code-input'); // Find the related input field
+        if (typeof selectedCode !== 'undefined') {
+            console.log("On Change", selectedCode);
+            codeInput.val(selectedCode); // Update the related input field
+        } else {
+            console.log("On Change - No Code Available");
+            codeInput.val('No Code Available'); // Clear the input if no code is available
+        }
+    });
 });
 
 // Validation Sections FOr Basic Details
@@ -2974,6 +3049,7 @@ function updateDocStatuses(statuses) {
     if (statuses) {
         // Define an object mapping status keys to class names
         const statusClassMap = {
+            mtrs: 'mtrs-status',
             nde: 'nde-status',
             hydro: 'hydro-status',
             heat_map: 'heat-map-status',
