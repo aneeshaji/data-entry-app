@@ -262,6 +262,9 @@ class JobQualityRequirementController extends Controller
             $basic_details->jqr_revision_date = $request->jqr_revision_date;
             $basic_details->form_number = $request->form_number;
             //Statuses of docs deliverables
+            if ($request->status_of_docs_deliverables_mtrs != null ) {
+                $basic_details->status_of_docs_deliverables_mtrs = $request->status_of_docs_deliverables_mtrs;
+            }
             if ($request->status_of_docs_deliverables_nde != null ) {
                 $basic_details->status_of_docs_deliverables_nde = $request->status_of_docs_deliverables_nde;
             }
@@ -302,6 +305,7 @@ class JobQualityRequirementController extends Controller
                     'message' => 'Success', 
                     'id' => $basic_details->id,
                     'doc_statuses' =>  [
+                        'mtrs' => $statusData->mtrsStatus->name ?? '',
                         'nde' => $statusData->ndeStatus->name ?? '',
                         'hydro' => $statusData->hydroStatus->name ?? '',
                         'heat_map' => $statusData->heatMapStatus->name ?? '',
@@ -992,7 +996,8 @@ class JobQualityRequirementController extends Controller
     public function edit(string $id)
     {
         $id = decrypt($id);
-        $jqr = BasicDetails::with('ndeStatus')
+        $jqr = BasicDetails::with('mtrsStatus')
+                            ->with('ndeStatus')
                             ->with('hydroStatus')
                             ->with('heatMapStatus')
                             ->with('weldMapStatus')
