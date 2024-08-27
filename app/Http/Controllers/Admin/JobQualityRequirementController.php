@@ -170,27 +170,29 @@ class JobQualityRequirementController extends Controller
         }
 
         $data = [
-            'jqr' => $jqr,
-            'jqr_special' => $jqr_special,
-            'jqr_general_info' => $jqr_general_info,
-            'jqr_service_info' => $jqr_service_info,
-            'jqr_bolting' => $jqr_bolting,
-            'jqr_butt' => $jqr_butt,
-            'jqr_electrical' => $jqr_electrical,
-            'jqr_non_code' => $jqr_non_code,
-            'jqr_package_testing' => $jqr_package_testing,
-            'jqr_preservation' => $jqr_preservation,
-            'jqr_pressure_vessels' => $jqr_pressure_vessels,
-            'jqr_process_fuel_gas' => $jqr_process_fuel_gas,
-            'jqr_structural_skid' => $jqr_structural_skid,
-            'jqr_threaded_piping' => $jqr_threaded_piping,
-            'jqr_tubing' => $jqr_tubing,
-            'jqr_gaskets' => $jqr_gaskets,
-            'run_test_reqs' => $run_test_reqs
+            'jqr' => $jqr ?? '',
+            'jqr_special' => $jqr_special ?? '',
+            'jqr_general_info' => $jqr_general_info ?? '',
+            'jqr_service_info' => $jqr_service_info ?? '',
+            'jqr_bolting' => $jqr_bolting ?? '',
+            'jqr_butt' => $jqr_butt ?? '',
+            'jqr_electrical' => $jqr_electrical ?? '',
+            'jqr_non_code' => $jqr_non_code ?? '',
+            'jqr_package_testing' => $jqr_package_testing ?? '',
+            'jqr_preservation' => $jqr_preservation ?? '',
+            'jqr_pressure_vessels' => $jqr_pressure_vessels ?? '',
+            'jqr_process_fuel_gas' => $jqr_process_fuel_gas ?? '',
+            'jqr_structural_skid' => $jqr_structural_skid ?? '',
+            'jqr_threaded_piping' => $jqr_threaded_piping ?? '',
+            'jqr_tubing' => $jqr_tubing ?? '',
+            'jqr_gaskets' => $jqr_gaskets ?? '',
+            'run_test_reqs' => $run_test_reqs ?? ''
         ];
 
-        $pdf = PDF::loadView('admin.job-quality-requirements.show', $data);
-        return $pdf->download('jqrms.pdf');
+        $jobNumber = $jqr->job_number ?? '';
+        $fileName = "jqrms-{$jobNumber}.pdf";
+        $pdf = PDF::loadView('admin.job-quality-requirements.show-minimized-jqr', $data);
+        return $pdf->download($fileName);
     }
 
     /**
@@ -958,7 +960,7 @@ class JobQualityRequirementController extends Controller
             $jqr_package_testing_run_test_requirements = [];
         }
 
-        return view('admin.job-quality-requirements.show', [
+        return view('admin.job-quality-requirements.show-minimized-jqr', [
             'jqr' => $jqr,
             'jqr_special' => $jqr_special,
             'jqr_general_info' => $jqr_general_info,

@@ -3,7 +3,7 @@
         <!-- Content -->
         <div class="container-xxl flex-grow-1 container-p-y">
             <h4 class="fw-bold py-3 mb-4"><span class="text-muted fw-light">Job Quality Requirements / </span> 
-                {{ isset($jqr->id) ? "Edit" : "Create" }}
+                {{ isset($jqr->id) ? "Edit - " . $jqr->job_name . "" : "Create" }}
             </h4>
             <!-- <p class="mb-4">
                 Icons used on this page are made by
@@ -133,7 +133,7 @@
                                 </button>
                             </div>
                             <div class="line"></div> -->
-                            <!-- <div class="step" data-target="#butt_welded">
+                            <div class="step" data-target="#butt_welded">
                                 <button type="button" class="step-trigger">
                                     <span class="bs-stepper-circle"><i class="ti ti-shield"></i> </span>
                                     <span class="bs-stepper-label">
@@ -144,7 +144,7 @@
                                     </span>
                                 </button>
                             </div>
-                            <div class="line"></div> -->
+                            <div class="line"></div>
                             <!-- <div class="step" data-target="#threaded_piping">
                                 <button type="button" class="step-trigger">
                                     <span class="bs-stepper-circle"><i class="ti ti-needle-thread"></i> </span>
@@ -175,7 +175,7 @@
                                 </button>
                             </div>
                             <div class="line"></div> -->
-                            <!-- <div class="step" data-target="#package_testing">
+                            <div class="step" data-target="#package_testing">
                                 <button type="button" class="step-trigger">
                                     <span class="bs-stepper-circle"><i class="ti ti-package"></i> </span>
                                     <span class="bs-stepper-label">
@@ -183,7 +183,7 @@
                                         <span class="bs-stepper-subtitle">Add package testing</span>
                                     </span>
                                 </button>
-                            </div> -->
+                            </div>
                         </div>
                         <div class="bs-stepper-content">
                             <!-- <form onSubmit="return false"> -->
@@ -1579,17 +1579,17 @@
                                                         <i class="ti ti-arrow-left me-sm-1"></i>
                                                         <span class="align-middle d-sm-inline-block d-none">Previous</span>
                                                     </button>
-                                                    <button type="button" onclick="submitProcessPipingData(true)"
-                                                        class="btn btn-success waves-effect waves-light me-sm-3 me-1"><i
-                                                            class="ti ti-check"></i>Finish</button>
                                                     <!-- <button type="button" onclick="submitProcessPipingData(true)"
                                                         class="btn btn-success waves-effect waves-light me-sm-3 me-1"><i
-                                                            class="ti ti-check"></i>Save</button> -->
-                                                    <!-- <button class="btn btn-primary btn-next" onclick="submitProcessPipingData(false)" >
+                                                            class="ti ti-check"></i>Finish</button> -->
+                                                    <button type="button" onclick="submitProcessPipingData(true)"
+                                                        class="btn btn-success waves-effect waves-light me-sm-3 me-1"><i
+                                                            class="ti ti-check"></i>Save</button>
+                                                    <button class="btn btn-primary btn-next" onclick="submitProcessPipingData(false)" >
                                                         <span
                                                             class="align-middle d-sm-inline-block d-none me-sm-1">Next</span>
                                                         <i class="ti ti-arrow-right"></i>
-                                                    </button> -->
+                                                    </button>
                                                 </div>
                                             </div>
                                         </div>
