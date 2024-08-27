@@ -299,6 +299,7 @@ class JobQualityRequirementController extends Controller
                     'status' => true, 
                     'message' => 'Success', 
                     'id' => $basic_details->id,
+                    'jqr' => $basic_details ?? '',
                     'doc_statuses' =>  [
                         'nde' => $statusData->ndeStatus->name ?? '',
                         'hydro' => $statusData->hydroStatus->name ?? '',
@@ -356,6 +357,8 @@ class JobQualityRequirementController extends Controller
         } else {
             $general_info = new GeneralInformation();
         }
+        // Fetching Basic Details
+        $basic_details = BasicDetails::where('id', $request->id)->first();
 
         $general_info->basic_details_id = $request->basic_details_id;
         $general_info->customer = $request->customer;
@@ -376,7 +379,11 @@ class JobQualityRequirementController extends Controller
         $general_info->save();
 
         if ($general_info->id) {
-            return response(['status' => true, 'message' => 'Success', 'id' => $general_info->id,
+            return response([
+                'status' => true, 
+                'message' => 'Success', 
+                'id' => $general_info->id,
+                'jqr' => $basic_details ?? '',
                 'redirect' => route('admin.job-quality-requirements')]);
         } else {
             return response(['status' => false, 'message' => 'Error']);
@@ -457,6 +464,9 @@ class JobQualityRequirementController extends Controller
             $pressure_vessels = new PressureVessels();
         }
 
+        // Fetching Basic Details
+        $basic_details = BasicDetails::where('id', $request->id)->first();
+
         $pressure_vessels->basic_details_id = $request->basic_details_id;
         $pressure_vessels->customer_avl_applies = $request->customer_avl_applies == 'on' ? '1' : '0';
         $pressure_vessels->material_origin_reqs = $request->material_origin_reqs;
@@ -485,7 +495,11 @@ class JobQualityRequirementController extends Controller
         $pressure_vessels->save();
 
         if ($pressure_vessels->id) {
-            return response(['status' => true, 'message' => 'Success', 'id' => $pressure_vessels->id,
+            return response([
+                'status' => true, 
+                'message' => 'Success', 
+                'id' => $pressure_vessels->id,
+                'jqr' => $basic_details ?? '',
                 'redirect' => route('admin.job-quality-requirements')]);
         } else {
             return response(['status' => false, 'message' => 'Error']);
@@ -502,6 +516,9 @@ class JobQualityRequirementController extends Controller
         } else {
             $non_code_vess = new NonCodeVesselsTanks();
         }
+
+        // Fetching Basic Details
+        $basic_details = BasicDetails::where('id', $request->id)->first();
 
         $non_code_vess->basic_details_id = $request->basic_details_id;
         $non_code_vess->customer_avl_applies = $request->customer_avl_applies == 'on' ? '1' : '0';
@@ -532,7 +549,11 @@ class JobQualityRequirementController extends Controller
         $non_code_vess->save();
 
         if ($non_code_vess->id) {
-            return response(['status' => true, 'message' => 'Success', 'id' => $non_code_vess->id,
+            return response([
+                'status' => true, 
+                'message' => 'Success', 
+                'id' => $non_code_vess->id,
+                'jqr' => $basic_details ?? '',
                 'redirect' => route('admin.job-quality-requirements')]);
         } else {
             return response(['status' => false, 'message' => 'Error']);
@@ -549,6 +570,9 @@ class JobQualityRequirementController extends Controller
         } else {
             $process_fuel_gas = new ProcessFuelGasStartGasPiping();
         }
+
+        // Fetching Basic Details
+        $basic_details = BasicDetails::where('id', $request->id)->first();
 
         $process_fuel_gas->basic_details_id = $request->basic_details_id;
         $process_fuel_gas->customer_avl_applies = $request->customer_avl_applies == 'on' ? '1' : '0';
@@ -578,7 +602,11 @@ class JobQualityRequirementController extends Controller
         $process_fuel_gas->save();
 
         if ($process_fuel_gas->id) {
-            return response(['status' => true, 'message' => 'Success', 'id' => $process_fuel_gas->id,
+            return response([
+                'status' => true, 
+                'message' => 'Success', 
+                'id' => $process_fuel_gas->id,
+                'jqr' => $basic_details ?? '',
                 'redirect' => route('admin.job-quality-requirements')]);
         } else {
             return response(['status' => false, 'message' => 'Error']);

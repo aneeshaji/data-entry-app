@@ -3,7 +3,7 @@
         <!-- Content -->
         <div class="container-xxl flex-grow-1 container-p-y">
             <h4 class="fw-bold py-3 mb-4"><span class="text-muted fw-light">Job Quality Requirements / </span> 
-                {{ isset($jqr->id) ? "Edit" : "Create" }}
+                {{ isset($jqr->id) ? "Edit - $jqr->job_number" : "Create" }}
             </h4>
             <!-- <p class="mb-4">
                 Icons used on this page are made by
@@ -193,8 +193,8 @@
                                     <h6 class="mb-0">Basic Project Details</h6>
                                     <small>Enter Basic Project Details.</small>
                                 </div>
-                                <!-- <form onSubmit="return false" id="basic_details_from"> -->
-								<form id="basic_details_from" method="POST" enctype="multipart/form-data">
+                                <form onSubmit="return false" id="basic_details_from" enctype="multipart/form-data">
+								<!-- <form id="basic_details_from" method="POST" enctype="multipart/form-data"> -->
                                     <div class="row g-3">
                                         <div class="col-sm-6">
                                             <label class="form-label" for="first-name1">Job ID/Number</label>
@@ -229,7 +229,7 @@
                                                 value="{{ isset($jqr->due_date) ? $jqr->due_date : '' }}" />
                                         </div>
                                         <div class="col-sm-6">
-                                            <label class="form-label" for="customer_order_purchase_date">Date Purchase Order received from Customer</label>
+                                            <label class="form-label" for="customer_order_purchase_date">Date Purchase Order Received From Customer</label>
                                             <input type="date" id="customer_order_purchase_date" name="customer_order_purchase_date" class="form-control"
                                                 placeholder="" aria-label=""
                                                 value="{{ isset($jqr->customer_order_purchase_date) ? $jqr->customer_order_purchase_date : '' }}" />
@@ -293,9 +293,7 @@
                                         </div>
                                         <div class="col-sm-6">
                                             <label class="form-label" for="company_logo">Company Logo</label>
-                                            <input type="file" id="company_logo" class="form-control" name="company_logo"
-                                                placeholder="" aria-label=""
-                                                value="{{ isset($jqr->company_logo) ? $jqr->company_logo : '' }}" required/>
+                                            <input type="file" id="company_logo" class="form-control" name="company_logo"/>
                                         </div>
                                         <!-- Statuses -->
                                         <div class="col-sm-12">
@@ -403,9 +401,24 @@
                             <!-- Basic Project Details Ends -->
                             <!-- Special Material Requirements -->
                             <div id="special_material" class="content">
-                                <div class="content-header mb-3">
+                                <!-- <div class="content-header mb-3">
                                     <h6 class="mb-0">Special Material Requirements</h6>
                                     <small>Enter special material requirements</small>
+                                </div> -->
+                                <div class="row">
+                                    <div class="col-lg-6">
+                                        <div class="content-header mb-3">
+                                            <h6 class="mb-0">Special Material Requirements</h6>
+                                            <small>Enter special material requirements</small>
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-6">
+                                        <div class="content-header mb-3">
+                                        <button type="button" data-bs-toggle="modal" data-bs-target="#basicDetailsModal" class="btn btn-primary waves-effect waves-light">
+                                            Basic Details
+                                        </button>
+                                        </div>
+                                    </div>
                                 </div>
                                 <form onSubmit="return false" id="special_material_from">
                                     <div class="row g-3">
@@ -515,9 +528,24 @@
                             <!-- Special Material Requirements Ends -->
                             <!-- General Information -->
                             <div id="personal-info-vertical" class="content">
-                                <div class="content-header mb-3">
+                                <!-- <div class="content-header mb-3">
                                     <h6 class="mb-0">General Information</h6>
                                     <small>Enter general information</small>
+                                </div> -->
+                                <div class="row">
+                                    <div class="col-lg-6">
+                                        <div class="content-header mb-3">
+                                            <h6 class="mb-0">General Information</h6>
+                                            <small>Enter general information</small>
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-6">
+                                        <div class="content-header mb-3">
+                                        <button type="button" data-bs-toggle="modal" data-bs-target="#basicDetailsModal" class="btn btn-primary waves-effect waves-light">
+                                            Basic Details
+                                        </button>
+                                        </div>
+                                    </div>
                                 </div>
                                 <form onSubmit="return false" id="general_info_from">
                                     <div class="row g-3">
@@ -865,9 +893,24 @@
                             <!-- Structural Skid Ends -->
                             <!-- Pressure Vessels -->
                             <div id="pressure_vessels" class="content">
-                                <div class="content-header mb-3">
+                                <!-- <div class="content-header mb-3">
                                     <h6 class="mb-0">Pressure Vessels</h6>
                                     <small>Enter Pressure Vessels.</small>
+                                </div> -->
+                                <div class="row">
+                                    <div class="col-lg-6">
+                                        <div class="content-header mb-3">
+                                            <h6 class="mb-0">Pressure Vessels</h6>
+                                            <small>Enter Pressure Vessels</small>
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-6">
+                                        <div class="content-header mb-3">
+                                        <button type="button" data-bs-toggle="modal" data-bs-target="#basicDetailsModal" class="btn btn-primary waves-effect waves-light">
+                                            Basic Details
+                                        </button>
+                                        </div>
+                                    </div>
                                 </div>
                                 <form onSubmit="return false" id="pressure_vessels_from">
                                     <div class="row g-3">
@@ -1113,9 +1156,24 @@
                             <!-- Pressure Vessels Ends -->
                             <!-- Non code Vessels -->
                             <div id="non_code_vessels" class="content">
-                                <div class="content-header mb-3">
+                                <!-- <div class="content-header mb-3">
                                     <h6 class="mb-0">Non Code Vessels/Tanks</h6>
                                     <small>Enter Non Code Vessels/Tanks.</small>
+                                </div> -->
+                                <div class="row">
+                                    <div class="col-lg-6">
+                                        <div class="content-header mb-3">
+                                            <h6 class="mb-0">Non Code Vessels/Tanks</h6>
+                                            <small>Enter Non Code Vessels/Tanks</small>
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-6">
+                                        <div class="content-header mb-3">
+                                        <button type="button" data-bs-toggle="modal" data-bs-target="#basicDetailsModal" class="btn btn-primary waves-effect waves-light">
+                                            Basic Details
+                                        </button>
+                                        </div>
+                                    </div>
                                 </div>
                                 <form onSubmit="return false" id="non_code_vessels_from">
                                     <div class="row g-3">
@@ -1370,9 +1428,24 @@
                             <!-- Non code Vessels Ends -->
                             <!-- Process/Fuel Gas/Start Gas Piping -->
                             <div id="process_fuel_gas_piping" class="content">
-                                <div class="content-header mb-3">
+                                <!-- <div class="content-header mb-3">
                                     <h6 class="mb-0">Process/Fuel Gas/Start Gas Piping</h6>
                                     <small>Enter Process/Fuel Gas/Start Gas Piping.</small>
+                                </div> -->
+                                <div class="row">
+                                    <div class="col-lg-6">
+                                        <div class="content-header mb-3">
+                                            <h6 class="mb-0">Process/Fuel Gas/Start Gas Piping</h6>
+                                            <small>Enter Non Code Vessels/Tanks</small>
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-6">
+                                        <div class="content-header mb-3">
+                                        <button type="button" data-bs-toggle="modal" data-bs-target="#basicDetailsModal" class="btn btn-primary waves-effect waves-light">
+                                            Basic Details
+                                        </button>
+                                        </div>
+                                    </div>
                                 </div>
                                 <form onSubmit="return false" id="process_piping_from">
                                     <div class="row g-3">
@@ -2821,7 +2894,6 @@
             </div>
             <hr class="container-m-nx mb-5" />
         </div>
-        
         <input type="hidden" name="doc-statuses" id="docStatuses" value="{{ isset($doc_statuses) ? json_encode($doc_statuses) : '' }}">
         <!-- / Content -->
         <!-- Footer -->
@@ -2857,6 +2929,84 @@
         <!-- / Footer -->
         <div class="content-backdrop fade"></div>
     </div>
+    <!-- Basic Details Modal -->
+    <div class="modal fade" id="basicDetailsModal" tabindex="-1" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel1">Basic Details</h5>
+                    <button
+                        type="button"
+                        class="btn-close"
+                        data-bs-dismiss="modal"
+                        aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="row row g-4">
+                        <div class="col mb-0">
+                            <label for="nameBasic" class="form-label">Job ID/Number</label>
+                            <input type="text" id="jobNumber" class="form-control" value="{{ isset($jqr->job_number) ? $jqr->job_number : ''}}" disabled readonly/>
+                        </div>
+                        <div class="col mb-0">
+                            <label for="nameBasic" class="form-label">Job Name</label>
+                            <input type="text" id="jobName" class="form-control" value="{{ isset($jqr->job_name) ? $jqr->job_name : ''}}" disabled readonly/>
+                        </div>
+                    </div>
+                    <div class="row row g-4">
+                        <div class="col mb-0">
+                            <label for="nameBasic" class="form-label">Release Date</label>
+                            <input type="text" id="releaseDate" class="form-control" value="{{ isset($jqr->release_date) ? $jqr->release_date : ''}}" disabled readonly/>
+                        </div>
+                        <div class="col mb-0">
+                            <label for="nameBasic" class="form-label">Due Date As Per PO</label>
+                            <input type="text" id="dueDateAsperPo" class="form-control" value="{{ isset($jqr->due_date) ? $jqr->due_date : ''}}" disabled readonly/>
+                        </div>
+                    </div>
+                    <div class="row row g-4">
+                        <div class="col mb-0">
+                            <label for="nameBasic" class="form-label">Date Purchase Order</label>
+                            <input type="text" id="datePurchaseOrder" class="form-control" value="{{ isset($jqr->customer_order_purchase_date) ? $jqr->customer_order_purchase_date : ''}}" disabled readonly/>
+                        </div>
+                        <div class="col mb-0">
+                            <label for="nameBasic" class="form-label">FAB Start Date</label>
+                            <input type="text" id="fabStartDate" class="form-control" value="{{ isset($jqr->fab_start_date) ? $jqr->fab_start_date : ''}}" disabled readonly/>
+                        </div>
+                    </div>
+                    <div class="row row g-4">
+                        <div class="col mb-0">
+                            <label for="nameBasic" class="form-label">Scheduled Test Date</label>
+                            <input type="text" id="scheduledTestDate" class="form-control" value="{{ isset($jqr->scheduled_test_date) ? $jqr->scheduled_test_date : ''}}" disabled readonly/>
+                        </div>
+                        <div class="col mb-0">
+                            <label for="nameBasic" class="form-label">Document Deliverables Due Date</label>
+                            <input type="text" id="documentDeliverablesDueDate" class="form-control" value="{{ isset($jqr->document_deliverables_due_date) ? $jqr->document_deliverables_due_date : ''}}" disabled readonly/>
+                        </div>
+                    </div>
+                    <div class="row row g-4">
+                        <div class="col mb-0">
+                            <label for="nameBasic" class="form-label">JQR Revision Date</label>
+                            <input type="text" id="jqrRevisionDate" class="form-control" value="{{ isset($jqr->jqr_revision_date) ? $jqr->jqr_revision_date : ''}}" disabled readonly/>
+                        </div>
+                        <div class="col mb-0">
+                            <label for="nameBasic" class="form-label">Job Revision Number</label>
+                            <input type="text" id="jobRevisionNumber" class="form-control" value="{{ isset($jqr->job_revision_number) ? $jqr->job_revision_number : ''}}" disabled readonly/>
+                        </div>
+                    </div>
+                    <div class="row row g-4">
+                        <div class="col mb-0">
+                            <label for="nameBasic" class="form-label">Production Number</label>
+                            <input type="text" id="productionNumber" class="form-control" value="{{ isset($jqr->production_number) ? $jqr->production_number : ''}}" disabled readonly/>
+                        </div>
+                        <div class="col mb-0">
+                            <label for="nameBasic" class="form-label">Form Number</label>
+                            <input type="text" id="formNumber" class="form-control" value="{{ isset($jqr->form_number) ? $jqr->form_number : ''}}" disabled readonly/>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+<!-- Basic Details Modal Ends -->
 </x-app-layout>
 <script>
 // Vertical Icons Wizard
@@ -2954,9 +3104,11 @@ $(document).ready(function() {
     });
 
     let docStatusesJson = $('#docStatuses').val();
-    // Parse the JSON string into a JavaScript object
-    let docStatuses = JSON.parse(docStatusesJson);
-    updateDocStatuses(docStatuses);
+    if (docStatusesJson != '') {
+        // Parse the JSON string into a JavaScript object
+        let docStatuses = JSON.parse(docStatusesJson);
+        updateDocStatuses(docStatuses);
+    }
 });
 
 // Validation Sections FOr Basic Details
@@ -3048,6 +3200,21 @@ function submitData(reloadFlag) {
 			// Enabling sections after first save
 			$('.step').css('pointer-events', 'auto');
 			if (response.status == true) {
+                if (response.jqr) {
+                    // Setting values to the basic details modal
+                    $('#jobNumber').val(response.jqr.job_number ? response.jqr.job_number: '');
+                    $('#jobName').val(response.jqr.job_name ? response.jqr.job_name : '');
+                    $('#releaseDate').val(response.jqr.release_date ? response.jqr.release_date : '');
+                    $('#dueDateAsperPo').val(response.jqr.due_date ? response.jqr.due_date : '');
+                    $('#datePurchaseOrder').val(response.jqr.customer_order_purchase_date ? response.jqr.customer_order_purchase_date : '');
+                    $('#fabStartDate').val(response.jqr.fab_start_date ? response.jqr.fab_start_date : '');
+                    $('#scheduledTestDate').val(response.jqr.scheduled_test_date ? response.jqr.scheduled_test_date : '');
+                    $('#documentDeliverablesDueDate').val(response.jqr.document_deliverables_due_date ? response.jqr.document_deliverables_due_date : '');
+                    $('#jqrRevisionDate').val(response.jqr.jqr_revision_date ? response.jqr.jqr_revision_date : '');
+                    $('#jobRevisionNumber').val(response.jqr.job_revision_number ? response.jqr.job_revision_number : '');
+                    $('#productionNumber').val(response.jqr.production_number ? response.jqr.production_number : '');
+                    $('#formNumber').val(response.jqr.form_number ? response.jqr.form_number : '');
+                }
 				$('.form_id_bd').val(response.id);
 				if (reloadFlag == true) {
 					window.location.href = response.redirect;
@@ -3134,6 +3301,21 @@ function submitGeneralInfoData(reloadFlag) {
         dataType: 'json',
         success: function(response) {
             if (response.status == true) {
+                if (response.jqr) {
+                    // Setting values to the basic details modal
+                    $('#jobNumber').val(response.jqr.job_number ? response.jqr.job_number: '');
+                    $('#jobName').val(response.jqr.job_name ? response.jqr.job_name : '');
+                    $('#releaseDate').val(response.jqr.release_date ? response.jqr.release_date : '');
+                    $('#dueDateAsperPo').val(response.jqr.due_date ? response.jqr.due_date : '');
+                    $('#datePurchaseOrder').val(response.jqr.customer_order_purchase_date ? response.jqr.customer_order_purchase_date : '');
+                    $('#fabStartDate').val(response.jqr.fab_start_date ? response.jqr.fab_start_date : '');
+                    $('#scheduledTestDate').val(response.jqr.scheduled_test_date ? response.jqr.scheduled_test_date : '');
+                    $('#documentDeliverablesDueDate').val(response.jqr.document_deliverables_due_date ? response.jqr.document_deliverables_due_date : '');
+                    $('#jqrRevisionDate').val(response.jqr.jqr_revision_date ? response.jqr.jqr_revision_date : '');
+                    $('#jobRevisionNumber').val(response.jqr.job_revision_number ? response.jqr.job_revision_number : '');
+                    $('#productionNumber').val(response.jqr.production_number ? response.jqr.production_number : '');
+                    $('#formNumber').val(response.jqr.form_number ? response.jqr.form_number : '');
+                }
                 $('.form_general_bd').val(response.id);
                 if (reloadFlag == true) {
                     window.location.href = response.redirect;
@@ -3223,6 +3405,21 @@ function submitPressureVesselsData(reloadFlag) {
             if (response.status == true) {
                 $('.form_Pressure_Vessels').val(response.id);
                 if (reloadFlag == true) {
+                    if (response.jqr) {
+                        // Setting values to the basic details modal
+                        $('#jobNumber').val(response.jqr.job_number ? response.jqr.job_number: '');
+                        $('#jobName').val(response.jqr.job_name ? response.jqr.job_name : '');
+                        $('#releaseDate').val(response.jqr.release_date ? response.jqr.release_date : '');
+                        $('#dueDateAsperPo').val(response.jqr.due_date ? response.jqr.due_date : '');
+                        $('#datePurchaseOrder').val(response.jqr.customer_order_purchase_date ? response.jqr.customer_order_purchase_date : '');
+                        $('#fabStartDate').val(response.jqr.fab_start_date ? response.jqr.fab_start_date : '');
+                        $('#scheduledTestDate').val(response.jqr.scheduled_test_date ? response.jqr.scheduled_test_date : '');
+                        $('#documentDeliverablesDueDate').val(response.jqr.document_deliverables_due_date ? response.jqr.document_deliverables_due_date : '');
+                        $('#jqrRevisionDate').val(response.jqr.jqr_revision_date ? response.jqr.jqr_revision_date : '');
+                        $('#jobRevisionNumber').val(response.jqr.job_revision_number ? response.jqr.job_revision_number : '');
+                        $('#productionNumber').val(response.jqr.production_number ? response.jqr.production_number : '');
+                        $('#formNumber').val(response.jqr.form_number ? response.jqr.form_number : '');
+                    }
                     window.location.href = response.redirect;
                 }
             }
@@ -3252,6 +3449,21 @@ function submitNoCodeVesselsData(reloadFlag) {
             if (response.status == true) {
                 $('.form_Non_code').val(response.id);
                 if (reloadFlag == true) {
+                    if (response.jqr) {
+                        // Setting values to the basic details modal
+                        $('#jobNumber').val(response.jqr.job_number ? response.jqr.job_number: '');
+                        $('#jobName').val(response.jqr.job_name ? response.jqr.job_name : '');
+                        $('#releaseDate').val(response.jqr.release_date ? response.jqr.release_date : '');
+                        $('#dueDateAsperPo').val(response.jqr.due_date ? response.jqr.due_date : '');
+                        $('#datePurchaseOrder').val(response.jqr.customer_order_purchase_date ? response.jqr.customer_order_purchase_date : '');
+                        $('#fabStartDate').val(response.jqr.fab_start_date ? response.jqr.fab_start_date : '');
+                        $('#scheduledTestDate').val(response.jqr.scheduled_test_date ? response.jqr.scheduled_test_date : '');
+                        $('#documentDeliverablesDueDate').val(response.jqr.document_deliverables_due_date ? response.jqr.document_deliverables_due_date : '');
+                        $('#jqrRevisionDate').val(response.jqr.jqr_revision_date ? response.jqr.jqr_revision_date : '');
+                        $('#jobRevisionNumber').val(response.jqr.job_revision_number ? response.jqr.job_revision_number : '');
+                        $('#productionNumber').val(response.jqr.production_number ? response.jqr.production_number : '');
+                        $('#formNumber').val(response.jqr.form_number ? response.jqr.form_number : '');
+                    }
                     window.location.href = response.redirect;
                 }
             }
@@ -3281,6 +3493,21 @@ function submitProcessPipingData(reloadFlag) {
             if (response.status == true) {
                 $('.form_Process_Fuel').val(response.id);
                 if (reloadFlag == true) {
+                    if (response.jqr) {
+                        // Setting values to the basic details modal
+                        $('#jobNumber').val(response.jqr.job_number ? response.jqr.job_number: '');
+                        $('#jobName').val(response.jqr.job_name ? response.jqr.job_name : '');
+                        $('#releaseDate').val(response.jqr.release_date ? response.jqr.release_date : '');
+                        $('#dueDateAsperPo').val(response.jqr.due_date ? response.jqr.due_date : '');
+                        $('#datePurchaseOrder').val(response.jqr.customer_order_purchase_date ? response.jqr.customer_order_purchase_date : '');
+                        $('#fabStartDate').val(response.jqr.fab_start_date ? response.jqr.fab_start_date : '');
+                        $('#scheduledTestDate').val(response.jqr.scheduled_test_date ? response.jqr.scheduled_test_date : '');
+                        $('#documentDeliverablesDueDate').val(response.jqr.document_deliverables_due_date ? response.jqr.document_deliverables_due_date : '');
+                        $('#jqrRevisionDate').val(response.jqr.jqr_revision_date ? response.jqr.jqr_revision_date : '');
+                        $('#jobRevisionNumber').val(response.jqr.job_revision_number ? response.jqr.job_revision_number : '');
+                        $('#productionNumber').val(response.jqr.production_number ? response.jqr.production_number : '');
+                        $('#formNumber').val(response.jqr.form_number ? response.jqr.form_number : '');
+                    }
                     window.location.href = response.redirect;
                 }
             }
