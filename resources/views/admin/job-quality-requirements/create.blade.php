@@ -2999,8 +2999,10 @@ $(document).ready(function() {
 
     let docStatusesJson = $('#docStatuses').val();
     // Parse the JSON string into a JavaScript object
-    let docStatuses = JSON.parse(docStatusesJson);
-    updateDocStatuses(docStatuses);
+    if (docStatusesJson) {
+        let docStatuses = JSON.parse(docStatusesJson);
+        updateDocStatuses(docStatuses);
+    }
 
     // Function to update the input field based on dropdown selection
     function updateInputField() {
