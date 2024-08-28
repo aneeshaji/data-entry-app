@@ -3,7 +3,7 @@
         <!-- Content -->
         <div class="container-xxl flex-grow-1 container-p-y">
             <h4 class="fw-bold py-3 mb-4"><span class="text-muted fw-light">Job Quality Requirements / </span> 
-                {{ isset($jqr->id) ? "Edit - " . $jqr->job_number . "" : "Create" }}
+                {{ isset($jqr->id) ? "Edit - " . $jqr->job_number . "" : "Add" }}
             </h4>
             <!-- <p class="mb-4">
                 Icons used on this page are made by
@@ -23,7 +23,7 @@
                                     </span>
                                     <span class="bs-stepper-label">
                                         <span class="bs-stepper-title">Basic Project Details</span>
-                                        <span class="bs-stepper-subtitle">Add Basic Project Details</span>
+                                        <span class="bs-stepper-subtitle">{{ isset($jqr->id) ? 'Edit' : 'Add' }} Basic project details</span>
                                     </span>
                                 </button>
                             </div>
@@ -35,7 +35,7 @@
                                     </span>
                                     <span class="bs-stepper-label">
                                         <span class="bs-stepper-title">Special Material<br> Requirements</span>
-                                        <span class="bs-stepper-subtitle">Add special material <br> requirements</span>
+                                        <span class="bs-stepper-subtitle">{{ isset($jqr->id) ? 'Edit' : 'Add' }} Special material <br> requirements</span>
                                     </span>
                                 </button>
                             </div>
@@ -47,7 +47,7 @@
                                     </span>
                                     <span class="bs-stepper-label">
                                         <span class="bs-stepper-title">General Information</span>
-                                        <span class="bs-stepper-subtitle">Add general information</span>
+                                        <span class="bs-stepper-subtitle">{{ isset($jqr->id) ? 'Edit' : 'Add' }} general information</span>
                                     </span>
                                 </button>
                             </div>
@@ -57,7 +57,7 @@
                                     <span class="bs-stepper-circle"><i class="ti ti-server-cog"></i> </span>
                                     <span class="bs-stepper-label">
                                         <span class="bs-stepper-title">Service Information</span>
-                                        <span class="bs-stepper-subtitle">Add service information</span>
+                                        <span class="bs-stepper-subtitle">{{ isset($jqr->id) ? 'Edit' : 'Add' }} service information</span>
                                     </span>
                                 </button>
                             </div>
@@ -67,7 +67,7 @@
                                     <span class="bs-stepper-circle"><i class="ti ti-adjustments-horizontal"></i> </span>
                                     <span class="bs-stepper-label">
                                         <span class="bs-stepper-title">Structural Skid</span>
-                                        <span class="bs-stepper-subtitle">Add structural skid</span>
+                                        <span class="bs-stepper-subtitle">{{ isset($jqr->id) ? 'Edit' : 'Add' }} structural skid</span>
                                     </span>
                                 </button>
                             </div>
@@ -77,7 +77,7 @@
                                     <span class="bs-stepper-circle"><i class="ti ti-atom-2"></i> </span>
                                     <span class="bs-stepper-label">
                                         <span class="bs-stepper-title">Pressure Vessels</span>
-                                        <span class="bs-stepper-subtitle">Add pressure vessels</span>
+                                        <span class="bs-stepper-subtitle">{{ isset($jqr->id) ? 'Edit' : 'Add' }} pressure vessels</span>
                                     </span>
                                 </button>
                             </div>
@@ -87,7 +87,7 @@
                                     <span class="bs-stepper-circle"><i class="ti ti-alert-square"></i> </span>
                                     <span class="bs-stepper-label">
                                         <span class="bs-stepper-title">Non Code Vessels/<br>Tanks</span>
-                                        <span class="bs-stepper-subtitle">Add non code vessels/<br>Tanks</span>
+                                        <span class="bs-stepper-subtitle">{{ isset($jqr->id) ? 'Edit' : 'Add' }} non code vessels/<br>Tanks</span>
                                     </span>
                                 </button>
                             </div>
@@ -97,7 +97,7 @@
                                     <span class="bs-stepper-circle"><i class="ti ti-chart-treemap"></i> </span>
                                     <span class="bs-stepper-label">
                                         <span class="bs-stepper-title">Process/Fuel/Gas/ <br> Start Gas Piping</span>
-                                        <span class="bs-stepper-subtitle">Add process/fuel/gas/ <br> start gas
+                                        <span class="bs-stepper-subtitle">{{ isset($jqr->id) ? 'Edit' : 'Add' }} process/fuel/gas/ <br> start gas
                                             piping</span>
                                     </span>
                                 </button>
@@ -108,7 +108,7 @@
                                     <span class="bs-stepper-circle"><i class="ti ti-bong"></i> </span>
                                     <span class="bs-stepper-label">
                                         <span class="bs-stepper-title">Bolting</span>
-                                        <span class="bs-stepper-subtitle">Add bolting</span>
+                                        <span class="bs-stepper-subtitle">{{ isset($jqr->id) ? 'Edit' : 'Add' }} bolting</span>
                                     </span>
                                 </button>
                             </div>
@@ -118,7 +118,7 @@
                                     <span class="bs-stepper-circle"><i class="ti ti-cylinder"></i> </span>
                                     <span class="bs-stepper-label">
                                         <span class="bs-stepper-title">Gaskets</span>
-                                        <span class="bs-stepper-subtitle">Add gaskets</span>
+                                        <span class="bs-stepper-subtitle">{{ isset($jqr->id) ? 'Edit' : 'Add' }} gaskets</span>
                                     </span>
                                 </button>
                             </div>
@@ -128,7 +128,7 @@
                                     <span class="bs-stepper-circle"><i class="ti ti-temperature"></i> </span>
                                     <span class="bs-stepper-label">
                                         <span class="bs-stepper-title">Tubing</span>
-                                        <span class="bs-stepper-subtitle">Add tubing</span>
+                                        <span class="bs-stepper-subtitle">{{ isset($jqr->id) ? 'Edit' : 'Add' }} tubing</span>
                                     </span>
                                 </button>
                             </div>
@@ -139,7 +139,7 @@
                                     <span class="bs-stepper-label">
                                         <span class="bs-stepper-title">Butt Welded/ <br>Socket Welded/ <br> Utility
                                             Piping</span>
-                                        <span class="bs-stepper-subtitle">Add butt welded/<br>socket welded/ <br>
+                                        <span class="bs-stepper-subtitle">{{ isset($jqr->id) ? 'Edit' : 'Add' }} butt welded/<br>socket welded/ <br>
                                             utility piping</span>
                                     </span>
                                 </button>
@@ -150,7 +150,7 @@
                                     <span class="bs-stepper-circle"><i class="ti ti-needle-thread"></i> </span>
                                     <span class="bs-stepper-label">
                                         <span class="bs-stepper-title">Threaded Piping</span>
-                                        <span class="bs-stepper-subtitle">Add threaded piping</span>
+                                        <span class="bs-stepper-subtitle">{{ isset($jqr->id) ? 'Edit' : 'Add' }} threaded piping</span>
                                     </span>
                                 </button>
                             </div>
@@ -160,7 +160,7 @@
                                     <span class="bs-stepper-circle"><i class="ti ti-circuit-battery"></i> </span>
                                     <span class="bs-stepper-label">
                                         <span class="bs-stepper-title">Electrical/Instrumentation</span>
-                                        <span class="bs-stepper-subtitle">Add electrical/instrumentation</span>
+                                        <span class="bs-stepper-subtitle">{{ isset($jqr->id) ? 'Edit' : 'Add' }} electrical/instrumentation</span>
                                     </span>
                                 </button>
                             </div>
@@ -170,7 +170,7 @@
                                     <span class="bs-stepper-circle"><i class="ti ti-deselect"></i> </span>
                                     <span class="bs-stepper-label">
                                         <span class="bs-stepper-title">Preservation</span>
-                                        <span class="bs-stepper-subtitle">Add preservation</span>
+                                        <span class="bs-stepper-subtitle">{{ isset($jqr->id) ? 'Edit' : 'Add' }} preservation</span>
                                     </span>
                                 </button>
                             </div>
@@ -180,7 +180,7 @@
                                     <span class="bs-stepper-circle"><i class="ti ti-package"></i> </span>
                                     <span class="bs-stepper-label">
                                         <span class="bs-stepper-title">Package Testing</span>
-                                        <span class="bs-stepper-subtitle">Add package testing</span>
+                                        <span class="bs-stepper-subtitle">{{ isset($jqr->id) ? 'Edit' : 'Add' }} package testing</span>
                                     </span>
                                 </button>
                             </div>
@@ -191,13 +191,13 @@
                             <div id="basic_details" class="content">
                                 <div class="content-header mb-3">
                                     <h6 class="mb-0">Basic Project Details</h6>
-                                    <small>Enter Basic Project Details.</small>
+                                    <small>{{ isset($jqr->id) ? 'Update' : 'Enter' }} basic project details</small>
                                 </div>
                                 <form onSubmit="return false" id="basic_details_from" enctype="multipart/form-data">
 								<!-- <form id="basic_details_from" method="POST" enctype="multipart/form-data"> -->
                                     <div class="row g-3">
                                         <div class="col-sm-6">
-                                            <label class="form-label" for="first-name1">Job ID/Number</label>
+                                            <label class="form-label" for="first-name1">Job ID/Number<span class="text-danger">*</span></label>
                                             <input type="text" id="job_number" class="form-control" placeholder=""
                                                 name="job_number" value="{{ isset($jqr->job_number) ? $jqr->job_number : '' }}" required />
                                             <div class="alert alert-danger alert-dismissible" id="jobnumberValidation" role="alert"> 
@@ -241,7 +241,7 @@
                                                 value="{{ isset($jqr->fab_start_date) ? $jqr->fab_start_date : '' }}" />
                                         </div>
                                         <div class="col-sm-6">
-                                            <label class="form-label" for="scheduled_test_date">Scheduled Test Date</label>
+                                            <label class="form-label" for="scheduled_test_date">Scheduled Test Date<span class="text-danger">*</span></label>
                                             <input type="date" id="scheduled_test_date" name="scheduled_test_date" class="form-control"
                                                 placeholder="" aria-label=""
                                                 value="{{ isset($jqr->scheduled_test_date) ? $jqr->scheduled_test_date : '' }}" required />
@@ -256,7 +256,7 @@
                                                 value="{{ isset($jqr->document_deliverables_due_date) ? $jqr->document_deliverables_due_date : '' }}" />
                                         </div>
                                         <div class="col-sm-6">
-                                            <label class="form-label" for="job_revision_number">Job Revision Number</label>
+                                            <label class="form-label" for="job_revision_number">Job Revision Number<span class="text-danger">*</span></label>
                                             <input type="text" id="job_revision_number" class="form-control" name="job_revision_number"
                                                 placeholder="" aria-label=""
                                                 value="{{ isset($jqr->job_revision_number) ? $jqr->job_revision_number : '' }}" />
@@ -277,7 +277,7 @@
                                                 value="{{ isset($jqr->production_number) ? $jqr->production_number : '' }}" />
                                         </div>
                                         <div class="col-sm-6">
-                                            <label class="form-label" for="no_of_modules">No of Modules</label>
+                                            <label class="form-label" for="no_of_modules">No of Modules<span class="text-danger">*</span></label>
                                             <input type="text" id="no_of_modules" class="form-control" name="no_of_modules"
                                                 placeholder="" aria-label=""
                                                 value="{{ isset($jqr->no_of_modules) ? $jqr->no_of_modules : '' }}" required />
@@ -426,10 +426,10 @@
                                     <div class="col-lg-6">
                                         <div class="content-header mb-3">
                                             <h6 class="mb-0">Special Material Requirements</h6>
-                                            <small>Enter special material requirements</small>
+                                            <small>{{ isset($jqr->id) ? 'Update' : 'Enter' }} special material requirements</small>
                                         </div>
                                     </div>
-                                    <div class="col-lg-6">
+                                    <div class="col-lg-6 content-right">
                                         <div class="content-header mb-3">
                                         <button type="button" data-bs-toggle="modal" data-bs-target="#basicDetailsModal" class="btn btn-primary waves-effect waves-light">
                                             Basic Details
@@ -553,10 +553,10 @@
                                     <div class="col-lg-6">
                                         <div class="content-header mb-3">
                                             <h6 class="mb-0">General Information</h6>
-                                            <small>Enter general information</small>
+                                            <small>{{ isset($jqr->id) ? 'Update' : 'Enter' }} general information</small>
                                         </div>
                                     </div>
-                                    <div class="col-lg-6">
+                                    <div class="col-lg-6 content-right">
                                         <div class="content-header mb-3">
                                         <button type="button" data-bs-toggle="modal" data-bs-target="#basicDetailsModal" class="btn btn-primary waves-effect waves-light">
                                             Basic Details
@@ -699,10 +699,9 @@
                             <div id="social-links-vertical" class="content">
                                 <div class="content-header mb-3">
                                     <h6 class="mb-0">Service Information</h6>
-                                    <small>Enter Service Information.</small>
+                                    <small>{{ isset($jqr->id) ? 'Update' : 'Enter' }} service information.</small>
                                 </div>
                                 <form onSubmit="return false" id="service_info_from">
-
                                     <div class="row g-3">
                                         <div class="col-sm-6">
                                             <label class="form-label" for="twitter1">Gas Processed</label>
@@ -764,7 +763,7 @@
                             <div id="social-links-vertical1" class="content">
                                 <div class="content-header mb-3">
                                     <h6 class="mb-0">Structural Skid</h6>
-                                    <small>Enter Structural Skid.</small>
+                                    <small>{{ isset($jqr->id) ? 'Update' : 'Enter' }} structural skid</small>
                                 </div>
                                 <form onSubmit="return false" id="structural_skid_from">
 
@@ -881,7 +880,6 @@
                                         </div>
                                         <div class="col-sm-6">
                                         </div>
-
                                         <!-- Action Buttons -->
                                         <div class="pt-4">
                                             <div class="row justify-content-end">
@@ -918,10 +916,10 @@
                                     <div class="col-lg-6">
                                         <div class="content-header mb-3">
                                             <h6 class="mb-0">Pressure Vessels</h6>
-                                            <small>Enter Pressure Vessels</small>
+                                            <small>{{ isset($jqr->id) ? 'Update' : 'Enter' }} pressure vessels</small>
                                         </div>
                                     </div>
-                                    <div class="col-lg-6">
+                                    <div class="col-lg-6 content-right">
                                         <div class="content-header mb-3">
                                         <button type="button" data-bs-toggle="modal" data-bs-target="#basicDetailsModal" class="btn btn-primary waves-effect waves-light">
                                             Basic Details
@@ -1191,10 +1189,10 @@
                                     <div class="col-lg-6">
                                         <div class="content-header mb-3">
                                             <h6 class="mb-0">Non Code Vessels/Tanks</h6>
-                                            <small>Enter Non Code Vessels/Tanks</small>
+                                            <small>{{ isset($jqr->id) ? 'Update' : 'Enter' }} non code vessels/tanks</small>
                                         </div>
                                     </div>
-                                    <div class="col-lg-6">
+                                    <div class="col-lg-6 content-right">
                                         <div class="content-header mb-3">
                                         <button type="button" data-bs-toggle="modal" data-bs-target="#basicDetailsModal" class="btn btn-primary waves-effect waves-light">
                                             Basic Details
@@ -1473,10 +1471,10 @@
                                     <div class="col-lg-6">
                                         <div class="content-header mb-3">
                                             <h6 class="mb-0">Process/Fuel Gas/Start Gas Piping</h6>
-                                            <small>Enter Non Code Vessels/Tanks</small>
+                                            <small>{{ isset($jqr->id) ? 'Update' : 'Enter' }} process/fuel gas/start gas piping</small>
                                         </div>
                                     </div>
-                                    <div class="col-lg-6">
+                                    <div class="col-lg-6 content-right">
                                         <div class="content-header mb-3">
                                         <button type="button" data-bs-toggle="modal" data-bs-target="#basicDetailsModal" class="btn btn-primary waves-effect waves-light">
                                             Basic Details
@@ -1724,7 +1722,7 @@
                             <div id="bolting" class="content">
                                 <div class="content-header mb-3">
                                     <h6 class="mb-0">Bolting</h6>
-                                    <small>Enter bolting.</small>
+                                    <small>{{ isset($jqr->id) ? 'Update' : 'Enter' }} bolting</small>
                                 </div>
                                 <form onSubmit="return false" id="bolting_from">
                                     <div class="row g-3">
@@ -1803,7 +1801,7 @@
                             <div id="gaskets" class="content">
                                 <div class="content-header mb-3">
                                     <h6 class="mb-0">Gaskets</h6>
-                                    <small>Enter gaskets.</small>
+                                    <small>{{ isset($jqr->id) ? 'Update' : 'Enter' }} gaskets</small>
                                 </div>
                                 <form onSubmit="return false" id="gaskets_from">
                                     <div class="row g-3">
@@ -1882,7 +1880,7 @@
                             <div id="tubing" class="content">
                                 <div class="content-header mb-3">
                                     <h6 class="mb-0">Tubing</h6>
-                                    <small>Enter Tubing.</small>
+                                    <small>{{ isset($jqr->id) ? 'Update' : 'Enter' }} tubing</small>
                                 </div>
                                 <form onSubmit="return false" id="tubing_from">
                                     <div class="row g-3">
@@ -2033,9 +2031,24 @@
                             <!-- Tubing Ends -->
                             <!-- Butt Welded/Socket Welded Utility Piping -->
                             <div id="butt_welded" class="content">
-                                <div class="content-header mb-3">
+                                <!-- <div class="content-header mb-3">
                                     <h6 class="mb-0">Butt Welded/Socket Welded Utility Piping</h6>
-                                    <small>Enter butt welded/socket welded utility piping.</small>
+                                    <small>{{ isset($jqr->id) ? 'Update' : 'Enter' }} butt welded/socket welded utility piping</small>
+                                </div> -->
+                                <div class="row">
+                                    <div class="col-lg-6">
+                                        <div class="content-header mb-3">
+                                        <h6 class="mb-0">Butt Welded/Socket Welded Utility Piping</h6>
+                                        <small>{{ isset($jqr->id) ? 'Update' : 'Enter' }} butt welded/socket welded utility piping</small>
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-6 content-right">
+                                        <div class="content-header mb-3">
+                                        <button type="button" data-bs-toggle="modal" data-bs-target="#basicDetailsModal" class="btn btn-primary waves-effect waves-light">
+                                            Basic Details
+                                        </button>
+                                        </div>
+                                    </div>
                                 </div>
                                 <form onSubmit="return false" id="butt_piping_from">
                                     <div class="row g-3">
@@ -2240,7 +2253,7 @@
                             <div id="threaded_piping" class="content">
                                 <div class="content-header mb-3">
                                     <h6 class="mb-0">Threaded Piping</h6>
-                                    <small>Enter threaded piping.</small>
+                                    <small>{{ isset($jqr->id) ? 'Update' : 'Enter' }} threaded piping</small>
                                 </div>
                                 <form onSubmit="return false" id="threaded_piping_from">
                                     <div class="row g-3">
@@ -2321,7 +2334,6 @@
                                                 <span class="switch-label">NACE</span>
                                             </label>
                                         </div>
-
                                         <div class="col-sm-6">
                                             <label class="form-label" for="linkedin1">Notes</label>
                                             <textarea class="form-control" name="notes" id="exampleFormControlTextarea1"
@@ -2357,7 +2369,7 @@
                             <div id="electrical" class="content">
                                 <div class="content-header mb-3">
                                     <h6 class="mb-0">Electrical/Instrumentation</h6>
-                                    <small>Enter electrical/instrumentation.</small>
+                                    <small>{{ isset($jqr->id) ? 'Update' : 'Enter' }} electrical/instrumentation</small>
                                 </div>
                                 <form onSubmit="return false" id="electrical_from">
                                     <div class="row g-3">
@@ -2434,12 +2446,11 @@
                                 </form>
                             </div>
                             <!-- Electrical/Instrumentation Ends -->
-
                             <!-- Preservation -->
                             <div id="preservation" class="content">
                                 <div class="content-header mb-3">
                                     <h6 class="mb-0">Preservation</h6>
-                                    <small>Enter preservation.</small>
+                                    <small>{{ isset($jqr->id) ? 'Update' : 'Enter' }} preservation</small>
                                 </div>
                                 <form onSubmit="return false" id="preservation_from">
                                     <div class="row g-3">
@@ -2512,9 +2523,24 @@
                             <!-- Preservation Ends -->
                             <!-- Package Testing -->
                             <div id="package_testing" class="content">
-                                <div class="content-header mb-3">
+                                <!-- <div class="content-header mb-3">
                                     <h6 class="mb-0">Package Testing</h6>
-                                    <small>Enter package testing.</small>
+                                    <small>{{ isset($jqr->id) ? 'Update' : 'Enter' }} package testing</small>
+                                </div> -->
+                                <div class="row">
+                                    <div class="col-lg-6">
+                                        <div class="content-header mb-3">
+                                            <h6 class="mb-0">Package Testing</h6>
+                                            <small>{{ isset($jqr->id) ? 'Update' : 'Enter' }} package testing</small>
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-6 content-right">
+                                        <div class="content-header mb-3">
+                                        <button type="button" data-bs-toggle="modal" data-bs-target="#basicDetailsModal" class="btn btn-primary waves-effect waves-light">
+                                            Basic Details
+                                        </button>
+                                        </div>
+                                    </div>
                                 </div>
                                 <label class="form-check-label" for="deliveryAdd">
                                     Pneumatic Testing
@@ -2894,7 +2920,6 @@
                                                 <span class="switch-label">Addendum Manufacturing Specifications</span>
                                             </label>
                                         </div>
-
                                         <div class="col-sm-6">
                                             <label class="switch">
                                                 <input type="checkbox" class="switch-input" name="addendum_manufacturing_specifications_complete" {{ isset($jqr_package_testing->addendum_manufacturing_specifications_complete) && $jqr_package_testing->addendum_manufacturing_specifications == '1' ? 'checked': '' }}>

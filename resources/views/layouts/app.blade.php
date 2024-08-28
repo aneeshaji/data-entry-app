@@ -522,10 +522,14 @@
                                         <a class="dropdown-item" href="">
                                             <div class="d-flex">
                                                 <div class="flex-shrink-0 me-3">
-                                                    <div class="avatar avatar-online">
-                                                        <img src="{{ asset('assets/img/avatars/profile_avatar.png') }}" alt
+                                                <div class="avatar avatar-online">
+                                                    @if(!Auth::user()->company_logo)
+                                                        <img src="{{ asset('assets/img/avatars/profile_avatar.png') }}" alt="Company Logo"
                                                             class="h-auto rounded-circle" />
-                                                    </div>
+                                                    @else
+                                                        <img src="{{ asset('uploads/company-logo/' . Auth::user()->company_logo) }}" alt="Company Logo">
+                                                    @endif
+                                                </div>
                                                 </div>
                                                 <div class="flex-grow-1">
                                                     <span class="fw-medium d-block">{{ Auth::user()->name }}</span>
