@@ -170,27 +170,29 @@ class JobQualityRequirementController extends Controller
         }
 
         $data = [
-            'jqr' => $jqr,
-            'jqr_special' => $jqr_special,
-            'jqr_general_info' => $jqr_general_info,
-            'jqr_service_info' => $jqr_service_info,
-            'jqr_bolting' => $jqr_bolting,
-            'jqr_butt' => $jqr_butt,
-            'jqr_electrical' => $jqr_electrical,
-            'jqr_non_code' => $jqr_non_code,
-            'jqr_package_testing' => $jqr_package_testing,
-            'jqr_preservation' => $jqr_preservation,
-            'jqr_pressure_vessels' => $jqr_pressure_vessels,
-            'jqr_process_fuel_gas' => $jqr_process_fuel_gas,
-            'jqr_structural_skid' => $jqr_structural_skid,
-            'jqr_threaded_piping' => $jqr_threaded_piping,
-            'jqr_tubing' => $jqr_tubing,
-            'jqr_gaskets' => $jqr_gaskets,
-            'run_test_reqs' => $run_test_reqs
+            'jqr' => $jqr ?? '',
+            'jqr_special' => $jqr_special ?? '',
+            'jqr_general_info' => $jqr_general_info ?? '',
+            'jqr_service_info' => $jqr_service_info ?? '',
+            'jqr_bolting' => $jqr_bolting ?? '',
+            'jqr_butt' => $jqr_butt ?? '',
+            'jqr_electrical' => $jqr_electrical ?? '',
+            'jqr_non_code' => $jqr_non_code ?? '',
+            'jqr_package_testing' => $jqr_package_testing ?? '',
+            'jqr_preservation' => $jqr_preservation ?? '',
+            'jqr_pressure_vessels' => $jqr_pressure_vessels ?? '',
+            'jqr_process_fuel_gas' => $jqr_process_fuel_gas ?? '',
+            'jqr_structural_skid' => $jqr_structural_skid ?? '',
+            'jqr_threaded_piping' => $jqr_threaded_piping ?? '',
+            'jqr_tubing' => $jqr_tubing ?? '',
+            'jqr_gaskets' => $jqr_gaskets ?? '',
+            'run_test_reqs' => $run_test_reqs ?? ''
         ];
 
-        $pdf = PDF::loadView('admin.job-quality-requirements.show', $data);
-        return $pdf->download('jqrms.pdf');
+        $jobNumber = $jqr->job_number ?? '';
+        $fileName = "jqrms-{$jobNumber}.pdf";
+        $pdf = PDF::loadView('admin.job-quality-requirements.show-minimized-jqr', $data);
+        return $pdf->download($fileName);
     }
 
     /**
@@ -260,6 +262,9 @@ class JobQualityRequirementController extends Controller
             $basic_details->jqr_revision_date = $request->jqr_revision_date;
             $basic_details->form_number = $request->form_number;
             //Statuses of docs deliverables
+            if ($request->status_of_docs_deliverables_mtrs != null ) {
+                $basic_details->status_of_docs_deliverables_mtrs = $request->status_of_docs_deliverables_mtrs;
+            }
             if ($request->status_of_docs_deliverables_nde != null ) {
                 $basic_details->status_of_docs_deliverables_nde = $request->status_of_docs_deliverables_nde;
             }
@@ -301,6 +306,7 @@ class JobQualityRequirementController extends Controller
                     'id' => $basic_details->id,
                     'jqr' => $basic_details ?? '',
                     'doc_statuses' =>  [
+                        'mtrs' => $statusData->mtrsStatus->name ?? '',
                         'nde' => $statusData->ndeStatus->name ?? '',
                         'hydro' => $statusData->hydroStatus->name ?? '',
                         'heat_map' => $statusData->heatMapStatus->name ?? '',
@@ -986,7 +992,7 @@ class JobQualityRequirementController extends Controller
             $jqr_package_testing_run_test_requirements = [];
         }
 
-        return view('admin.job-quality-requirements.show', [
+        return view('admin.job-quality-requirements.show-minimized-jqr', [
             'jqr' => $jqr,
             'jqr_special' => $jqr_special,
             'jqr_general_info' => $jqr_general_info,
@@ -1018,7 +1024,8 @@ class JobQualityRequirementController extends Controller
     public function edit(string $id)
     {
         $id = decrypt($id);
-        $jqr = BasicDetails::with('ndeStatus')
+        $jqr = BasicDetails::with('mtrsStatus')
+                            ->with('ndeStatus')
                             ->with('hydroStatus')
                             ->with('heatMapStatus')
                             ->with('weldMapStatus')

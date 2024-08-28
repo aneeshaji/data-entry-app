@@ -18,6 +18,7 @@ class BasicDetails extends Model
         'production_number',
         'scheduled_test_date',
         'document_deliverables_due_date	',
+        'status_of_docs_deliverables_mtrs',
         'status_of_docs_deliverables_nde',
         'status_of_docs_deliverables_hydro',
         'status_of_docs_deliverables_heat_map',
@@ -35,6 +36,14 @@ class BasicDetails extends Model
     public function pressureVessels()
     {
         return $this->belongsTo(PressureVessels::class, 'id', 'basic_details_id');
+    }
+
+    /**
+     * Get MTR's Doc Status.
+     */
+    public function mtrsStatus()
+    {
+        return $this->belongsTo(DocumentDeliverablesStatus::class, 'status_of_docs_deliverables_mtrs', 'id');
     }
 
     /**

@@ -3,7 +3,7 @@
         <!-- Content -->
         <div class="container-xxl flex-grow-1 container-p-y">
             <h4 class="fw-bold py-3 mb-4"><span class="text-muted fw-light">Job Quality Requirements / </span> 
-                {{ isset($jqr->id) ? "Edit - $jqr->job_number" : "Create" }}
+                {{ isset($jqr->id) ? "Edit - " . $jqr->job_number . "" : "Create" }}
             </h4>
             <!-- <p class="mb-4">
                 Icons used on this page are made by
@@ -133,7 +133,7 @@
                                 </button>
                             </div>
                             <div class="line"></div> -->
-                            <!-- <div class="step" data-target="#butt_welded">
+                            <div class="step" data-target="#butt_welded">
                                 <button type="button" class="step-trigger">
                                     <span class="bs-stepper-circle"><i class="ti ti-shield"></i> </span>
                                     <span class="bs-stepper-label">
@@ -144,7 +144,7 @@
                                     </span>
                                 </button>
                             </div>
-                            <div class="line"></div> -->
+                            <div class="line"></div>
                             <!-- <div class="step" data-target="#threaded_piping">
                                 <button type="button" class="step-trigger">
                                     <span class="bs-stepper-circle"><i class="ti ti-needle-thread"></i> </span>
@@ -175,7 +175,7 @@
                                 </button>
                             </div>
                             <div class="line"></div> -->
-                            <!-- <div class="step" data-target="#package_testing">
+                            <div class="step" data-target="#package_testing">
                                 <button type="button" class="step-trigger">
                                     <span class="bs-stepper-circle"><i class="ti ti-package"></i> </span>
                                     <span class="bs-stepper-label">
@@ -183,7 +183,7 @@
                                         <span class="bs-stepper-subtitle">Add package testing</span>
                                     </span>
                                 </button>
-                            </div> -->
+                            </div>
                         </div>
                         <div class="bs-stepper-content">
                             <!-- <form onSubmit="return false"> -->
@@ -309,6 +309,20 @@
                                                             </tr>
                                                         </thead>
                                                         <tbody>
+                                                            <tr>
+                                                                <th>MTR'S</th>
+                                                                <td>
+                                                                    <select class="doc-status" name="status_of_docs_deliverables_mtrs" data-style="btn-default">
+                                                                        <option selected disabled>-Select-</option>
+                                                                        @foreach($documentDeliverablesStatuses as $status)
+                                                                            <option value="{{ $status->id }}" {{ isset($jqr->status_of_docs_deliverables_mtrs) && $status->id == $jqr->status_of_docs_deliverables_mtrs ? 'selected' : '' }}>{{ $status->name }}</option>
+                                                                        @endforeach
+                                                                    </select>
+                                                                </td>
+                                                                <td>
+                                                                    <span class="badge bg-secondary">None</span>
+                                                                </td>
+                                                            </tr>
                                                             <tr>
                                                                 <th>NDE</th>
                                                                 <td>
@@ -994,12 +1008,16 @@
                                         </div>
                                         <div class="col-md-6 mb-6">
                                             <label for="selectpickerBasic" class="form-label">NDE Rquirements Required</label>
-                                            <select id="selectpickerBasic" class="selectpicker w-100" name="nde_requirements_required" data-style="btn-default">
+                                            <select class="selectpicker w-100 nde-req-dropdown" name="nde_requirements_required" data-style="btn-default">
                                                 <option selected disabled>-Select-</option>
                                                 @foreach($ndeReportsRequiredStatuses as $status)
-                                                    <option value="{{ $status->id }}" {{ isset($jqr_pressure_vessels->nde_requirements_required) && $status->id == $jqr_pressure_vessels->nde_requirements_required ? 'selected' : '' }}>{{ $status->name }}</option>
+                                                    <option data-code="{{ $status->code }}" value="{{ $status->id }}" {{ isset($jqr_pressure_vessels->nde_requirements_required) && $status->id == $jqr_pressure_vessels->nde_requirements_required ? 'selected' : '' }}>{{ $status->name }}</option>
                                                 @endforeach
                                             </select>
+                                        </div>
+                                        <div class="col-sm-6">
+                                            <label class="form-label" for="nde_req_code">NDE Rquirements Code</label>
+                                            <input type="text" class="form-control nde-req-code-input" disabled readonly/>
                                         </div>
                                         <div class="col-sm-6">
                                             <label class="form-label" for="date_of_confirmation">Date of confirmation (By Quality Assurance)</label>
@@ -1103,6 +1121,12 @@
                                                 rows="3"> {{ isset($jqr_pressure_vessels->notes) ? $jqr_pressure_vessels->notes: '' }}</textarea>
                                         </div>
                                         <!-- Doc Statuses -->
+                                        <!-- MTRS --> 
+                                        <div class="col-sm-6">
+                                            <label class="form-label" for="linkedin1">MTR's Status</label>
+                                            <div class="alert alert-primary mtrs-status" role="alert">None</div>
+                                        </div>
+                                        <!-- MTRS Ends -->
                                         <!-- NDE --> 
                                         <div class="col-sm-6">
                                             <label class="form-label" for="linkedin1">NDE Status</label>
@@ -1276,12 +1300,16 @@
                                         </div>
                                         <div class="col-md-6 mb-6">
                                             <label for="selectpickerBasic" class="form-label">NDE Rquirements Required</label>
-                                            <select id="selectpickerBasic" class="selectpicker w-100" name="nde_requirements_required" data-style="btn-default">
+                                            <select class="selectpicker w-100 nde-req-dropdown" name="nde_requirements_required" data-style="btn-default">
                                                 <option selected disabled>-Select-</option>
                                                 @foreach($ndeReportsRequiredStatuses as $status)
-                                                    <option value="{{ $status->id }}" {{ isset($jqr_non_code->nde_requirements_required) && $status->id == $jqr_non_code->nde_requirements_required ? 'selected' : '' }}>{{ $status->name }}</option>
+                                                    <option data-code="{{ $status->code }}" value="{{ $status->id }}" {{ isset($jqr_non_code->nde_requirements_required) && $status->id == $jqr_non_code->nde_requirements_required ? 'selected' : '' }}>{{ $status->name }}</option>
                                                 @endforeach
                                             </select>
+                                        </div>
+                                        <div class="col-sm-6">
+                                            <label class="form-label" for="nde_req_code">NDE Rquirements Code</label>
+                                            <input type="text" class="form-control nde-req-code-input" disabled readonly/>
                                         </div>
                                         <div class="col-sm-6">
                                             <label class="form-label" for="linkedin1">NDE Requirements</label>
@@ -1374,7 +1402,13 @@
                                             <textarea class="form-control" name="nde_reports_comments" id="exampleFormControlTextarea1"
                                                 rows="3">{{ isset($jqr_non_code->nde_reports_comments) ? $jqr_non_code->nde_reports_comments: '' }}</textarea>
                                         </div>
-                                         <!-- Doc Statuses -->
+                                        <!-- Doc Statuses -->
+                                        <!-- MTRS --> 
+                                        <div class="col-sm-6">
+                                            <label class="form-label" for="linkedin1">MTR's Status</label>
+                                            <div class="alert alert-primary mtrs-status" role="alert">None</div>
+                                        </div>
+                                        <!-- MTRS Ends -->
                                         <!-- NDE --> 
                                         <div class="col-sm-6">
                                             <label class="form-label" for="linkedin1">NDE Status</label>
@@ -1528,12 +1562,16 @@
                                         </div>
                                         <div class="col-md-6 mb-6">
                                             <label for="selectpickerBasic" class="form-label">NDE Rquirements Required</label>
-                                            <select id="selectpickerBasic" class="selectpicker w-100" name="nde_requirements_required" data-style="btn-default">
+                                            <select id="selectpickerBasic" class="selectpicker w-100 nde-req-dropdown" name="nde_requirements_required" data-style="btn-default">
                                                 <option selected disabled>-Select-</option>
                                                 @foreach($ndeReportsRequiredStatuses as $status)
-                                                    <option value="{{ $status->id }}" {{ isset($jqr_process_fuel_gas->nde_requirements_required) && $status->id == $jqr_process_fuel_gas->nde_requirements_required ? 'selected' : '' }}>{{ $status->name }}</option>
+                                                    <option data-code="{{ $status->code }}" value="{{ $status->id }}" {{ isset($jqr_process_fuel_gas->nde_requirements_required) && $status->id == $jqr_process_fuel_gas->nde_requirements_required ? 'selected' : '' }}>{{ $status->name }}</option>
                                                 @endforeach
                                             </select>
+                                        </div>
+                                        <div class="col-sm-6">
+                                            <label class="form-label" for="nde_req_code">NDE Rquirements Code</label>
+                                            <input type="text" class="form-control nde-req-code-input" disabled readonly/>
                                         </div>
                                         <div class="col-sm-6">
                                             <label class="switch">
@@ -1619,6 +1657,12 @@
                                                 rows="3">{{ isset($jqr_process_fuel_gas->nde_reports_comments) ? $jqr_process_fuel_gas->nde_reports_comments: '' }}</textarea>
                                         </div>
                                         <!-- Doc Statuses -->
+                                        <!-- MTRS --> 
+                                        <div class="col-sm-6">
+                                            <label class="form-label" for="linkedin1">MTR's Status</label>
+                                            <div class="alert alert-primary mtrs-status" role="alert">None</div>
+                                        </div>
+                                        <!-- MTRS Ends -->
                                         <!-- NDE --> 
                                         <div class="col-sm-6">
                                             <label class="form-label" for="linkedin1">NDE Status</label>
@@ -1652,17 +1696,17 @@
                                                         <i class="ti ti-arrow-left me-sm-1"></i>
                                                         <span class="align-middle d-sm-inline-block d-none">Previous</span>
                                                     </button>
-                                                    <button type="button" onclick="submitProcessPipingData(true)"
-                                                        class="btn btn-success waves-effect waves-light me-sm-3 me-1"><i
-                                                            class="ti ti-check"></i>Finish</button>
                                                     <!-- <button type="button" onclick="submitProcessPipingData(true)"
                                                         class="btn btn-success waves-effect waves-light me-sm-3 me-1"><i
-                                                            class="ti ti-check"></i>Save</button> -->
-                                                    <!-- <button class="btn btn-primary btn-next" onclick="submitProcessPipingData(false)" >
+                                                            class="ti ti-check"></i>Finish</button> -->
+                                                    <button type="button" onclick="submitProcessPipingData(true)"
+                                                        class="btn btn-success waves-effect waves-light me-sm-3 me-1"><i
+                                                            class="ti ti-check"></i>Save</button>
+                                                    <button class="btn btn-primary btn-next" onclick="submitProcessPipingData(false)" >
                                                         <span
                                                             class="align-middle d-sm-inline-block d-none me-sm-1">Next</span>
                                                         <i class="ti ti-arrow-right"></i>
-                                                    </button> -->
+                                                    </button>
                                                 </div>
                                             </div>
                                         </div>
@@ -3051,7 +3095,7 @@ $(document).ready(function() {
     function updateBadge(element) {
         // Get the selected value
         let selectedStatusText = element.find('option:selected').text();
-        let selectedStatusValue = element.val();
+        //let selectedStatusValue = element.val();
 
         // Update the corresponding span
         let nextTd = element.closest('td').next('td');
@@ -3066,23 +3110,23 @@ $(document).ready(function() {
         }
 
         // Apply new class based on selected value
-        switch(selectedStatusValue) {
-            case '1':
+        switch(selectedStatusText) {
+            case 'DD Completed':
                 nextTd.find('span').addClass('bg-success');
                 break;
-            case '2':
+            case 'Shop Complete':
                 nextTd.find('span').addClass('bg-warning');
                 break;
-            case '3':
+            case 'Attention':
                 nextTd.find('span').addClass('bg-danger');
                 break;
-            case '4':
+            case 'Rework':
                 nextTd.find('span').addClass('bg-primary');
                 break;
-            case '5':
+            case 'Review':
                 nextTd.find('span').addClass('bg-info');
                 break;
-            case '6':
+            case 'Outsourced':
                 nextTd.find('span').addClass('bg-dark');
                 break;
             default:
@@ -3104,11 +3148,38 @@ $(document).ready(function() {
     });
 
     let docStatusesJson = $('#docStatuses').val();
-    if (docStatusesJson != '') {
-        // Parse the JSON string into a JavaScript object
+    // Parse the JSON string into a JavaScript object
+    if (docStatusesJson) {
         let docStatuses = JSON.parse(docStatusesJson);
         updateDocStatuses(docStatuses);
     }
+
+    // Function to update the input field based on dropdown selection
+    function updateInputField() {
+        $('.nde-req-dropdown').each(function() {
+            var selectedCode = $(this).find('option:selected').data('code'); // Get the selected code
+            var codeInput = $(this).closest('.col-md-6').siblings('.col-sm-6').find('.nde-req-code-input'); // Find the related input field
+            if (typeof selectedCode !== 'undefined') {
+                codeInput.val(selectedCode); // Update the related input field
+            } else {
+                codeInput.val('No Code Available'); // Clear the input if no code is available
+            }
+        });
+    }
+
+    // Call the function on page load to populate all input fields
+    updateInputField();
+
+    // Bind the change event to update input fields when dropdown changes
+    $('.nde-req-dropdown').on('change', function() {
+        var selectedCode = $(this).find('option:selected').data('code'); // Get the selected code
+        var codeInput = $(this).closest('.col-md-6').siblings('.col-sm-6').find('.nde-req-code-input'); // Find the related input field
+        if (typeof selectedCode !== 'undefined') {
+            codeInput.val(selectedCode); // Update the related input field
+        } else {
+            codeInput.val('No Code Available'); // Clear the input if no code is available
+        }
+    });
 });
 
 // Validation Sections FOr Basic Details
@@ -3126,6 +3197,7 @@ function updateDocStatuses(statuses) {
     if (statuses) {
         // Define an object mapping status keys to class names
         const statusClassMap = {
+            mtrs: 'mtrs-status',
             nde: 'nde-status',
             hydro: 'hydro-status',
             heat_map: 'heat-map-status',
