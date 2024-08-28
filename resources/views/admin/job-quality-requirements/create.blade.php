@@ -294,6 +294,9 @@
                                         <div class="col-sm-6">
                                             <label class="form-label" for="company_logo">Company Logo</label>
                                             <input type="file" id="company_logo" class="form-control" name="company_logo"/>
+                                            <div class="alert alert-danger alert-dismissible" id="companyLogoValidation" role="alert"> 
+                                                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                                            </div>
                                         </div>
                                         <!-- Statuses -->
                                         <div class="col-sm-12">
@@ -3069,8 +3072,9 @@ if (typeof wizardIconsVertical !== undefined && wizardIconsVertical !== null) {
     if (wizardIconsVerticalBtnNextList) {
         wizardIconsVerticalBtnNextList.forEach(wizardIconsVerticalBtnNext => {
             wizardIconsVerticalBtnNext.addEventListener('click', event => {
+                // Check if there's a validation error in the company logo field
                 if ($('#job_number').val() != '' && $('#scheduled_test_date').val() != '' 
-                && $('#job_revision_number').val() != '' && $('#no_of_modules').val() != '' ) {
+                && $('#job_revision_number').val() != '' && $('#no_of_modules').val() != '') {
                     verticalIconsStepper.next();
                 }
             });
@@ -3187,6 +3191,7 @@ $('#jobnumberValidation').hide();
 $('#noOfModulesValidation').hide();
 $('#jobRevisionNumberValidation').hide();
 $('#scheduledTestDateValidation').hide();
+$('#companyLogoValidation').hide();
 
 // Disabling sections on page load
 if ($('.form_id_bd').val() == '') {
@@ -3321,6 +3326,11 @@ function submitData(reloadFlag) {
 				if (jobRevisionNumberMessage) {
 					$('#scheduledTestDateValidation').prepend(scheduledTestDateMessage + '<br>');
 					$('#scheduledTestDateValidation').show();
+				}
+                let companyLogoMessage = errors.company_logo ? errors.company_logo[0] : '';
+				if (jobRevisionNumberMessage) {
+					$('#companyLogoValidation').prepend(companyLogoMessage + '<br>');
+					$('#companyLogoValidation').show();
 				}
 			}
 		}
