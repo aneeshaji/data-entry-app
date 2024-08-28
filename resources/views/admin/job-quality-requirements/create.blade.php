@@ -2943,10 +2943,9 @@ if (typeof wizardIconsVertical !== undefined && wizardIconsVertical !== null) {
 // Setting Doc Status Labels
 $(document).ready(function() {
     function updateBadge(element) {
-        console.log("On Change Triggered")
         // Get the selected value
         let selectedStatusText = element.find('option:selected').text();
-        let selectedStatusValue = element.val();
+        //let selectedStatusValue = element.val();
 
         // Update the corresponding span
         let nextTd = element.closest('td').next('td');
@@ -2961,24 +2960,23 @@ $(document).ready(function() {
         }
 
         // Apply new class based on selected value
-        switch(selectedStatusValue) {
-            case '1':
-                console.log("Case 1");
+        switch(selectedStatusText) {
+            case 'DD Completed':
                 nextTd.find('span').addClass('bg-success');
                 break;
-            case '2':
+            case 'Shop Complete':
                 nextTd.find('span').addClass('bg-warning');
                 break;
-            case '3':
+            case 'Attention':
                 nextTd.find('span').addClass('bg-danger');
                 break;
-            case '4':
+            case 'Rework':
                 nextTd.find('span').addClass('bg-primary');
                 break;
-            case '5':
+            case 'Review':
                 nextTd.find('span').addClass('bg-info');
                 break;
-            case '6':
+            case 'Outsourced':
                 nextTd.find('span').addClass('bg-dark');
                 break;
             default:
@@ -3012,10 +3010,8 @@ $(document).ready(function() {
             var selectedCode = $(this).find('option:selected').data('code'); // Get the selected code
             var codeInput = $(this).closest('.col-md-6').siblings('.col-sm-6').find('.nde-req-code-input'); // Find the related input field
             if (typeof selectedCode !== 'undefined') {
-                console.log("Initial Load", selectedCode);
                 codeInput.val(selectedCode); // Update the related input field
             } else {
-                console.log("Initial Load - No Code Available");
                 codeInput.val('No Code Available'); // Clear the input if no code is available
             }
         });
@@ -3029,10 +3025,8 @@ $(document).ready(function() {
         var selectedCode = $(this).find('option:selected').data('code'); // Get the selected code
         var codeInput = $(this).closest('.col-md-6').siblings('.col-sm-6').find('.nde-req-code-input'); // Find the related input field
         if (typeof selectedCode !== 'undefined') {
-            console.log("On Change", selectedCode);
             codeInput.val(selectedCode); // Update the related input field
         } else {
-            console.log("On Change - No Code Available");
             codeInput.val('No Code Available'); // Clear the input if no code is available
         }
     });
