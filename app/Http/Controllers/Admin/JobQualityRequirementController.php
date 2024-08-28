@@ -210,7 +210,7 @@ class JobQualityRequirementController extends Controller
             'no_of_modules' => 'required|max:255',
             'job_revision_number' => 'required|max:255',
             'scheduled_test_date' => 'required|date',
-            'company_logo' => 'image|mimes:jpg,jpeg,png,gif|max:2048'
+            'company_logo' => 'image|mimes:jpg,jpeg,png,gif|max:4096'
         ]);
         if ($validator->fails()) {
             return response()->json([
@@ -220,12 +220,25 @@ class JobQualityRequirementController extends Controller
         } else {
             // Handle the Company logo upload
             if ($request->hasFile('company_logo')) {
-                $companyLogo = 'company-logo-'.time().'.'.$request->company_logo->extension();
-                $request->company_logo->move(public_path('uploads/company-logo'), $companyLogo);
                 $user = Auth::user();
+                // Check if the user has an existing company logo
+                if ($user && $user->company_logo) {
+                    $existingLogoPath = public_path('uploads/company-logo/' . $user->company_logo);
+                    // Delete the existing logo if it exists
+                    if (file_exists($existingLogoPath)) {
+                        unlink($existingLogoPath);
+                    }
+                }
+                // Generate a new file name for the logo
+                $companyLogo = 'company-logo-' . time() . '.' . $request->company_logo->extension();
+            
+                // Move the uploaded file to the public/uploads/company-logo directory
+                $request->company_logo->move(public_path('uploads/company-logo'), $companyLogo);
+            
+                // Update the user's company logo in the database
                 if ($user) {
-                    $user->company_logo = $companyLogo ?? '';
-                    $user->save();      
+                    $user->company_logo = $companyLogo;
+                    $user->save();
                 }
             }
             // Store Data
