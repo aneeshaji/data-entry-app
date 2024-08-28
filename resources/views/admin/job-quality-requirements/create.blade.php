@@ -2943,6 +2943,7 @@ if (typeof wizardIconsVertical !== undefined && wizardIconsVertical !== null) {
 // Setting Doc Status Labels
 $(document).ready(function() {
     function updateBadge(element) {
+        console.log("On Change Triggered")
         // Get the selected value
         let selectedStatusText = element.find('option:selected').text();
         let selectedStatusValue = element.val();
@@ -2962,6 +2963,7 @@ $(document).ready(function() {
         // Apply new class based on selected value
         switch(selectedStatusValue) {
             case '1':
+                console.log("Case 1");
                 nextTd.find('span').addClass('bg-success');
                 break;
             case '2':
