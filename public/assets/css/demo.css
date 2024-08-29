@@ -159,3 +159,21 @@
 .content-right {
   text-align: right;
 }
+.app-brand-logo {
+  width: 180px;
+  height: auto; 
+  max-height: 50px;
+  object-fit: contain;
+}
+.logo-cell {
+  width: 25%;
+  max-width: 150px; /* Set max-width for the logo cell */
+  max-height: 150px; /* Set max-height for the logo cell */
+}
+.logo img {
+  max-width: 100%;
+  max-height: 100%; /* Ensure the image fits within the cell */
+  height: auto;
+  width: auto;
+  object-fit: contain; 
+}

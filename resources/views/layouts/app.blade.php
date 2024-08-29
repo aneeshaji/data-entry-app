@@ -509,12 +509,13 @@
                                 <a class="nav-link dropdown-toggle hide-arrow" href="javascript:void(0);"
                                     data-bs-toggle="dropdown">
                                     <div class="avatar avatar-online">
-                                        @if(!Auth::user()->company_logo)
+                                        <img src="{{ asset('assets/img/avatars/profile_avatar.png') }}" alt="Company Logo" class="h-auto rounded-circle" />
+                                        <!-- @if(!Auth::user()->company_logo)
                                             <img src="{{ asset('assets/img/avatars/profile_avatar.png') }}" alt="Company Logo"
                                                 class="h-auto rounded-circle" />
                                         @else
                                             <img src="{{ asset('uploads/company-logo/' . Auth::user()->company_logo) }}" alt="Company Logo">
-                                        @endif
+                                        @endif -->
                                     </div>
                                 </a>
                                 <ul class="dropdown-menu dropdown-menu-end">
@@ -523,12 +524,13 @@
                                             <div class="d-flex">
                                                 <div class="flex-shrink-0 me-3">
                                                 <div class="avatar avatar-online">
-                                                    @if(!Auth::user()->company_logo)
+                                                    <img src="{{ asset('assets/img/avatars/profile_avatar.png') }}" alt="Company Logo" class="h-auto rounded-circle" />
+                                                    <!-- @if(!Auth::user()->company_logo)
                                                         <img src="{{ asset('assets/img/avatars/profile_avatar.png') }}" alt="Company Logo"
                                                             class="h-auto rounded-circle" />
                                                     @else
                                                         <img src="{{ asset('uploads/company-logo/' . Auth::user()->company_logo) }}" alt="Company Logo">
-                                                    @endif
+                                                    @endif -->
                                                 </div>
                                                 </div>
                                                 <div class="flex-grow-1">

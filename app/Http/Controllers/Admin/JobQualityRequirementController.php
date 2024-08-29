@@ -218,12 +218,20 @@ class JobQualityRequirementController extends Controller
                 'errors' => $validator->errors(),
             ], 422);
         } else {
+            // Store Data
+            if ($request->id) {
+                // For Edit
+                $basic_details = BasicDetails::where('id', $request->id)->first();
+            } else {
+                // For Create
+                $basic_details = new BasicDetails();
+            }
+
             // Handle the Company logo upload
             if ($request->hasFile('company_logo')) {
-                $user = Auth::user();
-                // Check if the user has an existing company logo
-                if ($user && $user->company_logo) {
-                    $existingLogoPath = public_path('uploads/company-logo/' . $user->company_logo);
+                // Check if the jqr has an existing company logo
+                if ($basic_details && $basic_details->company_logo) {
+                    $existingLogoPath = public_path('uploads/company-logo/' . $basic_details->company_logo);
                     // Delete the existing logo if it exists
                     if (file_exists($existingLogoPath)) {
                         unlink($existingLogoPath);
@@ -234,22 +242,8 @@ class JobQualityRequirementController extends Controller
             
                 // Move the uploaded file to the public/uploads/company-logo directory
                 $request->company_logo->move(public_path('uploads/company-logo'), $companyLogo);
-            
-                // Update the user's company logo in the database
-                if ($user) {
-                    $user->company_logo = $companyLogo;
-                    $user->save();
-                }
             }
-            // Store Data
-            if ($request->id) {
-                // For Edit
-                $basic_details = BasicDetails::where('id', $request->id)->first();
-            } else {
-                // For Create
-                $basic_details = new BasicDetails();
-            }
-            
+
             $basic_details->job_number = $request->job_number;
             $basic_details->job_name = $request->job_name;
             //$basic_details->stages = $request->stages;
@@ -274,6 +268,7 @@ class JobQualityRequirementController extends Controller
             $basic_details->no_of_modules = $request->no_of_modules;
             $basic_details->jqr_revision_date = $request->jqr_revision_date;
             $basic_details->form_number = $request->form_number;
+            $basic_details->company_logo = $companyLogo ?? '';
             //Statuses of docs deliverables
             if ($request->status_of_docs_deliverables_mtrs != null ) {
                 $basic_details->status_of_docs_deliverables_mtrs = $request->status_of_docs_deliverables_mtrs;
