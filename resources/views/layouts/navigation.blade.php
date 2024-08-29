@@ -1,7 +1,17 @@
 <aside id="layout-menu" class="layout-menu menu-vertical menu bg-menu-theme">
-    <div class="app-brand demo">
+    <!-- <div class="app-brand demo">
         <a href="{{ url('/admin/dashboard') }}" class="app-brand-link">
             <span class="app-brand-text demo menu-text fw-bold">JQRMS</span>
+        </a>
+
+        <a href="javascript:void(0);" class="layout-menu-toggle menu-link text-large ms-auto">
+            <i class="ti menu-toggle-icon d-none d-xl-block ti-sm align-middle"></i>
+            <i class="ti ti-x d-block d-xl-none ti-sm align-middle"></i>
+        </a>
+    </div> -->
+    <div class="app-brand demo">
+        <a href="{{ url('/admin/dashboard') }}" class="app-brand-link">
+            <img src="{{ asset('assets/img/logo/jqrms-logo.png') }}" alt="Logo" class="app-brand-logo">
         </a>
 
         <a href="javascript:void(0);" class="layout-menu-toggle menu-link text-large ms-auto">

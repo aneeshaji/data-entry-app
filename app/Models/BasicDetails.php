@@ -25,6 +25,7 @@ class BasicDetails extends Model
         'status_of_docs_deliverables_weld_map',
         'jqr_revision_date',
         'form_number',
+        'company_logo',
         'release_date',
         'issue_date',
         'status'

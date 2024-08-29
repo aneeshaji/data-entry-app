@@ -82,7 +82,9 @@
                                             fill="#7367F0" />
                                     </svg>
                                 </span> -->
-                                <span class="app-brand-text demo text-body fw-bold ms-1">JQRMS</span>
+                                <span class="app-brand-text demo text-body fw-bold ms-1">
+                                    <img src="{{ asset('assets/img/logo/jqrms-logo.png') }}" alt="Logo" class="app-brand-logo">
+                                </span>
                             </a>
                         </div>
                         <!-- /Logo -->

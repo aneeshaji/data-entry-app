@@ -51,7 +51,7 @@
                                     </span>
                                 </button>
                             </div>
-                            <!-- <div class="line"></div>
+                            <div class="line"></div>
                             <div class="step" data-target="#social-links-vertical">
                                 <button type="button" class="step-trigger">
                                     <span class="bs-stepper-circle"><i class="ti ti-server-cog"></i> </span>
@@ -62,7 +62,7 @@
                                 </button>
                             </div>
                             <div class="line"></div>
-                            <div class="step" data-target="#social-links-vertical1">
+                            <!-- <div class="step" data-target="#social-links-vertical1">
                                 <button type="button" class="step-trigger">
                                     <span class="bs-stepper-circle"><i class="ti ti-adjustments-horizontal"></i> </span>
                                     <span class="bs-stepper-label">
@@ -70,8 +70,8 @@
                                         <span class="bs-stepper-subtitle">{{ isset($jqr->id) ? 'Edit' : 'Add' }} structural skid</span>
                                     </span>
                                 </button>
-                            </div>
-                            <div class="line"></div> -->
+                            </div> -->
+                            <div class="line"></div>
                             <div class="step" data-target="#pressure_vessels">
                                 <button type="button" class="step-trigger">
                                     <span class="bs-stepper-circle"><i class="ti ti-atom-2"></i> </span>
@@ -316,7 +316,7 @@
                                                                 <th>MTR'S</th>
                                                                 <td>
                                                                     <select class="doc-status" name="status_of_docs_deliverables_mtrs" data-style="btn-default">
-                                                                        <option selected disabled>-Select-</option>
+                                                                        <option selected value="0">-Select-</option>
                                                                         @foreach($documentDeliverablesStatuses as $status)
                                                                             <option value="{{ $status->id }}" {{ isset($jqr->status_of_docs_deliverables_mtrs) && $status->id == $jqr->status_of_docs_deliverables_mtrs ? 'selected' : '' }}>{{ $status->name }}</option>
                                                                         @endforeach
@@ -330,7 +330,7 @@
                                                                 <th>NDE</th>
                                                                 <td>
                                                                     <select class="doc-status" name="status_of_docs_deliverables_nde" data-style="btn-default">
-                                                                        <option selected disabled>-Select-</option>
+                                                                        <option selected value="0">-Select-</option>
                                                                         @foreach($documentDeliverablesStatuses as $status)
                                                                             <option value="{{ $status->id }}" {{ isset($jqr->status_of_docs_deliverables_nde) && $status->id == $jqr->status_of_docs_deliverables_nde ? 'selected' : '' }}>{{ $status->name }}</option>
                                                                         @endforeach
@@ -344,7 +344,7 @@
                                                                 <th>Hydro</th>
                                                                 <td>
                                                                     <select class="doc-status" name="status_of_docs_deliverables_hydro" data-style="btn-default">
-                                                                        <option selected disabled>-Select-</option>
+                                                                        <option selected value="0">-Select-</option>
                                                                         @foreach($documentDeliverablesStatuses as $status)
                                                                             <option value="{{ $status->id }}" {{ isset($jqr->status_of_docs_deliverables_hydro) && $status->id == $jqr->status_of_docs_deliverables_hydro ? 'selected' : '' }}>{{ $status->name }}</option>
                                                                         @endforeach
@@ -358,7 +358,7 @@
                                                                 <th>Heat Map</th>
                                                                 <td>
                                                                     <select class="doc-status" name="status_of_docs_deliverables_heat_map" data-style="btn-default">
-                                                                        <option selected disabled>-Select-</option>
+                                                                        <option selected value="0">-Select-</option>
                                                                         @foreach($documentDeliverablesStatuses as $status)
                                                                             <option value="{{ $status->id }}" {{ isset($jqr->status_of_docs_deliverables_heat_map) && $status->id == $jqr->status_of_docs_deliverables_heat_map ? 'selected' : '' }}>{{ $status->name }}</option>
                                                                         @endforeach
@@ -372,7 +372,7 @@
                                                                 <th>Weld Map</th>
                                                                 <td>
                                                                     <select class="doc-status" name="status_of_docs_deliverables_weld_map" data-style="btn-default">
-                                                                        <option selected disabled>-Select-</option>
+                                                                        <option selected value="0">-Select-</option>
                                                                         @foreach($documentDeliverablesStatuses as $status)
                                                                             <option value="{{ $status->id }}" {{ isset($jqr->status_of_docs_deliverables_weld_map) && $status->id == $jqr->status_of_docs_deliverables_weld_map ? 'selected' : '' }}>{{ $status->name }}</option>
                                                                         @endforeach
@@ -697,9 +697,24 @@
                             <!-- General Information Ends -->
                             <!-- Service Information -->
                             <div id="social-links-vertical" class="content">
-                                <div class="content-header mb-3">
+                                <!-- <div class="content-header mb-3">
                                     <h6 class="mb-0">Service Information</h6>
                                     <small>{{ isset($jqr->id) ? 'Update' : 'Enter' }} service information.</small>
+                                </div> -->
+                                <div class="row">
+                                    <div class="col-lg-6">
+                                        <div class="content-header mb-3">
+                                            <h6 class="mb-0">Service Information</h6>
+                                            <small>{{ isset($jqr->id) ? 'Update' : 'Enter' }} service information.</small>
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-6 content-right">
+                                        <div class="content-header mb-3">
+                                        <button type="button" data-bs-toggle="modal" data-bs-target="#basicDetailsModal" class="btn btn-primary waves-effect waves-light">
+                                            Basic Details
+                                        </button>
+                                        </div>
+                                    </div>
                                 </div>
                                 <form onSubmit="return false" id="service_info_from">
                                     <div class="row g-3">
@@ -3124,18 +3139,21 @@ $(document).ready(function() {
     function updateBadge(element) {
         // Get the selected value
         let selectedStatusText = element.find('option:selected').text();
-        //let selectedStatusValue = element.val();
-
-        // Update the corresponding span
+        let selectedStatusValue = element.val();
         let nextTd = element.closest('td').next('td');
-        nextTd.find('span').text(selectedStatusText);
-
         // Get the class of the span inside the next 'td'
         let lastTdClass = nextTd.find('span').attr('class');
-        
+            
         // Split the classes to remove the old background class
         if (lastTdClass) {
             nextTd.find('span').removeClass(lastTdClass.split(' ')[1]);
+        }
+
+        if (selectedStatusValue == 0) {
+            nextTd.find('span').text("None");
+        } else {
+            // Update the corresponding span
+            nextTd.find('span').text(selectedStatusText);
         }
 
         // Apply new class based on selected value
@@ -3157,6 +3175,9 @@ $(document).ready(function() {
                 break;
             case 'Outsourced':
                 nextTd.find('span').addClass('bg-dark');
+                break;
+            case 'None':
+                nextTd.find('span').addClass('bg-secondary');
                 break;
             default:
                 nextTd.find('span').addClass('bg-secondary');
