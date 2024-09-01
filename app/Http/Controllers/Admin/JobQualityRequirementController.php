@@ -67,16 +67,37 @@ class JobQualityRequirementController extends Controller
                     return isset($basic_details->pressureVessels->nde_requirements_required) ? ($basic_details->pressureVessels->nde_requirements_required == '1' ? 'Yes' : 'No') : '';
                 })
                 ->filter(function ($query) use ($request) {
+                    // MTRS_Required Filter
                     if ($request->mtrs_required != NULL) {
                         $query->whereHas('pressureVessels', function ($q) use ($request) {
                             $q->where('mtrs_required', $request->mtrs_required);
                         });
                     }
+                    // NDE Requirements Required Filter
                     if ($request->nde_requirements_required != NULL) {
                         $query->whereHas('pressureVessels', function ($q) use ($request) {
                             $q->where('nde_requirements_required', $request->nde_requirements_required);
                         });
                     }
+                    // Weld Mapping Filter
+                    if ($request->weld_mapping != NULL) {
+                        $query->whereHas('pressureVessels', function ($q) use ($request) {
+                            $q->where('weld_mapping', $request->weld_mapping);
+                        });
+                    }
+                    // Heat Mapping Filter
+                    if ($request->heat_mapping != NULL) {
+                        $query->whereHas('pressureVessels', function ($q) use ($request) {
+                            $q->where('heat_mapping', $request->heat_mapping);
+                        });
+                    }
+                    // Hydro Chart Required Filter
+                    if ($request->hydro_chart_required != NULL) {
+                        $query->whereHas('pressureVessels', function ($q) use ($request) {
+                            $q->where('hydro_chart_required', $request->hydro_chart_required);
+                        });
+                    }
+                    // Search
                     if (!empty($request->get('search'))) {
                         $query->where(function ($w) use ($request) {
                             $search = $request->get('search');

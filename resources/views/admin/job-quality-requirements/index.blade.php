@@ -54,6 +54,36 @@
                                         </div>
                                     </div>
                                 </div>
+                                <div class="col-12 pt-10">
+                                    <div class="row g-4">
+                                        <div class="col-12 col-sm-6 col-lg-4">
+                                            <label class="form-label">Weld Mapping</label>
+                                            <select id='weld_mapping' class="form-control" style="width: 200px">
+                                                <option disabled selected>-Select-</option>
+                                                <option value="1">Yes</option>
+                                                <option value="0">No</option>
+                                            </select>
+                                        </div>
+                                        <div class="col-12 col-sm-6 col-lg-4">
+                                            <label class="form-label">Heat Mapping</label>
+                                            <select id='heat_mapping' class="form-control"
+                                                style="width: 200px">
+                                                <option disabled selected>-Select-</option>
+                                                <option value="1">Yes</option>
+                                                <option value="0">No</option>
+                                            </select>
+                                        </div>
+                                        <div class="col-12 col-sm-6 col-lg-4">
+                                            <label class="form-label">Hydro Chart Required</label>
+                                            <select id='hydro_chart_required' class="form-control"
+                                                style="width: 200px">
+                                                <option disabled selected>-Select-</option>
+                                                <option value="1">Yes</option>
+                                                <option value="0">No</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
                         </form>
                     </div>
@@ -150,8 +180,11 @@ $(function() {
             url: "{{ route('admin.job-quality-requirements') }}",
             data: function(d) {
                 d.mtrs_required = $('#mtrs_required').val(),
-                    d.nde_requirements_required = $('#nde_requirements_required').val(),
-                    d.search = $('input[type="search"]').val()
+                d.nde_requirements_required = $('#nde_requirements_required').val(),
+                d.weld_mapping = $('#weld_mapping').val(),
+                d.heat_mapping = $('#heat_mapping').val(),
+                d.hydro_chart_required = $('#hydro_chart_required').val(),
+                d.search = $('input[type="search"]').val()
             }
         },
         columns: [{
@@ -199,9 +232,24 @@ $(function() {
         table.draw();
     });
 
+    $('#weld_mapping').change(function() {
+        table.draw();
+    });
+
+    $('#heat_mapping').change(function() {
+        table.draw();
+    });
+
+    $('#hydro_chart_required').change(function() {
+        table.draw();
+    });
+
     $('#reset').click(function() {
         $('#mtrs_required').val('');
         $('#nde_requirements_required').val('');
+        $('#weld_mapping').val('');
+        $('#heat_mapping').val('');
+        $('#hydro_chart_required').val('');
         $('input[type="search"]').val('').trigger('keyup');
         table.ajax.reload();
     });
