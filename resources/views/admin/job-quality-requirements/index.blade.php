@@ -119,10 +119,10 @@
                             </tr> -->
                             <tr>
                                 <th>Job Number</th>
-                                <th>Job Name</th>
-                                <th>Stages</th>
+                                <!-- <th>Job Name</th> -->
+                                <!-- <th>Stages</th> -->
                                 <th>Release Date</th>
-                                <th>Due Date</th>
+                                <th>DD Due Date</th>
                                 <th>MTRS Req</th>
                                 <th>NDE Req</th>
                                 <th>Actions</th>
@@ -184,21 +184,22 @@ $(function() {
                 d.weld_mapping = $('#weld_mapping').val(),
                 d.heat_mapping = $('#heat_mapping').val(),
                 d.hydro_chart_required = $('#hydro_chart_required').val(),
-                d.search = $('input[type="search"]').val()
+                d.search = $('input[type="search"]').val(),
+                $('input[type="search"]').addClass('mr-10');
             }
         },
         columns: [{
                 data: 'job_number',
                 name: 'job_number'
             },
-            {
-                data: 'job_name',
-                name: 'job_name'
-            },
-            {
-                data: 'stages',
-                name: 'stages'
-            },
+            // {
+            //     data: 'job_name',
+            //     name: 'job_name'
+            // },
+            // {
+            //     data: 'stages',
+            //     name: 'stages'
+            // },
             {
                 data: 'release_date',
                 name: 'release_date'

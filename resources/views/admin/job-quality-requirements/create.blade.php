@@ -567,7 +567,7 @@
                                 <form onSubmit="return false" id="general_info_from">
                                     <div class="row g-3">
                                         <div class="col-sm-6">
-                                            <label class="form-label" for="last-name1">Cutomer</label>
+                                            <label class="form-label" for="last-name1">Customer</label>
                                             <input type="text" id="last-name1" class="form-control" placeholder=""
                                                 name="customer"
                                                 value="{{ isset($jqr_general_info->customer) ? $jqr_general_info->customer : '' }}" />
@@ -1163,7 +1163,7 @@
                                         <!-- Heat Map Ends --> 
                                         <!-- Weld Map --> 
                                         <div class="col-sm-6">
-                                            <label class="form-label" for="linkedin1">Wels Map Status</label>
+                                            <label class="form-label" for="linkedin1">Weld Map Status</label>
                                             <div class="alert alert-primary weld-map-status" role="alert">None</div>
                                         </div>
                                         <!-- Weld Map Ends -->  
@@ -1445,7 +1445,7 @@
                                         <!-- Heat Map Ends --> 
                                         <!-- Weld Map --> 
                                         <div class="col-sm-6">
-                                            <label class="form-label" for="linkedin1">Wels Map Status</label>
+                                            <label class="form-label" for="linkedin1">Weld Map Status</label>
                                             <div class="alert alert-primary weld-map-status" role="alert">None</div>
                                         </div>
                                         <!-- Weld Map Ends -->  
@@ -1699,7 +1699,7 @@
                                         <!-- Heat Map Ends --> 
                                         <!-- Weld Map --> 
                                         <div class="col-sm-6">
-                                            <label class="form-label" for="linkedin1">Wels Map Status</label>
+                                            <label class="form-label" for="linkedin1">Weld Map Status</label>
                                             <div class="alert alert-primary weld-map-status" role="alert">None</div>
                                         </div>
                                         <!-- Weld Map Ends -->  
