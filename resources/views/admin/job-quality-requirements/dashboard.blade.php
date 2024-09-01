@@ -7,6 +7,7 @@
 
             <!-- Card Border Shadow -->
             <div class="row">
+            <a href="{{ url('/admin/job-quality-requirements') }}" class="menu-link">
                 <div class="col-sm-6 col-lg-4 mb-4">
                     <div class="card card-border-shadow-primary">
                         <div class="card-body">
@@ -25,6 +26,7 @@
                         </div>
                     </div>
                 </div>
+            </a>
                 <!-- <div class="col-sm-6 col-lg-4 mb-4">
                     <div class="card card-border-shadow-warning">
                         <div class="card-body">
