@@ -3,7 +3,7 @@
         <!-- Content -->
         <div class="container-xxl flex-grow-1 container-p-y">
             <h4 class="fw-bold py-3 mb-4"><span class="text-muted fw-light">Job Quality Requirements / </span> 
-                {{ isset($jqr->id) ? "Edit - " . $jqr->job_number . "" : "Add" }}
+                {{ isset($jqr->id) ? "Update - " . $jqr->job_number . "" : "Create" }}
             </h4>
             <!-- <p class="mb-4">
                 Icons used on this page are made by
@@ -298,88 +298,46 @@
                                                 <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
                                             </div>
                                         </div>
-                                        <!-- Statuses -->
+                                        <!-- Traveller Statuses -->
                                         <div class="col-sm-12">
-                                            <label class="form-label" for="no_of_modules">Status of Document Deliverables</label>
+                                            <label class="form-label" for="no_of_modules">Traveller Completed</label>
                                             <div class="card">
                                                 <div class="table-responsive text-nowrap">
                                                     <table class="table table-hover data-table">
                                                         <thead>
                                                             <tr>
-                                                                <th>Report</th>
+                                                                <th>Section</th>
                                                                 <th>Status</th>
-                                                                <th>Legend</th>
+                                                                <!-- <th>Legend</th> -->
                                                             </tr>
                                                         </thead>
                                                         <tbody>
                                                             <tr>
-                                                                <th>MTR'S</th>
+                                                                <th>Pressure Vessels</th>
                                                                 <td>
-                                                                    <select class="doc-status" name="status_of_docs_deliverables_mtrs" data-style="btn-default">
-                                                                        <option selected value="0">-Select-</option>
-                                                                        @foreach($documentDeliverablesStatuses as $status)
-                                                                            <option value="{{ $status->id }}" {{ isset($jqr->status_of_docs_deliverables_mtrs) && $status->id == $jqr->status_of_docs_deliverables_mtrs ? 'selected' : '' }}>{{ $status->name }}</option>
-                                                                        @endforeach
-                                                                    </select>
-                                                                </td>
-                                                                <td>
-                                                                    <span class="badge bg-secondary">None</span>
+                                                                <span id="pv-status" class="badge bg-secondary">
+                                                                    None
+                                                                </span>
                                                                 </td>
                                                             </tr>
                                                             <tr>
-                                                                <th>NDE</th>
+                                                                <th>Non Code Vessels Tanks</th>
                                                                 <td>
-                                                                    <select class="doc-status" name="status_of_docs_deliverables_nde" data-style="btn-default">
-                                                                        <option selected value="0">-Select-</option>
-                                                                        @foreach($documentDeliverablesStatuses as $status)
-                                                                            <option value="{{ $status->id }}" {{ isset($jqr->status_of_docs_deliverables_nde) && $status->id == $jqr->status_of_docs_deliverables_nde ? 'selected' : '' }}>{{ $status->name }}</option>
-                                                                        @endforeach
-                                                                    </select>
-                                                                </td>
-                                                                <td>
-                                                                    <span class="badge bg-secondary">None</span>
+                                                                    <span id="nc-status" class="badge bg-secondary">None</span>
                                                                 </td>
                                                             </tr>
                                                             <tr>
-                                                                <th>Hydro</th>
-                                                                <td>
+                                                                <th>Process Fuel Gas Start Gas Piping</th>
+                                                                <!-- <td>
                                                                     <select class="doc-status" name="status_of_docs_deliverables_hydro" data-style="btn-default">
-                                                                        <option selected value="0">-Select-</option>
+                                                                        <option selected value="default">-Select-</option>
                                                                         @foreach($documentDeliverablesStatuses as $status)
                                                                             <option value="{{ $status->id }}" {{ isset($jqr->status_of_docs_deliverables_hydro) && $status->id == $jqr->status_of_docs_deliverables_hydro ? 'selected' : '' }}>{{ $status->name }}</option>
                                                                         @endforeach
                                                                     </select>
-                                                                </td>
+                                                                </td> -->
                                                                 <td>
-                                                                    <span class="badge bg-secondary">None</span>
-                                                                </td>
-                                                            </tr>
-                                                            <tr>
-                                                                <th>Heat Map</th>
-                                                                <td>
-                                                                    <select class="doc-status" name="status_of_docs_deliverables_heat_map" data-style="btn-default">
-                                                                        <option selected value="0">-Select-</option>
-                                                                        @foreach($documentDeliverablesStatuses as $status)
-                                                                            <option value="{{ $status->id }}" {{ isset($jqr->status_of_docs_deliverables_heat_map) && $status->id == $jqr->status_of_docs_deliverables_heat_map ? 'selected' : '' }}>{{ $status->name }}</option>
-                                                                        @endforeach
-                                                                    </select>
-                                                                </td>
-                                                                <td>
-                                                                    <span class="badge bg-secondary">None</span>
-                                                                </td>
-                                                            </tr>
-                                                            <tr>
-                                                                <th>Weld Map</th>
-                                                                <td>
-                                                                    <select class="doc-status" name="status_of_docs_deliverables_weld_map" data-style="btn-default">
-                                                                        <option selected value="0">-Select-</option>
-                                                                        @foreach($documentDeliverablesStatuses as $status)
-                                                                            <option value="{{ $status->id }}" {{ isset($jqr->status_of_docs_deliverables_weld_map) && $status->id == $jqr->status_of_docs_deliverables_weld_map ? 'selected' : '' }}>{{ $status->name }}</option>
-                                                                        @endforeach
-                                                                    </select>
-                                                                </td>
-                                                                <td>
-                                                                    <span class="badge bg-secondary">None</span>
+                                                                    <span id="pipe-status" class="badge bg-secondary">None</span>
                                                                 </td>
                                                             </tr>
                                                         </tbody>
@@ -387,7 +345,7 @@
                                                 </div>
                                             </div>
                                         </div>
-                                        <!-- Statuses Ends -->
+                                        <!-- Traveller Statuses Ends -->
                                         <!-- Action Buttons -->
                                         <div class="pt-4">
                                             <div class="row justify-content-end">
@@ -1138,36 +1096,139 @@
                                         </div>
                                         <!-- Doc Statuses -->
                                         <!-- MTRS --> 
-                                        <div class="col-sm-6">
+                                        <!-- <div class="col-sm-6">
                                             <label class="form-label" for="linkedin1">MTR's Status</label>
                                             <div class="alert alert-primary mtrs-status" role="alert">None</div>
-                                        </div>
+                                        </div> -->
                                         <!-- MTRS Ends -->
                                         <!-- NDE --> 
-                                        <div class="col-sm-6">
+                                        <!-- <div class="col-sm-6">
                                             <label class="form-label" for="linkedin1">NDE Status</label>
                                             <div class="alert alert-primary nde-status" role="alert">None</div>
-                                        </div>
+                                        </div> -->
                                         <!-- NDE Ends -->
                                         <!-- Hydro --> 
-                                        <div class="col-sm-6">
+                                        <!-- <div class="col-sm-6">
                                             <label class="form-label" for="linkedin1">Hydro Status</label>
                                             <div class="alert alert-primary hydro-status" role="alert">None</div>
-                                        </div>
+                                        </div> -->
                                         <!-- Hydro Ends -->
                                         <!-- Heat Map --> 
-                                        <div class="col-sm-6">
+                                        <!-- <div class="col-sm-6">
                                             <label class="form-label" for="linkedin1">Heat Map Status</label>
                                             <div class="alert alert-primary heat-map-status" role="alert">None</div>
-                                        </div>
+                                        </div> -->
                                         <!-- Heat Map Ends --> 
                                         <!-- Weld Map --> 
-                                        <div class="col-sm-6">
+                                        <!-- <div class="col-sm-6">
                                             <label class="form-label" for="linkedin1">Weld Map Status</label>
                                             <div class="alert alert-primary weld-map-status" role="alert">None</div>
-                                        </div>
+                                        </div> -->
                                         <!-- Weld Map Ends -->  
                                         <!-- Doc Statuses Ends -->
+                                        <!-- Statuses -->
+                                        <div class="col-sm-12">
+                                            <label class="form-label" for="no_of_modules">Status of Document Deliverables</label>
+                                            <div class="card">
+                                                <div class="table-responsive text-nowrap">
+                                                    <table class="table table-hover data-table">
+                                                        <thead>
+                                                            <tr>
+                                                                <th>Report</th>
+                                                                <th>Status</th>
+                                                                <th>Legend</th>
+                                                            </tr>
+                                                        </thead>
+                                                        <tbody>
+                                                            <tr>
+                                                                <th>MTR'S</th>
+                                                                <td>
+                                                                    <select class="doc-status" name="status_of_docs_deliverables_mtrs" data-style="btn-default">
+                                                                        <option selected value="default">-Select-</option>
+                                                                        @foreach($documentDeliverablesStatuses as $status)
+                                                                            <option value="{{ $status->id }}" {{ isset($jqr_pressure_vessels->mtrsStatus) && $status->id == $jqr_pressure_vessels->mtrsStatus->id ? 'selected' : '' }}>{{ $status->name }}</option>
+                                                                        @endforeach
+                                                                    </select>
+                                                                </td>
+                                                                <td>
+                                                                    <span class="badge bg-secondary">None</span>
+                                                                </td>
+                                                            </tr>
+                                                            <tr>
+                                                                <th>NDE</th>
+                                                                <td>
+                                                                    <select class="doc-status" name="status_of_docs_deliverables_nde" data-style="btn-default">
+                                                                        <option selected value="default">-Select-</option>
+                                                                        @foreach($documentDeliverablesStatuses as $status)
+                                                                            <option value="{{ $status->id }}" {{ isset($jqr_pressure_vessels->ndeStatus) && $status->id == $jqr_pressure_vessels->ndeStatus->id ? 'selected' : '' }}>{{ $status->name }}</option>
+                                                                        @endforeach
+                                                                    </select>
+                                                                </td>
+                                                                <td>
+                                                                    <span class="badge bg-secondary">None</span>
+                                                                </td>
+                                                            </tr>
+                                                            <tr>
+                                                                <th>Hydro</th>
+                                                                <td>
+                                                                    <select class="doc-status" name="status_of_docs_deliverables_hydro" data-style="btn-default">
+                                                                        <option selected value="default">-Select-</option>
+                                                                        @foreach($documentDeliverablesStatuses as $status)
+                                                                            <option value="{{ $status->id }}" {{ isset($jqr_pressure_vessels->hydroStatus) && $status->id == $jqr_pressure_vessels->hydroStatus->id ? 'selected' : '' }}>{{ $status->name }}</option>
+                                                                        @endforeach
+                                                                    </select>
+                                                                </td>
+                                                                <td>
+                                                                    <span class="badge bg-secondary">None</span>
+                                                                </td>
+                                                            </tr>
+                                                            <tr>
+                                                                <th>Heat Map</th>
+                                                                <td>
+                                                                    <select class="doc-status" name="status_of_docs_deliverables_heat_map" data-style="btn-default">
+                                                                        <option selected value="default">-Select-</option>
+                                                                        @foreach($documentDeliverablesStatuses as $status)
+                                                                            <option value="{{ $status->id }}" {{ isset($jqr_pressure_vessels->heatMapStatus) && $status->id == $jqr_pressure_vessels->heatMapStatus->id ? 'selected' : '' }}>{{ $status->name }}</option>
+                                                                        @endforeach
+                                                                    </select>
+                                                                </td>
+                                                                <td>
+                                                                    <span class="badge bg-secondary">None</span>
+                                                                </td>
+                                                            </tr>
+                                                            <tr>
+                                                                <th>Weld Map</th>
+                                                                <td>
+                                                                    <select class="doc-status" name="status_of_docs_deliverables_weld_map" data-style="btn-default">
+                                                                        <option selected value="default">-Select-</option>
+                                                                        @foreach($documentDeliverablesStatuses as $status)
+                                                                            <option value="{{ $status->id }}" {{ isset($jqr_pressure_vessels->weldMapStatus) && $status->id == $jqr_pressure_vessels->weldMapStatus->id ? 'selected' : '' }}>{{ $status->name }}</option>
+                                                                        @endforeach
+                                                                    </select>
+                                                                </td>
+                                                                <td>
+                                                                    <span class="badge bg-secondary">None</span>
+                                                                </td>
+                                                            </tr>
+                                                            <tr>
+                                                                <th>Traveller Completed</th>
+                                                                <td>
+                                                                    <select class="doc-status" name="traveller_completed_status" data-style="btn-default">
+                                                                        <option selected value="default">-Select-</option>
+                                                                        <option value="1" {{ isset($jqr_pressure_vessels->traveller_completed_status) ? ($jqr_pressure_vessels->traveller_completed_status == 1 ? 'selected' : '') : '' }}>Completed</option>
+                                                                        <option value="0" {{ isset($jqr_pressure_vessels->traveller_completed_status) ?  ($jqr_pressure_vessels->traveller_completed_status == 0 ? 'selected' : '') : '' }}>Pending</option>
+                                                                    </select>
+                                                                </td>
+                                                                <td>
+                                                                    <span class="badge bg-secondary">None</span>
+                                                                </td>
+                                                            </tr>
+                                                        </tbody>
+                                                    </table>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <!-- Statuses Ends -->
                                         <!-- Action Buttons -->
                                         <div class="pt-4">
                                             <div class="row justify-content-end">
@@ -1420,36 +1481,139 @@
                                         </div>
                                         <!-- Doc Statuses -->
                                         <!-- MTRS --> 
-                                        <div class="col-sm-6">
+                                        <!-- <div class="col-sm-6">
                                             <label class="form-label" for="linkedin1">MTR's Status</label>
                                             <div class="alert alert-primary mtrs-status" role="alert">None</div>
-                                        </div>
+                                        </div> -->
                                         <!-- MTRS Ends -->
                                         <!-- NDE --> 
-                                        <div class="col-sm-6">
+                                        <!-- <div class="col-sm-6">
                                             <label class="form-label" for="linkedin1">NDE Status</label>
                                             <div class="alert alert-primary nde-status" role="alert">None</div>
-                                        </div>
+                                        </div> -->
                                         <!-- NDE Ends -->
                                         <!-- Hydro --> 
-                                        <div class="col-sm-6">
+                                        <!-- <div class="col-sm-6">
                                             <label class="form-label" for="linkedin1">Hydro Status</label>
                                             <div class="alert alert-primary hydro-status" role="alert">None</div>
-                                        </div>
+                                        </div> -->
                                         <!-- Hydro Ends -->
                                         <!-- Heat Map --> 
-                                        <div class="col-sm-6">
+                                        <!-- <div class="col-sm-6">
                                             <label class="form-label" for="linkedin1">Heat Map Status</label>
                                             <div class="alert alert-primary heat-map-status" role="alert">None</div>
-                                        </div>
+                                        </div> -->
                                         <!-- Heat Map Ends --> 
                                         <!-- Weld Map --> 
-                                        <div class="col-sm-6">
+                                        <!-- <div class="col-sm-6">
                                             <label class="form-label" for="linkedin1">Weld Map Status</label>
                                             <div class="alert alert-primary weld-map-status" role="alert">None</div>
-                                        </div>
+                                        </div> -->
                                         <!-- Weld Map Ends -->  
                                         <!-- Doc Statuses Ends -->
+                                        <!-- Statuses -->
+                                        <div class="col-sm-12">
+                                            <label class="form-label" for="no_of_modules">Status of Document Deliverables</label>
+                                            <div class="card">
+                                                <div class="table-responsive text-nowrap">
+                                                    <table class="table table-hover data-table">
+                                                        <thead>
+                                                            <tr>
+                                                                <th>Report</th>
+                                                                <th>Status</th>
+                                                                <th>Legend</th>
+                                                            </tr>
+                                                        </thead>
+                                                        <tbody>
+                                                            <tr>
+                                                                <th>MTR'S</th>
+                                                                <td>
+                                                                    <select class="doc-status" name="status_of_docs_deliverables_mtrs" data-style="btn-default">
+                                                                        <option selected value="default">-Select-</option>
+                                                                        @foreach($documentDeliverablesStatuses as $status)
+                                                                            <option value="{{ $status->id }}" {{ isset($jqr_non_code->mtrsStatus) && $status->id == $jqr_non_code->mtrsStatus->id ? 'selected' : '' }}>{{ $status->name }}</option>
+                                                                        @endforeach
+                                                                    </select>
+                                                                </td>
+                                                                <td>
+                                                                    <span class="badge bg-secondary">None</span>
+                                                                </td>
+                                                            </tr>
+                                                            <tr>
+                                                                <th>NDE</th>
+                                                                <td>
+                                                                    <select class="doc-status" name="status_of_docs_deliverables_nde" data-style="btn-default">
+                                                                        <option selected value="default">-Select-</option>
+                                                                        @foreach($documentDeliverablesStatuses as $status)
+                                                                            <option value="{{ $status->id }}" {{ isset($jqr_non_code->ndeStatus) && $status->id == $jqr_non_code->ndeStatus->id ? 'selected' : '' }}>{{ $status->name }}</option>
+                                                                        @endforeach
+                                                                    </select>
+                                                                </td>
+                                                                <td>
+                                                                    <span class="badge bg-secondary">None</span>
+                                                                </td>
+                                                            </tr>
+                                                            <tr>
+                                                                <th>Hydro</th>
+                                                                <td>
+                                                                    <select class="doc-status" name="status_of_docs_deliverables_hydro" data-style="btn-default">
+                                                                        <option selected value="default">-Select-</option>
+                                                                        @foreach($documentDeliverablesStatuses as $status)
+                                                                            <option value="{{ $status->id }}" {{ isset($jqr_non_code->hydroStatus) && $status->id == $jqr_non_code->hydroStatus->id ? 'selected' : '' }}>{{ $status->name }}</option>
+                                                                        @endforeach
+                                                                    </select>
+                                                                </td>
+                                                                <td>
+                                                                    <span class="badge bg-secondary">None</span>
+                                                                </td>
+                                                            </tr>
+                                                            <tr>
+                                                                <th>Heat Map</th>
+                                                                <td>
+                                                                    <select class="doc-status" name="status_of_docs_deliverables_heat_map" data-style="btn-default">
+                                                                        <option selected value="default">-Select-</option>
+                                                                        @foreach($documentDeliverablesStatuses as $status)
+                                                                            <option value="{{ $status->id }}" {{ isset($jqr_non_code->heatMapStatus) && $status->id == $jqr_non_code->heatMapStatus->id ? 'selected' : '' }}>{{ $status->name }}</option>
+                                                                        @endforeach
+                                                                    </select>
+                                                                </td>
+                                                                <td>
+                                                                    <span class="badge bg-secondary">None</span>
+                                                                </td>
+                                                            </tr>
+                                                            <tr>
+                                                                <th>Weld Map</th>
+                                                                <td>
+                                                                    <select class="doc-status" name="status_of_docs_deliverables_weld_map" data-style="btn-default">
+                                                                        <option selected value="default">-Select-</option>
+                                                                        @foreach($documentDeliverablesStatuses as $status)
+                                                                            <option value="{{ $status->id }}" {{ isset($jqr_non_code->weldMapStatus) && $status->id == $jqr_non_code->weldMapStatus->id ? 'selected' : '' }}>{{ $status->name }}</option>
+                                                                        @endforeach
+                                                                    </select>
+                                                                </td>
+                                                                <td>
+                                                                    <span class="badge bg-secondary">None</span>
+                                                                </td>
+                                                            </tr>
+                                                            <tr>
+                                                                <th>Traveller Completed</th>
+                                                                <td>
+                                                                    <select class="doc-status" name="traveller_completed_status" data-style="btn-default">
+                                                                        <option selected value="default">-Select-</option>
+                                                                        <option value="1" {{ isset($jqr_non_code->traveller_completed_status) ? ($jqr_non_code->traveller_completed_status == 1 ? 'selected' : '') : '' }}>Completed</option>
+                                                                        <option value="0" {{ isset($jqr_non_code->traveller_completed_status) ?  ($jqr_non_code->traveller_completed_status == 0 ? 'selected' : '') : '' }}>Pending</option>
+                                                                    </select>
+                                                                </td>
+                                                                <td>
+                                                                    <span class="badge bg-secondary">None</span>
+                                                                </td>
+                                                            </tr>
+                                                        </tbody>
+                                                    </table>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <!-- Statuses Ends -->
                                         <!-- Action Buttons -->
                                         <div class="pt-4">
                                             <div class="row justify-content-end">
@@ -1674,36 +1838,139 @@
                                         </div>
                                         <!-- Doc Statuses -->
                                         <!-- MTRS --> 
-                                        <div class="col-sm-6">
+                                        <!-- <div class="col-sm-6">
                                             <label class="form-label" for="linkedin1">MTR's Status</label>
                                             <div class="alert alert-primary mtrs-status" role="alert">None</div>
-                                        </div>
+                                        </div> -->
                                         <!-- MTRS Ends -->
                                         <!-- NDE --> 
-                                        <div class="col-sm-6">
+                                        <!-- <div class="col-sm-6">
                                             <label class="form-label" for="linkedin1">NDE Status</label>
                                             <div class="alert alert-primary nde-status" role="alert">None</div>
-                                        </div>
+                                        </div> -->
                                         <!-- NDE Ends -->
                                         <!-- Hydro --> 
-                                        <div class="col-sm-6">
+                                        <!-- <div class="col-sm-6">
                                             <label class="form-label" for="linkedin1">Hydro Status</label>
                                             <div class="alert alert-primary hydro-status" role="alert">None</div>
-                                        </div>
+                                        </div> -->
                                         <!-- Hydro Ends -->
                                         <!-- Heat Map --> 
-                                        <div class="col-sm-6">
+                                        <!-- <div class="col-sm-6">
                                             <label class="form-label" for="linkedin1">Heat Map Status</label>
                                             <div class="alert alert-primary heat-map-status" role="alert">None</div>
-                                        </div>
+                                        </div> -->
                                         <!-- Heat Map Ends --> 
                                         <!-- Weld Map --> 
-                                        <div class="col-sm-6">
+                                        <!-- <div class="col-sm-6">
                                             <label class="form-label" for="linkedin1">Weld Map Status</label>
                                             <div class="alert alert-primary weld-map-status" role="alert">None</div>
-                                        </div>
+                                        </div> -->
                                         <!-- Weld Map Ends -->  
                                         <!-- Doc Statuses Ends -->
+                                        <!-- Statuses -->
+                                        <div class="col-sm-12">
+                                            <label class="form-label" for="no_of_modules">Status of Document Deliverables</label>
+                                            <div class="card">
+                                                <div class="table-responsive text-nowrap">
+                                                    <table class="table table-hover data-table">
+                                                        <thead>
+                                                            <tr>
+                                                                <th>Report</th>
+                                                                <th>Status</th>
+                                                                <th>Legend</th>
+                                                            </tr>
+                                                        </thead>
+                                                        <tbody>
+                                                            <tr>
+                                                                <th>MTR'S</th>
+                                                                <td>
+                                                                    <select class="doc-status" name="status_of_docs_deliverables_mtrs" data-style="btn-default">
+                                                                        <option selected value="default">-Select-</option>
+                                                                        @foreach($documentDeliverablesStatuses as $status)
+                                                                            <option value="{{ $status->id }}" {{ isset($jqr_process_fuel_gas->mtrsStatus) && $status->id == $jqr_process_fuel_gas->mtrsStatus->id ? 'selected' : '' }}>{{ $status->name }}</option>
+                                                                        @endforeach
+                                                                    </select>
+                                                                </td>
+                                                                <td>
+                                                                    <span class="badge bg-secondary">None</span>
+                                                                </td>
+                                                            </tr>
+                                                            <tr>
+                                                                <th>NDE</th>
+                                                                <td>
+                                                                    <select class="doc-status" name="status_of_docs_deliverables_nde" data-style="btn-default">
+                                                                        <option selected value="default">-Select-</option>
+                                                                        @foreach($documentDeliverablesStatuses as $status)
+                                                                            <option value="{{ $status->id }}" {{ isset($jqr_process_fuel_gas->ndeStatus) && $status->id == $jqr_process_fuel_gas->ndeStatus->id ? 'selected' : '' }}>{{ $status->name }}</option>
+                                                                        @endforeach
+                                                                    </select>
+                                                                </td>
+                                                                <td>
+                                                                    <span class="badge bg-secondary">None</span>
+                                                                </td>
+                                                            </tr>
+                                                            <tr>
+                                                                <th>Hydro</th>
+                                                                <td>
+                                                                    <select class="doc-status" name="status_of_docs_deliverables_hydro" data-style="btn-default">
+                                                                        <option selected value="default">-Select-</option>
+                                                                        @foreach($documentDeliverablesStatuses as $status)
+                                                                            <option value="{{ $status->id }}" {{ isset($jqr_process_fuel_gas->hydroStatus) && $status->id == $jqr_process_fuel_gas->hydroStatus->id ? 'selected' : '' }}>{{ $status->name }}</option>
+                                                                        @endforeach
+                                                                    </select>
+                                                                </td>
+                                                                <td>
+                                                                    <span class="badge bg-secondary">None</span>
+                                                                </td>
+                                                            </tr>
+                                                            <tr>
+                                                                <th>Heat Map</th>
+                                                                <td>
+                                                                    <select class="doc-status" name="status_of_docs_deliverables_heat_map" data-style="btn-default">
+                                                                        <option selected value="default">-Select-</option>
+                                                                        @foreach($documentDeliverablesStatuses as $status)
+                                                                            <option value="{{ $status->id }}" {{ isset($jqr_process_fuel_gas->heatMapStatus) && $status->id == $jqr_process_fuel_gas->heatMapStatus->id ? 'selected' : '' }}>{{ $status->name }}</option>
+                                                                        @endforeach
+                                                                    </select>
+                                                                </td>
+                                                                <td>
+                                                                    <span class="badge bg-secondary">None</span>
+                                                                </td>
+                                                            </tr>
+                                                            <tr>
+                                                                <th>Weld Map</th>
+                                                                <td>
+                                                                    <select class="doc-status" name="status_of_docs_deliverables_weld_map" data-style="btn-default">
+                                                                        <option selected value="default">-Select-</option>
+                                                                        @foreach($documentDeliverablesStatuses as $status)
+                                                                            <option value="{{ $status->id }}" {{ isset($jqr_process_fuel_gas->weldMapStatus) && $status->id == $jqr_process_fuel_gas->weldMapStatus->id ? 'selected' : '' }}>{{ $status->name }}</option>
+                                                                        @endforeach
+                                                                    </select>
+                                                                </td>
+                                                                <td>
+                                                                    <span class="badge bg-secondary">None</span>
+                                                                </td>
+                                                            </tr>
+                                                            <tr>
+                                                                <th>Traveller Completed</th>
+                                                                <td>
+                                                                    <select class="doc-status" name="traveller_completed_status" data-style="btn-default">
+                                                                        <option selected value="default">-Select-</option>
+                                                                        <option value="1" {{ isset($jqr_process_fuel_gas->traveller_completed_status) ? ($jqr_process_fuel_gas->traveller_completed_status == 1 ? 'selected' : '') : '' }}>Completed</option>
+                                                                        <option value="0" {{ isset($jqr_process_fuel_gas->traveller_completed_status) ? ($jqr_process_fuel_gas->traveller_completed_status == 0 ? 'selected' : '') : '' }}>Pending</option>
+                                                                    </select>
+                                                                </td>
+                                                                <td>
+                                                                    <span class="badge bg-secondary">None</span>
+                                                                </td>
+                                                            </tr>
+                                                        </tbody>
+                                                    </table>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <!-- Statuses Ends -->
                                         <!-- Action Buttons -->
                                         <div class="pt-4">
                                             <div class="row justify-content-end">
@@ -2981,7 +3248,8 @@
             </div>
             <hr class="container-m-nx mb-5" />
         </div>
-        <input type="hidden" name="doc-statuses" id="docStatuses" value="{{ isset($doc_statuses) ? json_encode($doc_statuses) : '' }}">
+        <input type="hidden" name="traveller-statuses" id="travellerStatuses" value="{{ isset($travellerStatuses) ? json_encode($travellerStatuses) : '' }}">
+        <input type="hidden" name="doc-statuses" id="docStatuses" value="{{ isset($pvDocStatuses) ? json_encode($pvDocStatuses) : '' }}">
         <!-- / Content -->
         <!-- Footer -->
         <footer class="content-footer footer bg-footer-theme">
@@ -3148,8 +3416,8 @@ $(document).ready(function() {
         if (lastTdClass) {
             nextTd.find('span').removeClass(lastTdClass.split(' ')[1]);
         }
-
-        if (selectedStatusValue == 0) {
+        
+        if (selectedStatusValue === "default") {
             nextTd.find('span').text("None");
         } else {
             // Update the corresponding span
@@ -3179,6 +3447,13 @@ $(document).ready(function() {
             case 'None':
                 nextTd.find('span').addClass('bg-secondary');
                 break;
+            //Traveller Statuses
+            case 'Completed':
+                nextTd.find('span').addClass('bg-success');
+                break;
+            case 'Pending':
+                nextTd.find('span').addClass('bg-danger');
+                break;
             default:
                 nextTd.find('span').addClass('bg-secondary');
                 break;
@@ -3197,12 +3472,20 @@ $(document).ready(function() {
         }
     });
 
-    let docStatusesJson = $('#docStatuses').val();
-    // Parse the JSON string into a JavaScript object
-    if (docStatusesJson) {
-        let docStatuses = JSON.parse(docStatusesJson);
-        updateDocStatuses(docStatuses);
+    // Setting Traveller Statuses
+    let travellerStatusJson = $('#travellerStatuses').val();
+    if (travellerStatusJson) {
+        let travellerStatus = JSON.parse(travellerStatusJson);
+        updateTravellerStatus(travellerStatus);
     }
+
+    //let docStatusesJson = $('#docStatuses').val();
+    
+    // Parse the JSON string into a JavaScript object
+    // if (docStatusesJson) {
+    //     let docStatuses = JSON.parse(docStatusesJson);
+    //     updateDocStatuses(docStatuses);
+    // }
 
     // Function to update the input field based on dropdown selection
     function updateInputField() {
@@ -3244,65 +3527,86 @@ if ($('.form_id_bd').val() == '') {
     $('.step').css('pointer-events', 'none');
 }
 
-function updateDocStatuses(statuses) {
-    if (statuses) {
-        // Define an object mapping status keys to class names
-        const statusClassMap = {
-            mtrs: 'mtrs-status',
-            nde: 'nde-status',
-            hydro: 'hydro-status',
-            heat_map: 'heat-map-status',
-            weld_map: 'weld-map-status'
-        };
+function updateTravellerStatus(status) {
+    // Update the status for each key in the status object
+    updateSingleStatus('#pv-status', status.pv);
+    updateSingleStatus('#pipe-status', status.pipe);
+    updateSingleStatus('#nc-status', status.nc);
+}
 
-        // Loop through each status key
-        for (const [key, className] of Object.entries(statusClassMap)) {
-            // Get the element for the current status
-            let element = $('.' + className);
-            let classList = element.attr('class').split(' ');
-            
-            // Remove the old status class
-            if (classList.length > 1) {
-                element.removeClass(classList.find(cls => cls.startsWith('alert-')));
-            }
-
-            // Get the selected status for the current key
-            let selectedStatus = statuses[key];
-
-            // Check if the status is empty and update accordingly
-            if (!selectedStatus || selectedStatus.trim() === '') {
-                element.text('None');
-                element.addClass('alert-dark');
-            } else {
-                element.text(selectedStatus);
-                // Add the new class based on the selected status
-                switch (selectedStatus) {
-                    case 'DD Completed':
-                        element.addClass('alert-success');
-                        break;
-                    case 'Shop Complete':
-                        element.addClass('alert-warning');
-                        break;
-                    case 'Attention':
-                        element.addClass('alert-danger');
-                        break;
-                    case 'Rework':
-                        element.addClass('alert-primary');
-                        break;
-                    case 'Review':
-                        element.addClass('alert-info');
-                        break;
-                    case 'Outsourced':
-                        element.addClass('alert-dark');
-                        break;
-                    default:
-                        element.addClass('alert-secondary');
-                        break;
-                }
-            }
-        }
+function updateSingleStatus(selector, statusValue) {
+    let $statusSpan = $(selector);
+    // Reset classes first
+    $statusSpan.removeClass('badge bg-secondary');
+    // Set status and classes based on statusValue
+    if (statusValue == 1) {
+        $statusSpan.addClass('badge bg-success').text('Completed');
+    } else if (statusValue === '') {
+        $statusSpan.addClass('badge bg-warning').text('Pending');
+    } else {
+        $statusSpan.addClass('badge bg-secondary').text('-Select-');
     }
 }
+
+// function updateDocStatuses(statuses) {
+//     if (statuses) {
+//         // Define an object mapping status keys to class names
+//         const statusClassMap = {
+//             mtrs: 'mtrs-status',
+//             nde: 'nde-status',
+//             hydro: 'hydro-status',
+//             heat_map: 'heat-map-status',
+//             weld_map: 'weld-map-status'
+//         };
+
+//         // Loop through each status key
+//         for (const [key, className] of Object.entries(statusClassMap)) {
+//             // Get the element for the current status
+//             let element = $('.' + className);
+//             let classList = element.attr('class').split(' ');
+            
+//             // Remove the old status class
+//             if (classList.length > 1) {
+//                 element.removeClass(classList.find(cls => cls.startsWith('alert-')));
+//             }
+
+//             // Get the selected status for the current key
+//             let selectedStatus = statuses[key];
+
+//             // Check if the status is empty and update accordingly
+//             if (!selectedStatus || selectedStatus.trim() === '') {
+//                 element.text('None');
+//                 element.addClass('alert-dark');
+//             } else {
+//                 element.text(selectedStatus);
+//                 // Add the new class based on the selected status
+//                 switch (selectedStatus) {
+//                     case 'DD Completed':
+//                         element.addClass('alert-success');
+//                         break;
+//                     case 'Shop Complete':
+//                         element.addClass('alert-warning');
+//                         break;
+//                     case 'Attention':
+//                         element.addClass('alert-danger');
+//                         break;
+//                     case 'Rework':
+//                         element.addClass('alert-primary');
+//                         break;
+//                     case 'Review':
+//                         element.addClass('alert-info');
+//                         break;
+//                     case 'Outsourced':
+//                         element.addClass('alert-dark');
+//                         break;
+//                     default:
+//                         element.addClass('alert-secondary');
+//                         break;
+//                 }
+//             }
+//         }
+//     }
+// }
 
 // Submit Basic Data
 function submitData(reloadFlag) {
@@ -3341,9 +3645,10 @@ function submitData(reloadFlag) {
 				$('.form_id_bd').val(response.id);
 				if (reloadFlag == true) {
 					window.location.href = response.redirect;
-				} else {
-                    updateDocStatuses(response.doc_statuses);
-                }
+				} 
+                // else {
+                //     updateDocStatuses(response.doc_statuses);
+                // }
 			}
 		},
 		error: function(response) {
@@ -3549,6 +3854,9 @@ function submitPressureVesselsData(reloadFlag) {
                         $('#formNumber').val(response.jqr.form_number ? response.jqr.form_number : '');
                     }
                     window.location.href = response.redirect;
+                } else {
+                    if (response.travellerStatuses)
+                    updateTravellerStatus(response.travellerStatuses);
                 }
             }
         },
@@ -3593,6 +3901,9 @@ function submitNoCodeVesselsData(reloadFlag) {
                         $('#formNumber').val(response.jqr.form_number ? response.jqr.form_number : '');
                     }
                     window.location.href = response.redirect;
+                } else {
+                    if (response.travellerStatuses)
+                    updateTravellerStatus(response.travellerStatuses);
                 }
             }
         },
@@ -3637,6 +3948,9 @@ function submitProcessPipingData(reloadFlag) {
                         $('#formNumber').val(response.jqr.form_number ? response.jqr.form_number : '');
                     }
                     window.location.href = response.redirect;
+                } else {
+                    if (response.travellerStatuses)
+                    updateTravellerStatus(response.travellerStatuses);
                 }
             }
         },

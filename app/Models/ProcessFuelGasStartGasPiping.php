@@ -32,6 +32,52 @@ class ProcessFuelGasStartGasPiping extends Model
         'notes',
         'nde_requirements_required',
         'date_of_confirmation',
-        'nde_reports_comments'
+        'nde_reports_comments',
+        'status_of_docs_deliverables_mtrs',
+        'status_of_docs_deliverables_nde',
+        'status_of_docs_deliverables_hydro',
+        'status_of_docs_deliverables_heat_map',
+        'status_of_docs_deliverables_weld_map',
+        'traveller_completed_status'
     ];
+
+     /**
+     * Get MTR's Doc Status.
+     */
+    public function mtrsStatus()
+    {
+        return $this->belongsTo(DocumentDeliverablesStatus::class, 'status_of_docs_deliverables_mtrs', 'id');
+    }
+
+    /**
+     * Get NDE Doc Status.
+     */
+    public function ndeStatus()
+    {
+        return $this->belongsTo(DocumentDeliverablesStatus::class, 'status_of_docs_deliverables_nde', 'id');
+    }
+
+    /**
+     * Get Hydro Doc Status.
+     */
+    public function hydroStatus()
+    {
+        return $this->belongsTo(DocumentDeliverablesStatus::class, 'status_of_docs_deliverables_hydro', 'id');
+    }
+
+    /**
+     * Get Heat Map Doc Status.
+     */
+    public function heatMapStatus()
+    {
+        return $this->belongsTo(DocumentDeliverablesStatus::class, 'status_of_docs_deliverables_heat_map', 'id');
+    }
+
+    /**
+     * Get Weld Map Doc Status.
+     */
+    public function weldMapStatus()
+    {
+        return $this->belongsTo(DocumentDeliverablesStatus::class, 'status_of_docs_deliverables_weld_map', 'id');
+    }
 }

@@ -18,11 +18,6 @@ class BasicDetails extends Model
         'production_number',
         'scheduled_test_date',
         'document_deliverables_due_date	',
-        'status_of_docs_deliverables_mtrs',
-        'status_of_docs_deliverables_nde',
-        'status_of_docs_deliverables_hydro',
-        'status_of_docs_deliverables_heat_map',
-        'status_of_docs_deliverables_weld_map',
         'jqr_revision_date',
         'form_number',
         'company_logo',
@@ -37,45 +32,5 @@ class BasicDetails extends Model
     public function pressureVessels()
     {
         return $this->belongsTo(PressureVessels::class, 'id', 'basic_details_id');
-    }
-
-    /**
-     * Get MTR's Doc Status.
-     */
-    public function mtrsStatus()
-    {
-        return $this->belongsTo(DocumentDeliverablesStatus::class, 'status_of_docs_deliverables_mtrs', 'id');
-    }
-
-    /**
-     * Get NDE Doc Status.
-     */
-    public function ndeStatus()
-    {
-        return $this->belongsTo(DocumentDeliverablesStatus::class, 'status_of_docs_deliverables_nde', 'id');
-    }
-
-    /**
-     * Get Hydro Doc Status.
-     */
-    public function hydroStatus()
-    {
-        return $this->belongsTo(DocumentDeliverablesStatus::class, 'status_of_docs_deliverables_hydro', 'id');
-    }
-
-    /**
-     * Get Heat Map Doc Status.
-     */
-    public function heatMapStatus()
-    {
-        return $this->belongsTo(DocumentDeliverablesStatus::class, 'status_of_docs_deliverables_heat_map', 'id');
-    }
-
-    /**
-     * Get Weld Map Doc Status.
-     */
-    public function weldMapStatus()
-    {
-        return $this->belongsTo(DocumentDeliverablesStatus::class, 'status_of_docs_deliverables_weld_map', 'id');
     }
 }
