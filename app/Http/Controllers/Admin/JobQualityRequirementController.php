@@ -291,21 +291,21 @@ class JobQualityRequirementController extends Controller
             $basic_details->form_number = $request->form_number;
             $basic_details->company_logo = $companyLogo ?? '';
             //Statuses of docs deliverables
-            if ($request->status_of_docs_deliverables_mtrs != null ) {
-                $basic_details->status_of_docs_deliverables_mtrs = $request->status_of_docs_deliverables_mtrs;
-            }
-            if ($request->status_of_docs_deliverables_nde != null ) {
-                $basic_details->status_of_docs_deliverables_nde = $request->status_of_docs_deliverables_nde;
-            }
-            if ($request->status_of_docs_deliverables_hydro != null) {
-                $basic_details->status_of_docs_deliverables_hydro = $request->status_of_docs_deliverables_hydro;
-            }
-            if ($request->status_of_docs_deliverables_heat_map != null) {
-                $basic_details->status_of_docs_deliverables_heat_map = $request->status_of_docs_deliverables_heat_map;
-            }
-            if ($request->status_of_docs_deliverables_weld_map != null) {
-                $basic_details->status_of_docs_deliverables_weld_map = $request->status_of_docs_deliverables_weld_map;
-            }
+            // if ($request->status_of_docs_deliverables_mtrs != null ) {
+            //     $basic_details->status_of_docs_deliverables_mtrs = $request->status_of_docs_deliverables_mtrs;
+            // }
+            // if ($request->status_of_docs_deliverables_nde != null ) {
+            //     $basic_details->status_of_docs_deliverables_nde = $request->status_of_docs_deliverables_nde;
+            // }
+            // if ($request->status_of_docs_deliverables_hydro != null) {
+            //     $basic_details->status_of_docs_deliverables_hydro = $request->status_of_docs_deliverables_hydro;
+            // }
+            // if ($request->status_of_docs_deliverables_heat_map != null) {
+            //     $basic_details->status_of_docs_deliverables_heat_map = $request->status_of_docs_deliverables_heat_map;
+            // }
+            // if ($request->status_of_docs_deliverables_weld_map != null) {
+            //     $basic_details->status_of_docs_deliverables_weld_map = $request->status_of_docs_deliverables_weld_map;
+            // }
             
             $basic_details->save();
             
@@ -323,24 +323,24 @@ class JobQualityRequirementController extends Controller
             }
             if ($basic_details->id) {
                 // Getting doc statuses
-                $statusData = BasicDetails::with('ndeStatus')
-                                            ->with('hydroStatus')
-                                            ->with('heatMapStatus')
-                                            ->with('weldMapStatus')
-                                            ->where('id', $basic_details->id)
-                                            ->first();
+                // $statusData = BasicDetails::with('ndeStatus')
+                //                             ->with('hydroStatus')
+                //                             ->with('heatMapStatus')
+                //                             ->with('weldMapStatus')
+                //                             ->where('id', $basic_details->id)
+                //                             ->first();
                 return response([
                     'status' => true, 
                     'message' => 'Success', 
                     'id' => $basic_details->id,
                     'jqr' => $basic_details ?? '',
-                    'doc_statuses' =>  [
-                        'mtrs' => $statusData->mtrsStatus->name ?? '',
-                        'nde' => $statusData->ndeStatus->name ?? '',
-                        'hydro' => $statusData->hydroStatus->name ?? '',
-                        'heat_map' => $statusData->heatMapStatus->name ?? '',
-                        'weld_map' => $statusData->weldMapStatus->name ?? ''
-                    ],
+                    // 'doc_statuses' =>  [
+                    //     'mtrs' => $statusData->mtrsStatus->name ?? '',
+                    //     'nde' => $statusData->ndeStatus->name ?? '',
+                    //     'hydro' => $statusData->hydroStatus->name ?? '',
+                    //     'heat_map' => $statusData->heatMapStatus->name ?? '',
+                    //     'weld_map' => $statusData->weldMapStatus->name ?? ''
+                    // ],
                     'redirect' => route('admin.job-quality-requirements')
                 ]);
             } else {
@@ -501,7 +501,6 @@ class JobQualityRequirementController extends Controller
 
         // Fetching Basic Details
         $basic_details = BasicDetails::where('id', $request->id)->first();
-
         $pressure_vessels->basic_details_id = $request->basic_details_id;
         $pressure_vessels->customer_avl_applies = $request->customer_avl_applies == 'on' ? '1' : '0';
         $pressure_vessels->material_origin_reqs = $request->material_origin_reqs;
@@ -527,7 +526,37 @@ class JobQualityRequirementController extends Controller
         $pressure_vessels->date_of_confirmation = $request->date_of_confirmation;
         $pressure_vessels->nde_reports_comments = $request->nde_reports_comments;
 
+        //Statuses of docs deliverables
+        if ($request->status_of_docs_deliverables_mtrs != null ) {
+            $pressure_vessels->status_of_docs_deliverables_mtrs = $request->status_of_docs_deliverables_mtrs;
+        }
+        if ($request->status_of_docs_deliverables_nde != null ) {
+            $pressure_vessels->status_of_docs_deliverables_nde = $request->status_of_docs_deliverables_nde;
+        }
+        if ($request->status_of_docs_deliverables_hydro != null) {
+            $pressure_vessels->status_of_docs_deliverables_hydro = $request->status_of_docs_deliverables_hydro;
+        }
+        if ($request->status_of_docs_deliverables_heat_map != null) {
+            $pressure_vessels->status_of_docs_deliverables_heat_map = $request->status_of_docs_deliverables_heat_map;
+        }
+        if ($request->status_of_docs_deliverables_weld_map != null) {
+            $pressure_vessels->status_of_docs_deliverables_weld_map = $request->status_of_docs_deliverables_weld_map;
+        }
+
+        if ($request->traveller_completed_status != null) {
+            $pressure_vessels->traveller_completed_status = $request->traveller_completed_status;
+        }
+        
         $pressure_vessels->save();
+        
+        $jqr_process_fuel_gas = ProcessFuelGasStartGasPiping::where('basic_details_id', $request->id)->first();
+        $jqr_non_code = NonCodeVesselsTanks::where('basic_details_id', $request->id)->first();
+
+        $travellerStatuses = [
+            'pv' => $jqr_pressure_vessels->traveller_completed_status ?? '',
+            'pipe' => $jqr_process_fuel_gas->traveller_completed_status ?? '',
+            'nc' => $jqr_non_code->traveller_completed_status ?? ''
+        ];
 
         if ($pressure_vessels->id) {
             return response([
@@ -535,7 +564,9 @@ class JobQualityRequirementController extends Controller
                 'message' => 'Success', 
                 'id' => $pressure_vessels->id,
                 'jqr' => $basic_details ?? '',
-                'redirect' => route('admin.job-quality-requirements')]);
+                'travellerStatuses' => $travellerStatuses ?? '',
+                'redirect' => route('admin.job-quality-requirements')
+            ]);
         } else {
             return response(['status' => false, 'message' => 'Error']);
         }
@@ -581,7 +612,37 @@ class JobQualityRequirementController extends Controller
         $non_code_vess->nde_requirements_required = $request->nde_requirements_required;
         $non_code_vess->date_of_confirmation = $request->date_of_confirmation;
         $non_code_vess->nde_reports_comments = $request->nde_reports_comments;
+        
+        //Statuses of docs deliverables
+        if ($request->status_of_docs_deliverables_mtrs != null ) {
+            $non_code_vess->status_of_docs_deliverables_mtrs = $request->status_of_docs_deliverables_mtrs;
+        }
+        if ($request->status_of_docs_deliverables_nde != null ) {
+            $non_code_vess->status_of_docs_deliverables_nde = $request->status_of_docs_deliverables_nde;
+        }
+        if ($request->status_of_docs_deliverables_hydro != null) {
+            $non_code_vess->status_of_docs_deliverables_hydro = $request->status_of_docs_deliverables_hydro;
+        }
+        if ($request->status_of_docs_deliverables_heat_map != null) {
+            $non_code_vess->status_of_docs_deliverables_heat_map = $request->status_of_docs_deliverables_heat_map;
+        }
+        if ($request->status_of_docs_deliverables_weld_map != null) {
+            $non_code_vess->status_of_docs_deliverables_weld_map = $request->status_of_docs_deliverables_weld_map;
+        }
+        if ($request->traveller_completed_status != null) {
+            $non_code_vess->traveller_completed_status = $request->traveller_completed_status;
+        }
+        
         $non_code_vess->save();
+
+        $jqr_process_fuel_gas = ProcessFuelGasStartGasPiping::where('basic_details_id', $request->id)->first();
+        $jqr_pressure_vessels = PressureVessels::where('basic_details_id', $request->id)->first();
+
+        $travellerStatuses = [
+            'pv' => $jqr_pressure_vessels->traveller_completed_status ?? '',
+            'pipe' => $jqr_process_fuel_gas->traveller_completed_status ?? '',
+            'nc' => $non_code_vess->traveller_completed_status ?? ''
+        ];
 
         if ($non_code_vess->id) {
             return response([
@@ -589,7 +650,9 @@ class JobQualityRequirementController extends Controller
                 'message' => 'Success', 
                 'id' => $non_code_vess->id,
                 'jqr' => $basic_details ?? '',
-                'redirect' => route('admin.job-quality-requirements')]);
+                'travellerStatuses' => $travellerStatuses ?? '',
+                'redirect' => route('admin.job-quality-requirements')
+            ]);
         } else {
             return response(['status' => false, 'message' => 'Error']);
         }
@@ -633,8 +696,37 @@ class JobQualityRequirementController extends Controller
         $process_fuel_gas->nde_requirements_required = $request->nde_requirements_required;
         $process_fuel_gas->date_of_confirmation = $request->date_of_confirmation;
         $process_fuel_gas->nde_reports_comments = $request->nde_reports_comments;
-
+        
+        //Statuses of docs deliverables
+        if ($request->status_of_docs_deliverables_mtrs != null ) {
+            $process_fuel_gas->status_of_docs_deliverables_mtrs = $request->status_of_docs_deliverables_mtrs;
+        }
+        if ($request->status_of_docs_deliverables_nde != null ) {
+            $process_fuel_gas->status_of_docs_deliverables_nde = $request->status_of_docs_deliverables_nde;
+        }
+        if ($request->status_of_docs_deliverables_hydro != null) {
+            $process_fuel_gas->status_of_docs_deliverables_hydro = $request->status_of_docs_deliverables_hydro;
+        }
+        if ($request->status_of_docs_deliverables_heat_map != null) {
+            $process_fuel_gas->status_of_docs_deliverables_heat_map = $request->status_of_docs_deliverables_heat_map;
+        }
+        if ($request->status_of_docs_deliverables_weld_map != null) {
+            $process_fuel_gas->status_of_docs_deliverables_weld_map = $request->status_of_docs_deliverables_weld_map;
+        }
+        if ($request->traveller_completed_status != null) {
+            $process_fuel_gas->traveller_completed_status = $request->traveller_completed_status;
+        }
+        
         $process_fuel_gas->save();
+
+        $jqr_non_code = NonCodeVesselsTanks::where('basic_details_id', $request->id)->first();
+        $jqr_pressure_vessels = PressureVessels::where('basic_details_id', $request->id)->first();
+
+        $travellerStatuses = [
+            'pv' => $jqr_pressure_vessels->traveller_completed_status ?? '',
+            'pipe' => $process_fuel_gas->traveller_completed_status ?? '',
+            'nc' => $jqr_non_code->traveller_completed_status ?? ''
+        ];
 
         if ($process_fuel_gas->id) {
             return response([
@@ -642,7 +734,9 @@ class JobQualityRequirementController extends Controller
                 'message' => 'Success', 
                 'id' => $process_fuel_gas->id,
                 'jqr' => $basic_details ?? '',
-                'redirect' => route('admin.job-quality-requirements')]);
+                'travellerStatuses' => $travellerStatuses ?? '',
+                'redirect' => route('admin.job-quality-requirements')
+            ]);
         } else {
             return response(['status' => false, 'message' => 'Error']);
         }
@@ -1053,23 +1147,36 @@ class JobQualityRequirementController extends Controller
     public function edit(string $id)
     {
         $id = decrypt($id);
-        $jqr = BasicDetails::with('mtrsStatus')
-                            ->with('ndeStatus')
-                            ->with('hydroStatus')
-                            ->with('heatMapStatus')
-                            ->with('weldMapStatus')
-                            ->where('id', $id)->first();
+        $jqr = BasicDetails::where('id', $id)->first();
         $jqr_special = SpecialMaterialRequirements::where('basic_details_id', $jqr->id)->first();
         $jqr_general_info = GeneralInformation::where('basic_details_id', $jqr->id)->first();
         $jqr_service_info = ServiceInformation::where('basic_details_id', $jqr->id)->first();
         $jqr_bolting = Bolting::where('basic_details_id', $jqr->id)->first();
         $jqr_butt = ButtWeldedSocketWeldedUtilityPiping::where('basic_details_id', $jqr->id)->first();
         $jqr_electrical = ElectricalInstrumentation::where('basic_details_id', $jqr->id)->first();
-        $jqr_non_code = NonCodeVesselsTanks::where('basic_details_id', $jqr->id)->first();
         $jqr_package_testing = PackageTesting::where('basic_details_id', $jqr->id)->first();
         $jqr_preservation = Preservation::where('basic_details_id', $jqr->id)->first();
-        $jqr_pressure_vessels = PressureVessels::where('basic_details_id', $jqr->id)->first();
-        $jqr_process_fuel_gas = ProcessFuelGasStartGasPiping::where('basic_details_id', $jqr->id)->first();
+        $jqr_pressure_vessels = PressureVessels::with('mtrsStatus')
+                                                ->with('ndeStatus')
+                                                ->with('hydroStatus')
+                                                ->with('heatMapStatus')
+                                                ->with('weldMapStatus')
+                                                ->where('basic_details_id', $jqr->id)
+                                                ->first();
+        $jqr_process_fuel_gas = ProcessFuelGasStartGasPiping::with('mtrsStatus')
+                                                            ->with('ndeStatus')
+                                                            ->with('hydroStatus')
+                                                            ->with('heatMapStatus')
+                                                            ->with('weldMapStatus')
+                                                            ->where('basic_details_id', $jqr->id)
+                                                            ->first();
+        $jqr_non_code = NonCodeVesselsTanks::with('mtrsStatus')
+                                            ->with('ndeStatus')
+                                            ->with('hydroStatus')
+                                            ->with('heatMapStatus')
+                                            ->with('weldMapStatus')
+                                            ->where('basic_details_id', $jqr->id)
+                                            ->first();
         $jqr_structural_skid = StructuralSkid::where('basic_details_id', $jqr->id)->first();
         $jqr_threaded_piping = ThreadedPiping::where('basic_details_id', $jqr->id)->first();
         $jqr_tubing = Tubing::where('basic_details_id', $jqr->id)->first();
@@ -1083,12 +1190,20 @@ class JobQualityRequirementController extends Controller
             $jqr_package_testing_run_test_requirements = [];
         }
 
-        $doc_statuses = [
-            'nde' => $jqr->ndeStatus->name ?? '',
-            'hydro' => $jqr->hydroStatus->name ?? '',
-            'heat_map' => $jqr->heatMapStatus->name ?? '',
-            'weld_map' => $jqr->weldMapStatus->name ?? ''
+        // $pvDocStatuses = [
+        //     'mtrs' => $jqr_pressure_vessels->mtrsStatus->name ?? '',
+        //     'nde' => $jqr_pressure_vessels->ndeStatus->name ?? '',
+        //     'hydro' => $jqr_pressure_vessels->hydroStatus->name ?? '',
+        //     'heat_map' => $jqr_pressure_vessels->heatMapStatus->name ?? '',
+        //     'weld_map' => $jqr_pressure_vessels->weldMapStatus->name ?? ''
+        // ];
+
+        $travellerStatuses = [
+            'pv' => $jqr_pressure_vessels->traveller_completed_status ?? '',
+            'pipe' => $jqr_process_fuel_gas->traveller_completed_status ?? '',
+            'nc' => $jqr_non_code->traveller_completed_status ?? ''
         ];
+
 
         return view('admin.job-quality-requirements.create', [
             'jqr' => $jqr,
@@ -1110,7 +1225,8 @@ class JobQualityRequirementController extends Controller
             'jqr_gaskets' => $jqr_gaskets,
             'documentDeliverablesStatuses' => $documentDeliverablesStatuses,
             'ndeReportsRequiredStatuses' => $ndeReportsRequiredStatuses,
-            'doc_statuses' => $doc_statuses
+            'travellerStatuses' => $travellerStatuses ?? ''
+            // 'pvDocStatuses' => $pvDocStatuses
         ]);
     }
 
