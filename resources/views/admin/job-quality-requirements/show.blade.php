@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>JQRMS | PDF</title>
+    <title>View JQR | PDF</title>
 </head>
 
 

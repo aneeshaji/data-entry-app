@@ -35,6 +35,22 @@ use Carbon\Carbon;
 class JobQualityRequirementController extends Controller
 {
     /**
+     * JQR Dashboard.
+     * Created On : 12-04-2024
+     * Author : Aneesh Ajithkumar
+     * Email : dev.aneeshajithkumar@gmail.com
+     *
+     * @return \Illuminate\Contracts\Support\Renderable
+     */
+    public function dashboard()
+    {
+        $jqrs_count = BasicDetails::count();
+        return view('admin.job-quality-requirements.dashboard', [
+            'jqrs_count' => $jqrs_count
+        ]);
+    }
+
+    /**
      * JQR List.
      * Created On : 02-04-2024
      * Author : Aneesh Ajithkumar
@@ -113,21 +129,97 @@ class JobQualityRequirementController extends Controller
     }
 
     /**
-     * JQR Dashboard.
-     * Created On : 12-04-2024
+     * JQR Docs Status Report.
+     * Created On : 04-09-2024
      * Author : Aneesh Ajithkumar
      * Email : dev.aneeshajithkumar@gmail.com
      *
      * @return \Illuminate\Contracts\Support\Renderable
      */
-    public function dashboard()
+    public function docStatusReport()
     {
-        $jqrs_count = BasicDetails::count();
-        return view('admin.job-quality-requirements.dashboard', [
-            'jqrs_count' => $jqrs_count
+        return view('admin.job-quality-requirements.status-report');
+    }
+
+    /**
+     * JQR Get Docs Status Report.
+     * Created On : 05-09-2024
+     * Author : Aneesh Ajithkumar
+     * Email : dev.aneeshajithkumar@gmail.com
+     *
+     * @return \Illuminate\Contracts\Support\Renderable
+     */
+    public function getDocStatusReport(Request $request)
+    {
+        if ($request->ajax()) {
+            $startDate = $request->start_date;
+            $endDate = $request->end_date;
+            $data = BasicDetails::with('pressureVessels')
+                                ->with('nonCodeVesselsTanks')
+                                ->with('processFuelGasStartGasPiping')
+                                ->whereBetween('document_deliverables_due_date', [$startDate, $endDate]);
+            return Datatables::of($data)
+                ->addIndexColumn()
+                ->addColumn('traveller_status_pv', function (BasicDetails $basic_details) {
+                    return isset($basic_details->pressureVessels->traveller_completed_status) ? ($basic_details->pressureVessels->traveller_completed_status == '1' ? 'Completed' : 'Pending') : '';
+                })
+                ->addColumn('traveller_status_piping', function (BasicDetails $basic_details) {
+                    return isset($basic_details->pressureVessels->traveller_completed_status) ? ($basic_details->pressureVessels->traveller_completed_status == '1' ? 'Completed' : 'Pending') : '';
+                })
+                ->with([
+                    'start_date' => $startDate,
+                    'end_date' => $endDate,
+                ]) 
+            ->make(true);
+        }
+        return view('admin.job-quality-requirements.status-report');
+    }
+
+    /**
+     * JQR View Docs Status Report.
+     * Created On : 06-09-2024
+     * Author : Aneesh Ajithkumar
+     * Email : dev.aneeshajithkumar@gmail.com
+     *
+     * @return \Illuminate\Contracts\Support\Renderable
+     */
+    public function viewDocStatusReport(Request $request)
+    {
+        $startDate = $request->start_date;
+        $endDate = $request->end_date;
+        $data = BasicDetails::with('pressureVessels')
+                                ->with('nonCodeVesselsTanks')
+                                ->with('processFuelGasStartGasPiping')
+                                ->whereBetween('document_deliverables_due_date', [$startDate, $endDate])
+                                ->paginate(20);
+        return view('admin.job-quality-requirements.status-report-details', [
+            'reports' => $data
         ]);
     }
 
+    /**
+     * JQR Download Docs Status Report.
+     * Created On : 06-09-2024
+     * Author : Aneesh Ajithkumar
+     * Email : dev.aneeshajithkumar@gmail.com
+     *
+     * @return \Illuminate\Contracts\Support\Renderable
+     */
+    public function downloadDocStatusReport(Request $request)
+    {
+        $startDate = $request->start_date;
+        $endDate = $request->end_date;
+        $data = BasicDetails::with('pressureVessels')
+                                ->with('nonCodeVesselsTanks')
+                                ->with('processFuelGasStartGasPiping')
+                                ->whereBetween('document_deliverables_due_date', [$startDate, $endDate])
+                                ->paginate(10);
+        //$jobNumber = $data->job_number ?? '';
+        $fileName = "jqrms-doc-status-report.pdf";
+        $pdf = PDF::loadView('admin.job-quality-requirements.status-report-details');
+        return $pdf->download($fileName);
+    }
+    
     /**
      * Create JQR.
      * Created On : 02-04-2024

@@ -8,7 +8,7 @@
     <meta name="viewport"
         content="width=device-width, initial-scale=1.0, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0" />
 
-    <title>Dashboard | JQRMS</title>
+    <title>JQRMS</title>
 
     <meta name="description" content="" />
     <!-- CSRF Token -->
@@ -587,7 +587,6 @@
                 <!-- Content wrapper -->
                 <main>
                     {{ $slot }}
-
                 </main>
                 <!-- Content wrapper -->
             </div>

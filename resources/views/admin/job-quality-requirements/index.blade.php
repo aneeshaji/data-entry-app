@@ -128,10 +128,8 @@
                                 <th>Actions</th>
                             </tr>
                         </thead>
-
                     </table>
                 </div>
-
             </div>
         </div>
         <!-- / Content -->
@@ -167,7 +165,6 @@
             </div>
         </footer>
         <!-- / Footer -->
-
         <div class="content-backdrop fade"></div>
     </div>
 </x-app-layout>
@@ -205,8 +202,8 @@ $(function() {
                 name: 'release_date'
             },
             {
-                data: 'due_date',
-                name: 'due_date'
+                data: 'document_deliverables_due_date',
+                name: 'document_deliverables_due_date'
             },
             {
                 data: 'mtrs_required',

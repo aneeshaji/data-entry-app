@@ -31,6 +31,17 @@ Route::middleware('auth')->group(function () {
     // Download pdf
     Route::get('/generate-pdf/{id}', [JobQualityRequirementController::class, 'generatePDF']);
 
+    Route::get('admin/doc-status-report', [JobQualityRequirementController::class, 'docStatusReport']);
+
+    Route::get('admin/get-doc-status-report', [JobQualityRequirementController::class, 'getDocStatusReport']);
+
+    Route::get('admin/view-doc-status-report', [JobQualityRequirementController::class, 'viewDocStatusReport']);
+
+    Route::get('admin/download-doc-status-report', [JobQualityRequirementController::class, 'downloadDocStatusReport']);
+
+    // Download pdf v2 - Short Report
+    // Route::get('/generate-pdf-v2/{id}', [JobQualityRequirementController::class, 'generatePDFv2']);
+
     // AJAX Routes
     Route::post('/admin/job-quality-requirements/saveData', [JobQualityRequirementController::class, 'saveData']);
     Route::post('/admin/job-quality-requirements/saveSpecialData', [JobQualityRequirementController::class, 'saveSpecialData']);
