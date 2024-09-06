@@ -2,6 +2,7 @@
     <div class="content-wrapper">
         <!-- Content -->
         <div class="container-xxl flex-grow-1 container-p-y">
+            
             <!-- <h4 class="py-3 mb-4"><span class="text-muted fw-light">Job Quality Requirements /</span> List</h4> -->
             <!-- Hoverable Table rows -->
             <div class="card">
@@ -53,7 +54,7 @@
                     </div>
                     <!-- <hr class="mt-0"> -->
                 </div>
-                <div class="table-responsive text-nowrap" id="statustable">
+                <div class="table-responsive text-nowrap display-none" id="statustable">
                     <table class="table table-hover status-report-data-table">
                         <thead>
                             <tr>
@@ -64,15 +65,16 @@
                             </tr>
                         </thead>
                     </table>
-                    <div class="col-12 col-sm-12 col-lg-12 text-center">
-                        <a href="" target="_blank" id="viewReport">
-                            <button type="button" id="" class="btn rounded-pill btn-warning waves-effect waves-light">View Report</button>
-                        </a>    
-                        <a href="" target="_blank" id="downloadReport">
-                            <button type="button" id="" class="btn rounded-pill btn-success waves-effect waves-light">Download Report</button>
-                        </a>
-                    </div>
+                    
                 </div>
+            </div>
+            <div class="col-12 col-sm-12 col-lg-12 text-center pt-10 display-none" id="actnBtns">
+                <a id="viewReport">
+                    <button type="button" id="viewBtn" class="btn rounded-pill btn-warning waves-effect waves-light">View Report</button>
+                </a>    
+                <a id="downloadReport">
+                    <button type="button" id="reportBtn" class="btn rounded-pill btn-success waves-effect waves-light">Download Report</button>
+                </a>
             </div>
         </div>
         <!-- / Content -->
@@ -100,56 +102,74 @@
     </div>
 </x-app-layout>
 <script>
-    $('#statustable').hide();
     var startDate = '';
     var endDate = '';
     function generateReport() {
-        $('statustable').show();
-        $.ajaxSetup({
-            headers: {
-                'X-CSRF-TOKEN': jQuery('meta[name="csrf-token"]').attr('content')
-            }
-        });
-        var table = $('.status-report-data-table').DataTable({
-            processing: true,
-            serverSide: true,
-            destroy: true,
-            ajax: {
-                method: 'GET',
-                url: "{{ url('admin/get-doc-status-report') }}",
-                data: function(d) {
-                    d.start_date = $('#start_date').val(),
-                    d.end_date = $('#end_date').val()
-                },
-                dataSrc: function(json) {
-                    // Check if the response has data or not
-                    if (json.data.length !== 0) {
-                        $('#statustable').show();
+        startDate = $('#start_date').val();
+        endDate = $('#end_date').val();
+        if (!startDate || !endDate) {
+            Swal.fire({
+                icon: "error",
+                title: "Missing Dates",
+                text: "Please select both start and end dates before proceeding."
+            });
+            return false;
+        } else {
+            $.ajaxSetup({
+                headers: {
+                    'X-CSRF-TOKEN': jQuery('meta[name="csrf-token"]').attr('content')
+                }
+            });
+            var table = $('.status-report-data-table').DataTable({
+                processing: true,
+                serverSide: true,
+                destroy: true,
+                ajax: {
+                    method: 'GET',
+                    url: "{{ url('admin/get-doc-status-report') }}",
+                    data: function(d) {
+                        d.start_date = startDate,
+                        d.end_date = endDate
+                    },
+                    dataSrc: function(response) {
+                        // Check if the response has data or not
+                        if (response.data.length) {
+                            $('#statustable').show();
+                            $('#actnBtns').show();
+                        } else {
+                            Swal.fire({
+                                icon: "error",
+                                title: "No data found!",
+                                text: "No data found for the selected date range!",
+                            });
+                            $('#statustable').hide();
+                            $('#actnBtns').hide();
+                        }
+                        startDate = response.start_date;
+                        endDate = response.end_date;
+                        return response.data; // Ensure data is returned to DataTable
                     }
-                    startDate = json.start_date;
-                    endDate = json.end_date;
-                    return json.data; // Ensure data is returned to DataTable
-                }
-            },
-            columns: [
-                {
-                    data: 'job_number',
-                    name: 'job_number'
                 },
-                {
-                    data: 'due_date',
-                    name: 'due_date'
-                },
-                {
-                    data: 'traveller_status_piping',
-                    name: 'traveller_status_piping'
-                },
-                {
-                    data: 'traveller_status_pv',
-                    name: 'traveller_status_pv'
-                }
-            ]
-        });
+                columns: [
+                    {
+                        data: 'job_number',
+                        name: 'job_number'
+                    },
+                    {
+                        data: 'due_date',
+                        name: 'due_date'
+                    },
+                    {
+                        data: 'traveller_status_piping',
+                        name: 'traveller_status_piping'
+                    },
+                    {
+                        data: 'traveller_status_pv',
+                        name: 'traveller_status_pv'
+                    }
+                ]
+            });
+        }
     }
     // Handle the click event on "View Report" button
     $('#viewReport').on('click', function(event) {

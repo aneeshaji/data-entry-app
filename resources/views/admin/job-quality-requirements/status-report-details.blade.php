@@ -1,156 +1,111 @@
-<!doctype html>
-
-<html lang="en" class="light-style layout-wide customizer-hide" dir="ltr" data-theme="theme-default"
-    data-assets-path="../../assets/" data-template="vertical-menu-template" data-style="light">
+<!DOCTYPE html>
+<html lang="en">
 
 <head>
-    <meta charset="utf-8" />
-    <meta name="viewport"
-        content="width=device-width, initial-scale=1.0, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0" />
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document Deliverables Status Report | JQRMS</title>
+    <style>
+    table {
+        width: 100%;
+        border-collapse: collapse;
+    }
 
-    <title>Docs Report | JQRMS</title>
+    th,
+    td {
+        border: 1px solid black;
+        padding: 8px;
+        text-align: center;
+    }
 
-    <meta name="description" content="" />
+    .green {
+        background-color: green;
+        color: white;
+    }
 
-    <!-- Favicon -->
-    <link rel="icon" type="image/x-icon" href="{{ asset('assets/img/favicon/favicon.ico') }}" />
+    .yellow {
+        background-color: yellow;
+    }
 
-    <!-- Fonts -->
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-        href="https://fonts.googleapis.com/css2?family=Public+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&ampdisplay=swap"
-        rel="stylesheet" />
+    .red {
+        background-color: red;
+        color: white;
+    }
 
-    <!-- Icons -->
-    <link rel="stylesheet" href="{{ asset('assets/vendor/fonts/fontawesome.css') }}" />
-    <link rel="stylesheet" href="{{ asset('assets/vendor/fonts/tabler-icons.css') }}" />
-    <link rel="stylesheet" href="{{ asset('assets/vendor/fonts/flag-icons.css') }}" />
-
-    <!-- Core CSS -->
-
-    <link rel="stylesheet" href="{{ asset('assets/vendor/css/rtl/core.css') }}" class="template-customizer-core-css" />
-    <link rel="stylesheet" href="{{ asset('assets/vendor/css/rtl/theme-default.css') }}"
-        class="template-customizer-theme-css" />
-
-    <link rel="stylesheet" href="{{ asset('assets/css/demo.css') }}" />
-
-    <!-- Vendors CSS -->
-    <link rel="stylesheet" href="{{ asset('assets/vendor/libs/node-waves/node-waves.css') }}" />
-
-    <link rel="stylesheet" href="{{ asset('assets/vendor/libs/perfect-scrollbar/perfect-scrollbar.css') }}" />
-    <link rel="stylesheet" href="{{ asset('assets/vendor/libs/typeahead-js/typeahead.css') }}" />
-
-    <!-- Page CSS -->
-    <!-- Page -->
-    <link rel="stylesheet" href="{{ asset('assets/vendor/css/pages/page-misc.css') }}" />
-
-    <!-- Helpers -->
-    <script src="{{ asset('assets/vendor/js/helpers.js') }}"></script>
-    <!--! Template customizer & Theme config files MUST be included after core stylesheets and helpers.js in the <head> section -->
-
-    <!--? Template customizer: To hide customizer set displayCustomizer value false in config.js.  -->
-    <script src="{{ asset('assets/vendor/js/template-customizer.js') }}"></script>
-
-    <!--? Config:  Mandatory theme config file contain global vars & default theme options, Set your preferred theme option in this file.  -->
-    <script src="{{ asset('assets/js/config.js') }}"></script>
+    .white {
+        background-color: white;
+    }
+    .text-center {
+        text-align:center;
+    }
+    </style>
 </head>
 
 <body>
-    <div class="container-xxl flex-grow-1 container-p-y">
-        <!-- Basic Bootstrap Table -->
-        <div class="card">
-            <h5 class="card-header">Document Deliverables Planned Until </h5>
-            <div class="table-responsive text-nowrap">
-                <table class="table">
-                    <thead>
-                        <tr>
-                            <th>Job Number</th>
-                            <th>DD Due Date</th>
-                            <th>MTR's Confirmed</th>
-                            <th>HM Confirmed</th>
-                            <th>WM Confirmed</th>
-                            <th>NDE Report Confirmed</th>
-                            <th>Spooling Hydro Report Confirmed</th>
-                            <th>Spooling Document Package Completed</th>
-                            <th>Vessel Hydro Report Confirmed</th>
-                            <th>Vessel NDE Report Confirmed</th>
-                            <th>Vessel Document Package Completed</th>
-                        </tr>
-                    </thead>
-                    <tbody class="table-border-bottom-0">
-                        
-                            <tr>
-                                <td>
-                                    <span class="fw-medium">
-                                        1
-                                    </span>
-                                </td>
-                                <td>
-                                    2
-                                </td>
-                                <td>
-                                    <span class="badge bg-label-success me-1">
-                                        TEST
-                                        <!-- {{ isset($report->processFuelGasStartGasPiping->mtrs_required) ? $report->processFuelGasStartGasPiping->mtrs_required : '' }} -->
-                                    </span>
-                                </td>
-                                <td>
-                                    <span class="badge bg-label-success me-1">Completed</span>
-                                </td>
-                                <td>
-                                    <span class="badge bg-label-warning me-1">Pending</span>
-                                </td>
-                                <td>
-                                    <span class="badge bg-label-success me-1">Completed</span>
-                                </td>
-                                <td>
-                                    <span class="badge bg-label-warning me-1">Pending</span>
-                                </td>
-                                <td>
-                                    <span class="badge bg-label-warning me-1">Pending</span>
-                                </td>
-                                <td>
-                                    <span class="badge bg-label-warning me-1">Pending</span>
-                                </td>
-                                <td>
-                                    <span class="badge bg-label-success me-1">Completed</span>
-                                </td>
-                                <td>
-                                    <span class="badge bg-label-success me-1">Completed</span>
-                                </td>
-                            </tr>
-                        
-                    </tbody>
-                </table>
-            </div>
-        </div>
-        <!--/ Basic Bootstrap Table -->
-
-        <hr class="my-12" />
-    </div>
-
-    <!-- Core JS -->
-    <!-- build:js assets/vendor/js/core.js -->
-
-    <script src="{{ asset('assets/vendor/libs/jquery/jquery.js') }}"></script>
-    <script src="{{ asset('assets/vendor/libs/popper/popper.js') }}"></script>
-    <script src="{{ asset('assets/vendor/js/bootstrap.js') }}"></script>
-    <script src="{{ asset('assets/vendor/libs/node-waves/node-waves.js') }}"></script>
-    <script src="{{ asset('assets/vendor/libs/perfect-scrollbar/perfect-scrollbar.js') }}"></script>
-    <script src="{{ asset('assets/vendor/libs/hammer/hammer.js') }}"></script>
-    <script src="{{ asset('assets/vendor/libs/i18n/i18n.js') }}"></script>
-    <script src="{{ asset('assets/vendor/libs/typeahead-js/typeahead.js') }}"></script>
-    <script src="{{ asset('assets/vendor/js/menu.js') }}"></script>
-
-    <!-- endbuild -->
-
-    <!-- Vendors JS -->
-
-    <!-- Main JS -->
-    <script src="{{ asset('assets/js/main.js') }}"></script>
-
-    <!-- Page JS -->
+    <h2 class="text-center">JQRMS - Document Deliverables Planned Until {{ isset($endDate) ? \Carbon\Carbon::parse($endDate)->format('M d Y') : '' }}</h2>
+    <table>
+        <thead>
+            <tr>
+                <th>Job Number</th>
+                <th>Req Doc Completion Date</th>
+                <th>MTR's Confirmed</th>
+                <th>Heat Map (HM) Confirmed</th>
+                <th>Weld Map (WM) Confirmed</th>
+                <th>NDE Report Confirmed (Spooling)</th>
+                <th>Spooling Hydro Report Confirmed</th>
+                <th>Spooling Document Package Completed</th>
+                <th>Vessel Hydro Report Confirmed</th>
+                <th>Vessel NDE Report Confirmed</th>
+                <th>Vessel Document Package Completed</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach($data as $report)
+                <tr>
+                    <td>
+                        {{ isset($report['job_number']) ? $report['job_number'] : '' }}
+                    </td>
+                    <td class="">
+                        {{ isset($report['document_deliverables_due_date']) ? $report['document_deliverables_due_date'] : '' }}
+                    </td>
+                    <td class="">
+                        {{ isset($report->processFuelGasStartGasPiping->mtrs_required) && $report->processFuelGasStartGasPiping->mtrs_required == '1' ? 'Yes': 'No' }}
+                    </td>
+                    <td class="">
+                        {{ isset($report->processFuelGasStartGasPiping->heat_mapping) && $report->processFuelGasStartGasPiping->heat_mapping == '1' ? 'Yes': 'No' }}
+                    </td>
+                    <td class="">
+                        {{ isset($report->processFuelGasStartGasPiping->weld_mapping) && $report->processFuelGasStartGasPiping->weld_mapping == '1' ? 'Yes': 'No' }}
+                    </td>
+                    <td class="">
+                        @if($page == 'download')
+                            {{ $report['process_fuel_gas_start_gas_piping']['nde_requirements_status']['name'] }} 
+                        @elseif($page == 'view')
+                            {{ isset($report->processFuelGasStartGasPiping->ndeRequirementsStatus) ? $report->processFuelGasStartGasPiping->ndeRequirementsStatus->name : '' }}
+                        @endif
+                    </td>
+                    <td class="">
+                        {{ isset($report->processFuelGasStartGasPiping->hydro_chart_required) && $report->processFuelGasStartGasPiping->hydro_chart_required == '1' ? 'Yes': 'No' }}
+                    </td>
+                    <td class="">
+                        {{ isset($report->processFuelGasStartGasPiping->traveller_completed_status) && $report->processFuelGasStartGasPiping->traveller_completed_status == '1' ? 'Completed': 'Pending' }}
+                    </td>
+                    <td class="">
+                        {{ isset($report->pressureVessels->hydro_chart_required) && $report->pressureVessels->hydro_chart_required == '1' ? 'Yes': 'No' }}
+                    </td>
+                    <td class="">
+                        @if($page == 'download')
+                            {{ $report['pressure_vessels']['nde_requirements_status']['name'] }}
+                        @elseif($page == 'view')
+                            {{ isset($report->pressureVessels->ndeRequirementsStatus) ? $report->pressureVessels->ndeRequirementsStatus->name : '' }}
+                        @endif
+                    </td>
+                    <td class="">
+                        {{ isset($report->pressureVessels->traveller_completed_status) && $report->pressureVessels->traveller_completed_status == '1' ? 'Completed': 'Pending' }}
+                    </td>
+                </tr>
+            @endforeach
+        </tbody>
+    </table>
 </body>
-
 </html>

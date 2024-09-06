@@ -187,13 +187,15 @@ class JobQualityRequirementController extends Controller
     {
         $startDate = $request->start_date;
         $endDate = $request->end_date;
-        $data = BasicDetails::with('pressureVessels')
+        $data = BasicDetails::with('pressureVessels.ndeRequirementsStatus')
                                 ->with('nonCodeVesselsTanks')
-                                ->with('processFuelGasStartGasPiping')
+                                ->with('processFuelGasStartGasPiping.ndeRequirementsStatus')
                                 ->whereBetween('document_deliverables_due_date', [$startDate, $endDate])
-                                ->paginate(20);
+                                ->get();
         return view('admin.job-quality-requirements.status-report-details', [
-            'reports' => $data
+            'data' => $data,
+            'endDate' => $endDate,
+            'page' => 'view'
         ]);
     }
 
@@ -209,14 +211,21 @@ class JobQualityRequirementController extends Controller
     {
         $startDate = $request->start_date;
         $endDate = $request->end_date;
-        $data = BasicDetails::with('pressureVessels')
+        $data = BasicDetails::with('pressureVessels.ndeRequirementsStatus')
                                 ->with('nonCodeVesselsTanks')
-                                ->with('processFuelGasStartGasPiping')
+                                ->with('processFuelGasStartGasPiping.ndeRequirementsStatus')
                                 ->whereBetween('document_deliverables_due_date', [$startDate, $endDate])
-                                ->paginate(10);
-        //$jobNumber = $data->job_number ?? '';
-        $fileName = "jqrms-doc-status-report.pdf";
-        $pdf = PDF::loadView('admin.job-quality-requirements.status-report-details');
+                                ->get();
+        // Format the end_date to append to the file name (e.g., AUG-31-2024)
+        $formattedEndDate = \Carbon\Carbon::parse($endDate)->format('M-d-Y');                        
+        // Create a file name with the end_date
+        $fileName = "jqrms-docs-status-report-{$formattedEndDate}.pdf";
+        $pdf = PDF::loadView('admin.job-quality-requirements.status-report-details', [
+                        'data' => $data->toArray(), 
+                        'endDate' => $endDate,
+                        'page' => 'download'
+                    ])
+                    ->setPaper('a4', 'landscape');
         return $pdf->download($fileName);
     }
     
@@ -281,7 +290,11 @@ class JobQualityRequirementController extends Controller
         } else {
             $jqr_package_testing_run_test_requirements = [];
         }
-
+        if ($jqr->company_logo == '') {
+            $companyLogoFlag = false;
+        } else {
+            $companyLogoFlag = true;
+        }
         $data = [
             'jqr' => $jqr ?? '',
             'jqr_special' => $jqr_special ?? '',
@@ -299,9 +312,9 @@ class JobQualityRequirementController extends Controller
             'jqr_threaded_piping' => $jqr_threaded_piping ?? '',
             'jqr_tubing' => $jqr_tubing ?? '',
             'jqr_gaskets' => $jqr_gaskets ?? '',
-            'run_test_reqs' => $run_test_reqs ?? ''
+            'run_test_reqs' => $run_test_reqs ?? '',
+            'companyLogoFlag' => $companyLogoFlag
         ];
-
         $jobNumber = $jqr->job_number ?? '';
         $fileName = "jqrms-{$jobNumber}.pdf";
         $pdf = PDF::loadView('admin.job-quality-requirements.show-minimized-jqr', $data);
@@ -619,23 +632,22 @@ class JobQualityRequirementController extends Controller
         $pressure_vessels->nde_reports_comments = $request->nde_reports_comments;
 
         //Statuses of docs deliverables
-        if ($request->status_of_docs_deliverables_mtrs != null ) {
+        if ($request->status_of_docs_deliverables_mtrs != null && $request->status_of_docs_deliverables_mtrs != 'default') {
             $pressure_vessels->status_of_docs_deliverables_mtrs = $request->status_of_docs_deliverables_mtrs;
         }
-        if ($request->status_of_docs_deliverables_nde != null ) {
+        if ($request->status_of_docs_deliverables_nde != null && $request->status_of_docs_deliverables_nde != 'default') {
             $pressure_vessels->status_of_docs_deliverables_nde = $request->status_of_docs_deliverables_nde;
         }
-        if ($request->status_of_docs_deliverables_hydro != null) {
+        if ($request->status_of_docs_deliverables_hydro != null && $request->status_of_docs_deliverables_hydro != 'default') {
             $pressure_vessels->status_of_docs_deliverables_hydro = $request->status_of_docs_deliverables_hydro;
         }
-        if ($request->status_of_docs_deliverables_heat_map != null) {
+        if ($request->status_of_docs_deliverables_heat_map != null && $request->status_of_docs_deliverables_heat_map != 'default') {
             $pressure_vessels->status_of_docs_deliverables_heat_map = $request->status_of_docs_deliverables_heat_map;
         }
-        if ($request->status_of_docs_deliverables_weld_map != null) {
+        if ($request->status_of_docs_deliverables_weld_map != null && $request->status_of_docs_deliverables_weld_map != 'default') {
             $pressure_vessels->status_of_docs_deliverables_weld_map = $request->status_of_docs_deliverables_weld_map;
         }
-
-        if ($request->traveller_completed_status != null) {
+        if ($request->traveller_completed_status != null && $request->traveller_completed_status != 'default') {
             $pressure_vessels->traveller_completed_status = $request->traveller_completed_status;
         }
         
@@ -706,22 +718,22 @@ class JobQualityRequirementController extends Controller
         $non_code_vess->nde_reports_comments = $request->nde_reports_comments;
         
         //Statuses of docs deliverables
-        if ($request->status_of_docs_deliverables_mtrs != null ) {
+        if ($request->status_of_docs_deliverables_mtrs != null && $request->status_of_docs_deliverables_mtrs != 'default') {
             $non_code_vess->status_of_docs_deliverables_mtrs = $request->status_of_docs_deliverables_mtrs;
         }
-        if ($request->status_of_docs_deliverables_nde != null ) {
+        if ($request->status_of_docs_deliverables_nde != null && $request->status_of_docs_deliverables_nde != 'default') {
             $non_code_vess->status_of_docs_deliverables_nde = $request->status_of_docs_deliverables_nde;
         }
-        if ($request->status_of_docs_deliverables_hydro != null) {
+        if ($request->status_of_docs_deliverables_hydro != null && $request->status_of_docs_deliverables_hydro != 'default') {
             $non_code_vess->status_of_docs_deliverables_hydro = $request->status_of_docs_deliverables_hydro;
         }
-        if ($request->status_of_docs_deliverables_heat_map != null) {
+        if ($request->status_of_docs_deliverables_heat_map != null && $request->status_of_docs_deliverables_heat_map != 'default') {
             $non_code_vess->status_of_docs_deliverables_heat_map = $request->status_of_docs_deliverables_heat_map;
         }
-        if ($request->status_of_docs_deliverables_weld_map != null) {
+        if ($request->status_of_docs_deliverables_weld_map != null && $request->status_of_docs_deliverables_weld_map != 'default') {
             $non_code_vess->status_of_docs_deliverables_weld_map = $request->status_of_docs_deliverables_weld_map;
         }
-        if ($request->traveller_completed_status != null) {
+        if ($request->traveller_completed_status != null && $request->traveller_completed_status != 'default') {
             $non_code_vess->traveller_completed_status = $request->traveller_completed_status;
         }
         
@@ -790,22 +802,22 @@ class JobQualityRequirementController extends Controller
         $process_fuel_gas->nde_reports_comments = $request->nde_reports_comments;
         
         //Statuses of docs deliverables
-        if ($request->status_of_docs_deliverables_mtrs != null ) {
+        if ($request->status_of_docs_deliverables_mtrs != null && $request->status_of_docs_deliverables_mtrs != 'default') {
             $process_fuel_gas->status_of_docs_deliverables_mtrs = $request->status_of_docs_deliverables_mtrs;
         }
-        if ($request->status_of_docs_deliverables_nde != null ) {
+        if ($request->status_of_docs_deliverables_nde != null && $request->status_of_docs_deliverables_nde != 'default') {
             $process_fuel_gas->status_of_docs_deliverables_nde = $request->status_of_docs_deliverables_nde;
         }
-        if ($request->status_of_docs_deliverables_hydro != null) {
+        if ($request->status_of_docs_deliverables_hydro != null && $request->status_of_docs_deliverables_hydro != 'default') {
             $process_fuel_gas->status_of_docs_deliverables_hydro = $request->status_of_docs_deliverables_hydro;
         }
-        if ($request->status_of_docs_deliverables_heat_map != null) {
+        if ($request->status_of_docs_deliverables_heat_map != null && $request->status_of_docs_deliverables_heat_map != 'default') {
             $process_fuel_gas->status_of_docs_deliverables_heat_map = $request->status_of_docs_deliverables_heat_map;
         }
-        if ($request->status_of_docs_deliverables_weld_map != null) {
+        if ($request->status_of_docs_deliverables_weld_map != null && $request->status_of_docs_deliverables_weld_map != 'default') {
             $process_fuel_gas->status_of_docs_deliverables_weld_map = $request->status_of_docs_deliverables_weld_map;
         }
-        if ($request->traveller_completed_status != null) {
+        if ($request->traveller_completed_status != null && $request->traveller_completed_status != 'default') {
             $process_fuel_gas->traveller_completed_status = $request->traveller_completed_status;
         }
         
