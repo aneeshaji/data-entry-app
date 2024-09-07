@@ -11,7 +11,7 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::table('basic_Details', function (Blueprint $table) {
+        Schema::table('basic_details', function (Blueprint $table) {
             $table->string('job_number')->unique()->change();
         });
     }
@@ -21,8 +21,8 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::table('basic_Details', function (Blueprint $table) {
-            //
+        Schema::table('basic_details', function (Blueprint $table) {
+            $table->dropUnique(['job_number']);
         });
     }
 };
