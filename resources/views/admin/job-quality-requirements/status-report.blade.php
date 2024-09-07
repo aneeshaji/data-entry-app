@@ -69,12 +69,12 @@
                 </div>
             </div>
             <div class="col-12 col-sm-12 col-lg-12 text-center pt-10 display-none" id="actnBtns">
-                <a id="viewReport">
-                    <button type="button" id="viewBtn" class="btn rounded-pill btn-warning waves-effect waves-light">View Report</button>
-                </a>    
                 <a id="downloadReport">
                     <button type="button" id="reportBtn" class="btn rounded-pill btn-success waves-effect waves-light">Download Report</button>
                 </a>
+                <a id="viewReport">
+                    <button type="button" id="viewBtn" class="btn rounded-pill btn-warning waves-effect waves-light">View Report</button>
+                </a>    
             </div>
         </div>
         <!-- / Content -->
@@ -124,6 +124,7 @@
                 processing: true,
                 serverSide: true,
                 destroy: true,
+                searching: false,
                 ajax: {
                     method: 'GET',
                     url: "{{ url('admin/get-doc-status-report') }}",
@@ -161,11 +162,29 @@
                     },
                     {
                         data: 'traveller_status_piping',
-                        name: 'traveller_status_piping'
+                        name: 'traveller_status_piping',
+                        render: function(data, type, row) {
+                            var statusClass = '';
+                            if (data == 'Completed') {
+                                statusClass = 'badge bg-label-success me-1';
+                            } else if (data == 'Pending') {
+                                statusClass = 'badge bg-label-warning me-1';
+                            }
+                            return '<span class="' + statusClass + '">' + data + '</span>';
+                        }
                     },
                     {
                         data: 'traveller_status_pv',
-                        name: 'traveller_status_pv'
+                        name: 'traveller_status_pv',
+                        render: function(data, type, row) {
+                            var statusClass = '';
+                            if (data == 'Completed') {
+                                statusClass = 'badge bg-label-success me-1';
+                            } else if (data == 'Pending') {
+                                statusClass = 'badge bg-label-warning me-1';
+                            }
+                            return '<span class="' + statusClass + '">' + data + '</span>';
+                        }
                     }
                 ]
             });

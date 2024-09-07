@@ -18,23 +18,10 @@
         text-align: center;
     }
 
-    .green {
-        background-color: green;
-        color: white;
+    .bg-grey {
+        background-color: #808080;
     }
 
-    .yellow {
-        background-color: yellow;
-    }
-
-    .red {
-        background-color: red;
-        color: white;
-    }
-
-    .white {
-        background-color: white;
-    }
     .text-center {
         text-align:center;
     }
@@ -46,17 +33,17 @@
     <table>
         <thead>
             <tr>
-                <th>Job Number</th>
-                <th>Req Doc Completion Date</th>
-                <th>MTR's Confirmed</th>
-                <th>Heat Map (HM) Confirmed</th>
-                <th>Weld Map (WM) Confirmed</th>
-                <th>NDE Report Confirmed (Spooling)</th>
-                <th>Spooling Hydro Report Confirmed</th>
-                <th>Spooling Document Package Completed</th>
-                <th>Vessel Hydro Report Confirmed</th>
-                <th>Vessel NDE Report Confirmed</th>
-                <th>Vessel Document Package Completed</th>
+                <th class="bg-grey">Job Number</th>
+                <th class="bg-grey">Req Doc Completion Date</th>
+                <th class="bg-grey">MTR's Confirmed</th>
+                <th class="bg-grey">Heat Map (HM) Confirmed</th>
+                <th class="bg-grey">Weld Map (WM) Confirmed</th>
+                <th class="bg-grey">NDE Report Confirmed (Spooling)</th>
+                <th class="bg-grey">Spooling Hydro Report Confirmed</th>
+                <th class="bg-grey">Spooling Document Package Completed</th>
+                <th class="bg-grey">Vessel Hydro Report Confirmed</th>
+                <th class="bg-grey">Vessel NDE Report Confirmed</th>
+                <th class="bg-grey">Vessel Document Package Completed</th>
             </tr>
         </thead>
         <tbody>

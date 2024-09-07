@@ -1130,7 +1130,7 @@
                                         <div class="col-sm-12">
                                             <label class="form-label" for="no_of_modules">Status of Document Deliverables</label>
                                             <div class="card">
-                                                <div class="table-responsive text-nowrap">
+                                                <div class="table-responsive text-nowrap status-section">
                                                     <table class="table table-hover data-table">
                                                         <thead>
                                                             <tr>
@@ -1213,7 +1213,7 @@
                                                             <tr>
                                                                 <th>Traveller Completed</th>
                                                                 <td>
-                                                                    <select class="doc-status" name="traveller_completed_status" data-style="btn-default">
+                                                                    <select class="doc-status traveller-completed-status" name="traveller_completed_status" data-style="btn-default">
                                                                         <option selected value="default">-Select-</option>
                                                                         <option value="1" {{ isset($jqr_pressure_vessels->traveller_completed_status) ? ($jqr_pressure_vessels->traveller_completed_status == 1 ? 'selected' : '') : '' }}>Completed</option>
                                                                         <option value="0" {{ isset($jqr_pressure_vessels->traveller_completed_status) ?  ($jqr_pressure_vessels->traveller_completed_status == 0 ? 'selected' : '') : '' }}>Pending</option>
@@ -1515,7 +1515,7 @@
                                         <div class="col-sm-12">
                                             <label class="form-label" for="no_of_modules">Status of Document Deliverables</label>
                                             <div class="card">
-                                                <div class="table-responsive text-nowrap">
+                                                <div class="table-responsive text-nowrap status-section">
                                                     <table class="table table-hover data-table">
                                                         <thead>
                                                             <tr>
@@ -1598,7 +1598,7 @@
                                                             <tr>
                                                                 <th>Traveller Completed</th>
                                                                 <td>
-                                                                    <select class="doc-status" name="traveller_completed_status" data-style="btn-default">
+                                                                    <select class="doc-status traveller-completed-status" name="traveller_completed_status" data-style="btn-default">
                                                                         <option selected value="default">-Select-</option>
                                                                         <option value="1" {{ isset($jqr_non_code->traveller_completed_status) ? ($jqr_non_code->traveller_completed_status == 1 ? 'selected' : '') : '' }}>Completed</option>
                                                                         <option value="0" {{ isset($jqr_non_code->traveller_completed_status) ?  ($jqr_non_code->traveller_completed_status == 0 ? 'selected' : '') : '' }}>Pending</option>
@@ -1872,7 +1872,7 @@
                                         <div class="col-sm-12">
                                             <label class="form-label" for="no_of_modules">Status of Document Deliverables</label>
                                             <div class="card">
-                                                <div class="table-responsive text-nowrap">
+                                                <div class="table-responsive text-nowrap status-section">
                                                     <table class="table table-hover data-table">
                                                         <thead>
                                                             <tr>
@@ -1886,7 +1886,7 @@
                                                                 <th>MTR'S</th>
                                                                 <td>
                                                                     <select class="doc-status" name="status_of_docs_deliverables_mtrs" data-style="btn-default">
-                                                                        <option selected value="default">-Select-</option>
+                                                                        <option value="default">-Select-</option>
                                                                         @foreach($documentDeliverablesStatuses as $status)
                                                                             <option value="{{ $status->id }}" {{ isset($jqr_process_fuel_gas->mtrsStatus) && $status->id == $jqr_process_fuel_gas->mtrsStatus->id ? 'selected' : '' }}>{{ $status->name }}</option>
                                                                         @endforeach
@@ -1900,7 +1900,7 @@
                                                                 <th>NDE</th>
                                                                 <td>
                                                                     <select class="doc-status" name="status_of_docs_deliverables_nde" data-style="btn-default">
-                                                                        <option selected value="default">-Select-</option>
+                                                                        <option value="default">-Select-</option>
                                                                         @foreach($documentDeliverablesStatuses as $status)
                                                                             <option value="{{ $status->id }}" {{ isset($jqr_process_fuel_gas->ndeStatus) && $status->id == $jqr_process_fuel_gas->ndeStatus->id ? 'selected' : '' }}>{{ $status->name }}</option>
                                                                         @endforeach
@@ -1914,7 +1914,7 @@
                                                                 <th>Hydro</th>
                                                                 <td>
                                                                     <select class="doc-status" name="status_of_docs_deliverables_hydro" data-style="btn-default">
-                                                                        <option selected value="default">-Select-</option>
+                                                                        <option value="default">-Select-</option>
                                                                         @foreach($documentDeliverablesStatuses as $status)
                                                                             <option value="{{ $status->id }}" {{ isset($jqr_process_fuel_gas->hydroStatus) && $status->id == $jqr_process_fuel_gas->hydroStatus->id ? 'selected' : '' }}>{{ $status->name }}</option>
                                                                         @endforeach
@@ -1928,7 +1928,7 @@
                                                                 <th>Heat Map</th>
                                                                 <td>
                                                                     <select class="doc-status" name="status_of_docs_deliverables_heat_map" data-style="btn-default">
-                                                                        <option selected value="default">-Select-</option>
+                                                                        <option value="default">-Select-</option>
                                                                         @foreach($documentDeliverablesStatuses as $status)
                                                                             <option value="{{ $status->id }}" {{ isset($jqr_process_fuel_gas->heatMapStatus) && $status->id == $jqr_process_fuel_gas->heatMapStatus->id ? 'selected' : '' }}>{{ $status->name }}</option>
                                                                         @endforeach
@@ -1941,8 +1941,8 @@
                                                             <tr>
                                                                 <th>Weld Map</th>
                                                                 <td>
-                                                                    <select class="doc-status" name="status_of_docs_deliverables_weld_map" data-style="btn-default">
-                                                                        <option selected value="default">-Select-</option>
+                                                                    <select class="doc-status pv-status" name="status_of_docs_deliverables_weld_map" data-style="btn-default">
+                                                                        <option value="default">-Select-</option>
                                                                         @foreach($documentDeliverablesStatuses as $status)
                                                                             <option value="{{ $status->id }}" {{ isset($jqr_process_fuel_gas->weldMapStatus) && $status->id == $jqr_process_fuel_gas->weldMapStatus->id ? 'selected' : '' }}>{{ $status->name }}</option>
                                                                         @endforeach
@@ -1955,8 +1955,8 @@
                                                             <tr>
                                                                 <th>Traveller Completed</th>
                                                                 <td>
-                                                                    <select class="doc-status" name="traveller_completed_status" data-style="btn-default">
-                                                                        <option selected value="default">-Select-</option>
+                                                                    <select class="doc-status traveller-completed-status" name="traveller_completed_status" data-style="btn-default">
+                                                                        <option value="default">-Select-</option>
                                                                         <option value="1" {{ isset($jqr_process_fuel_gas->traveller_completed_status) ? ($jqr_process_fuel_gas->traveller_completed_status == 1 ? 'selected' : '') : '' }}>Completed</option>
                                                                         <option value="0" {{ isset($jqr_process_fuel_gas->traveller_completed_status) ? ($jqr_process_fuel_gas->traveller_completed_status == 0 ? 'selected' : '') : '' }}>Pending</option>
                                                                     </select>
@@ -3384,6 +3384,7 @@ if (typeof wizardIconsVertical !== undefined && wizardIconsVertical !== null) {
                 if ($('#job_number').val() != '' && $('#scheduled_test_date').val() != '' 
                 && $('#job_revision_number').val() != '' && $('#no_of_modules').val() != '') {
                     verticalIconsStepper.next();
+                    $('html, body').animate({ scrollTop: 0 }, 100);
                 }
             });
         });
@@ -3486,6 +3487,42 @@ $(document).ready(function() {
     // Event listener for dropdown changes
     $('.doc-status').on('change', function() {
         updateBadge($(this));
+    });
+
+    // Event listener for the traveller-completed-status dropdown
+    $('.traveller-completed-status').on('change', function() {
+    // Get the parent section of the changed dropdown
+        var $section = $(this).closest('.status-section');
+
+        // Get the selected value from the traveller-completed-status dropdown
+        var travellerCompletedStatus = $(this).val();
+
+        // Retrieve the selected values for each dropdown within the same section
+        var mtrsStatusValue = $section.find('select[name="status_of_docs_deliverables_mtrs"] option:selected').val();
+        var ndeStatusValue = $section.find('select[name="status_of_docs_deliverables_nde"] option:selected').val();
+        var hydroStatusValue = $section.find('select[name="status_of_docs_deliverables_hydro"] option:selected').val();
+        var heatMapStatusValue = $section.find('select[name="status_of_docs_deliverables_heat_map"] option:selected').val();
+        var weldMapStatusValue = $section.find('select[name="status_of_docs_deliverables_weld_map"] option:selected').val();
+
+        // Example values for comparison (replace with the actual values you expect)
+        var ddCompletedValue = '1';  // Replace with the actual value of 'DD Completed'
+        // Check if all statuses have the value that corresponds to 'DD Completed'
+        var allStatusesCompleted = 
+            mtrsStatusValue === ddCompletedValue &&
+            ndeStatusValue === ddCompletedValue &&
+            hydroStatusValue === ddCompletedValue &&
+            heatMapStatusValue === ddCompletedValue &&
+            weldMapStatusValue === ddCompletedValue;
+
+        // Show SweetAlert if traveller-completed-status is '1' (Completed) and not all statuses are 'DD Completed'
+        if (travellerCompletedStatus === '1' && !allStatusesCompleted) {
+            Swal.fire({
+                icon: 'warning',
+                title: 'Incomplete Status',
+                text: 'Ensure all other statuses are "DD Completed" before marking as Completed.',
+            });
+            $(this).val('0');
+        }
     });
 
     // Trigger change event on page load for edit page
@@ -3697,15 +3734,16 @@ function submitData(reloadFlag) {
 				}
 
 				let scheduledTestDateMessage = errors.scheduled_test_date ? errors.scheduled_test_date[0] : '';
-				if (jobRevisionNumberMessage) {
+				if (scheduledTestDateMessage) {
 					$('#scheduledTestDateValidation').prepend(scheduledTestDateMessage + '<br>');
 					$('#scheduledTestDateValidation').show();
 				}
                 let companyLogoMessage = errors.company_logo ? errors.company_logo[0] : '';
-				if (jobRevisionNumberMessage) {
+				if (companyLogoMessage) {
 					$('#companyLogoValidation').prepend(companyLogoMessage + '<br>');
 					$('#companyLogoValidation').show();
 				}
+                $('html, body').animate({ scrollTop: 0 }, 100);
 			}
 		}
 	});
