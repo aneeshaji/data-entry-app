@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>View JQR | PDF</title>
+    <title>Report | JQRMS</title>
 </head>
 <style>
  .logo-cell {
@@ -26,8 +26,12 @@
                     <table class="table table-bordered table-hover">
                         <tr>
                             <td class="logo-cell logo" rowspan="2">
-                                @if($companyLogoFlag == true)
-                                    <img src="{{ asset('uploads/company-logo/' . $jqr->company_logo) }}" alt="company-logo"> 
+                                @if($logoPath)
+                                    @if($page == 'download')
+                                        <img src="{{ public_path() . $logoPath }}" alt="company-logo">
+                                    @elseif($page == 'view')
+                                        <img src="{{ asset($logoPath) }}" alt="company-logo">
+                                    @endif
                                 @endif
                             </td>
                             <td colspan="4" class="text-center text-bold" style="font-size:24px">FABRICATION JOB QUALITY REQUIREMENTS</td>
@@ -103,7 +107,7 @@
                                 <td colspan="6">VESSELS OUTSOURCED: {{ isset($jqr_general_info->vessels_outsourced) ? ($jqr_general_info->vessels_outsourced == '1' ? 'Yes' : 'No') : '' }}</td>
                             </tr>
                             <tr>
-                                <td colspan="6" class="text-bold text-danger">NOTES: FOR COATING INFORMATION SEE PAINT TRAVELER (USA-QAC-FRM-006)</td>
+                                <td colspan="6" class="text-bold text-danger">NOTES: {{ isset($jqr_general_info->notes) ? $jqr_general_info->notes : '' }}</td>
                             </tr>
                         </tbody>
                     </table>
@@ -146,7 +150,7 @@
                                 <td colspan="6">
                                     ACCEPTABLE MATERIAL ORIGINS:
                                     <span class="text-bold">
-                                        EFX STANDARD - SEE MATERIAL ORIGIN REQUIREMENTS STANDARD, USA-QAC-STD-005
+                                        {{ isset($jqr_pressure_vessels->acceptable_material_origins) ? $jqr_pressure_vessels->acceptable_material_origins : '' }}
                                     </span>
                                 </td>
                             </tr>
@@ -168,7 +172,7 @@
                                 <td colspan="6">
                                     MATERIAL NOTES: 
                                     <span class="text-bold">
-                                        REFER TO PURCHASING SPECIFICATIONS AND MANUFACTURING SPECIFICATIONS AT THE END OF THIS DOCUMENT
+                                        {{ isset($jqr_pressure_vessels->material_notes) ? $jqr_pressure_vessels->material_notes : '' }}
                                     </span>
                                 </td>
                             </tr>
@@ -177,7 +181,7 @@
                                 <td colspan="5">
                                     NDE REQUIREMENTS:
                                     <span class="text-bold">
-                                        PER ASME SEC. VIII
+                                        {{ isset($jqr_pressure_vessels->nde_requirements) ? $jqr_pressure_vessels->nde_requirements : '' }}
                                     </span>
                                 </td>
                             </tr>
@@ -186,19 +190,25 @@
                             </tr> -->
                             <tr>
                                 <td colspan="6">WELDING REQUIREMENTS: 
-                                    <span class="text-bold">ASME SEC. IX QUALIFIED</span>
+                                    <span class="text-bold">
+                                        {{ isset($jqr_pressure_vessels->weld_requirements) ? $jqr_pressure_vessels->weld_requirements : '' }}
+                                    </span>
                                 </td>
                             </tr>
 
                             <tr>
                                 <td>GOVERNING CODE: 
-                                    <span class="text-bold">ASME SEC. VIII</span>
+                                    <span class="text-bold">
+                                        {{ isset($jqr_pressure_vessels->governing_code) ? $jqr_pressure_vessels->governing_code : '' }}
+                                    </span>
                                 </td>
                                 <td colspan="5">PWHT: {{ isset($jqr_pressure_vessels->pwht) ? (($jqr_pressure_vessels->pwht == '0') ? "Yes" : (($jqr_pressure_vessels->pwht == '1')  ? "No" : "Per Code REQ")) : '' }}</td>
                             </tr>
                             <tr>
                                 <td>HYDRO HOLD TIME: 
-                                    <span class="text-bold">AS REQUIRED</span>
+                                    <span class="text-bold">
+                                        {{ isset($jqr_pressure_vessels->hydro_hold_time) ? $jqr_pressure_vessels->hydro_hold_time : '' }}
+                                    </span>
                                 </td>
                                 <td>WITNESSED: {{ isset($jqr_pressure_vessels->witnessed) ? ($jqr_pressure_vessels->witnessed == '1' ? 'Yes' : 'No') : '' }}</td>
                                 <td colspan="4">HARDNESS TEST: {{ isset($jqr_pressure_vessels->hardness_test) ? ($jqr_pressure_vessels->hardness_test == '1' ? 'Yes' : 'No') : '' }}</td>
@@ -232,7 +242,9 @@
                             </tr>
                             <tr>
                                 <td>ACCEPTABLE MATERIAL ORIGINS: 
-                                    <span class="text-bold">EFX STANDARD - SEE MATERIAL ORIGIN REQUIREMENTS STANDARD, USA-QAC-STD-005</span>
+                                    <span class="text-bold">
+                                        {{ isset($jqr_non_code->acceptable_material_origins) ? $jqr_non_code->acceptable_material_origins : '' }}
+                                    </span>
                                 </td>
                                 <td colspan="5">STANDARD PER CODE(NO MTRS): {{ isset($jqr_non_code->standard_code) ? ($jqr_non_code->standard_code == '1' ? 'Yes' : 'No') : '' }}</td>
                             </tr>
@@ -250,7 +262,9 @@
                             </tr>
                             <tr>
                                 <td colspan="6">MATERIAL NOTES: 
-                                    <span class="text-bold">REFER TO PURCHASING SPECIFICATIONS AND MANUFACTURING SPECIFICATIONS AT THE END OF THIS DOCUMENT</span>
+                                    <span class="text-bold">
+                                        {{ isset($jqr_non_code->material_notes) ? $jqr_non_code->material_notes : '' }}
+                                    </span>
                                 </td>
                             </tr>
                             <tr>
@@ -258,24 +272,31 @@
                             </tr>
                             <tr>
                                 <td colspan="6">NDE REQUIREMENTS: 
-                                    <span class="text-bold">SHOP AIR LEAK TEST</span>
-                                    {{ isset($jqr_non_code->nde_requirements) ? $jqr_non_code->nde_requirements : '' }}
+                                    <span class="text-bold">
+                                        {{ isset($jqr_non_code->nde_requirements) ? $jqr_non_code->nde_requirements : '' }}
+                                    </span>
                                 </td>
                             </tr>
                             <tr>
                                 <td colspan="6">WELDING REQUIREMENTS: 
-                                    <span class="text-bold">ASME SEC. IX QUALIFIED</span>
+                                    <span class="text-bold">
+                                        {{ isset($jqr_non_code->weld_requirements) ? $jqr_non_code->weld_requirements : '' }}
+                                    </span>
                                 </td>
                             </tr>
                             <tr>
                                 <td>GOVERNING CODE: 
-                                    <span class="text-bold">NONE</span>
+                                    <span class="text-bold">
+                                        {{ isset($jqr_non_code->governing_code) ? $jqr_non_code->governing_code : '' }}
+                                    </span>
                                 </td>
                                 <td colspan="5">PWHT: {{ isset($jqr_non_code->pwht) ? (($jqr_non_code->pwht == '0') ? "Yes" : (($jqr_non_code->pwht == '1')  ? "No" : "Per Code REQ")) : '' }}</td>
                             </tr>
                             <tr>
                                 <td>HYDRO HOLD TIME: 
-                                    <span class="text-bold">NONE</span>
+                                    <span class="text-bold">
+                                        {{ isset($jqr_non_code->hydro_hold_time) ? $jqr_non_code->hydro_hold_time : '' }}
+                                    </span>
                                 </td>
                                 <td>WITNESSED: {{ isset($jqr_non_code->witnessed) ? ($jqr_non_code->witnessed == '1' ? 'Yes' : 'No') : '' }}</td>
                                 <td colspan="4">HARDNESS TEST: {{ isset($jqr_non_code->hardness_test) ? ($jqr_non_code->hardness_test == '1' ? 'Yes' : 'No') : '' }}</td>
@@ -287,7 +308,9 @@
                             </tr>
                             <tr>
                                 <td>HYDRO NOTES: 
-                                    <span class="text-bold"> AIR TEST ONLY, NO HYDRO REQUIRED</span>
+                                    <span class="text-bold"> 
+                                        {{ isset($jqr_non_code->hydro_notes) ? $jqr_non_code->hydro_notes : '' }}
+                                    </span>
                                 </td>
                                 <td colspan="5"> NOTES: {{ isset($jqr_non_code->notes) ? $jqr_non_code->notes : '' }}</td>
                             </tr>
@@ -310,7 +333,9 @@
                             </tr>
                             <tr>
                                 <td>ACCEPTABLE MATERIAL ORIGINS: 
-                                    <span class="text-bold"> EFX STANDARD - SEE MATERIAL ORIGIN REQUIREMENTS STANDARD, USA-QAC-STD-005</span>
+                                    <span class="text-bold">
+                                        {{ isset($jqr_process_fuel_gas->acceptable_material_origins) ? $jqr_process_fuel_gas->acceptable_material_origins : '' }}
+                                    </span>
                                 </td>
                                 <td colspan="5">STANDARD PER CODE(NO MTRS): {{ isset($jqr_process_fuel_gas->standard_code) ? ($jqr_process_fuel_gas->standard_code == '1' ? 'Yes' : 'No') : '' }}</td>
                             </tr>
@@ -328,7 +353,9 @@
                             </tr>
                             <tr>
                                 <td colspan="6">MATERIAL NOTES: 
-                                    <span class="text-bold">REFER TO PURCHASING SPECIFICATIONS AND MANUFACTURING SPECIFICATIONS AT THE END OF THIS DOCUMENT</span>
+                                    <span class="text-bold">
+                                        {{ isset($jqr_process_fuel_gas->material_notes) ? $jqr_process_fuel_gas->material_notes : '' }}
+                                    </span>
                                 </td>
                             </tr>
                             <tr>
@@ -336,21 +363,29 @@
                             </tr>
                             <tr>
                                 <td colspan="6">NDE REQUIREMENTS: 
-                                    <span class="text-bold">EFX STANDARD: 5% RT OR PAUT BUTT WELDS (PER B31.3)</span>
+                                    <span class="text-bold">
+                                        {{ isset($jqr_process_fuel_gas->nde_requirements) ? $jqr_process_fuel_gas->nde_requirements : '' }}
+                                    </span>
                                 </td>
                             </tr>
                             <tr>
                                 <td >WELDING REQUIREMENTS: 
-                                    <span class="text-bold">ASME SEC. IX QUALIFIED</span>
+                                    <span class="text-bold">
+                                        {{ isset($jqr_process_fuel_gas->weld_requirements) ? $jqr_process_fuel_gas->weld_requirements : '' }}    
+                                    </span>
                                 </td>
                                 <td colspan="5">GOVERNING CODE: 
-                                    <span class="text-bold">ASME B31.3</span>
+                                    <span class="text-bold">
+                                        {{ isset($jqr_process_fuel_gas->governing_code) ? $jqr_process_fuel_gas->governing_code : '' }}
+                                    </span>
                                 </td>
                             </tr>
 
                             <tr>
                                 <td>HYDRO HOLD TIME: 
-                                    <span class="text-bold">10 MIN</span>
+                                    <span class="text-bold">
+                                        {{ isset($jqr_process_fuel_gas->hydro_hold_time) ? $jqr_process_fuel_gas->hydro_hold_time : '' }}
+                                    </span>
                                 </td>
                                 <td>WITNESSED: {{ isset($jqr_process_fuel_gas->witnessed) ? ($jqr_process_fuel_gas->witnessed == '1' ? 'Yes' : 'No') : '' }}</td>
                                 <td colspan="4">HARDNESS TEST: {{ isset($jqr_process_fuel_gas->hardness_test) ? ($jqr_process_fuel_gas->hardness_test == '1' ? 'Yes' : 'No') : '' }}</td>
@@ -383,7 +418,9 @@
                             </tr>
                             <tr>
                                 <td>ACCEPTABLE MATERIAL ORIGINS: 
-                                    <span class="text-bold">EFX STANDARD - SEE MATERIAL ORIGIN REQUIREMENTS STANDARD, USA-QAC-STD-005</span>    
+                                    <span class="text-bold">
+                                        {{ isset($jqr_butt->acceptable_material_origins) ? $jqr_butt->acceptable_material_origins : '' }}
+                                    </span>    
                                 </td>
                                 <td colspan="5">STANDARD PER CODE(NO MTRS): {{ isset($jqr_butt->standard_per_code) ? ($jqr_butt->standard_per_code == '1' ? 'Yes' : 'No') : '' }}</td>
                             </tr>
@@ -400,7 +437,9 @@
                             </tr>
                             <tr>
                                 <td colspan="6">MATERIAL NOTES: 
-                                    <span class="text-bold">REFER TO PURCHASING SPECIFICATIONS AND MANUFACTURING SPECIFICATIONS AT THE END OF THIS DOCUMENT</span>
+                                    <span class="text-bold">
+                                        {{ isset($jqr_butt->material_notes) ? $jqr_butt->material_notes : '' }}
+                                    </span>
                                 </td>
                             </tr>
                             <tr>
@@ -411,18 +450,24 @@
                             </tr>
                             <tr>
                                 <td colspan="6">WELDING REQUIREMENTS: 
-                                    <span class="text-bold">ASME SEC. IX QUALIFIED</span>
+                                    <span class="text-bold">
+                                        {{ isset($jqr_butt->weld_requirement) ? $jqr_butt->weld_requirement : '' }}
+                                    </span>
                                 </td>
                             </tr>
                             <tr>
                                 <td>GOVERNING CODE: 
-                                    <span class="text-bold">NONE</span>
+                                    <span class="text-bold">
+                                        {{ isset($jqr_butt->governing_code) ? $jqr_butt->governing_code : '' }}
+                                    </span>
                                 </td>
                                 <td colspan="5">PWHT: {{ isset($jqr_butt->pwht) ? (($jqr_butt->pwht == '0') ? "Yes" : (($jqr_butt->pwht == '1')  ? "N0" : "Per Code REQ")) : '' }}</td>
                             </tr>
                             <tr>
                                 <td>HYDRO HOLD TIME: 
-                                    <span class="text-bold">NONE</span>
+                                    <span class="text-bold">
+                                        {{ isset($jqr_butt->hydro_hold_time) ? $jqr_butt->hydro_hold_time : '' }}
+                                    </span>
                                 </td>
                                 <td colspan="5">WITNESSED: {{ isset($jqr_butt->witnessed) ? ($jqr_butt->witnessed == '1' ? 'Yes' : 'No') : '' }}</td>
                             </tr>

@@ -62,7 +62,7 @@ class JobQualityRequirementController extends Controller
     public function index(Request $request)
     {
         if ($request->ajax()) {
-            $data = BasicDetails::with('pressureVessels');
+            $data = BasicDetails::with('pressureVessels')->latest();
             return Datatables::of($data)
                 ->addIndexColumn()
                 ->addColumn('action', function ($row) {
@@ -257,7 +257,7 @@ class JobQualityRequirementController extends Controller
      * @return \Illuminate\Contracts\Support\Renderable
      */
     public function generatePDF($id)
-    {
+    {   
         $id = decrypt($id);
         $jqr = BasicDetails::where('id', $id)->first();
         $jqr_special = SpecialMaterialRequirements::where('basic_details_id', $jqr->id)->first();
@@ -291,10 +291,10 @@ class JobQualityRequirementController extends Controller
         } else {
             $jqr_package_testing_run_test_requirements = [];
         }
-        if ($jqr->company_logo == '') {
-            $companyLogoFlag = false;
+        if ($jqr->company_logo != null) {
+            $logoPath = '/uploads/company-logo/' . $jqr->company_logo;
         } else {
-            $companyLogoFlag = true;
+            $logoPath = "";
         }
         $data = [
             'jqr' => $jqr ?? '',
@@ -314,7 +314,8 @@ class JobQualityRequirementController extends Controller
             'jqr_tubing' => $jqr_tubing ?? '',
             'jqr_gaskets' => $jqr_gaskets ?? '',
             'run_test_reqs' => $run_test_reqs ?? '',
-            'companyLogoFlag' => $companyLogoFlag
+            'logoPath' => $logoPath,
+            'page' => 'download'
         ];
         $jobNumber = $jqr->job_number ?? '';
         $fileName = "jqrms-{$jobNumber}.pdf";
@@ -1223,6 +1224,11 @@ class JobQualityRequirementController extends Controller
         } else {
             $jqr_package_testing_run_test_requirements = [];
         }
+        if ($jqr->company_logo != null) {
+            $logoPath = '/uploads/company-logo/' . $jqr->company_logo;
+        } else {
+            $logoPath = "";
+        }
 
         return view('admin.job-quality-requirements.show-minimized-jqr', [
             'jqr' => $jqr,
@@ -1241,7 +1247,9 @@ class JobQualityRequirementController extends Controller
             'jqr_structural_skid' => $jqr_structural_skid,
             'jqr_threaded_piping' => $jqr_threaded_piping,
             'jqr_tubing' => $jqr_tubing,
-            'jqr_gaskets' => $jqr_gaskets
+            'jqr_gaskets' => $jqr_gaskets,
+            'logoPath' => $logoPath,
+            'page' => 'view'
         ]);
     }
 
