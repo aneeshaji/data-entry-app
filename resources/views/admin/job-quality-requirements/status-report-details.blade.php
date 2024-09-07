@@ -79,7 +79,7 @@
                     </td>
                     <td class="">
                         @if($page == 'download')
-                            {{ $report['process_fuel_gas_start_gas_piping']['nde_requirements_status']['name'] }} 
+                            {{ isset($report['process_fuel_gas_start_gas_piping']['nde_requirements_status']['name']) ? $report['process_fuel_gas_start_gas_piping']['nde_requirements_status']['name'] : '' }} 
                         @elseif($page == 'view')
                             {{ isset($report->processFuelGasStartGasPiping->ndeRequirementsStatus) ? $report->processFuelGasStartGasPiping->ndeRequirementsStatus->name : '' }}
                         @endif
@@ -95,7 +95,7 @@
                     </td>
                     <td class="">
                         @if($page == 'download')
-                            {{ $report['pressure_vessels']['nde_requirements_status']['name'] }}
+                            {{ isset($report['pressure_vessels']['nde_requirements_status']['name']) ? $report['pressure_vessels']['nde_requirements_status']['name'] : '' }}
                         @elseif($page == 'view')
                             {{ isset($report->pressureVessels->ndeRequirementsStatus) ? $report->pressureVessels->ndeRequirementsStatus->name : '' }}
                         @endif

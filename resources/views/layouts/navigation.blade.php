@@ -49,7 +49,7 @@
                 </li>
                 <li class="menu-item">
                     <a href="{{ url('/admin/doc-status-report') }}" class="menu-link">
-                        <div data-i18n="Report(DOC Status)">Report (DOC Status)</div>
+                        <div data-i18n="Docs Status Report">Docs Status Report</div>
                     </a>
                 </li>
             </ul>

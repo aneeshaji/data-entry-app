@@ -330,7 +330,7 @@ class JobQualityRequirementController extends Controller
      * @return \Illuminate\Contracts\Support\Renderable
      */
     public function saveData(Request $request)
-    {   
+    { 
         $validator = \Validator::make($request->all(), [
             'job_number' => 'required|max:255',
             'no_of_modules' => 'required|max:255',
@@ -377,18 +377,18 @@ class JobQualityRequirementController extends Controller
             $basic_details->due_date = $request->due_date;
         
             // Parse the scheduled_test_date from the request
-            if ($request->scheduled_test_date) {
-                $parsedScheduledTestDate = Carbon::parse($request->scheduled_test_date);
-                // Calculate the date after 7 days 
-                $document_deliverables_due_date = $parsedScheduledTestDate->addDays(7)->toDateString();
-            }
+            // if ($request->scheduled_test_date) {
+            //     $parsedScheduledTestDate = Carbon::parse($request->scheduled_test_date);
+            //     // Calculate the date after 7 days 
+            //     $document_deliverables_due_date = $parsedScheduledTestDate->addDays(7)->toDateString();
+            // }
 
             $basic_details->customer_order_purchase_date = $request->customer_order_purchase_date;
             $basic_details->fab_start_date = $request->fab_start_date;
             $basic_details->scheduled_test_date = $request->scheduled_test_date;
-            if (isset($document_deliverables_due_date)) {
-                $basic_details->document_deliverables_due_date = $document_deliverables_due_date;
-            }
+            // if (isset($document_deliverables_due_date)) {
+            $basic_details->document_deliverables_due_date = $request->document_deliverables_due_date;
+            // }
             $basic_details->job_revision_number = $request->job_revision_number;
             $basic_details->production_number = $request->production_number;
             $basic_details->no_of_modules = $request->no_of_modules;
