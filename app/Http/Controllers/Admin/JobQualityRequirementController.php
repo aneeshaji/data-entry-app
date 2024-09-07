@@ -332,11 +332,11 @@ class JobQualityRequirementController extends Controller
     public function saveData(Request $request)
     { 
         $validator = \Validator::make($request->all(), [
-            'job_number' => 'required|max:255',
+            'job_number' => 'required|max:255|unique:basic_details',
             'no_of_modules' => 'required|max:255',
             'job_revision_number' => 'required|max:255',
             'scheduled_test_date' => 'required|date',
-            'company_logo' => 'image|mimes:jpg,jpeg,png,gif|max:4096'
+            'company_logo' => 'nullable|image|mimes:jpg,jpeg,png,gif|max:4096'
         ]);
         if ($validator->fails()) {
             return response()->json([
