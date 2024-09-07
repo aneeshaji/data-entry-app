@@ -252,7 +252,7 @@
                                         <div class="col-sm-6">
                                             <label class="form-label" for="email1">Document Deliverables Due Date</label>
                                             <input type="date" id="document_deliverables_due_date" name="document_deliverables_due_date" class="form-control"
-                                                placeholder="" aria-label=""
+                                                placeholder="" aria-label="" readonly
                                                 value="{{ isset($jqr->document_deliverables_due_date) ? $jqr->document_deliverables_due_date : '' }}" />
                                         </div>
                                         <div class="col-sm-6">
@@ -3401,6 +3401,29 @@ if (typeof wizardIconsVertical !== undefined && wizardIconsVertical !== null) {
         });
     }
 }
+
+$('#scheduled_test_date').on('change', function() {
+    // Get the value from the scheduled test date field
+    var selectedDate = $(this).val();
+
+    if (selectedDate) {
+        // Convert the selected date into a Date object
+        var selectedDateObj = new Date(selectedDate);
+
+        // Add 7 days to the selected date
+        selectedDateObj.setDate(selectedDateObj.getDate() + 7);
+
+        // Format the new date (YYYY-MM-DD) for the input type="date"
+        var year = selectedDateObj.getFullYear();
+        var month = ("0" + (selectedDateObj.getMonth() + 1)).slice(-2);  // Ensure two digits for month
+        var day = ("0" + selectedDateObj.getDate()).slice(-2);  // Ensure two digits for day
+
+        var newDate = year + '-' + month + '-' + day;
+
+        // Set the value of the DD DUE DATE field with the correct format
+        $('#document_deliverables_due_date').val(newDate);
+    }
+});
 
 // Setting Doc Status Labels
 $(document).ready(function() {

@@ -47,6 +47,11 @@
                         <div data-i18n="List">List</div>
                     </a>
                 </li>
+                <li class="menu-item">
+                    <a href="{{ url('/admin/doc-status-report') }}" class="menu-link">
+                        <div data-i18n="Docs Status Report">Docs Status Report</div>
+                    </a>
+                </li>
             </ul>
         </li>
 

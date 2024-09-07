@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>JQRMS | PDF</title>
+    <title>View JQR | PDF</title>
 </head>
 <style>
  .logo-cell {
@@ -25,14 +25,10 @@
                     <!-- HEADER -->
                     <table class="table table-bordered table-hover">
                         <tr>
-                            <!-- <td rowspan="2" class="text-center">
-                                LOGO
-                                @if($jqr->company_logo)
-                                    <img src="{{ asset('uploads/company-logo/' . $jqr->company_logo) }}" class="app-brand-logo" alt="Company Logo">
-                                @endif
-                            </td> -->
                             <td class="logo-cell logo" rowspan="2">
-                                <img src="{{ asset('uploads/company-logo/' . $jqr->company_logo) }}">
+                                @if($companyLogoFlag == true)
+                                    <img src="{{ asset('uploads/company-logo/' . $jqr->company_logo) }}" alt="company-logo"> 
+                                @endif
                             </td>
                             <td colspan="4" class="text-center text-bold" style="font-size:24px">FABRICATION JOB QUALITY REQUIREMENTS</td>
                         </tr>
@@ -74,51 +70,6 @@
                             <td>Status:</td>  
                         </tr>
                     </table>
-                    <!-- <table class="table table-bordered table-hover">
-                        <thead>
-                            <tr>
-                                <th>Revison:</th>
-                                <th data-priority="1">Form Number: </th>
-                                <th data-priority="2">Form Revised:</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <td colspan="6" class="text-center text-bold">BASIC DETAILS</td>
-                            </tr>
-                            <tr>
-                                <td>JOB/PROJECT NUMBER: {{ isset($jqr->job_number) ? $jqr->job_number : '' }}</td>
-                                <td colspan="2">JOB NAME: {{ isset($jqr->job_name) ? $jqr->job_name : '' }}</td>
-                            </tr>
-                            <tr>
-                                <td>STAGES: {{ isset($jqr->stages) ? $jqr->stages : '' }}</td>
-                                <td>RELEASE DATE: {{ isset($jqr->release_date) ? $jqr->release_date : '' }}</td>
-                                <td>DUE DATE: {{ isset($jqr->due_date) ? $jqr->due_date : '' }}</td>
-                            </tr>
-                        </tbody>
-                    </table> -->
-                    <!-- BASIC PROJECT DETAILS ENDS -->
-                    <!-- SPECIAL MATERIAL REQUIREMENTS -->
-                    <!-- <table class="table table-bordered table-hover">
-                        <tbody>
-                            <tr>
-                                <td colspan="6" class="text-center text-bold">SPECIAL MATERIAL REQUIREMENTS</td>
-                            </tr>
-                            <tr>
-                                <td>Pipes & Fittings(400.01): {{ isset($jqr_special->pipes_and_fittings) ? ($jqr_special->pipes_and_fittings == '1' ? 'Yes' : 'No') : ''  }}</td>
-                                <td colspan="5">Bolting(400.01): {{ isset($jqr_special->bolting) ? ($jqr_special->bolting == '1' ? 'Yes' : 'No') : '' }}</td>
-                            </tr>
-                            <tr>
-                                <td>Pressure Vessels(400.11): {{ isset($jqr_special->pressure_vessels) ? ($jqr_special->pressure_vessels == '1' ? 'Yes' : 'No') : '' }}</td>
-                                <td colspan="5">Gaskets: {{ isset($jqr_special->gaskets) ? $jqr_special->gaskets : '' }}</td>
-                            </tr>
-                            <tr>
-                                <td>Structural Steel(410.01): {{ isset($jqr_special->structural_steel) ? ($jqr_special->structural_steel == '1' ? 'Yes' : 'No') : '' }}</td>
-                                <td colspan="5">Tubing(420.01): {{ isset($jqr_special->tubing) ? ($jqr_special->tubing == '1' ? 'Yes' : 'N0') : '' }}</td>
-                            </tr>
-                        </tbody>
-                    </table> -->
-                    <!-- SPECIAL MATERIAL REQUIREMENTS ENDS -->
                     <!-- GENERAL INFORMATION -->
                     <table class="table table-bordered table-hover">
                         <tbody>
@@ -177,52 +128,6 @@
                         </tbody>
                     </table>
                     <!-- SERVICE INFORMATION ENDS -->
-                    <!-- STRUCTURAL SKID -->
-                    <!-- <table class="table table-bordered table-hover">
-                        <tbody>
-                            <tr>
-                                <td colspan="6" class="text-center text-bold">STRUCTURAL SKID</td>
-                            </tr>
-                            <tr>
-                                <td class="text-bold">MATERIAL REQUIREMENTS</td>
-                                <td colspan="5">*CUSTOMER/CLIENT AVL APPLIES: {{ isset($jqr_structural_skid->customer_avl_applies) ? ($jqr_structural_skid->customer_avl_applies == '1' ? 'Yes' : 'No') : '' }}</td>
-                            </tr>
-                            <tr>
-                                <td>MATERIAL ORIGIN REQS: {{ isset($jqr_structural_skid->material_origin_reqs) ? $jqr_structural_skid->material_origin_reqs : '' }}</td>
-                                <td colspan="5">ORIGIN TRACEABLE TO MELT(BILLET): {{ isset($jqr_structural_skid->customer_avl_applies) ? ($jqr_structural_skid->customer_avl_applies == '1' ? 'Yes' : 'No') : '' }}</td>
-                            </tr>
-                            <tr>
-                                <td>ACCEPTABLE MATERIAL ORIGINS: {{ isset($jqr_structural_skid->acceptable_material_origins) ? $jqr_structural_skid->acceptable_material_origins : '' }}</td>
-                                <td colspan="5">STANDARD PER CODE(NO MTRS): {{ isset($jqr_structural_skid->customer_avl_applies) ? ($jqr_structural_skid->customer_avl_applies == '1' ? 'Yes' : 'No') : '' }}</td>
-                            </tr>
-                            <tr>
-                                <td colspan="6" class="text-center text-bold">TRACEABILITY REQUIREMENTS(See USA-QAC_PRO-017)<br>
-                                Indicates Special Material Origin Requirements Must Be Checked 'Yes'</td>
-                            </tr>
-                            <tr>
-                                <td class="">MTRS REQUIRED: {{ isset($jqr_structural_skid->mtrs_required) ? ($jqr_structural_skid->mtrs_required == '1' ? 'Yes' : 'No') : '' }}</td>
-                                <td colspan="5" class="">HEAT MAPPING: {{ isset($jqr_structural_skid->heat_mapping) ? ($jqr_structural_skid->heat_mapping == '1' ? 'Yes' : 'No') : '' }}</td>
-                            </tr>
-                            <tr>
-                                <td width="25%" class="">WELD MAPPING: {{ isset($jqr_structural_skid->weld_mapping) ? ($jqr_structural_skid->weld_mapping == '1' ? 'Yes' : 'No') : '' }}</td>
-                                <td width="75%">MATERIAL NOTES: {{ isset($jqr_structural_skid->material_notes) ? $jqr_structural_skid->material_notes : '' }}</td>
-                            </tr>
-                            <tr>
-                                <td colspan="6">NDE REQUIREMENTS: {{ isset($jqr_structural_skid->nde_requirements) ? $jqr_structural_skid->nde_requirements : '' }}</td>
-                            </tr>
-                            <tr>
-                                <td colspan="6" >WELDING REQUIREMENTS: {{ isset($jqr_structural_skid->weld_requirements) ? $jqr_structural_skid->weld_requirements : '' }}</td>
-                            </tr>
-                            <tr>
-                                <td>GOVERNING CODE: {{ isset($jqr_structural_skid->governing_code) ? $jqr_structural_skid->governing_code : '' }}</td>
-                                <td colspan="5">PWHT: {{ isset($jqr_structural_skid->pwht) ? ($jqr_structural_skid->pwht == '1' ? 'Yes' : 'No - EFX Standard') : '' }}</td>
-                            </tr>
-                            <tr>
-                                <td colspan="6">NOTES: {{ isset($jqr_structural_skid->notes) ? $jqr_structural_skid->notes : '' }}</td>
-                            </tr>
-                        </tbody>
-                    </table> -->
-                    <!-- STRUCTURAL SKID ENDS -->
                     <!-- PRESSURE VESSELS -->
                     <table class="table table-bordered table-hover">
                         <tbody>
@@ -462,98 +367,6 @@
                         </tbody>
                     </table>
                     <!-- Process/Fuel Gas/Start Gas Piping ENDS -->
-                    <!-- BOLTING -->
-                    <!-- <table class="table table-bordered table-hover">
-                        <tbody>
-                            <tr>
-                                <td colspan="6" class="text-center text-bold">BOLTING</td>
-                            </tr>
-                            <tr>
-                                <td class="">EFX STANDARD NO COC's / NO MTR's : {{ isset($jqr_bolting->efx_standard_no_cocs) ? ($jqr_bolting->efx_standard_no_cocs == '1' ? 'Yes' : 'No') : '' }}</td>
-                                <td colspan="5">VENDOR COC: {{ isset($jqr_bolting->vendor_coc) ? ($jqr_bolting->vendor_coc == '1' ? 'Yes' : 'No') : '' }}</td>
-                            </tr>
-                            <tr>
-                                <td class="">MANUFACTURER COCs : {{ isset($jqr_bolting->manufacturer_coc) ? ($jqr_bolting->manufacturer_coc == '1' ? 'Yes' : 'No') : '' }}</td>
-                                <td colspan="5">MTRS: {{ isset($jqr_bolting->mtrs) ? ($jqr_bolting->mtrs == '1' ? 'Yes' : 'No') : '' }}</td>
-                            </tr>
-
-                            <tr>
-                                <td colspan="6">MATERIAL NOTES: {{ isset($jqr_bolting->material_notes) ? $jqr_bolting->material_notes : '' }}</td>
-                            </tr>
-                        </tbody>
-                    </table> -->
-                    <!-- BOLTING ENDS -->
-                    <!-- GASKETS -->
-                    <!-- <table class="table table-bordered table-hover">
-                        <tbody>
-                            <tr>
-                                <td colspan="6" class="text-center text-bold">GASKETS</td>
-                            </tr>
-                            <tr>
-                                <td class="">EFX STANDARD NO COC's / NO MTR's: {{ isset($jqr_gaskets->efx_standard_no_cocs) ? ($jqr_gaskets->efx_standard_no_cocs == '1' ? 'Yes' : 'No') : '' }}</td>
-                                <td colspan="5">VENDOR COC: {{ isset($jqr_gaskets->vendor_coc) ? ($jqr_gaskets->vendor_coc == '1' ? 'Yes' : 'No') : '' }}</td>
-                            </tr>
-                            <tr>
-                                <td class="">MANUFACTURER COCs: {{ isset($jqr_gaskets->manufacturer_coc) ? ($jqr_gaskets->manufacturer_coc == '1' ? 'Yes' : 'No') : '' }}</td>
-                                <td colspan="5">MTRS: {{ isset($jqr_gaskets->mtrs) ? ($jqr_gaskets->mtrs == '1' ? 'Yes' : 'No') : '' }}</td>
-                            </tr>
-
-                            <tr>
-                                <td colspan="6">MATERIAL NOTES: {{ isset($jqr_gaskets->due_date) ? $jqr_gaskets->due_date : '' }}</td>
-                            </tr>
-                        </tbody>
-                    </table> -->
-                    <!-- GASKETS ENDS -->
-                    <!-- TUBING -->
-                    <!-- <table class="table table-bordered table-hover">
-                        <tbody>
-                            <tr>
-                                <td colspan="6" class="text-center text-bold">TUBING</td>
-                            </tr>
-                            <tr>
-                                <td class="text-bold">MATERIAL REQUIREMENTS</td>
-                                <td colspan="5">*CUSTOMER/CLIENT AVL APPLIES: {{ isset($jqr_tubing->customer_avl_applies) ? ($jqr_tubing->customer_avl_applies == '1' ? 'Yes' : 'No') : '' }}</td>
-                            </tr>
-                            <tr>
-                                <td>MATERIAL ORIGIN REQS: {{ isset($jqr_tubing->material_origin_reqs) ? $jqr_tubing->material_origin_reqs : '' }}</td>
-                                <td colspan="5">ORIGIN TRACEABLE TO MELT(BILLET): {{ isset($jqr_tubing->origin_traceable_to_melt) ? ($jqr_tubing->origin_traceable_to_melt == '1' ? 'Yes' : 'No') : '' }}</td>
-                            </tr>
-                            <tr>
-                                <td colspan="6">ACCEPTABLE MATERIAL ORIGINS: {{ isset($jqr_tubing->acceptable_material_origins) ? $jqr_tubing->acceptable_material_origins : '' }}</td>
-                            </tr>
-                            <tr>
-                                <td colspan="6" class="text-center text-bold">TRACEABILITY REQUIREMENTS(See USA-QAC_PRO-017)<br>
-                                Indicates Special Material Origin Requirements Must Be Checked 'Yes'</td>
-                            </tr>
-                            <tr>
-                                <td colspan="6" class="">EFX STANDARD NO COC's / NO MTR's: {{ isset($jqr_tubing->efx_standard_no_cocs) ? ($jqr_tubing->efx_standard_no_cocs == '1' ? 'Yes' : 'No') : '' }}</td>
-                            </tr>
-                            <tr>
-                                <td class="">TUBING MTRS REQUIRED: {{ isset($jqr_tubing->tubing_mtrs_required) ? ($jqr_tubing->tubing_mtrs_required == '1' ? 'Yes' : 'No') : '' }}</td>
-                                <td colspan="5" class="">TUBING COC REQUIRED: {{ isset($jqr_tubing->tubing_coc_required) ? ($jqr_tubing->tubing_coc_required == '1' ? 'Yes' : 'No') : '' }}</td>
-                            </tr>
-                            <tr>
-                                <td class="">FITTING MTRS REQUIRED: {{ isset($jqr_tubing->fitting_mtrs_required) ? ($jqr_tubing->fitting_mtrs_required == '1' ? 'Yes' : 'No') : '' }}</td>
-                                <td colspan="5" class="">FITTING COC REQUIRED: {{ isset($jqr_tubing->fitting_coc_required) ? ($jqr_tubing->fitting_coc_required == '1' ? 'Yes' : 'No') : '' }}</td>
-                            </tr>
-                            <tr>
-                                <td colspan="6">FULL TRACEABILITY(w/HEAT MAPPING): {{ isset($jqr_tubing->full_traceability) ? ($jqr_tubing->full_traceability == '1' ? 'Yes' : 'No') : '' }}</td>
-                            </tr>
-                            <tr>
-                                <td colspan="6">MATERIAL NOTES: {{ isset($jqr_tubing->material_notes) ? $jqr_tubing->material_notes : '' }}</td>
-                            </tr>
-                            <tr>
-                                <td colspan="6">NDE REQUIREMENTS: {{ isset($jqr_tubing->nde_requirements) ? $jqr_tubing->nde_requirements : '' }}</td>
-                            </tr>
-                            <tr>
-                                <td colspan="6">PMI REQUIREMENTS: {{ isset($jqr_tubing->pmi_Requirements) ? $jqr_tubing->pmi_Requirements : '' }}</td>
-                            </tr>
-                            <tr>
-                                <td colspan="6">NOTES: {{ isset($jqr_tubing->notes) ? $jqr_tubing->notes : '' }}</td>
-                            </tr>
-                        </tbody>
-                    </table> -->
-                    <!-- TUBING ENDS -->
                     <!-- Butt Welded/Socket Welded Utility Piping -->
                     <table class="table table-bordered table-hover">
                         <tbody>
@@ -627,96 +440,6 @@
                         </tbody>
                     </table>
                     <!-- Butt Welded/Socket Welded Utility Piping ENDS -->
-                    <!-- Threaded Piping -->
-                    <!-- <table style="overflow:hidden" class="table table-bordered table-hover">
-                        <tbody>
-                            <tr>
-                                <td colspan="6" class="text-center text-bold">THREADED PIPING</td>
-                            </tr>
-                            <tr>
-                                <td class="text-bold">MATERIAL REQUIREMENTS</td>
-                                <td colspan="5">*CUSTOMER/CLIENT AVL APPLIES: {{ isset($jqr_threaded_piping->customer_avl_applies) ? ($jqr_threaded_piping->customer_avl_applies == '1' ? 'Yes' : 'No') : ''  }}</td>
-                            </tr>
-                            <tr>
-                                <td>MATERIAL ORIGIN REQS: {{ isset($jqr_threaded_piping->material_origin_reqs) ? $jqr_threaded_piping->material_origin_reqs : '' }}</td>
-                                <td colspan="5">ORIGIN TRACEABLE TO MELT(BILLET): {{ isset($jqr_threaded_piping->origin_traceable_to_melt) ? ($jqr_threaded_piping->origin_traceable_to_melt == '1' ? 'Yes' : 'No') : ''  }}</td>
-                            </tr>
-                            <tr>
-                                <td>ACCEPTABLE MATERIAL ORIGINS: {{ isset($jqr_threaded_piping->acceptable_material_origins) ? $jqr_threaded_piping->acceptable_material_origins : '' }}</td>
-                                <td colspan="5">STANDARD PER CODE(NO MTRS): {{ isset($jqr_threaded_piping->standard_per_code) ? ($jqr_threaded_piping->standard_per_code == '1' ? 'Yes' : 'No') : '' }}</td>
-                            </tr>
-                            <tr>
-                                <td colspan="6" class="text-center text-bold">TRACEABILITY REQUIREMENTS(See USA-QAC_PRO-017)<br>
-                                Indicates Special Material Origin Requirements Must Be Checked 'Yes'</td>
-                            </tr>
-                            <tr>
-                                <td colspan="" class="">MTRS REQUIRED: {{ isset($jqr_threaded_piping->mtrs_required) ? ($jqr_threaded_piping->mtrs_required == '1' ? 'Yes' : 'No') : '' }}</td>
-                                <td colspan="5" class="">*HEAT MAPPING(FULL TRACEABILITY): {{ isset($jqr_threaded_piping->heat_mapping) ? ($jqr_threaded_piping->heat_mapping == '1' ? 'Yes' : 'No') : '' }}</td>
-                            </tr>
-                            <tr>
-                                <td colspan="6">MATERIAL NOTES: {{ isset($jqr_threaded_piping->material_notes) ? $jqr_threaded_piping->material_notes : '' }}</td>
-                            </tr>
-                            <tr>
-                                <td colspan="6">NACE: {{ isset($jqr_threaded_piping->nace) ? ($jqr_threaded_piping->nace == '1' ? 'Yes' : 'No') : ''  }}</td>
-                            </tr>
-                            <tr>
-                                <td colspan="6">NOTES: {{ isset($jqr_threaded_piping->notes) ? $jqr_threaded_piping->notes : '' }}</td>
-                            </tr>
-                        </tbody>
-                    </table> -->
-                    <!-- Threaded Piping ENDS -->
-                    <!-- Electrical/Instrumentation -->
-                    <!-- <table style="overflow:hidden" class="table table-bordered table-hover">
-                        <tbody>
-                            <tr>
-                                <td colspan="6" class="text-center text-bold">Electrical/Instrumentation</td>
-                            </tr>
-                            <tr>
-                                <td class="text-bold">MATERIAL REQUIREMENTS</td>
-                                <td colspan="5">*CUSTOMER/CLIENT AVL APPLIES: {{ isset($jqr_electrical->customer_avl_applies) ? ($jqr_electrical->customer_avl_applies == '1' ? 'Yes' : 'No') : '' }}</td>
-                            </tr>
-                            <tr>
-                                <td>ACCEPTABLE MATERIAL ORIGINS: {{ isset($jqr_electrical->acceptable_material_origins)  ? $jqr_electrical->acceptable_material_origins : '' }}</td>
-                                <td colspan="5">VENDOR RESTRICTIONS: {{ isset($jqr_electrical->vendor_restrictions) ? ($jqr_electrical->vendor_restrictions == '1' ? 'Yes' : 'No') : '' }}</td>
-                            </tr>
-                            <tr>
-                                <td colspan="6" class="">SPECIFY: {{ isset($jqr_electrical->specify) ? $jqr_electrical->specify : '' }}</td>
-                            </tr>
-                            <tr>
-                                <td colspan="6" class="">APPROVED VENDOR(S): {{ isset($jqr_electrical->approved_vendors) ? $jqr_electrical->approved_vendors : '' }}</td>
-                            </tr>
-                            <tr>
-                                <td colspan="6">MATERIAL NOTES: {{ isset($jqr_electrical->material_notes) ? $jqr_electrical->material_notes : '' }}</td>
-                            </tr>
-                            <tr>
-                                <td colspan="6">GOVERNING CODE: {{ isset($jqr_electrical->governing_code) ? $jqr_electrical->governing_code : '' }}</td>
-                            </tr>
-                            <tr>
-                                <td colspan="6">NOTES: {{ isset($jqr_electrical->notes) ? $jqr_electrical->notes : '' }}</td>
-                            </tr>
-                        </tbody>
-                    </table> -->
-                    <!-- Electrical/Instrumentation ENDS -->
-                    <!-- Preservation -->
-                    <!-- <table style="overflow:hidden" class="table table-bordered table-hover">
-                        <tbody>
-                            <tr>
-                                <td colspan="6" class="text-center text-bold">Preservation</td>
-                            </tr>
-                            <tr>
-                                <td class="">EFX STANDARD SHORT TERM(6 Mo): {{ isset($jqr_preservation->efx_standard_short_term) ? ($jqr_preservation->efx_standard_short_term == '1' ? 'Yes' : 'No') : '' }}</td>
-                                <td colspan="5">EFX STANDARD LONG TERM(6 Mo): {{ isset($jqr_preservation->efx_standard_long_term) ? ($jqr_preservation->efx_standard_long_term == '1' ? 'Yes' : 'No') : '' }}</td>
-                            </tr>
-                            <tr>
-                                <td>CUSTOMER SPECIFIED/OTHER: {{ isset($jqr_preservation->customer_specified_other) ? ($jqr_preservation->customer_specified_other == '1' ? 'Yes' : 'No') : '' }}</td>
-                                <td colspan="5">SPECIAL CUSTOMER REQUIREMENTS: {{ isset($jqr_preservation->special_customer_requirements) ? $jqr_preservation->special_customer_requirements : '' }}</td>
-                            </tr>
-                            <tr>
-                                <td colspan="6">NOTES: {{ isset($jqr_preservation->notes) ? $jqr_preservation->notes : '' }}</td>
-                            </tr>
-                        </tbody>
-                    </table> -->
-                    <!-- Preservation ENDS -->
                     <!-- Package Testing -->
                     <table style="overflow:hidden" class="table table-bordered table-hover">
                         <tbody>

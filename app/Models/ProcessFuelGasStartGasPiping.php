@@ -41,7 +41,15 @@ class ProcessFuelGasStartGasPiping extends Model
         'traveller_completed_status'
     ];
 
-     /**
+    /**
+     * Get Nde Requirements Status Data.
+     */
+    public function ndeRequirementsStatus()
+    {
+        return $this->belongsTo(NdeReportsRequiredStatus::class, 'nde_requirements_required', 'id');
+    }
+
+    /**
      * Get MTR's Doc Status.
      */
     public function mtrsStatus()

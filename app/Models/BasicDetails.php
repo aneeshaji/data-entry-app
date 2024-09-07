@@ -33,4 +33,20 @@ class BasicDetails extends Model
     {
         return $this->belongsTo(PressureVessels::class, 'id', 'basic_details_id');
     }
+
+    /**
+     * Get Non Ccde Vessels Data.
+     */
+    public function nonCodeVesselsTanks()
+    {
+        return $this->belongsTo(NonCodeVesselsTanks::class, 'id', 'basic_details_id');
+    }
+
+    /**
+     * Get Proces FuelGas StartGas Piping Data.
+     */
+    public function processFuelGasStartGasPiping()
+    {
+        return $this->belongsTo(ProcessFuelGasStartGasPiping::class, 'id', 'basic_details_id');
+    }
 }

@@ -8,7 +8,7 @@
     <meta name="viewport"
         content="width=device-width, initial-scale=1.0, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0" />
 
-    <title>Dashboard | JQRMS</title>
+    <title>JQRMS</title>
 
     <meta name="description" content="" />
     <!-- CSRF Token -->
@@ -45,6 +45,8 @@
     <link rel="stylesheet" href="{{ asset('assets/vendor/libs/bootstrap-select/bootstrap-select.css') }}" />
     <link rel="stylesheet" href="{{ asset('assets/vendor/libs/select2/select2.css') }}" />
     <link rel="stylesheet" href="{{ asset('assets/vendor/libs/@form-validation/form-validation.css') }}" />
+    <!-- <link rel="stylesheet" href="{{ asset('assets/vendor/libs/animate-css/animate.css') }}" />
+    <link rel="stylesheet" href="{{ asset('assets/vendor/libs/sweetalert2/sweetalert2.css') }}" /> -->
     <!-- <link rel="stylesheet"
         href="{{ asset('assets/vendor/libs/datatables-responsive-bs5/responsive.bootstrap5.css') }}" /> -->
 
@@ -587,7 +589,6 @@
                 <!-- Content wrapper -->
                 <main>
                     {{ $slot }}
-
                 </main>
                 <!-- Content wrapper -->
             </div>
@@ -629,6 +630,8 @@
     <script src="{{ asset('assets/vendor/libs/@form-validation/popular.js') }}"></script>
     <script src="{{ asset('assets/vendor/libs/@form-validation/bootstrap5.js') }}"></script>
     <script src="{{ asset('assets/vendor/libs/@form-validation/auto-focus.js') }}"></script>
+    <!-- <script src="{{ asset('assets/vendor/libs/sweetalert2/sweetalert2.js') }}"></script> -->
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
     <!-- Main JS -->
     <script src="{{ asset('assets/js/main.js') }}"></script>
@@ -638,7 +641,7 @@
     <script src="{{ asset('assets/js/form-wizard-icons.js') }}"></script>
     <script src="{{ asset('assets/js/form-wizard-validation.js') }}"></script>
     <script src="{{ asset('assets/js/form-layouts.js') }}"></script>
-
+    <!-- <script src="{{ asset('assets/js/extended-ui-sweetalert2.js') }}"></script> -->
 
     <script src="https://cdn.datatables.net/1.10.16/js/jquery.dataTables.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>
