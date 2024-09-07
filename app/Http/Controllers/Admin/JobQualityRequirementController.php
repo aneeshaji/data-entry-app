@@ -31,6 +31,7 @@ use Illuminate\Support\Facades\Redirect;
 use Illuminate\View\View;
 use DataTables;
 use Carbon\Carbon;
+use Illuminate\Validation\Rule;
 
 class JobQualityRequirementController extends Controller
 {
@@ -332,7 +333,11 @@ class JobQualityRequirementController extends Controller
     public function saveData(Request $request)
     { 
         $validator = \Validator::make($request->all(), [
-            'job_number' => 'required|max:255|unique:basic_details',
+            'job_number' => [
+                'required',
+                'max:255',
+                Rule::unique('basic_details')->ignore($request->id)
+            ],
             'no_of_modules' => 'required|max:255',
             'job_revision_number' => 'required|max:255',
             'scheduled_test_date' => 'required|date',

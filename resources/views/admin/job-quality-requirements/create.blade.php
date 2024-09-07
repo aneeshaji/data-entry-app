@@ -3714,6 +3714,12 @@ function submitData(reloadFlag) {
 		error: function(response) {
 			// Handle errors if needed
 			let errors = response.responseJSON.errors;
+            // Clear previous validation messages
+            $('#jobnumberValidation').html('');
+            $('#noOfModulesValidation').html('');
+            $('#jobRevisionNumberValidation').html('');
+            $('#scheduledTestDateValidation').html('');
+            $('#companyLogoValidation').html('');
 			if (errors) {
 				let jobnumberMessage = errors.job_number ? errors.job_number[0] : '';
 				if (jobnumberMessage) {
